@@ -1,0 +1,120 @@
+﻿.navbar {
+    width: 100%;
+    height: 60px; 
+    background-color: #C0B9DD; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+body {
+    font-family: 'Open Sans', sans-serif;
+    background: #ecf0f1;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+.parent {
+    display: inline-block;
+    position: relative;
+    float: left;
+    line-height: 50px;
+    background-color: #C0B9DD;
+    border-right: #CCC 1px solid;
+   
+}
+
+    .parent a {
+        margin: 10px;
+        color: darkblue;
+        text-decoration: wavy;
+    }
+
+    .parent:hover > ul {
+        display: block;
+        position: absolute;
+    }
+
+.child {
+    display: none;
+}
+
+    .child li {
+        background-color: #E4EFF7;
+        line-height: 40px;
+        border-bottom: #CCC 1px solid;
+        border-right: #CCC 1px solid;
+        width: 100%;
+    }
+
+        .child li a {
+            color: #000000;
+        }
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0px;
+    min-width: 8.65em;
+}
+
+    ul ul ul {
+        left: 100%;
+        top: 0;
+        margin-left: 1px;
+    }
+
+li:hover {
+    background-color: #95B4CA;
+}
+
+.parent li:hover {
+    background-color: #F0F0F0;
+}
+
+.expand {
+    font-size: 12px;
+    float: right;
+    margin-right: 5px;
+}
+.social-icons {
+    font-size: 35px;
+}
+
+    .social-icons a {
+        color: #000000;
+        margin-right: 10px;
+        
+    }
+.search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    /* flex-direction: column;
+    text-align: center;
+    width: 100%;
+    height: 100%;*/
+}
+
+.search-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 10px;
+}
+
+    .search-box label,
+    .search-box input {
+        margin: 0 5px;
+    }
+
+    .search-box label {
+        flex: 0 0 100px; /* Adjust the width as needed */
+    }

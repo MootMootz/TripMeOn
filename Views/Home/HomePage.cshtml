@@ -1,0 +1,27 @@
+﻿@using TripMeOn.ViewModels
+@model NavigationViewModel
+@{
+    ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <!-- Add any necessary CSS or other meta tags -->
+</head>
+<body> 
+  
+        <ul class="nav">
+            <li class="nav-item">
+                <a class="nav-link" href="@Url.Action("PartnerForm", "Partner")">Partner Sign Up</a>
+            </li>          
+        </ul>   
+
+</body>
+</html>
+
+
+   

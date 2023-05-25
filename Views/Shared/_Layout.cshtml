@@ -1,0 +1,148 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>#TripMeOn</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/Layout.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+	@RenderSection("ExtraCss",required:false)
+</head>
+<body>  
+	<header>
+		<h1>#TRIP ME ON</h1>		
+	</header>
+    <!-- Bootstrap Navigation Bar code goes here -->
+    <div class="navbar">
+       		<ul id="menu" style="text-align: center">
+			<li class="parent">
+				<a href="#">Home</a>
+			</li>
+			
+			<!--   -------------------------------------------------------------------------   -->
+
+			<li class="parent">
+				<a href="#">Destinations<span class="expand"></span></a>
+				<ul class="child">
+					<li><a href="#">France</a></li>
+					<li><a href="#">The UK</a></li>
+					<li><a href="#">The Netherlands</a></li>
+					<li><a href="#">Turkey</a></li>
+					<li><a href="#">Agentina</a></li>
+					<li><a href="#">Blegium</a></li>
+					<li><a href="#">Spain</a></li>
+					<li><a href="#">Switzerland</a></li>
+					<li><a href="#">Portugal</a></li>
+					<li><a href="#">Italy</a></li>
+				</ul>
+			</li>
+
+			<!--   -------------------------------------------------------------------------   -->
+
+			<li class="parent">
+				<a href="#">Themes<span class="expand"></span></a>
+				<ul class="child">
+					<li><a href="#">Trekking</a></li>
+					<li><a href="#">Floral</a></li>
+					<li><a href="#">Cultural</a></li>
+					<li><a href="#">Heritage</a></li>
+					<li><a href="#">Chill out</a></li>
+					<li><a href="#">InstaSpots</a></li>
+					<li><a href="#">Nature</a></li>
+					<li><a href="#">Beach</a></li>
+					<li><a href="#">Culinary</a></li>
+				</ul>
+			</li>
+
+			<!--   -------------------------------------------------------------------------   -->
+
+			<li class="parent">
+				<a href="#">Holiday Finder<span class="expand"></span></a>
+				<ul class="child">					
+					<li><a href="#">Accomodation</a></li>
+					<li><a href="#">Flights</a></li>
+					<li><a href="#">Land Services</a></li>
+					<li><a href="#">Restaurants</a></li>
+				</ul>
+			</li>
+
+			<!--   -------------------------------------------------------------------------   -->
+
+			<li class="parent">
+				<a href="#">Tour Packages</a>
+				<ul class="child">
+					<li><a href="#">Day Tours</a></li>
+					<li><a href="#">3 days Tours</a></li>
+					<li><a href="#">5 days Tours</a></li>
+					<li><a href="#">7 days Tours</a></li>
+			</ul>
+			</li>
+
+			<!--   -------------------------------------------------------------------------   -->
+
+			<li class="parent">
+				<a href="#">Insta-tips</a>
+			</li>
+
+			<!--   -------------------------------------------------------------------------   -->
+
+			<li class="parent">
+				<a href="#">About us</a>
+			</li>
+
+			<!--   -------------------------------------------------------------------------   -->
+
+			<li class="parent">
+
+				<a href="#">Become a Partner</a>
+
+			
+			</li>
+
+			<!--   -------------------------------------------------------------------------   -->
+
+			<li class="parent">
+				<a href="#">Sign up<span class="expand"></span></a>
+				<ul class="child">
+					<li><a href="/Partner/PartnerForm">I am a Partner</a></li>
+					<li><a href="#">I am a Traveller</a></li>					
+				</ul>
+			</li>
+
+			<!--   -------------------------------------------------------------------------   -->
+
+			<li class="parent">
+				<a href="#">Sign in</a>				
+					</li>
+			</ul>
+		</div>
+
+    <!-- Transparent Search Box -->
+	<div class="search-container">
+		<div class="search-box">
+			<label for="destinations">Destinations</label>
+			<input type="text" id="destinations" name="destinations">
+			<label for="themes">Themes</label>
+			<input type="text" id="themes" name="themes">
+			<button type="submit" class="btn btn-primary">Search</button>
+		</div>
+	</div>
+	@RenderBody()
+	<footer>
+		<div class="social-icons">
+			<a href="https://twitter.com"><i class="fab fa-twitter"></i></a>
+			<a href="https://facebook.com"><i class="fab fa-facebook"></i></a>
+			<a href="https://instagram.com"><i class="fab fa-instagram"></i></a>
+			<a href="https://www.tiktok.com"><i class="fab fa-tiktok"></i></a>
+			<a href="https://youtube.com"><i class="fab fa-youtube"></i></a>
+		</div>
+	</footer>
+
+    <script src="bootstrap.js"></script>
+	<script type="text/javascript" src="~/Scripts/jquery-3.3.1.js"></script>
+	<script type="text/javascript" src="~/Scripts/jquery.validate-vsdoc.js"></script>
+	<script type="text/javascript" src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+	@RenderSection("ExtraScript",required:false)
+</body>
+</html>

@@ -1,0 +1,57 @@
+﻿
+.form-container {
+    width: 500px;
+    height: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-top:5px;
+}
+
+fieldset {
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+legend {
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+
+div.form-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+}
+
+label {
+    flex: 1;
+    margin-right: 10px;
+    background-color: #E1ECF4;
+    padding: 5px;
+    border-radius: 3px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="phoneNumber"],
+input[type="password"],
+input[type="address"] {
+    flex: 2;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    background-color: #F2F8FC;
+}
+
+.btn-primary {
+    margin-top: 10px;
+    display: block;
+    margin: 0 auto;
+}

@@ -1,0 +1,33 @@
+﻿@*@model List<TripMeOn.Models.Products.TourPackage>
+
+<h2>Create Package</h2>
+
+@using (Html.BeginForm("CreatePackage", "Product"))
+{
+    <div class="form-group">
+        @Html.LabelFor(model => model.Name)
+        @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Name)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.DestinationId)
+        @Html.DropDownListFor(model => model.DestinationId, Model.Destinations, "-- Select Destination --", new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.DestinationId)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.ThemeId)
+        @Html.DropDownListFor(model => model.ThemeId, Model.Themes, "-- Select Theme --", new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.ThemeId)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Price)
+        @Html.TextBoxFor(model => model.Price, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Price)
+    </div>
+
+    <button type="submit" class="btn btn-primary">Create</button>
+}
+*@

@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using TripMeOn.Helper;
 
 namespace TripMeOn.Models.Products
 {
@@ -10,7 +12,8 @@ namespace TripMeOn.Models.Products
         public string Country { get; set; }
         public string Region { get; set; }
         public string City { get; set; }
-        public string Description { get; set; }
+        public int TimePeriodId { get; set; }
+        public virtual TimePeriod TimePeriod { get; set; }
         public virtual ICollection<TourPackage> TourPackages { get; set; }
     }
 }

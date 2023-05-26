@@ -17,47 +17,47 @@ namespace TripMeOn.Controllers
         }
 
         //il va falloir changer les returns
-        public IActionResult Index()
-        {
-            ClientViewModel viewModel = new ClientViewModel { Authentify = HttpContext.User.Identity.IsAuthenticated };
-            if (viewModel.Authentify)
-            {
-                viewModel.client = userService.GetClient(HttpContext.User.Identity.Name);
-                return View(viewModel);
-            }
-            return View(viewModel);
-        }
+        //public IActionResult Index()
+        //{
+        //    ClientViewModel viewModel = new ClientViewModel { Authentify = HttpContext.User.Identity.IsAuthenticated };
+        //    if (viewModel.Authentify)
+        //    {
+        //        viewModel.client = userService.GetClient(HttpContext.User.Identity.Name);
+        //        return View(viewModel);
+        //    }
+        //    return View(viewModel);
+        //}
 
-        [HttpPost]
-        public IActionResult Index(ClientViewModel viewModel, string returnUrl)
-        {
-            if (ModelState.IsValid)
-            {
-                Client client = userService.Authentify(viewModel.client.Nickname, viewModel.client.Password);
-                if (client != null)
-                {
-                    var userClaims = new List<Claim>()
-                    {
-                        new Claim(ClaimTypes.Name, client.Id.ToString()),
-                       //new Claim(ClaimTypes.Role, utilisateur.Role),
+        //[HttpPost]
+        //public IActionResult Index(ClientViewModel viewModel, string returnUrl)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        Client client = userService.Authentify(viewModel.client.Nickname, viewModel.client.Password);
+        //        if (client != null)
+        //        {
+        //            var userClaims = new List<Claim>()
+        //            {
+        //                new Claim(ClaimTypes.Name, client.Id.ToString()),
+        //               //new Claim(ClaimTypes.Role, utilisateur.Role),
 
-                    };
+        //            };
 
-                    var ClaimIdentity = new ClaimsIdentity(userClaims, "User Identity");
+        //            var ClaimIdentity = new ClaimsIdentity(userClaims, "User Identity");
 
-                    var userPrincipal = new ClaimsPrincipal(new[] { ClaimIdentity });
+        //            var userPrincipal = new ClaimsPrincipal(new[] { ClaimIdentity });
 
-                    HttpContext.SignInAsync(userPrincipal);
+        //            HttpContext.SignInAsync(userPrincipal);
 
-                    if (!string.IsNullOrWhiteSpace(returnUrl) && Url.IsLocalUrl(returnUrl))
-                        return Redirect(returnUrl);
+        //            if (!string.IsNullOrWhiteSpace(returnUrl) && Url.IsLocalUrl(returnUrl))
+        //                return Redirect(returnUrl);
 
-                    return Redirect("/");
-                }
-                ModelState.AddModelError("Utilisateur.Prenom", "Prénom et/ou mot de passe incorrect(s)");
-            }
-            return View(viewModel);
-        }
+        //            return Redirect("/");
+        //        }
+        //        ModelState.AddModelError("Utilisateur.Prenom", "Prénom et/ou mot de passe incorrect(s)");
+        //    }
+        //    return View(viewModel);
+        //}
 
         //A FAIRE JUSTE APRES
 

@@ -1,0 +1,40 @@
+﻿
+/* CSS for table styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    padding-top: 20px;
+}
+
+th, td {
+    padding: 8px;
+    border: double;
+}
+
+th {
+    background-color: cornflowerblue;
+    text-align: center;
+}
+
+td {
+    background-color: wheat;
+    text-align: left;
+}
+
+tr:hover {
+    background-color: mediumpurple;
+}
+/* CSS for increasing table size */
+body {
+    font-size: 16px;
+}
+
+table {
+    font-size: 18px;
+}
+
+th, td {
+    padding: 12px;
+}
+
+

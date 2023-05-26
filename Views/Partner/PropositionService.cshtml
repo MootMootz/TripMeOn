@@ -1,5 +1,32 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model TripMeOn.ViewModels.PropositionService
 @{
+    ViewBag.Title = "Proposition Service";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
+
+@section ExtraCss{
+    <link rel="stylesheet" href="/css/PropositionService.css">
+}
+
+<form asp-action="SubmitService" asp-controller="Partner" method="post">
+    <div class="form-group">
+        <label asp-for="Accomodation.Name"></label>
+        <input asp-for="Accomodation.Name" class="form-control" />
+    </div>
+    <!-- Ajoutez ici d'autres champs pour les propriétés de l'hébergement. -->
+
+    <div class="form-group">
+        <label asp-for="Restaurant.Name"></label>
+        <input asp-for="Restaurant.Name" class="form-control" />
+    </div>
+    <!-- Ajoutez ici d'autres champs pour les propriétés du restaurant. -->
+
+    <div class="form-group">
+        <label asp-for="Transportation.Type"></label>
+        <input asp-for="Transportation.Type" class="form-control" />
+    </div>
+    <!-- Ajoutez ici d'autres champs pour les propriétés du transport. -->
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>

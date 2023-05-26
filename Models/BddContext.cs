@@ -6,11 +6,11 @@ using TripMeOn.Models.Users;
 
 namespace TripMeOn.Models
 {
-    public class BddContext: DbContext
+    public class BddContext : DbContext
     {
         public DbSet<TourPackage> TourPackages { get; set; }
         public DbSet<Destination> Destinations { get; set; }
-        public DbSet<Theme> Themes { get; set; }       
+        public DbSet<Theme> Themes { get; set; }
         public DbSet<Client> Clients { get; set; }
         public DbSet<Partner> Partners { get; set; }
         public DbSet<Employee> Employees { get; set; }
@@ -20,13 +20,13 @@ namespace TripMeOn.Models
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseMySql("server=localhost;user id=root;password=twitwiboo;database=TripMeOn");
+            optionsBuilder.UseMySql("server=localhost;user id=root;password=1530;database=TripMeOn");
         }
         public void InitializeDb()
         {
             this.Database.EnsureDeleted();
             this.Database.EnsureCreated();
-            
+
             var clients = new List<Client>
             {
                 new Client { Id = 1, Name = "Phone Mo", FirstName = "Nway Nway", Email = "nnpm.gmail.com", Password = "123456", Address= "21 bis Rue des Rossays,91600, France",PhoneNumber="0778146263",ClientType="Instagrammer"},
@@ -51,13 +51,13 @@ namespace TripMeOn.Models
 
             };
 
-           
+
             var themes = new List<Theme>
             {
                 new Theme { Id = 1, Name = "Patrimonial" },
                 new Theme { Id = 2, Name = "Adventure" },
             };
-           
+
 
             var tourPackages = new List<TourPackage>
             {
@@ -74,6 +74,6 @@ namespace TripMeOn.Models
             this.SaveChanges();
         }
 
-        
+
     }
 }

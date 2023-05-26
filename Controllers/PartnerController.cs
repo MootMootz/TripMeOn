@@ -22,10 +22,10 @@ namespace TripMeOn.Controllers
         [HttpPost]
         public IActionResult SubmitPartnerForm(NavigationPartnerForm model)
         {
-            
+
             using (var dbContext = new BddContext())
             {
-                
+
                 var partner = new Partner
                 {
                     Name = model.Name,
@@ -36,7 +36,7 @@ namespace TripMeOn.Controllers
                     PhoneNumber = model.PhoneNumber,
                     CompanyName = model.CompanyName
                 };
-              
+
                 dbContext.Partners.Add(partner);
                 dbContext.SaveChanges();
 
@@ -46,6 +46,11 @@ namespace TripMeOn.Controllers
 
 
         public IActionResult SignUpConfirmation()
+        {
+            return View();
+        }
+
+        public IActionResult PropositionService()
         {
             return View();
         }

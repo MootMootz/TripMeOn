@@ -17,6 +17,8 @@ namespace TripMeOn.BL
         {
             _bddContext = new BddContext();
         }
+
+        // CLIENT _ AUTHENTIFICATION
         public Client Authentify(string nickname, string password)
         {
             string motDePasse = EncodeMD5(password);
@@ -39,12 +41,39 @@ namespace TripMeOn.BL
             return null;
         }
 
+
+
+        // PARTNER _ AUTHENTIFICATION
+
+        public Partner AuthentifyP(string nickname, string password)
+        {
+            string motDePasse = EncodeMD5(password);
+            Partner partner = this._bddContext.Partners.FirstOrDefault(u => u.Nickname == nickname && u.Password == motDePasse);
+            return partner;
+        }
+
+        public Partner GetPartner(int id)
+        {
+            return this._bddContext.Partners.Find(id);
+        }
+
+        public Partner GetPartner(string idStr)
+        {
+            int id;
+            if (int.TryParse(idStr, out id))
+            {
+                return this.GetPartner(id);
+            }
+            return null;
+        }
+
         //j'ignore à quoi sert "unCLient" mais je le laisse -qqs, 
         public static string EncodeMD5(string motDePasse)
         {
-            string motDePasseSel = "UnClient" + motDePasse + "ASP.NET MVC";
+            string motDePasseSel = "UnUser" + motDePasse + "ASP.NET MVC";
             return BitConverter.ToString(new MD5CryptoServiceProvider().ComputeHash(ASCIIEncoding.Default.GetBytes(motDePasseSel)));
         }
+
 
         public void Dispose()
         {

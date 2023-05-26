@@ -16,6 +16,8 @@ namespace TripMeOn.Controllers
             userService = new UserService();
         }
 
+
+        //LOG IN CLIENT
         //il va falloir changer les returns
         //public IActionResult Index()
         //{
@@ -52,12 +54,62 @@ namespace TripMeOn.Controllers
         //            if (!string.IsNullOrWhiteSpace(returnUrl) && Url.IsLocalUrl(returnUrl))
         //                return Redirect(returnUrl);
 
+//<<<<<<< nway/add_dateTime_helper_class
         //            return Redirect("/");
         //        }
         //        ModelState.AddModelError("Utilisateur.Prenom", "Prénom et/ou mot de passe incorrect(s)");
         //    }
         //    return View(viewModel);
         //}
+=======
+        //           return Redirect("/");
+         //       }
+         //       ModelState.AddModelError("Client.Nickname", "le nom pu le mot de passe sont incorrects");
+         //   }
+         //   return View(viewModel);
+       // }
+
+//        //LOG IN PARTENAIRE
+//        public IActionResult IndexPartner()
+ //       {
+//            PartnerViewModel viewModel = new PartnerViewModel { Authentify = HttpContext.User.Identity.IsAuthenticated };
+//            if (viewModel.Authentify)
+//            {
+//                viewModel.partner = userService.GetPartner(HttpContext.User.Identity.Name);
+//                return View(viewModel);
+//            }
+//            return View(viewModel);
+//        }
+//
+//        [HttpPost]
+//        public IActionResult IndexPartner(PartnerViewModel viewModel, string returnUrl)
+//        {
+//            if (ModelState.IsValid)
+//            {
+//                Partner partner = userService.AuthentifyP(viewModel.partner.Nickname, viewModel.partner.Password);
+//                if (partner != null)
+//                {
+//                    var userClaims = new List<Claim>()
+//                    {
+//                        new Claim(ClaimTypes.Name, partner.Id.ToString()),
+//                    };
+//
+//                    var ClaimIdentity = new ClaimsIdentity(userClaims, "User Identity");
+//
+//                    var userPrincipal = new ClaimsPrincipal(new[] { ClaimIdentity });
+//
+//                    HttpContext.SignInAsync(userPrincipal);
+//
+//                    if (!string.IsNullOrWhiteSpace(returnUrl) && Url.IsLocalUrl(returnUrl))
+//                        return Redirect(returnUrl);
+//
+//                    return Redirect("/");
+//                }
+//                ModelState.AddModelError("Partner.Nickname", "le nom ou le mot de passe sont incorrects");
+//            }
+//            return View(viewModel);
+//        }
+//>>>>>>> master
 
         //A FAIRE JUSTE APRES
 
@@ -88,11 +140,11 @@ namespace TripMeOn.Controllers
         //    return View(utilisateur);
         //}
 
-        public ActionResult Deconnexion()
-        {
-            HttpContext.SignOutAsync();
-            return Redirect("/");
-        }
-    }
+//        public ActionResult Deconnexion()
+//        {
+//            HttpContext.SignOutAsync();
+//            return Redirect("/");
+//        }
+  }
 }
 

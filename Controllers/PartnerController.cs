@@ -1,6 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Linq;
+using TripMeOn.BL;
+using TripMeOn.BL.interfaces;
 using TripMeOn.Models;
+using TripMeOn.Models.PartnerProducts;
 using TripMeOn.Models.Users;
 using TripMeOn.ViewModels;
 
@@ -53,8 +56,25 @@ namespace TripMeOn.Controllers
 
         public IActionResult PropositionService()
         {
-            var viewModel = new PropositionService();
+            var viewModel = new PropositionServiceModel();
             return View(viewModel);
+        }
+
+        public IActionResult ModifyAccomodation(int id)
+        {
+            if (id != 0)
+            {
+                using (IPropositionService propositionService = new PropositionService())
+                {
+                    Accomodation accomodation = propositionService.GetAllAccomodations().Where(r => r.Id == id).FirstOrDefault();
+                    if (accomodation == null)
+                    {
+                        return View("Error");
+                    }
+                    return View(accomodation);
+                }
+            }
+            return View("Error");
         }
     }
 }

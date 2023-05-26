@@ -1,4 +1,6 @@
-﻿using TripMeOn.BL.interfaces;
+﻿using System.Collections.Generic;
+using System.Linq;
+using TripMeOn.BL.interfaces;
 using TripMeOn.Models;
 using TripMeOn.Models.PartnerProducts;
 
@@ -39,6 +41,21 @@ namespace TripMeOn.BL
         public void Dispose()
         {
             _bddContext.Dispose();
+        }
+
+        public List<Accomodation> GetAllAccomodations()
+        {
+            return _bddContext.Accomodations.ToList();
+        }
+
+        public List<Restaurant> GetAllRestaurant()
+        {
+            return _bddContext.Restaurants.ToList();
+        }
+
+        public List<Transportation> GetAllTransportations()
+        {
+            return _bddContext.Transportations.ToList();
         }
     }
 }

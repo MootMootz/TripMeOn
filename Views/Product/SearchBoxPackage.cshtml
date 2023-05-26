@@ -1,0 +1,44 @@
+﻿@model List<TripMeOn.Models.Products.TourPackage>
+
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Search Results";
+}
+
+<h2>Search Results</h2>
+
+@if (Model != null && Model.Count > 0)
+{
+    <div class="flex-container">
+        @foreach (var package in Model)
+        {
+            <div class="flex-box">
+                <h3>@package.Name</h3>
+                <p>Destination: @package.Destination.Country</p>
+                <p>Theme: @package.Theme.Name</p>
+                <p>Price: @package.Price</p>
+            </div>
+        }
+    </div>
+}
+else
+{
+    <p>No search results found.</p>
+}
+
+<style>
+    .flex-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+
+    .flex-box {
+        width: 300px;
+        padding: 20px;
+        margin-bottom: 20px;
+        background-color: #f0f0f0;
+        border-radius: 4px;
+    }
+</style>
+

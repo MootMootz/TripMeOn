@@ -1,6 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace TripMeOn.Models.Products
 {
@@ -17,5 +19,8 @@ namespace TripMeOn.Models.Products
         [Column(TypeName = "decimal(10, 2)")]
         public double Price { get; set; }
 
-    }
+		
+
+
+	}
 }

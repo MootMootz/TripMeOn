@@ -1,4 +1,3 @@
-using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -10,6 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TripMeOn.BL;
+using TripMeOn.BL.interfaces;
 using TripMeOn.Models;
 
 namespace TripMeOn
@@ -19,46 +19,33 @@ namespace TripMeOn
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-            .AddCookie(options =>
-            {
-                options.LoginPath = "/Login/Index";
-            });
             services.AddControllersWithViews();
-        }
-
+			services.AddScoped<IProductService, ProductService>();
+		}
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            using (BddContext ctx = new BddContext())
-            {
-                ctx.InitializeDb();
-            }
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
-            app.UseStaticFiles();
+            using (BddContext ctx = new BddContext())
+            {
+                ctx.InitializeDb();
+            }
             app.UseRouting();
-            app.UseAuthentication();
-            app.UseAuthorization();
+            app.UseStaticFiles();
             app.UseEndpoints(endpoints =>
             {
-                //changement endpoints pour les authentifications
+               
                 endpoints.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Login}/{action=Index}/{id?}");
-
-                //endpoints.mapcontrollerroute(
-                //name: "default",
-                //pattern: "{controller=home}/{action=homepage}/{id?}");
-            });
-        }
-
-        
+                pattern: "{controller=Home}/{action=HomePage}/{id?}");
 
                 
+            });
+        }
     }
 }
 // defaults: new { controller = "Home", action = "HomePage" });

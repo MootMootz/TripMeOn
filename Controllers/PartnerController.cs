@@ -53,7 +53,8 @@ namespace TripMeOn.Controllers
 
         public IActionResult PropositionService()
         {
-            return View();
+            var viewModel = new PropositionService();
+            return View(viewModel);
         }
     }
 }

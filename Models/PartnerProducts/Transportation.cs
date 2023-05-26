@@ -10,7 +10,7 @@ namespace TripMeOn.Models.PartnerProducts
         public int Id { get; set; }
         public string Type { get; set; }
 
-        public decimal Price { get; set; }
+        public double Price { get; set; }
         public int PartnerId { get; set; } // foreign key for Partner
         public virtual Partner Partner { get; set; } // navigation property
 

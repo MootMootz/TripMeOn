@@ -29,8 +29,8 @@ namespace TripMeOn.Models
 
             var clients = new List<Client>
             {
-                new Client { Id = 1, Name = "Phone Mo", FirstName = "Nway Nway", Email = "nnpm.gmail.com", Password = "123456", Address= "21 bis Rue des Rossays,91600, France",PhoneNumber="0778146263",ClientType="Instagrammer"},
-                new Client { Id = 2, Name = "Kanobi", FirstName = "Obiwan", Email = "oldman.gmail.com", Password = "3546246", Address= "66 Clover Road, 43k67H,UK ",PhoneNumber="057789021",ClientType="TikToker"},
+                new Client { Id = 1, LastName = "Phone Mo", FirstName = "Nway Nway", Email = "nnpm.gmail.com", Password = "123456", Address= "21 bis Rue des Rossays,91600, France",PhoneNumber="0778146263",ClientType="Instagrammer"},
+                new Client { Id = 2, LastName = "Kanobi", FirstName = "Obiwan", Email = "oldman.gmail.com", Password = "3546246", Address= "66 Clover Road, 43k67H,UK ",PhoneNumber="057789021",ClientType="TikToker"},
 
             };
 

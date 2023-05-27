@@ -48,7 +48,6 @@ namespace TripMeOn.Controllers
             }
         }
 
-
         public IActionResult SignUpConfirmation()
         {
             return View();
@@ -60,7 +59,65 @@ namespace TripMeOn.Controllers
             return View(viewModel);
         }
 
-        public IActionResult ModifyAccomodation(int id)
+        public IActionResult CreateRestaurant()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult CreateRestaurant(Restaurant restaurant)
+        {
+            if (!ModelState.IsValid)
+                return View(restaurant);
+
+            using (PropositionService propositionService = new PropositionService())
+            {
+                int id = propositionService.CreateRestaurant(restaurant.Name, restaurant.Type, restaurant.Price, restaurant.PartnerId, restaurant.DestinationId);
+                TempData["SuccessMessage"] = "Restaurant created successfully!";
+                return RedirectToAction("ListeRestaurant", new { @id = id });
+            }
+        }
+
+        public IActionResult CreateAccomodation()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult CreateAccomodation(Accomodation accomodation)
+        {
+            if (!ModelState.IsValid)
+                return View(accomodation);
+
+            using (PropositionService propositionService = new PropositionService())
+            {
+                int id = propositionService.CreateAccomodation(accomodation.Name, accomodation.Type, accomodation.Capacity, accomodation.Price, accomodation.PartnerId, accomodation.DestinationId);
+                TempData["SuccessMessage"] = "Accomodation created successfully!";
+                return RedirectToAction("ListeAccomodation", new { @id = id });
+            }
+        }
+
+        public IActionResult CreateTransportation()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult CreateTransportation(Transportation transportation)
+        {
+            if (!ModelState.IsValid)
+                return View(transportation);
+
+            using (PropositionService propositionService = new PropositionService())
+            {
+                int id = propositionService.CreateTransportation(transportation.Type, transportation.Price, transportation.PartnerId, transportation.DestinationId);
+                TempData["SuccessMessage"] = "Transportation created successfully!";
+                return RedirectToAction("ListeTransportation", new { @id = id });
+            }
+        }
+
+
+        public IActionResult ModifyAccomodation(int id) // afficher la vue de modification de l'accomodation
         {
             if (id != 0)
             {
@@ -75,6 +132,172 @@ namespace TripMeOn.Controllers
                 }
             }
             return View("Error");
+        }
+
+        [HttpPost]
+        public IActionResult ModifyAccomodation(Accomodation accomodation) // traiter la requête de modification
+        {
+            if (!ModelState.IsValid)
+                return View(accomodation);
+
+            if (accomodation.Id != 0)
+            {
+                using (PropositionService propositionService = new PropositionService())
+                {
+                    propositionService.ModifyAccomodation(accomodation);
+                    TempData["SuccessMessage"] = "The information has been modified";
+                    return RedirectToAction("ListeAccomodation", new { @id = accomodation.Id });
+                }
+            }
+            else
+            {
+                return View("Error");
+            }
+        }
+        public IActionResult ModifyRestaurant(int id) // afficher la vue de modification du restaurant
+        {
+            if (id != 0)
+            {
+                using (IPropositionService propositionService = new PropositionService())
+                {
+                    Restaurant restaurant = propositionService.GetAllRestaurants().Where(r => r.Id == id).FirstOrDefault();
+                    if (restaurant == null)
+                    {
+                        return View("Error");
+                    }
+                    return View(restaurant);
+                }
+            }
+            return View("Error");
+        }
+
+        [HttpPost]
+        public IActionResult ModifyRestaurant(Restaurant restaurant) // traiter la requête de modification
+        {
+            if (!ModelState.IsValid)
+                return View(restaurant);
+
+            if (restaurant.Id != 0)
+            {
+                using (PropositionService propositionService = new PropositionService())
+                {
+                    propositionService.ModifyRestaurant(restaurant);
+                    TempData["SuccessMessage"] = "The information has been modified";
+                    return RedirectToAction("ListeRestaurant", new { @id = restaurant.Id });
+                }
+            }
+            else
+            {
+                return View("Error");
+            }
+        }
+        public IActionResult ModifyTransportation(int id) // afficher la vue de modification de transportation
+        {
+            if (id != 0)
+            {
+                using (IPropositionService propositionService = new PropositionService())
+                {
+                    Transportation transportation = propositionService.GetAllTransportations().Where(r => r.Id == id).FirstOrDefault();
+                    if (transportation == null)
+                    {
+                        return View("Error");
+                    }
+                    return View(transportation);
+                }
+            }
+            return View("Error");
+        }
+
+        [HttpPost]
+        public IActionResult ModifyTransportation(Transportation transportation) // traiter la requête de modification
+        {
+            if (!ModelState.IsValid)
+                return View(transportation);
+
+            if (transportation.Id != 0)
+            {
+                using (PropositionService propositionService = new PropositionService())
+                {
+                    propositionService.ModifyTransportation(transportation);
+                    TempData["SuccessMessage"] = "The information has been modified";
+                    return RedirectToAction("ListeTransportation", new { @id = transportation.Id });
+                }
+            }
+            else
+            {
+                return View("Error");
+            }
+        }
+
+        public IActionResult DeleteRestaurant(int id) // afficher la vue de modification du restaurant
+        {
+            if (id != 0)
+            {
+                using (IPropositionService propositionService = new PropositionService())
+                {
+                    Restaurant restaurant = propositionService.GetAllRestaurants().Where(r => r.Id == id).FirstOrDefault();
+                    if (restaurant == null)
+                    {
+                        return View("Error");
+                    }
+                    return View(restaurant);
+                }
+            }
+            return View("Error");
+        }
+
+        [HttpPost]
+        public IActionResult DeleteRestaurant(Restaurant restaurant) // traiter la requête de modification
+        {
+            if (!ModelState.IsValid)
+                return View(restaurant);
+
+            if (restaurant.Id != 0)
+            {
+                using (PropositionService propositionService = new PropositionService())
+                {
+                    propositionService.DeleteRestaurant(restaurant);
+                    return RedirectToAction("ListeRestaurant", new { @id = restaurant.Id });
+                }
+            }
+            else
+            {
+                return View("Error");
+            }
+        }
+
+        public IActionResult ListeAccomodation()
+        {
+            using (IPropositionService propositionService = new PropositionService())
+            {
+                PropositionServiceModel viewModel = new PropositionServiceModel();
+                viewModel.Accomodations = propositionService.GetAllAccomodations();
+
+                return View(viewModel);
+            }
+        }
+
+
+        public IActionResult ListeRestaurant()
+        {
+            using (IPropositionService propositionService = new PropositionService())
+            {
+                PropositionServiceModel viewModel = new PropositionServiceModel();
+                viewModel.Restaurants = propositionService.GetAllRestaurants();
+
+                return View(viewModel);
+            }
+        }
+
+        public IActionResult ListeTransportation()
+        {
+            using (IPropositionService propositionService = new PropositionService())
+            {
+                PropositionServiceModel viewModel = new PropositionServiceModel();
+                viewModel.Transportations = propositionService.GetAllTransportations();
+
+                return View(viewModel);
+            }
         }
     }
 }

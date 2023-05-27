@@ -1,4 +1,4 @@
-﻿@model TripMeOn.Models.PartnerProducts.Accomodation
+﻿@model TripMeOn.Models.PartnerProducts.Transportation
 @{
     Layout = null;
 }
@@ -7,28 +7,16 @@
 
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Modify Accomodation</title>
+    <title>Create Transportation</title>
 </head>
 <body>
-    @if (TempData["SuccessMessage"] != null)
-    {
-        <div>@TempData["SuccessMessage"].ToString()</div>
-    }
     @using (Html.BeginForm())
     {
         <fieldset>
-            <legend>Modify accomodation: </legend>
-            @Html.LabelFor(m => Model.Name)
-            @Html.TextBoxFor(m => Model.Name)
-            @Html.ValidationMessageFor(m => Model.Name)
-            <br />
+            <legend>Create new transportation: </legend>
             @Html.LabelFor(m => Model.Type)
             @Html.TextBoxFor(m => Model.Type)
             @Html.ValidationMessageFor(m => Model.Type)
-            <br />
-            @Html.LabelFor(m => Model.Capacity)
-            @Html.TextBoxFor(m => Model.Capacity)
-            @Html.ValidationMessageFor(m => Model.Capacity)
             <br />
             @Html.LabelFor(m => Model.Price)
             @Html.TextBoxFor(m => Model.Price)
@@ -43,8 +31,10 @@
             @Html.ValidationMessageFor(m => Model.DestinationId)
             <br />
 
-            <input type="submit" value="Modifier" />
+            <input type="submit" value="Create" />
         </fieldset>
+
+
     }
     <script type="text/javascript" src="~/Scripts/jquery-3.3.1.js"></script>
     <script type="text/javascript" src="~/Scripts/jquery.validate-vsdoc.js"></script>

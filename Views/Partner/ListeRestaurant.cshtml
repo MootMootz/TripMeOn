@@ -1,0 +1,52 @@
+﻿@model TripMeOn.ViewModels.PropositionServiceModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Liste Restaurants</title>
+</head>
+<body>
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div>@TempData["SuccessMessage"].ToString()</div>
+    }
+    <table border="1">
+        <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Price</th>
+            <th>PartnerId</th>
+            <th>DestinationId</th>
+            <th>Actions</th>
+        </tr>
+        @foreach (var restaurant in Model.Restaurants)
+        {
+            <tr>
+                <td>@restaurant.Name</td>
+                <td>@restaurant.Type</td>
+                <td>@restaurant.Price</td>
+                <td>@restaurant.PartnerId</td>
+                <td>@restaurant.DestinationId</td>
+                <td><a href="@Url.Action("ModifyRestaurant", "Partner", new { id = restaurant.Id })">Modify</a></td>
+            </tr>
+        }
+    </table>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+    </style>
+    <br />
+    <br />
+    <a href="https://localhost:5001/partner/createrestaurant">create restaurant</a>
+    <a href="https://localhost:5001/partner/createaccomodation">create accomodation</a>
+    <a href="https://localhost:5001/partner/createtransportation">create transportation</a>
+    @*<a href="@Url.Action("Index", "Home")"><strong> Page d'accueil</strong></a>*@
+</body>
+</html>

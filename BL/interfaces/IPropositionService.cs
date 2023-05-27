@@ -10,7 +10,7 @@ namespace TripMeOn.BL.interfaces
         int CreateRestaurant(string name, string type, double price, int partnerId, int destinationId);
         int CreateTransportation(string type, double price, int partnerId, int destinationId);
         List<Accomodation> GetAllAccomodations();
-        List<Restaurant> GetAllRestaurant();
+        List<Restaurant> GetAllRestaurants();
         List<Transportation> GetAllTransportations();
     }
 }

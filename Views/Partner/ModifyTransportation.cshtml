@@ -1,4 +1,4 @@
-﻿@model TripMeOn.Models.PartnerProducts.Accomodation
+﻿@model TripMeOn.Models.PartnerProducts.Transportation
 @{
     Layout = null;
 }
@@ -17,18 +17,10 @@
     @using (Html.BeginForm())
     {
         <fieldset>
-            <legend>Modify accomodation: </legend>
-            @Html.LabelFor(m => Model.Name)
-            @Html.TextBoxFor(m => Model.Name)
-            @Html.ValidationMessageFor(m => Model.Name)
-            <br />
+            <legend>Modify transportation: </legend>
             @Html.LabelFor(m => Model.Type)
             @Html.TextBoxFor(m => Model.Type)
             @Html.ValidationMessageFor(m => Model.Type)
-            <br />
-            @Html.LabelFor(m => Model.Capacity)
-            @Html.TextBoxFor(m => Model.Capacity)
-            @Html.ValidationMessageFor(m => Model.Capacity)
             <br />
             @Html.LabelFor(m => Model.Price)
             @Html.TextBoxFor(m => Model.Price)
@@ -42,7 +34,6 @@
             @Html.TextBoxFor(m => Model.DestinationId)
             @Html.ValidationMessageFor(m => Model.DestinationId)
             <br />
-
             <input type="submit" value="Modifier" />
         </fieldset>
     }

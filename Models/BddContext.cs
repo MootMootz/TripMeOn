@@ -42,12 +42,15 @@ namespace TripMeOn.Models
             var partners = new List<Partner>
             {
                  new Partner { Id = 1, Name = "BeauGoud", FirstName = "Sedar", Email = "bogosse.gmail.com", Password = "0597970983", Address= "123 Avenue Fromenteau,45091, France",PhoneNumber="076543211",CompanyName="EasyGo"},
+                 new Partner { Id = 2, Name = "ChickenMaster", FirstName = "Florian", Email = "sdqds.gmail.com", Password = "000000000", Address= "sqdsqdsdsdsq, France",PhoneNumber="sdqdsqdsdsq",CompanyName="dsqdsqds"},
+                 new Partner { Id = 3, Name = "Genie", FirstName = "Nway Nway", Email = "sddsds.gmail.com", Password = "000000000", Address= "sqdsqdsdsdsq, France",PhoneNumber="sdqdsqdsdsq",CompanyName="dsqdsqds"}
             };
 
             var destinations = new List<Destination>
             {
                 new Destination { Id = 1, Country = "France", City = "Paris", Description = "3 days", Region = "IDF" },
                 new Destination { Id = 2, Country = "UK", City = "London", Description = "3 days", Region = "London" },
+                new Destination { Id = 3, Country = "Turquie", City = "Istanbul", Description = "5 days", Region = "Marmara"}
 
             };
 
@@ -65,12 +68,20 @@ namespace TripMeOn.Models
                 new TourPackage { Id = 2, Name = "blabla", DestinationId = 1, ThemeId = 1, Price = 599 },
 
             };
+
+            var restaurant = new List<Restaurant>
+            {
+                new Restaurant {Id = 1, Name = "EatPoint", Price = 49.35, PartnerId = 1, DestinationId = 1, Type = "Grill" },
+                new Restaurant {Id = 2, Name = "LE LANDRY", Price = 20, PartnerId = 2, DestinationId = 2, Type = "Grill"}
+            };
+
             this.Clients.AddRange(clients);
             this.Employees.AddRange(employees);
             this.Partners.AddRange(partners);
             this.Destinations.AddRange(destinations);
             this.Themes.AddRange(themes);
             this.TourPackages.AddRange(tourPackages);
+            this.Restaurants.AddRange(restaurant);
             this.SaveChanges();
         }
 

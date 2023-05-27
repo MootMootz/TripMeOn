@@ -16,6 +16,20 @@ namespace TripMeOn.BL
             _bddContext = new BddContext();
         }
 
+        public List<Accomodation> GetAllAccomodations()
+        {
+            return _bddContext.Accomodations.ToList();
+        }
+
+        public List<Restaurant> GetAllRestaurants()
+        {
+            return _bddContext.Restaurants.ToList();
+        }
+
+        public List<Transportation> GetAllTransportations()
+        {
+            return _bddContext.Transportations.ToList();
+        }
         public int CreateAccomodation(string name, string type, int capacity, double price, int partnerId, int destinationId)
         {
             Accomodation accomodation = new Accomodation() { Name = name, Type = type, Capacity = capacity, Price = price, PartnerId = partnerId, DestinationId = destinationId };
@@ -43,19 +57,74 @@ namespace TripMeOn.BL
             _bddContext.Dispose();
         }
 
-        public List<Accomodation> GetAllAccomodations()
+        public void ModifyAccomodation(Accomodation accomodation) // applique les modifications sur accomodation et enregistre ces modifications dans la base de données
         {
-            return _bddContext.Accomodations.ToList();
+            _bddContext.Accomodations.Update(accomodation);
+            _bddContext.SaveChanges();
         }
 
-        public List<Restaurant> GetAllRestaurant()
+        public void ModifyRestaurant(Restaurant restaurant) // applique les modifications sur restaurant et enregistre ces modifications dans la base de données
         {
-            return _bddContext.Restaurants.ToList();
+            _bddContext.Restaurants.Update(restaurant);
+            _bddContext.SaveChanges();
+        }
+        public void ModifyTransportation(Transportation transportation) // applique les modifications sur transportation et enregistre ces modifications dans la base de données
+        {
+            _bddContext.Transportations.Update(transportation);
+            _bddContext.SaveChanges();
         }
 
-        public List<Transportation> GetAllTransportations()
+        public void DeleteRestaurant(Restaurant restaurant) // applique les modifications sur restaurant et enregistre ces modifications dans la base de données
         {
-            return _bddContext.Transportations.ToList();
+            _bddContext.Restaurants.Remove(restaurant);
+            _bddContext.SaveChanges();
         }
+
+
+        //public void ModifyAccomodation(int id, string name, string type, int capacity, double price, int partnerId, int destinationId)
+        //{
+        //    Accomodation accomodation = _bddContext.Accomodations.Find(id);
+        //    if (accomodation != null)
+        //    {
+        //        accomodation.Name = name; // on met à jour
+        //        accomodation.Type = type;
+        //        accomodation.Price = price;
+        //        accomodation.PartnerId = partnerId;
+        //        accomodation.DestinationId = destinationId;
+        //        accomodation.Capacity = capacity;
+        //        _bddContext.SaveChanges(); // on enregistre les changements
+        //    }
+        //}
+
+
+        //public void ModifyRestaurant(int id, string name, string type, double price, int partnerId, int destinationId)
+        //{
+        //    Restaurant restaurant = _bddContext.Restaurants.Find(id);
+        //    if (restaurant != null)
+        //    {
+        //        restaurant.Name = name; // on met à jour
+        //        restaurant.Type = type;
+        //        restaurant.Price = price;
+        //        restaurant.PartnerId = partnerId;
+        //        restaurant.DestinationId = destinationId;
+        //        _bddContext.SaveChanges(); // on enregistre les changements
+        //    }
+        //}
+
+
+
+
+        //public void ModifyTransportation(int id, string type, double price, int partnerId, int destinationId)
+        //{
+        //    Transportation transportation = _bddContext.Transportations.Find(id);
+        //    if (transportation != null)
+        //    {
+        //        transportation.Type = type; // on met à jour
+        //        transportation.Price = price;
+        //        transportation.PartnerId = partnerId;
+        //        transportation.DestinationId = destinationId;
+        //        _bddContext.SaveChanges(); // on enregistre les changements
+        //    }
+        //}
     }
 }

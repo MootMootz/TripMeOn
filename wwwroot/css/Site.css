@@ -1,0 +1,42 @@
+﻿#fixNav, #menu, #contenu, #footer {
+    padding: 1px 0;
+}
+
+#fixNav {
+    background-color: black;
+    color: aliceblue;
+    text-align: justify;
+    background-size: 100px;
+}
+
+#main {
+    margin: auto;
+}
+
+#menu {
+    float: left;
+    width: 70px;
+    height: 300px;
+    background-color: darkblue;
+    text-align: justify;
+
+}
+
+#contenu {
+    margin-left: 245px;
+    background-color: lightblue;
+}
+
+#footer {
+    background-color: lightgreen;
+    text-align: center;
+    clear: both;
+}
+
+.titre {
+    text-align: center;
+}
+
+.selectionne {
+    color: red;
+}

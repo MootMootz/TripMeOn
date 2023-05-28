@@ -1,0 +1,48 @@
+﻿@model List<TripMeOn.Models.Products.TourPackage>
+@using TripMeOn.Helper
+@{
+    ViewBag.Title = "PartnerSignUp";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@section ExtraCss{
+    <link rel="stylesheet" href="/css/PackageList.css">
+}
+
+<!DOCTYPE html>
+<html>
+    
+    <meta name="viewport" content="width=device-width" />
+    <title>TourPackageList</title>   
+
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Destination</th>
+                <th>Theme</th>
+                <th>Region</th>
+                <th>City</th>
+                <th>Description</th>
+                <th>Best time to visit</th>                
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var package in Model)
+            {
+                <tr>
+                    <td>@package.Name</td>
+                    <td>@package.Destination.Country</td>
+                    <td>@package.Theme.Name</td>
+                    <td>@package.Destination.Region</td>
+                    <td>@package.Destination.City</td>
+                    <td>@package.Description</td>
+                    <td>@DateTimeHelper.GetMonthName(package.Destination.TimePeriod.StartMonth) - @DateTimeHelper.GetMonthName(package.Destination.TimePeriod.EndMonth)</td>
+                    <td>@package.Price</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    </html>

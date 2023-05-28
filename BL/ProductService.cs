@@ -43,13 +43,24 @@ namespace TripMeOn.BL
             return themes;
         }
 
-		public List<TourPackage> GetTourPackages()
-		{
-			List<TourPackage> tourPackages = _bddContext.TourPackages.ToList();
-			return tourPackages;
-		}
+        public List<TourPackage> GetTourPackages()
+        {
+            List<TourPackage> tourPackages = new List<TourPackage>();
 
-		public List<TourPackage> SearchByDestinationAndTheme(int destinationId, int themeId)
+            using (var dbContext = new BddContext())
+            {
+                tourPackages = dbContext.TourPackages
+                    .Include(tp => tp.Destination)
+                    .Include(tp => tp.Theme)
+                     .Include(tp => tp.Destination.TimePeriod)
+                    .ToList();
+            }
+
+            return tourPackages;
+        }
+
+
+        public List<TourPackage> SearchByDestinationAndTheme(int destinationId, int themeId)
 		{// when there is FK 
 			List<TourPackage> searchResults = _bddContext.TourPackages.Include(t => t.Destination).Include(t=>t.Theme)
 			.Where(tp => tp.Destination.Id== destinationId &&
@@ -58,35 +69,39 @@ namespace TripMeOn.BL
 			return searchResults;
 		}
 
-		//public  void AddPackage(TourPackage tourPackage)
-		//{
-		//	tourPackages.Add(tourPackage);
-		//}
-		//public  void RemovePackage(TourPackage tourPackage)
-		//{
-		//	tourPackages.Remove(tourPackage);
-		//}
+        public int CreatePackage(string name, int destinationId, int themeId,string description, double price )
+        {
+            TourPackage tourPackage = new TourPackage { Name=name, DestinationId= destinationId, ThemeId = themeId, Description = description,Price=price};
+            _bddContext.TourPackages.Add(tourPackage);
+            _bddContext.SaveChanges();
 
-		//public  List<TourPackage> SearchByPackageId(int id)
-		//{
-		//	List<TourPackage> searchResults = tourPackages.Where(tp => tp.Id == id).ToList();
-		//	return searchResults;
-		//}
+            return tourPackage.Id;
+        }
+        //public  void RemovePackage(TourPackage tourPackage)
+        //{
+        //	tourPackages.Remove(tourPackage);
+        //}
 
-		//public  List<TourPackage> SearchByDestination(string keyword)
-		//{
-		//	List<TourPackage> searchResults = TourPackageList.Where(tp => tp.Destination.Country.Contains(keyword, StringComparison.OrdinalIgnoreCase)).ToList();
-		//	return searchResults;
-		//}
+        //public  List<TourPackage> SearchByPackageId(int id)
+        //{
+        //	List<TourPackage> searchResults = tourPackages.Where(tp => tp.Id == id).ToList();
+        //	return searchResults;
+        //}
 
-		//public  List<TourPackage> SearchByTheme(string keyword)
-		//{
-		//	List<TourPackage> searchResults = TourPackageList.Where(tp => tp.Theme.Name.Contains(keyword, StringComparison.OrdinalIgnoreCase)).ToList();
-		//	return searchResults;
-		//}
+        //public  List<TourPackage> SearchByDestination(string keyword)
+        //{
+        //	List<TourPackage> searchResults = TourPackageList.Where(tp => tp.Destination.Country.Contains(keyword, StringComparison.OrdinalIgnoreCase)).ToList();
+        //	return searchResults;
+        //}
+
+        //public  List<TourPackage> SearchByTheme(string keyword)
+        //{
+        //	List<TourPackage> searchResults = TourPackageList.Where(tp => tp.Theme.Name.Contains(keyword, StringComparison.OrdinalIgnoreCase)).ToList();
+        //	return searchResults;
+        //}
 
 
-		public void Dispose()
+        public void Dispose()
 		{
 			_bddContext.Dispose();
 		}

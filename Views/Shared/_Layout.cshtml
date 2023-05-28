@@ -18,7 +18,7 @@
     <div class="navbar">
        		<ul id="menu" style="text-align: center">
 			<li class="parent">
-				<a href="#">Home</a>
+				<a href="/Home/HomePage">Home</a>
 			</li>
 			
 			<!--   -------------------------------------------------------------------------   -->
@@ -48,11 +48,12 @@
 					<li><a href="#">Floral</a></li>
 					<li><a href="#">Cultural</a></li>
 					<li><a href="#">Heritage</a></li>
-					<li><a href="#">Chill out</a></li>
+					<li><a href="#">Snap and relax</a></li>
 					<li><a href="#">InstaSpots</a></li>
 					<li><a href="#">Nature</a></li>
 					<li><a href="#">Beach</a></li>
 					<li><a href="#">Culinary</a></li>
+					<li><a href="#">Colors</a></li>
 				</ul>
 			</li>
 
@@ -68,14 +69,12 @@
 							<li><a href="#">Taxi</a></li>
 							<li><a href="#">Rent a car</a></li>
 							<li><a href="#">Rent a bike</a></li>
+							<li><a href="#">Get a tour guide</a></li>
 						</ul>
 					</li>
 					<li><a href="#">Restaurants</a></li>
 				</ul>
 			</li>
-
-
-
 			<!--   -------------------------------------------------------------------------   -->
 
 			<li class="parent">
@@ -103,10 +102,7 @@
 			<!--   -------------------------------------------------------------------------   -->
 
 			<li class="parent">
-
-				<a href="#">Become a Partner</a>
-
-			
+				<a href="#">Become a Partner</a>			
 			</li>
 
 			<!--   -------------------------------------------------------------------------   -->
@@ -130,7 +126,7 @@
    	<!-- Transparent Search Box -->
 	<div class="search-container">
 		<div class="search-box">
-			<form action="/Product/Search" method="get">		
+			<form action="/Product/Search" method="get">
 				
 				<label for="destinations">Destinations</label>
 				@Html.DropDownList("destination", new SelectList(new TripMeOn.BL.ProductService().GetDestinations(),"Id","Country"))

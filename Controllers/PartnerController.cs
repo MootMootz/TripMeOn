@@ -145,7 +145,7 @@ namespace TripMeOn.Controllers
                 using (PropositionService propositionService = new PropositionService())
                 {
                     propositionService.ModifyAccomodation(accomodation);
-                    TempData["SuccessMessage"] = "The information has been modified";
+                    TempData["SuccessMessage"] = "The accomodation has been modified";
                     return RedirectToAction("ListeAccomodation", new { @id = accomodation.Id });
                 }
             }
@@ -182,7 +182,7 @@ namespace TripMeOn.Controllers
                 using (PropositionService propositionService = new PropositionService())
                 {
                     propositionService.ModifyRestaurant(restaurant);
-                    TempData["SuccessMessage"] = "The information has been modified";
+                    TempData["SuccessMessage"] = "The restaurant has been modified";
                     return RedirectToAction("ListeRestaurant", new { @id = restaurant.Id });
                 }
             }
@@ -219,7 +219,7 @@ namespace TripMeOn.Controllers
                 using (PropositionService propositionService = new PropositionService())
                 {
                     propositionService.ModifyTransportation(transportation);
-                    TempData["SuccessMessage"] = "The information has been modified";
+                    TempData["SuccessMessage"] = "The transportation has been modified";
                     return RedirectToAction("ListeTransportation", new { @id = transportation.Id });
                 }
             }

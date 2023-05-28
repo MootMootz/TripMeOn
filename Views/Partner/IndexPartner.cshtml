@@ -1,7 +1,14 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@{
+    ViewBag.title = "IndexPartner";
+    Layout = "~/Views/Shared/_LayoutPartner.cshtml";
 }
 
-voici la page d'accueil pour les partenaires à remplir :)'
+<h3 class="titre">Voici le nom de l'entreprise'</h3>
+<p class="contenu">Ici la présentation de l'entreprise, tel quel est sur la page'.</p>
+
+
+@section Menu{
+    <h2>TripMeOn : Our values</h2>
+    <p>Notre entreprise, qui est la seule au monde à offrir un service pour les influencer des réseaux sociaux, s'engage à donner la meilleure expérience possible à ses clients, pour qu'elle puisse être partagé par la suite avec ses followers.</p>
+    <p>On compte sur toi, notre partenaire, pour pouvoir continuer à donner une service de la plus haute qualité, avec ces petits "tips" à partager avec nos clients, sur <b>le meilleur moment, au meilleur endroit.</b></p>
+}

@@ -5,6 +5,7 @@ using TripMeOn.Models.Products;
 using System.Linq;
 using System;
 using Microsoft.EntityFrameworkCore;
+using TripMeOn.Helper;
 
 namespace TripMeOn.BL
 {
@@ -16,8 +17,6 @@ namespace TripMeOn.BL
         {
             _bddContext = new BddContext();
         }
-       
-
         public List<Destination> GetDestinations()
         {
             List<Destination> destinations = new List<Destination>();
@@ -28,9 +27,7 @@ namespace TripMeOn.BL
             }
 
             return destinations;
-		}
-
-
+        }
         public List<Theme> GetThemes()
         {
             List<Theme> themes = new List<Theme>();
@@ -42,7 +39,6 @@ namespace TripMeOn.BL
 
             return themes;
         }
-
         public List<TourPackage> GetTourPackages()
         {
             List<TourPackage> tourPackages = new List<TourPackage>();
@@ -52,35 +48,170 @@ namespace TripMeOn.BL
                 tourPackages = dbContext.TourPackages
                     .Include(tp => tp.Destination)
                     .Include(tp => tp.Theme)
-                     .Include(tp => tp.Destination.TimePeriod)
+                    .Include(tp => tp.TimePeriod)
                     .ToList();
             }
 
             return tourPackages;
         }
-
-
+        //Include = retrieve related entities along with the main entity in a single query to optimize performance.
         public List<TourPackage> SearchByDestinationAndTheme(int destinationId, int themeId)
-		{// when there is FK 
-			List<TourPackage> searchResults = _bddContext.TourPackages.Include(t => t.Destination).Include(t=>t.Theme)
-			.Where(tp => tp.Destination.Id== destinationId &&
-					  tp.Theme.Id== themeId).ToList();
-
-			return searchResults;
-		}
-
-        public int CreatePackage(string name, int destinationId, int themeId,string description, double price )
         {
-            TourPackage tourPackage = new TourPackage { Name=name, DestinationId= destinationId, ThemeId = themeId, Description = description,Price=price};
-            _bddContext.TourPackages.Add(tourPackage);
-            _bddContext.SaveChanges();
+            using (var _bddContext = new BddContext())
+            {
+                var packages = _bddContext.TourPackages.Include(tp => tp.Destination)
+                                                       .Include(tp => tp.Theme)                                                      
+                                                       .Where(tp => tp.DestinationId == destinationId && tp.ThemeId == themeId)
+                                                       .ToList();
 
-            return tourPackage.Id;
+                return packages;
+            }
         }
-        //public  void RemovePackage(TourPackage tourPackage)
-        //{
-        //	tourPackages.Remove(tourPackage);
-        //}
+        public TourPackage CreatePackage(string name, string country, string themeName, string region, string city, string description, int startMonth, int endMonth, double price)
+        {
+            using (var _bddContext = new BddContext())
+            {
+                // Check if a destination with the same country, region, and city exists in the database to avoid duplicate
+                Destination destination = _bddContext.Destinations.FirstOrDefault(d =>
+                    d.Country == country && d.Region == region && d.City == city);
+
+                // If the destination doesn't exist, create a new one
+                if (destination == null)
+                {
+                    destination = new Destination
+                    {
+                        Country = country,
+                        Region = region,
+                        City = city
+                    };
+                    _bddContext.Destinations.Add(destination);
+                }
+
+                // Find and Check if a theme with the same name exists in the database
+                Theme theme = _bddContext.Themes.FirstOrDefault(t => t.Name == themeName);
+
+                // If the theme doesn't exist, create a new one
+                if (theme == null)
+                {
+                    theme = new Theme
+                    {
+                        Name = themeName
+                    };
+                    _bddContext.Themes.Add(theme);
+                }
+
+                // Retrieve the TimePeriod entity with the specified start month and end month, including eager loading
+                TimePeriod timePeriod = _bddContext.TimePeriods.Include(tp => tp.TourPackages).SingleOrDefault(tp => tp.StartMonth == startMonth && tp.EndMonth == endMonth);
+
+                // If the time period doesn't exist, create a new one
+                if (timePeriod == null)
+                {
+                    timePeriod = new TimePeriod
+                    {
+                        StartMonth = startMonth,
+                        EndMonth = endMonth
+                    };
+                    _bddContext.TimePeriods.Add(timePeriod);
+                }
+                // Create a new TourPackage object
+                TourPackage package = new TourPackage
+                {
+                    Name = name,
+                    Description = description,
+                    Price = price,
+                    Destination = destination,
+                    Theme = theme,
+                    TimePeriod = timePeriod
+                };
+
+                _bddContext.TourPackages.Add(package);
+                _bddContext.SaveChanges();
+
+                return package;
+            }
+        }
+
+        public TourPackage ModifyPackage(int packageId, string name, string country, string themeName, string region, string city, string description, int startMonth, int endMonth, double price)
+        {
+            using (var _bddContext = new BddContext())
+            {
+                // Retrieve the existing TourPackage from the database
+                TourPackage package = _bddContext.TourPackages
+                    .Include(tp => tp.Destination)
+                    .Include(tp => tp.Theme)
+                    .Include(tp => tp.TimePeriod)
+                    .FirstOrDefault(tp => tp.Id == packageId);
+
+                if (package != null)
+                {
+                    // Update the properties of the TourPackage
+                    package.Name = name;
+                    package.Description = description;
+                    package.Price = price;
+
+                    // Update or create the Destination based on the provided values
+                    Destination destination = _bddContext.Destinations
+                        .FirstOrDefault(d => d.Country == country && d.Region == region && d.City == city);
+
+                    if (destination == null)
+                    {
+                        destination = new Destination
+                        {
+                            Country = country,
+                            Region = region,
+                            City = city
+                        };
+                        _bddContext.Destinations.Add(destination);
+                    }
+                    // Update or create the Theme based on the provided themeName
+                    Theme theme = _bddContext.Themes.FirstOrDefault(t => t.Name == themeName);
+
+                    if (theme == null)
+                    {
+                        theme = new Theme
+                        {
+                            Name = themeName
+                        };
+                        _bddContext.Themes.Add(theme);
+                    }
+                    // Check if a TimePeriod with the same startMonth and endMonth exists
+                    TimePeriod timePeriod = _bddContext.TimePeriods
+                        .FirstOrDefault(tp => tp.StartMonth == startMonth && tp.EndMonth == endMonth);
+
+                    if (timePeriod == null)
+                    {
+                        timePeriod = new TimePeriod
+                        {
+                            StartMonth = startMonth,
+                            EndMonth = endMonth
+                        };
+                        _bddContext.TimePeriods.Add(timePeriod);
+                    }
+                    package.Destination = destination;
+                    package.Theme = theme;
+                    package.TimePeriod = timePeriod;
+
+                    _bddContext.SaveChanges();
+                }
+                return package;
+            }
+        }
+        public void RemovePackage(int packageId)
+        {
+            using (var _bddContext = new BddContext())
+            {
+                var package = _bddContext.TourPackages.FirstOrDefault(p => p.Id == packageId);
+                if (package != null)
+                {
+                    _bddContext.TourPackages.Remove(package);
+                    _bddContext.SaveChanges();
+                }
+            }
+        }
+        public void Dispose()
+        {
+            _bddContext.Dispose();
+        }
 
         //public  List<TourPackage> SearchByPackageId(int id)
         //{
@@ -98,19 +229,7 @@ namespace TripMeOn.BL
         //{
         //	List<TourPackage> searchResults = TourPackageList.Where(tp => tp.Theme.Name.Contains(keyword, StringComparison.OrdinalIgnoreCase)).ToList();
         //	return searchResults;
-        //}
+        //}      
 
-
-        public void Dispose()
-		{
-			_bddContext.Dispose();
-		}
-		// Create
-
-		// Modify
-
-		// Delete
-
-		// etc...
-	}
+    }
 }

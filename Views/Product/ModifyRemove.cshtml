@@ -1,0 +1,66 @@
+﻿@model TripMeOn.Models.Products.TourPackage
+@using TripMeOn.Helper
+@{
+    ViewBag.Title = "Modify Remove Package";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section ExtraCss{
+    <link rel="stylesheet" href="/css/PackageList.css">
+}
+@*Form class=used to group elements with similar characteristics or for styling purposes
+Form id= used to uniquely identify a specific element on a webpage:more like for javascript*@
+
+<form id="modifyForm@Model.Id" class="modifyForm hidden" method="POST" action="/Product/ModifyPackage">
+
+    <h2>Modify Package</h2>
+    <!-- Input fields for modifying the package -->
+    <input type="hidden" name="packageId" value="@Model.Id" />
+    <input type="hidden" name="action" value="modify" />
+    <input type="text" name="name" value="@Model.Name" />
+    <input type="text" name="country" value="@Model.Destination.Country" />
+    <input type="text" name="themeName" value="@Model.Theme.Name" />
+    <input type="text" name="region" value="@Model.Destination.Region" />
+    <input type="text" name="city" value="@Model.Destination.City" />
+    <input type="text" name="description" value="@Model.Description" />
+    <input type="number" name="startMonth" value="@Model.TimePeriod.StartMonth" />
+    <input type="number" name="endMonth" value="@Model.TimePeriod.EndMonth" />
+    <input type="number" name="price" value="@Model.Price" />
+    <button type="submit">Confirm</button>
+   @* <button type="button" class="modify-button" data-package-id="@Model.Id">Modify</button>*@
+</form>
+
+<form id="removeForm@Model.Id" class="removeForm hidden" method="POST" action="/Product/RemovePackage">
+    <h2>Remove Package</h2>
+    <!-- Input fields for deleting the package -->
+    <input type="hidden" name="packageId" value="@Model.Id" />
+    <input type="hidden" name="action" value="remove" />
+    <input type="text" name="name" value="@Model.Name" />
+    <input type="text" name="country" value="@Model.Destination.Country" />
+    <input type="text" name="themeName" value="@Model.Theme.Name" />
+    <input type="text" name="region" value="@Model.Destination.Region" />
+    <input type="text" name="city" value="@Model.Destination.City" />
+    <input type="text" name="description" value="@Model.Description" />
+    <input type="number" name="startMonth" value="@Model.TimePeriod.StartMonth" />
+    <input type="number" name="endMonth" value="@Model.TimePeriod.EndMonth" />
+    <input type="number" name="price" value="@Model.Price" />
+    <button type="submit">Confirm</button>
+  @*  <button type="button" class="remove-button" data-package-id="@Model.Id">Remove</button>*@
+</form>
+@section ExtraScript{
+    <script src="/Scripts/jquery-3.3.1.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(".modify-button").click(function () {
+                var packageId = $(this).data("package-id");
+                $("#modifyForm" + packageId).show();
+                $("#removeForm" + packageId).hide();
+            });
+
+            $(".remove-button").click(function () {
+                var packageId = $(this).data("package-id");
+                $("#modifyForm" + packageId).hide();
+                $("#removeForm" + packageId).show();
+            });
+        });
+    </script>
+}

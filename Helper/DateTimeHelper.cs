@@ -14,5 +14,19 @@ namespace TripMeOn.Helper
             // Handle invalid month values
             return string.Empty;
         }
+        public static string GetMonthNameRange(int startMonth, int endMonth)
+        {
+            if (startMonth == endMonth)
+            {
+                return GetMonthName(startMonth);
+            }
+            else
+            {
+                string startMonthName = GetMonthName(startMonth);
+                string endMonthName = GetMonthName(endMonth);
+                return $"{startMonthName} - {endMonthName}";
+            }
+        }
+
     }
 }

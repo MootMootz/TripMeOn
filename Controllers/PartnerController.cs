@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using TripMeOn.BL.interfaces;
 using TripMeOn.Models;
 using TripMeOn.Models.Users;
 using TripMeOn.ViewModels;
@@ -8,10 +9,13 @@ namespace TripMeOn.Controllers
     public class PartnerController : Controller
 
     {
-        public IActionResult Index()
+        private readonly IUserService _userService;
+
+        public PartnerController(IUserService userService)
         {
-            return View();
+            _userService = userService;
         }
+
         [HttpGet]
         public IActionResult PartnerForm()
         {
@@ -43,8 +47,6 @@ namespace TripMeOn.Controllers
                 return RedirectToAction("SignUpConfirmation");
             }
         }
-
-
         public IActionResult SignUpConfirmation()
         {
             return View();

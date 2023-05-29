@@ -229,41 +229,50 @@ namespace TripMeOn.Controllers
             }
         }
 
-        public IActionResult DeleteRestaurant(int id) // afficher la vue de modification du restaurant
+
+        public IActionResult ToggleOnlineStatusAccomodation(int id)
         {
-            if (id != 0)
+            using (PropositionService propositionService = new PropositionService())
             {
-                using (IPropositionService propositionService = new PropositionService())
+                Accomodation accomodation = propositionService.GetAllAccomodations().Where(r => r.Id == id).FirstOrDefault();
+                if (accomodation != null)
                 {
-                    Restaurant restaurant = propositionService.GetAllRestaurants().Where(r => r.Id == id).FirstOrDefault();
-                    if (restaurant == null)
-                    {
-                        return View("Error");
-                    }
-                    return View(restaurant);
+                    accomodation.IsOnline = !accomodation.IsOnline;  // inverse l'état actuel
+                    propositionService.ModifyAccomodation(accomodation); // sauvegarde les modifications
+                    TempData["SuccessMessage"] = $"The accomodation was put {(accomodation.IsOnline ? "online" : "offline")}.";
                 }
             }
-            return View("Error");
+            return RedirectToAction("ListeAccomodation"); // redirige vers la liste des accomodations
         }
 
-        [HttpPost]
-        public IActionResult DeleteRestaurant(Restaurant restaurant) // traiter la requête de modification
+        public IActionResult ToggleOnlineStatusRestaurant(int id)
         {
-            if (!ModelState.IsValid)
-                return View(restaurant);
-
-            if (restaurant.Id != 0)
+            using (PropositionService propositionService = new PropositionService())
             {
-                using (PropositionService propositionService = new PropositionService())
+                Restaurant restaurant = propositionService.GetAllRestaurants().Where(r => r.Id == id).FirstOrDefault();
+                if (restaurant != null)
                 {
-                    propositionService.DeleteRestaurant(restaurant);
-                    return RedirectToAction("ListeRestaurant", new { @id = restaurant.Id });
+                    restaurant.IsOnline = !restaurant.IsOnline;  // inverse l'état actuel
+                    propositionService.ModifyRestaurant(restaurant); // sauvegarde les modifications
+                    TempData["SuccessMessage"] = $"The restaurant was put {(restaurant.IsOnline ? "online" : "offline")}.";
                 }
             }
-            else
+            return RedirectToAction("ListeRestaurant"); // redirige vers la liste des restaurants
+        }
+
+        public IActionResult ToggleOnlineStatusTransportation(int id)
+        {
+            using (PropositionService propositionService = new PropositionService())
             {
-                return View("Error");
+                Transportation transportation = propositionService.GetAllTransportations().Where(r => r.Id == id).FirstOrDefault();
+                if (transportation != null)
+                {
+                    transportation.IsOnline = !transportation.IsOnline;  // inverse l'état actuel
+                    propositionService.ModifyTransportation(transportation); // sauvegarde les modifications
+                    TempData["SuccessMessage"] = $"The transportation was put {(transportation.IsOnline ? "online" : "offline")}.";
+                }
             }
+            return RedirectToAction("ListeTransportation"); // redirige vers la liste des transportations
         }
 
         public IActionResult ListeAccomodation()
@@ -299,5 +308,42 @@ namespace TripMeOn.Controllers
                 return View(viewModel);
             }
         }
+
+        //public IActionResult DeleteRestaurant(int id) // afficher la vue de modification du restaurant
+        //{
+        //    if (id != 0)
+        //    {
+        //        using (IPropositionService propositionService = new PropositionService())
+        //        {
+        //            Restaurant restaurant = propositionService.GetAllRestaurants().Where(r => r.Id == id).FirstOrDefault();
+        //            if (restaurant == null)
+        //            {
+        //                return View("Error");
+        //            }
+        //            return View(restaurant);
+        //        }
+        //    }
+        //    return View("Error");
+        //}
+
+        //[HttpPost]
+        //public IActionResult DeleteRestaurant(Restaurant restaurant) // traiter la requête de modification
+        //{
+        //    if (!ModelState.IsValid)
+        //        return View(restaurant);
+
+        //    if (restaurant.Id != 0)
+        //    {
+        //        using (PropositionService propositionService = new PropositionService())
+        //        {
+        //            propositionService.DeleteRestaurant(restaurant);
+        //            return RedirectToAction("ListeRestaurant", new { @id = restaurant.Id });
+        //        }
+        //    }
+        //    else
+        //    {
+        //        return View("Error");
+        //    }
+        //}
     }
 }

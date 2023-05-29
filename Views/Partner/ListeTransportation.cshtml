@@ -31,6 +31,12 @@
                 <td>@transportation.PartnerId</td>
                 <td>@transportation.DestinationId</td>
                 <td><a href="@Url.Action("ModifyTransportation", "Partner", new { id = transportation.Id })">Modify</a></td>
+                <td>
+                    <form action="@Url.Action("ToggleOnlineStatusTransportation", "Partner")" method="post">
+                        <input type="hidden" name="id" value="@transportation.Id" />
+                        <input type="submit" value="@(transportation.IsOnline ? "Put offline" : "Put online")" />
+                    </form>
+                </td>
             </tr>
         }
     </table>

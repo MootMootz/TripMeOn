@@ -146,7 +146,7 @@ namespace TripMeOn.Controllers
                 {
                     propositionService.ModifyAccomodation(accomodation);
                     TempData["SuccessMessage"] = "The accomodation has been modified";
-                    return RedirectToAction("ListeAccomodation", new { @id = accomodation.Id });
+                    return RedirectToAction("ListeAccomodation");
                 }
             }
             else
@@ -183,7 +183,7 @@ namespace TripMeOn.Controllers
                 {
                     propositionService.ModifyRestaurant(restaurant);
                     TempData["SuccessMessage"] = "The restaurant has been modified";
-                    return RedirectToAction("ListeRestaurant", new { @id = restaurant.Id });
+                    return RedirectToAction("ListeRestaurant");
                 }
             }
             else
@@ -220,7 +220,7 @@ namespace TripMeOn.Controllers
                 {
                     propositionService.ModifyTransportation(transportation);
                     TempData["SuccessMessage"] = "The transportation has been modified";
-                    return RedirectToAction("ListeTransportation", new { @id = transportation.Id });
+                    return RedirectToAction("ListeTransportation");
                 }
             }
             else
@@ -228,7 +228,6 @@ namespace TripMeOn.Controllers
                 return View("Error");
             }
         }
-
 
         public IActionResult ToggleOnlineStatusAccomodation(int id)
         {

@@ -32,7 +32,7 @@
                 <td>@restaurant.Price</td>
                 <td>@restaurant.PartnerId</td>
                 <td>@restaurant.DestinationId</td>
-                <td><a href="@Url.Action("ModifyRestaurant", "Partner", new { id = restaurant.Id })">Modify</a></td>
+                <td>@Html.ActionLink("Modify","ModifyRestaurant", "Partner", new { id = restaurant.Id })</td>
                 <td>
                     <form action="@Url.Action("ToggleOnlineStatusRestaurant", "Partner")" method="post">
                         <input type="hidden" name="id" value="@restaurant.Id" />

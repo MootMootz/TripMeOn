@@ -10,7 +10,7 @@ namespace TripMeOn.Controllers
 {
     public class LoginController : Controller
     {
-        private UserService userService;
+        private readonly UserService userService;
         public LoginController()
         {
             userService = new UserService();

@@ -118,15 +118,22 @@
 			<!--   -------------------------------------------------------------------------   -->
 
 			<li class="parent">
-				<a href="#">Sign in</a>				
-					</li>
+				<a href="#">Sign in<span class="expand"></span></a>				
+			</li>
+			<!--   -------------------------------------------------------------------------   -->
+			<li class="parent">
+				<a href="#">Staff Only<span class="expand"></span></a>
+				<ul class="child">
+				<li><a href="#">Log in</a></li>
+					<li><a href=" /Product/PackageList">Check Products</a></li>
+				</ul>
 			</ul>
 		</div>
 
    	<!-- Transparent Search Box -->
 	<div class="search-container">
 		<div class="search-box">
-			<form action="/Product/Search" method="get">
+			<form action="/Product/SearchPackage" method="get">
 				
 				<label for="destinations">Destinations</label>
 				@Html.DropDownList("destination", new SelectList(new TripMeOn.BL.ProductService().GetDestinations(),"Id","Country"))

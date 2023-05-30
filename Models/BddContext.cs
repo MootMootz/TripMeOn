@@ -53,45 +53,22 @@ namespace TripMeOn.Models
 
             var destinations = new List<Destination>
             {
-                new Destination { Id = 1, Country = "France", City = "Paris", Region = "Ile De France",TimePeriodId=1 },
-                new Destination { Id = 2, Country = "France", City = "Valensole", Region = "South",TimePeriodId=1 },
-                new Destination { Id = 3, Country = "UK", City = "London",Region = "London",TimePeriodId=1 },
-                new Destination { Id = 4, Country = "Netherlands", City = "Amsterdam", Region = "Western ",TimePeriodId=1 },
-                new Destination { Id = 5, Country = "Netherlands", City = "Giethoorn", Region = "Overijssel",TimePeriodId=1 },
-                new Destination { Id = 6, Country = "Turkey", City = "Istanbul", Region = "north-western" ,TimePeriodId=1},
-                new Destination { Id = 7, Country = "Turkey", City = "Cappadocia", Region = "Central Anatolia" , TimePeriodId = 1},
-                new Destination { Id = 8, Country = "Agentina", City = "Ushuaia", Region = "Tierra del Fuego" , TimePeriodId = 1},
-                new Destination { Id = 9, Country = "Agentina", City = "city", Region = "North",TimePeriodId=1 },
-                new Destination { Id = 10, Country = "Belgium", City = "Ghent",Region = "Flemish",TimePeriodId=1 },
-                new Destination { Id = 11, Country = "Spain", City = "Bercelona", Region = "Catalonia",TimePeriodId=1 },
-                new Destination { Id = 12, Country = "Spain", City = "Ferrol ", Region = "Galicia",TimePeriodId=1 },
-                new Destination { Id = 13, Country = "Switzerland", City = "Zermatt",  Region = "Canton of Valais",TimePeriodId=1 },
-                new Destination { Id = 14, Country = "Portugal", City = "Porto",Region = "Porto" , TimePeriodId = 1},
-                new Destination { Id = 15, Country = "Greece", City = "Santorini", Region = "Cyclades",TimePeriodId=1 },
+                new Destination { Id = 1, Country = "France", City = "Paris", Region = "Ile De France" },
+                new Destination { Id = 2, Country = "France", City = "Valensole", Region = "South" },
+                new Destination { Id = 3, Country = "UK", City = "London",Region = "London"},
+                new Destination { Id = 4, Country = "Netherlands", City = "Amsterdam", Region = "Western " },
+                new Destination { Id = 5, Country = "Netherlands", City = "Giethoorn", Region = "Overijssel"},
+                new Destination { Id = 6, Country = "Turkey", City = "Istanbul", Region = "north-western" },
+                new Destination { Id = 7, Country = "Turkey", City = "Cappadocia", Region = "Central Anatolia" },
+                new Destination { Id = 8, Country = "Agentina", City = "Ushuaia", Region = "Tierra del Fuego"  },
+                new Destination { Id = 9, Country = "Agentina", City = "city", Region = "North" },
+                new Destination { Id = 10, Country = "Belgium", City = "Ghent",Region = "Flemish" },
+                new Destination { Id = 11, Country = "Spain", City = "Bercelona", Region = "Catalonia" },
+                new Destination { Id = 12, Country = "Spain", City = "Ferrol ", Region = "Galicia" },
+                new Destination { Id = 13, Country = "Switzerland", City = "Zermatt",  Region = "Canton of Valais" },
+                new Destination { Id = 14, Country = "Portugal", City = "Porto",Region = "Porto"},
+                new Destination { Id = 15, Country = "Greece", City = "Santorini", Region = "Cyclades" },
 
-            };
-
-
-            var themes = new List<Theme>
-            {
-                new Theme { Id = 1, Name = "Trekking" },
-                new Theme { Id = 2, Name = "Floral" },
-                new Theme { Id = 3, Name = "Cultural" },
-                new Theme { Id = 4, Name = "Heritage" },
-                new Theme { Id = 5, Name = "Snap and relax" },
-                new Theme { Id = 6, Name = "InstaSpots" },
-                new Theme { Id = 7, Name = "Nature" },
-                new Theme { Id = 8, Name = "Beach" },
-                new Theme { Id = 9, Name = "Culinary" },
-                new Theme { Id = 10, Name = "Colors" },
-            };
-
-
-            var tourPackages = new List<TourPackage>
-            {
-                new TourPackage { Id = 1, Name = "Bloomings in Paris", DestinationId = 1, ThemeId = 2,Description="4 days tour", Price = 986 },
-                new TourPackage { Id = 2, Name = "Confetti Field", DestinationId = 3, ThemeId = 2,Description="4 days tour", Price = 1180 },
-                new TourPackage { Id = 3, Name = "Lavender Fields", DestinationId = 1, ThemeId = 2,Description="4 days tour", Price = 1180 },
             };
 
             var timePeriods = new List<TimePeriod>
@@ -109,6 +86,29 @@ namespace TripMeOn.Models
                 new TimePeriod { Id = 11,StartMonth =11, EndMonth =12 },
                 new TimePeriod { Id = 12,StartMonth =12, EndMonth =1 },
             };
+
+            var themes = new List<Theme>
+            {
+                new Theme { Id = 1, Name = "Trekking" },
+                new Theme { Id = 2, Name = "Floral" },
+                new Theme { Id = 3, Name = "Cultural" },
+                new Theme { Id = 4, Name = "Heritage" },
+                new Theme { Id = 5, Name = "Snap and relax" },
+                new Theme { Id = 6, Name = "InstaSpots" },
+                new Theme { Id = 7, Name = "Nature" },
+                new Theme { Id = 8, Name = "Beach" },
+                new Theme { Id = 9, Name = "Culinary" },
+                new Theme { Id = 10, Name = "Colors" },
+            };
+
+            var tourPackages = new List<TourPackage>
+            {
+                new TourPackage { Id = 1, Name = "Bloomings in Paris", DestinationId = 1, ThemeId = 2,Description="4 days tour",TimePeriodId=5, Price = 986 },
+                new TourPackage { Id = 2, Name = "Confetti Field", DestinationId = 3, ThemeId = 2,Description="4 days tour",TimePeriodId=7, Price = 1180 },
+                new TourPackage { Id = 3, Name = "Lavender Fields", DestinationId = 1, ThemeId = 2,Description="4 days tour",TimePeriodId=8, Price = 1180 },
+                new TourPackage { Id = 4, Name = "Colmer in Autumn", DestinationId = 1, ThemeId = 10,Description="4 days tour",TimePeriodId=11},
+
+            };    
 
 
             this.Clients.AddRange(clients);

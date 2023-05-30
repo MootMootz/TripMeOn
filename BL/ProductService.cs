@@ -6,6 +6,7 @@ using System.Linq;
 using System;
 using Microsoft.EntityFrameworkCore;
 using TripMeOn.Helper;
+using Microsoft.EntityFrameworkCore.Internal;
 
 namespace TripMeOn.BL
 {
@@ -20,13 +21,17 @@ namespace TripMeOn.BL
         public List<Destination> GetDestinations()
         {
             List<Destination> destinations = new List<Destination>();
-
+            //Debugged : Group the destinations from the same country and display the first one only to aviod duplicate entries
             using (var _bddContext = new BddContext())
             {
-                destinations = _bddContext.Destinations.ToList();
-            }
+                destinations = _bddContext.Destinations.ToList();// original code to retrieve all destinations in-memory LINQ-to-Objects       
 
-            return destinations;
+			}
+			// the query will be performed on the client side instead of being translated to SQL:InvalidOperationException
+			destinations = destinations.GroupBy(d => d.Country) // groups the destinations by country
+							  .Select(group => group.First())  //selects the first destination from each group
+							  .ToList();
+			return destinations;
         }
         public List<Theme> GetThemes()
         {

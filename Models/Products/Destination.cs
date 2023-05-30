@@ -11,9 +11,7 @@ namespace TripMeOn.Models.Products
         public int Id { get; set; }
         public string Country { get; set; }
         public string Region { get; set; }
-        public string City { get; set; }
-        //public int TimePeriodId { get; set; }
-        //public virtual TimePeriod TimePeriod { get; set; }
+        public string City { get; set; }        
         public virtual ICollection<TourPackage> TourPackages { get; set; }
     }
 }

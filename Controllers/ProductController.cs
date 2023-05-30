@@ -37,7 +37,8 @@ namespace TripMeOn.Controllers
 
             return View("PackageList", packages);
         }
-        //GetTourPackages return a collection , had to use using System.Linq;       
+        //GetTourPackages return a collection , had to use using System.Linq;
+        
         [HttpGet]
         public IActionResult ModifyPackage(int packageId)
         {
@@ -46,7 +47,7 @@ namespace TripMeOn.Controllers
 
             if (package != null)
             {
-                return View("ModifyRemove", package);
+                return View("ModifyPackage", package);
             }
 
             // Handle the case where the package is not found
@@ -68,8 +69,9 @@ namespace TripMeOn.Controllers
             TourPackage originalPackage = _productService.GetTourPackages()
                 .FirstOrDefault(p => p.Id == packageId);
 
-            return View("ModifyRemove", originalPackage);
+            return View("ModifyPackage", originalPackage);
         }
+
         [HttpGet]
         public IActionResult ShowRemovePackage(int packageId)
         {
@@ -77,7 +79,7 @@ namespace TripMeOn.Controllers
 
             if (package != null)
             {
-                return View("ModifyRemove", package);
+                return View("RemovePackage", package);
             }
 
             // Handle the case where the package is not found

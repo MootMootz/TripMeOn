@@ -14,15 +14,15 @@ namespace TripMeOn.Controllers
 
     {
 
-        private readonly IUserService _userService;
+        //private readonly IUserService _userService;
 
-        public PartnerController(IUserService userService)
+        //public PartnerController(IUserService userService);
 
-        public IActionResult IndexPartner()
+        //public IActionResult IndexPartner()
 
-        {
-            _userService = userService;
-        }
+        //{
+        //    _userService = userService;
+        //}
 
 
         public IActionResult ServicesPartner()

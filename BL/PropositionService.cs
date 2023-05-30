@@ -16,6 +16,12 @@ namespace TripMeOn.BL
             _bddContext = new BddContext();
         }
 
+        public void AddAccomodation(Accomodation accomodation)
+        {
+            _bddContext.Accomodations.Add(accomodation);
+            _bddContext.SaveChanges();
+        }
+
         public List<Accomodation> GetAllAccomodations()
         {
             return _bddContext.Accomodations.ToList();
@@ -30,6 +36,7 @@ namespace TripMeOn.BL
         {
             return _bddContext.Transportations.ToList();
         }
+
         public int CreateAccomodation(string name, string type, int capacity, double price, int partnerId, int destinationId)
         {
             Accomodation accomodation = new Accomodation() { Name = name, Type = type, Capacity = capacity, Price = price, PartnerId = partnerId, DestinationId = destinationId };

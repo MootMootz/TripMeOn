@@ -1,5 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+
 using TripMeOn.BL.interfaces;
+
+using System.Collections.Generic;
+
 using TripMeOn.Models;
 using TripMeOn.Models.Users;
 using TripMeOn.ViewModels;
@@ -9,13 +13,23 @@ namespace TripMeOn.Controllers
     public class PartnerController : Controller
 
     {
+
         private readonly IUserService _userService;
 
         public PartnerController(IUserService userService)
+
+        public IActionResult IndexPartner()
+
         {
             _userService = userService;
         }
 
+
+        public IActionResult ServicesPartner()
+        {
+            return View();
+        }
+        
         [HttpGet]
         public IActionResult PartnerForm()
         {
@@ -32,7 +46,7 @@ namespace TripMeOn.Controllers
                 
                 var partner = new Partner
                 {
-                    Name = model.Name,
+                    LastName = model.LastName,
                     FirstName = model.FirstName,
                     Email = model.Email,
                     Password = model.Password,

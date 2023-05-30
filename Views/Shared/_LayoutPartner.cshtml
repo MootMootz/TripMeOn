@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="/css/StylePartner.css">
+</head>
+<body>
+    <div id="fixNav">
+        <nav>
+            <img src="~/images/logo.png" alt="logo">
+            <button type="button">@Html.ActionLink("Accueil", "IndexPartner")</button>
+            <button type="button">@Html.ActionLink("Mes services", "ServicesPartner")</button>
+            <button type="button">Bonjour  nom de l'user</button>
+        </nav>
+    </div>
+
+    <div id="main">
+        <div id="menu">
+            @RenderSection("Menu", required: false)
+        </div>
+
+        <div id="contenu">
+            @RenderBody()
+        </div>
+    </div>
+
+    <div id="footer">
+        &copy; @DateTime.Now.Year - ça doit être la page la plus moche de l'histoire. Je serai dans le Record Guiness !!! qqs
+    </div>
+    @RenderSection("ExtraScripts", required: false)
+</body>
+</html><

@@ -27,10 +27,10 @@ namespace TripMeOn.Models
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseMySql("server=localhost;user id=root;password=kukuskar;database=TripMeOn");
+            optionsBuilder.UseMySql("server=localhost;user id=root;password=1530;database=TripMeOn");
         }
-       
-                              
+
+
         public void InitializeDb()
         {
             this.Database.EnsureDeleted();
@@ -110,9 +110,9 @@ namespace TripMeOn.Models
                 new TourPackage { Id = 3, Name = "Lavender Fields", DestinationId = 1, ThemeId = 2,Description="4 days tour",TimePeriodId=8, Price = 1180 },
                 new TourPackage { Id = 4, Name = "Colmer in Autumn", DestinationId = 1, ThemeId = 10,Description="4 days tour",TimePeriodId=11},
 
-            };    
+            };
 
-            
+
 
             this.Clients.AddRange(clients);
             this.Employees.AddRange(employees);

@@ -1,11 +1,11 @@
-﻿#fixNav, #menu, #contenu, #footer {
+﻿#entete, #menu, #contenu, #footer {
     padding: 1px 0;
 }
 
-#fixNav {
-    background-color: black;
-    color: aliceblue;
-    text-align: justify;
+#entete {
+    background-color: lightcoral;
+    text-align: center;
+    background: #FF9900 url("/Content/Images/supertuto.png") 5px center no-repeat;
     background-size: 100px;
 }
 
@@ -15,11 +15,8 @@
 
 #menu {
     float: left;
-    width: 70px;
-    height: 300px;
-    background-color: darkblue;
-    text-align: justify;
-
+    width: 240px;
+    background-color: lightsalmon;
 }
 
 #contenu {

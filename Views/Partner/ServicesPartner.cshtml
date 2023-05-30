@@ -5,7 +5,11 @@
 
 <h3>Liste des services</h3>
 <p>Ici on devrait avoir la liste des services proposés par ce partenaire, à cliquer sur le service qu'on veut modifier ou supprimer (att! la liste doit apparaître sur le PartnerController). le bouton "ajouter" devrait aller sur une autre "view" qui s'affiche ici avec le formulaire pour ajouter un autre</p>
-
+@Html.ActionLink("List of accomodations", "ListeAccomodation", "Partner");
+<br />
+@Html.ActionLink("List of restaurants", "ListeRestaurant", "Partner");
+<br />
+@Html.ActionLink("List of transportation", "ListeTransportation", "Partner");
 
 @section Menu{
 
@@ -13,64 +17,7 @@
 
     <button type="button">Supprimer</button>
 
-    <button type="button">Ajouter</button>
+    <button type="button">@Html.ActionLink("Add service", "AddService")</button>
 
 }
-<body>
-    <form action="/Partner/SelectService" method="post">
-        <fieldset>
-            <legend><strong>Ajouter un service</strong></legend>
-            <table border="0">
-                <tbody>
-                    <tr>
-                        <td>
-                            Service :
-                        </td>
-                        <td>
-                            <select name="service" id="service" required>
-                                <option disabled selected>Select a service</option>
-                                <option>Accomodation</option>
-                                <option>Restaurant</option>
-                                <option>Transportation</option>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            Avalaible date :
-                        </td>
-                        <td>
-                            <input type="date" id="startDate" name="startDate" min="2023-06-01" max="2023-12-31" required> to :
-                            <input type="date" id="endDate" name="endDate" min="2023-06-01" max="2023-12-31" required>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            Photo :
-                        </td>
-                        <td>
-                            <input type="file" name="file[]" id="file1">
-                            <input type="file" name="file[]" id="file2">
-                            <input type="file" name="file[]" id="file3">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            Description :
-                        </td>
-                        <td>
-                            <textarea id="description" name="description" rows="8" cols="50"
-                                      placeholder="Please give more details" maxlength="1000"></textarea>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <br>
-            <br>
-            <button type="reset">Effacer</button>
-            <span>
-                <button type="submit">Envoyer</button>
-            </span>
-        </fieldset>
-    </form>
-</body>
+

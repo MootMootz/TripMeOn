@@ -66,6 +66,10 @@ namespace TripMeOn.Controllers
         {
             return View();
         }
+        public IActionResult AddService()
+        {
+            return View();
+        }
 
         public IActionResult PropositionService()
         {
@@ -314,16 +318,6 @@ namespace TripMeOn.Controllers
                     return View();
             }
         }
-
-        [HttpPost]
-        public IActionResult SelectService(Accomodation accomodation)
-        {
-            return RedirectToAction("CreateAccomodation", accomodation);
-        }
-
-
-
-
 
         //public IActionResult DeleteRestaurant(int id) // afficher la vue de modification du restaurant
         //{

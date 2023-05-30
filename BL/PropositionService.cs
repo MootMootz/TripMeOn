@@ -16,12 +16,6 @@ namespace TripMeOn.BL
             _bddContext = new BddContext();
         }
 
-        public void AddAccomodation(Accomodation accomodation)
-        {
-            _bddContext.Accomodations.Add(accomodation);
-            _bddContext.SaveChanges();
-        }
-
         public List<Accomodation> GetAllAccomodations()
         {
             return _bddContext.Accomodations.ToList();

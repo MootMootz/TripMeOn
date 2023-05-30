@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using TripMeOn.Helper;
+using TripMeOn.Models.Order;
 using TripMeOn.Models.PartnerProducts;
 using TripMeOn.Models.Products;
 using TripMeOn.Models.Users;
@@ -21,7 +22,8 @@ namespace TripMeOn.Models
         public DbSet<Restaurant> Restaurants { get; set; }
         public DbSet<Transportation> Transportations { get; set; }
         public DbSet<TimePeriod> TimePeriods { get; set; }
-
+        public DbSet<Cart> Carts { get; set; }
+        public DbSet<Item> Items { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -110,6 +112,7 @@ namespace TripMeOn.Models
 
             };    
 
+            
 
             this.Clients.AddRange(clients);
             this.Employees.AddRange(employees);

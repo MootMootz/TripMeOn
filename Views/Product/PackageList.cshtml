@@ -1,0 +1,91 @@
+﻿@model List<TripMeOn.Models.Products.TourPackage>
+@using TripMeOn.Helper
+@{   
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section ExtraCss{
+    <link rel="stylesheet" href="/css/PackageList.css">
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>TourPackageList</title>
+
+</head>
+<body>
+    <button id="showCreateForm">Create a new Tour Package</button> <!-- Move create button above the table -->
+
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Destination</th>
+                <th>Theme</th>
+                <th>Region</th>
+                <th>City</th>
+                <th>Description</th>
+                <th>Best time to visit</th>
+                <th>Price</th>
+                <th>Modify</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var package in Model)
+            {
+                <tr>
+                    <td>@package.Name</td>
+                    <td>@package.Destination.Country</td>
+                    <td>@package.Theme.Name</td>
+                    <td>@package.Destination.Region</td>
+                    <td>@package.Destination.City</td>
+                    <td>@package.Description</td>                  
+                    <td>
+                                @if (package.TimePeriod != null)
+                                {
+                                    @DateTimeHelper.GetMonthNameRange(package.TimePeriod.StartMonth, package.TimePeriod.EndMonth)
+                                }
+                    </td>              
+                    <td>@package.Price</td>
+                    <td>
+                        <button type="button" onclick="location.href='/Product/ModifyPackage?packageId=@package.Id'">Modify</button>                      
+                    </td>
+                    <td>
+                        <button type="button" onclick="location.href='/Product/ShowRemovePackage?packageId=@package.Id'">Remove</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <form id="createForm" method="POST" action="CreatePackage" style="display: none;">
+        <h2>Create Package</h2>
+        <!-- Input fields for creating a new package -->
+        <input type="text" name="name" placeholder="Package Name" />
+        <input type="text" name="country" placeholder="Country Name" />
+        <input type="text" name="themeName" placeholder="Theme Name" />
+        <input type="text" name="region" placeholder="Region Name" />
+        <input type="text" name="city" placeholder="City Name" />
+        <input type="text" name="description" placeholder="Package Description" />
+        <input type="number" name="startMonth" placeholder="Start Month" />
+        <input type="number" name="endMonth" placeholder="End Month" />
+        <input type="number" name="price" placeholder="Price" />
+        <button type="submit">Create</button>
+    </form>
+
+    @section ExtraScript{
+        <script src="~/Scripts/jquery-3.3.1.js"></script>
+        <script>
+            $(document).ready(function () {
+                $("#showCreateForm").click(function () {
+                    $("#createForm").toggle();
+                });
+            });
+           
+        </script>
+    }
+</body>
+</html>

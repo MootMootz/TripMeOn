@@ -6,11 +6,11 @@ using TripMeOn.BL.interfaces;
 using TripMeOn.Models;
 using TripMeOn.Models.Products;
 using TripMeOn.Models.Users;
-using XSystem.Security.Cryptography;
+using System.Security.Cryptography;
 
 namespace TripMeOn.BL
 {
-    public class UserService : IUserService
+    public class UserService//:IUserService
     {
         private BddContext _bddContext;
         public UserService()
@@ -18,25 +18,11 @@ namespace TripMeOn.BL
             _bddContext = new BddContext();
         }
 
-        public void Dispose()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        //public int AjouterUtilisateur(string prenom, string password)
-        //{
-        //    string motDePasse = EncodeMD5(password);
-        //    Utilisateur user = new Utilisateur() { Prenom = prenom, Password = motDePasse };
-        //    this._bddContext.Utilisateurs.Add(user);
-        //    this._bddContext.SaveChanges();
-        //    return user.Id;
-        //}
-
-        // AUTHENTIFICATION CLIENT
+        // CLIENT _ AUTHENTIFICATION
         public Client Authentify(string nickname, string password)
         {
             string motDePasse = EncodeMD5(password);
-            Client client= this._bddContext.Clients.FirstOrDefault(u => u.Nickname == nickname && u.Password == motDePasse);
+            Client client = this._bddContext.Clients.FirstOrDefault(u => u.Nickname == nickname && u.Password == motDePasse);
             return client;
         }
 
@@ -55,18 +41,53 @@ namespace TripMeOn.BL
             return null;
         }
 
+
+
+        // PARTNER _ AUTHENTIFICATION
+
+        public Partner AuthentifyP(string nickname, string password)
+        {
+            string motDePasse = EncodeMD5(password);
+            Partner partner = this._bddContext.Partners.FirstOrDefault(u => u.Nickname == nickname && u.Password == motDePasse);
+            return partner;
+        }
+
+        public Partner GetPartner(int id)
+        {
+            return this._bddContext.Partners.Find(id);
+        }
+
+        public Partner GetPartner(string idStr)
+        {
+            int id;
+            if (int.TryParse(idStr, out id))
+            {
+                return this.GetPartner(id);
+            }
+            return null;
+        }
+
+        //j'ignore à quoi sert "unCLient" mais je le laisse -qqs, 
         public static string EncodeMD5(string motDePasse)
         {
-            //je ne sais pas ce qui fait ce "Choix Resto" là -qqs
-            string motDePasseSel = "ChoixResto" + motDePasse + "ASP.NET MVC";
+            string motDePasseSel = "UnUser" + motDePasse + "ASP.NET MVC";
             return BitConverter.ToString(new MD5CryptoServiceProvider().ComputeHash(ASCIIEncoding.Default.GetBytes(motDePasseSel)));
         }
 
+
+        public void Dispose()
+        {
+            _bddContext.Dispose();
+        }
+
+
+
+        // Create
+
+        // Modify
+
+        // Delete
+
+        // etc...
     }
-
-
-
-
-
-}
-    
+    }

@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using TripMeOn.Models.Products;
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -17,17 +19,17 @@
     <div class="navbar">
        		<ul id="menu" style="text-align: center">
 			<li class="parent">
-				<a href="#">Home</a>
+				<a href="/Home/HomePage">Home</a>
 			</li>
 			
 			<!--   -------------------------------------------------------------------------   -->
-
+			
 			<li class="parent">
 				<a href="#">Destinations<span class="expand"></span></a>
 				<ul class="child">
 					<li><a href="#">France</a></li>
 					<li><a href="#">The UK</a></li>
-					<li><a href="#">The Netherlands</a></li>
+					<li><a href="#">Netherlands</a></li>
 					<li><a href="#">Turkey</a></li>
 					<li><a href="#">Agentina</a></li>
 					<li><a href="#">Blegium</a></li>
@@ -47,11 +49,12 @@
 					<li><a href="#">Floral</a></li>
 					<li><a href="#">Cultural</a></li>
 					<li><a href="#">Heritage</a></li>
-					<li><a href="#">Chill out</a></li>
+					<li><a href="#">Snap and relax</a></li>
 					<li><a href="#">InstaSpots</a></li>
 					<li><a href="#">Nature</a></li>
 					<li><a href="#">Beach</a></li>
 					<li><a href="#">Culinary</a></li>
+					<li><a href="#">Colors</a></li>
 				</ul>
 			</li>
 
@@ -59,14 +62,20 @@
 
 			<li class="parent">
 				<a href="#">Holiday Finder<span class="expand"></span></a>
-				<ul class="child">					
-					<li><a href="#">Accomodation</a></li>
-					<li><a href="#">Flights</a></li>
-					<li><a href="#">Land Services</a></li>
+				<ul class="child">
+					<li><a href="#">Accommodation</a></li>
+					<li class="parent">
+						<a href="#">Land Services</a>
+						<ul class="child">
+							<li><a href="#">Taxi</a></li>
+							<li><a href="#">Rent a car</a></li>
+							<li><a href="#">Rent a bike</a></li>
+							<li><a href="#">Get a tour guide</a></li>
+						</ul>
+					</li>
 					<li><a href="#">Restaurants</a></li>
 				</ul>
 			</li>
-
 			<!--   -------------------------------------------------------------------------   -->
 
 			<li class="parent">
@@ -94,10 +103,7 @@
 			<!--   -------------------------------------------------------------------------   -->
 
 			<li class="parent">
-
-				<a href="#">Become a Partner</a>
-
-			
+				<a href="#">Become a Partner</a>			
 			</li>
 
 			<!--   -------------------------------------------------------------------------   -->
@@ -113,21 +119,40 @@
 			<!--   -------------------------------------------------------------------------   -->
 
 			<li class="parent">
-				<a href="#">Sign in</a>				
-					</li>
+				<a href="#">Sign in<span class="expand"></span></a>				
+			</li>
+			<!--   -------------------------------------------------------------------------   -->
+			<li class="parent">
+				<a href="#">Staff Only<span class="expand"></span></a>
+				<ul class="child">
+				<li><a href="#">Log in</a></li>
+					<li><a href=" /Product/PackageList">Check Products</a></li>
+				</ul>
 			</ul>
 		</div>
-
-    <!-- Transparent Search Box -->
+	@*TODO: Debug duplicate countries in dropdownlist*@
+   	<!-- Transparent Search Box -->
 	<div class="search-container">
 		<div class="search-box">
-			<label for="destinations">Destinations</label>
-			<input type="text" id="destinations" name="destinations">
-			<label for="themes">Themes</label>
-			<input type="text" id="themes" name="themes">
-			<button type="submit" class="btn btn-primary">Search</button>
+			<form action="/Product/SearchPackage" method="get">
+				
+				<label for="destinations">Destinations</label>
+				@{
+					List<Destination> destinations = new TripMeOn.BL.ProductService().GetDestinations();
+					SelectList selectList = new SelectList(destinations, "Id", "Country");
+				}
+				@Html.DropDownList("destination", selectList)
+
+
+				<label for="themes">Themes</label>
+				@Html.DropDownList("theme", new SelectList(new TripMeOn.BL.ProductService().GetThemes(),"Id","Name"))
+				<button type="submit" class="btn btn-primary">Search</button>
+			</form>
 		</div>
 	</div>
+	
+
+
 	@RenderBody()
 	<footer>
 		<div class="social-icons">

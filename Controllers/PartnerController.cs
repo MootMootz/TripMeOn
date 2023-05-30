@@ -1,10 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-
+using System.Linq;
+using TripMeOn.BL;
 using TripMeOn.BL.interfaces;
-
-using System.Collections.Generic;
-
 using TripMeOn.Models;
+using TripMeOn.Models.PartnerProducts;
 using TripMeOn.Models.Users;
 using TripMeOn.ViewModels;
 
@@ -14,22 +13,22 @@ namespace TripMeOn.Controllers
 
     {
 
-        private readonly IUserService _userService;
+        //private readonly IUserService _userService;
 
-        public PartnerController(IUserService userService)
+        //public PartnerController(IUserService userService);
 
-        public IActionResult IndexPartner()
+        //public IActionResult IndexPartner()
 
-        {
-            _userService = userService;
-        }
+        //{
+        //    _userService = userService;
+        //}
 
 
         public IActionResult ServicesPartner()
         {
             return View();
         }
-        
+
         [HttpGet]
         public IActionResult PartnerForm()
         {
@@ -40,10 +39,10 @@ namespace TripMeOn.Controllers
         [HttpPost]
         public IActionResult SubmitPartnerForm(NavigationPartnerForm model)
         {
-            
+
             using (var dbContext = new BddContext())
             {
-                
+
                 var partner = new Partner
                 {
                     LastName = model.LastName,
@@ -54,14 +53,21 @@ namespace TripMeOn.Controllers
                     PhoneNumber = model.PhoneNumber,
                     CompanyName = model.CompanyName
                 };
-              
+
                 dbContext.Partners.Add(partner);
                 dbContext.SaveChanges();
 
                 return RedirectToAction("SignUpConfirmation");
             }
         }
+
+
         public IActionResult SignUpConfirmation()
+        {
+            return View();
+        }
+
+        public IActionResult PropositionService()
         {
             return View();
         }

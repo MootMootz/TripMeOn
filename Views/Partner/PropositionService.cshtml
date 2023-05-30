@@ -1,4 +1,4 @@
-﻿@model TripMeOn.ViewModels.PropositionService
+﻿@model TripMeOn.ViewModels.PropositionServiceModel
 @{
     ViewBag.Title = "Proposition Service";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -9,24 +9,3 @@
     <link rel="stylesheet" href="/css/PropositionService.css">
 }
 
-<form asp-action="SubmitService" asp-controller="Partner" method="post">
-    <div class="form-group">
-        <label asp-for="Accomodation.Name"></label>
-        <input asp-for="Accomodation.Name" class="form-control" />
-    </div>
-    <!-- Ajoutez ici d'autres champs pour les propriétés de l'hébergement. -->
-
-    <div class="form-group">
-        <label asp-for="Restaurant.Name"></label>
-        <input asp-for="Restaurant.Name" class="form-control" />
-    </div>
-    <!-- Ajoutez ici d'autres champs pour les propriétés du restaurant. -->
-
-    <div class="form-group">
-        <label asp-for="Transportation.Type"></label>
-        <input asp-for="Transportation.Type" class="form-control" />
-    </div>
-    <!-- Ajoutez ici d'autres champs pour les propriétés du transport. -->
-
-    <button type="submit" class="btn btn-primary">Submit</button>
-</form>

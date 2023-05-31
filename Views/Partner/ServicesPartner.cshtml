@@ -5,14 +5,19 @@
 
 <h3>Liste des services</h3>
 <p>Ici on devrait avoir la liste des services proposés par ce partenaire, à cliquer sur le service qu'on veut modifier ou supprimer (att! la liste doit apparaître sur le PartnerController). le bouton "ajouter" devrait aller sur une autre "view" qui s'affiche ici avec le formulaire pour ajouter un autre</p>
-
+@Html.ActionLink("List of accomodations", "ListeAccomodation", "Partner");
+<br />
+@Html.ActionLink("List of restaurants", "ListeRestaurant", "Partner");
+<br />
+@Html.ActionLink("List of transportation", "ListeTransportation", "Partner");
 
 @section Menu{
-    
+
     <button type="button">Modifier</button>
-    
+
     <button type="button">Supprimer</button>
-    
-    <button type="button">Ajouter</button>
+
+    <button type="button">@Html.ActionLink("Add service", "AddService")</button>
 
 }
+

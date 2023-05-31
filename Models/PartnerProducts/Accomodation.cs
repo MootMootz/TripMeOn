@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Http;
+using System;
+using System.ComponentModel.DataAnnotations;
 using TripMeOn.Models.Products;
 using TripMeOn.Models.Users;
 
@@ -12,6 +14,9 @@ namespace TripMeOn.Models.PartnerProducts
         public string Name { get; set; }
         public string Type { get; set; }
         public double Price { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
+        public string Description { get; set; }
 
         public int PartnerId { get; set; } // foreign key for Partner
         public virtual Partner Partner { get; set; } // navigation property
@@ -19,5 +24,7 @@ namespace TripMeOn.Models.PartnerProducts
         public int DestinationId { get; set; }
         public virtual Destination Destination { get; set; }
         public bool IsOnline { get; set; }
+
+        //public virtual IFormFile[] Files { get; set; }
     }
 }

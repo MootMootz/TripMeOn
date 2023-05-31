@@ -66,6 +66,10 @@ namespace TripMeOn.Controllers
         {
             return View();
         }
+        public IActionResult AddService()
+        {
+            return View();
+        }
 
         public IActionResult PropositionService()
         {
@@ -299,6 +303,22 @@ namespace TripMeOn.Controllers
                 return View(viewModel);
             }
         }
+
+        public IActionResult SelectService(string service)
+        {
+            switch (service)
+            {
+                case "Accomodation":
+                    return RedirectToAction("CreateAccomodation");
+                case "Restaurant":
+                    return RedirectToAction("CreateRestaurant");
+                case "Transportation":
+                    return RedirectToAction("CreateTransportation");
+                default:
+                    return View();
+            }
+        }
+
         //public IActionResult DeleteRestaurant(int id) // afficher la vue de modification du restaurant
         //{
         //    if (id != 0)

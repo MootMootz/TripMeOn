@@ -67,7 +67,6 @@ namespace TripMeOn.BL
             return null;
         }
 
-        //j'ignore à quoi sert "unCLient" mais je le laisse -qqs, 
         public static string EncodeMD5(string motDePasse)
         {
             string motDePasseSel = "UnUser" + motDePasse + "ASP.NET MVC";

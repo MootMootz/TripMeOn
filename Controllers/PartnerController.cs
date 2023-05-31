@@ -28,6 +28,11 @@ namespace TripMeOn.Controllers
         {
             return View();
         }
+        public IActionResult IndexPartner()
+        {
+            return View();
+        }
+
 
         [HttpGet]
         public IActionResult PartnerForm()

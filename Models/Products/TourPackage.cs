@@ -22,9 +22,5 @@ namespace TripMeOn.Models.Products
 
         [Column(TypeName = "decimal(10, 2)")]
         public double Price { get; set; }
-
-		
-
-
 	}
 }

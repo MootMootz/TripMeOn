@@ -1,0 +1,34 @@
+﻿@model TripMeOn.Models.Products.TourPackage
+
+<link rel="stylesheet" href="/css/PDetails.css">
+
+<div class="floating-box">
+    <div class="background-photo"></div>
+    <div class="overlay">
+        <h3>@Model.Name</h3>
+        <p>@Model.Description</p>
+        <p>Country: @Model.Destination.Country</p>
+        <p>Theme: @Model.Theme.Name</p>
+        <p>Region: @Model.Destination.Region</p>
+        <p>City: @Model.Destination.City</p>
+        <p>Price: @Model.Price</p>
+        <p>Description of the tour package goes here...</p>
+        <form action="/Cart/AddToCart" method="post">
+            <input type="hidden" name="tourPackageId" value="@Model.Id" />
+            <label for="quantity">Quantity:</label>
+            <input type="number" name="quantity" id="quantity" value="1" min="1" />
+            <button type="submit">Add to Cart</button>
+        </form>
+    </div>
+</div>    
+
+    
+
+<script>
+    function addToCart(packageId) {
+        // Logic to add the tour package to the cart
+        // You can use JavaScript or make an AJAX request to your backend
+        // to handle the add to cart functionality
+        alert('Tour package added to cart: ' + packageId);
+    }
+</script>

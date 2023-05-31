@@ -12,18 +12,7 @@ namespace TripMeOn.Controllers
     public class PartnerController : Controller
 
     {
-
-        //private readonly IUserService _userService;
-
-        //public PartnerController(IUserService userService);
-
-        //public IActionResult IndexPartner()
-
-        //{
-        //    _userService = userService;
-        //}
-
-
+              
         public IActionResult ServicesPartner()
         {
             return View();

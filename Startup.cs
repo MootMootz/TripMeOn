@@ -21,7 +21,15 @@ namespace TripMeOn
         {
             services.AddControllersWithViews();
 			services.AddScoped<IProductService, ProductService>();
-		}
+            services.AddScoped<IOrderService, OrderService>();
+
+            services.AddDistributedMemoryCache();
+            services.AddSession(options =>
+            {
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+            });
+        }
 
        
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -36,6 +44,8 @@ namespace TripMeOn
             }
             app.UseRouting();
             app.UseStaticFiles();
+            app.UseSession(); // Add this line to enable session state
+
             app.UseEndpoints(endpoints =>
             {
                

@@ -109,7 +109,7 @@ namespace TripMeOn.Controllers
         public ActionResult Deconnexion()
         {
             HttpContext.SignOutAsync();
-            return Redirect("../Home/HomePage");
+            return RedirectToAction ("IndexPartner");
         }
 
 

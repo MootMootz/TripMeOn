@@ -17,6 +17,10 @@
                 <p>Destination: @package.Destination.Country</p>
                 <p>Theme: @package.Theme.Name</p>
                 <p>Price: @package.Price</p>
+                <form action="@Url.Action("Details", "Product", new { id = package.Id })" method="get">
+                    <button type="submit">View Details</button>
+                </form>
+
             </div>
         }
     </div>

@@ -59,6 +59,31 @@ namespace TripMeOn.BL
 
             return tourPackages;
         }
+
+        public TourPackage GetTourPackageById(int id)
+        {
+            using (var dbContext = new BddContext())
+            {
+                return dbContext.TourPackages
+                    .Include(tp => tp.Destination)
+                    .Include(tp => tp.Theme)
+                    .Include(tp => tp.TimePeriod)
+                    .FirstOrDefault(tp => tp.Id == id);
+            }
+        }
+        public List<TourPackage> GetTourPackagesByMonth(int month)
+        {
+            using (var dbContext = new BddContext())
+            {
+                return dbContext.TourPackages
+                    .Include(tp => tp.Destination)
+                    .Include(tp => tp.Theme)
+                    .Include(tp => tp.TimePeriod)
+                    .Where(tp => tp.TimePeriod.StartMonth == month)
+                    .ToList();
+            }
+        }
+
         //Include = retrieve related entities along with the main entity in a single query to optimize performance.
         public List<TourPackage> SearchByDestinationAndTheme(int destinationId, int themeId)
         {

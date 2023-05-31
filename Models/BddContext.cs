@@ -121,7 +121,16 @@ namespace TripMeOn.Models
             this.TimePeriods.AddRange(timePeriods);
             this.SaveChanges();
         }
-
+        //protected override void OnModelCreating(ModelBuilder modelBuilder)
+        //{
+        //    modelBuilder.Entity<Item>()
+        //        .HasOne(i => i.TourPackage)
+        //        .WithMany()
+        //        .HasForeignKey(i => i.TourPackageId)
+        //        .OnDelete(DeleteBehavior.Cascade); // Add this line to enable cascade delete
+        //}
 
     }
 }
+
+

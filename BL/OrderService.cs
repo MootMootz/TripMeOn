@@ -28,32 +28,7 @@ namespace TripMeOn.BL
 
 			return _bddContext.Carts.Include(c => c.Items).ThenInclude(it => it.TourPackage).Where(c => c.Id == cartId).FirstOrDefault();
 		}
-
-        //public void AddItem(int cartId, Item item)
-        //{
-        //    Cart cart = _bddContext.Carts.Find(cartId);
-        //    item.TourPackage = _bddContext.TourPackages.Find(item.TourPackageId);
-        //    cart.Items.Add(item);
-
-        //    _bddContext.SaveChanges();
-        //}
-        //public void AddItem(int cartId, Item item)
-        //{
-        //    Cart cart = _bddContext.Carts.Include(c => c.Items).FirstOrDefault(c => c.Id == cartId);
-
-        //    if (cart != null)
-        //    {
-        //        if (cart.Items == null)
-        //        {
-        //            cart.Items = new List<Item>();
-        //        }
-
-        //        item.TourPackage = _bddContext.TourPackages.Find(item.TourPackageId);
-        //        cart.Items.Add(item);
-
-        //        _bddContext.SaveChanges();
-        //    }
-        //}
+        
         public void AddItem(int cartId, Item item)
         {
             Cart cart = _bddContext.Carts.Include(c => c.Items).FirstOrDefault(c => c.Id == cartId);
@@ -85,17 +60,17 @@ namespace TripMeOn.BL
             }
         }
 
+        public void UpdateItemQuantity(int itemId, int quantity)
+        {
+            var item = _bddContext.Items.Find(itemId);
+            if (item != null)
+            {
+                item.Quantity = quantity;
+                _bddContext.SaveChanges();
+            }
+        }
 
-        public void UpdateItemQuantity(int ItemId)
-		{
-			var item = _bddContext.Items.Find(ItemId);
-			if (item != null)
-			{
-				item.Quantity += 1;
-				_bddContext.SaveChanges();
-			}
-		}
-		public void RemoveItem(int cartId, int itemId)
+        public void RemoveItem(int cartId, int itemId)
 		{
 			Cart cart = GetCart(cartId);
 			Item item = cart.Items.Where(it => it.Id == itemId).FirstOrDefault();
@@ -105,9 +80,55 @@ namespace TripMeOn.BL
 			_bddContext.SaveChanges();
 		}
 
-		public void Dispose()
+        public void ClearCart(int cartId)
+        {
+            // Retrieve the cart from the database
+            Cart cart = _bddContext.Carts.FirstOrDefault(c => c.Id == cartId);
+
+            if (cart != null)
+            {
+                // Remove all items from the cart
+                cart.Items.Clear();
+
+                // Save the changes to the database
+                _bddContext.SaveChanges();
+            }
+        }
+
+
+        public void Dispose()
 		{
 			_bddContext.Dispose();
 		}
 	}
 }
+
+
+
+
+
+//public void AddItem(int cartId, Item item)
+//{
+//    Cart cart = _bddContext.Carts.Find(cartId);
+//    item.TourPackage = _bddContext.TourPackages.Find(item.TourPackageId);
+//    cart.Items.Add(item);
+
+//    _bddContext.SaveChanges();
+//}
+//public void AddItem(int cartId, Item item)
+//{
+//    Cart cart = _bddContext.Carts.Include(c => c.Items).FirstOrDefault(c => c.Id == cartId);
+
+//    if (cart != null)
+//    {
+//        if (cart.Items == null)
+//        {
+//            cart.Items = new List<Item>();
+//        }
+
+//        item.TourPackage = _bddContext.TourPackages.Find(item.TourPackageId);
+//        cart.Items.Add(item);
+
+//        _bddContext.SaveChanges();
+//    }
+//}

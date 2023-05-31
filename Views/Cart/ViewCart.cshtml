@@ -1,6 +1,5 @@
 ﻿@model TripMeOn.Models.Order.Cart
 
-
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -26,7 +25,20 @@
         @foreach (var item in Model.Items)
         {
             <tr>
-                <td>@Html.ActionLink("Remove", "Remove", "Cart", new { id = @item.Id })</td>
+                <td>
+                    @Html.ActionLink("Remove", "RemoveProduct", "Cart", new { id = @item.Id }, new { @class = "btn btn-danger" })
+
+                    <br>
+                    <form method="post" action="/Cart/UpdateQuantity">
+                        <input type="hidden" name="itemId" value="@item.Id" />
+                        <select name="quantity" onchange="this.form.submit()">
+                            @for (int i = 1; i <= 10; i++) // Change the upper limit of the loop to 10, maybe 20?
+                            { //ternary operator, A ? b: C = if A is true b, else C 
+                                <option value="@i" @(i == item.Quantity ? "selected" : "--")>@i</option>
+                            }
+                        </select>
+                    </form>
+                </td>
                 <td>@item.TourPackage.Id</td>
                 <td>@item.TourPackage.Name</td>
                 <td>@item.TourPackage.Price</td>
@@ -42,6 +54,12 @@
         </tr>
     </table>
     <br>
-    <a asp-controller="product" asp-action="index">Continue Shopping</a>
+    <form action="/" method="get"> <!-- redirect to homepage-->
+        <button type="submit">Continue Shopping</button>
+    </form>
+
+    <form action="/Cart/Checkout" method="post">
+        <button type="submit">Check Out</button>
+    </form>
 </body>
 </html>

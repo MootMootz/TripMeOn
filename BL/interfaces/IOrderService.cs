@@ -10,8 +10,9 @@ namespace TripMeOn.BL.interfaces
         Cart GetCart(int cartId);
 
         void AddItem(int CartId, Item item);
-
-        void UpdateItemQuantity(int ItemId);
+        void UpdateItemQuantity(int ItemId, int quantity);
         void RemoveItem(int cartId, int itemId);
-	}
+        void ClearCart(int cartId);
+
+    }
 }

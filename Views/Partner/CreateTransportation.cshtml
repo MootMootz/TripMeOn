@@ -17,12 +17,12 @@
             @Html.TextBoxFor(m => Model.Price)
             @Html.ValidationMessageFor(m => Model.Price)
             <br />
-            @Html.LabelFor(m => Model.PartnerId)
-            @Html.TextBoxFor(m => Model.PartnerId)
+            @Html.LabelFor(m => Model.Partner)
+            @Html.DropDownListFor(m => m.PartnerId, (List<SelectListItem>)ViewBag.PartnerList, "Select a partner")
             @Html.ValidationMessageFor(m => Model.PartnerId)
             <br />
-            @Html.LabelFor(m => Model.DestinationId)
-            @Html.TextBoxFor(m => Model.DestinationId)
+            @Html.LabelFor(m => Model.Destination)
+            @Html.DropDownListFor(m => m.DestinationId, (List<SelectListItem>)ViewBag.DestinationList, "Select a destination")
             @Html.ValidationMessageFor(m => Model.DestinationId)
             <br />
 

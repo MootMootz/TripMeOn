@@ -13,63 +13,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   
-   
+
+
 </head>
 <body>
-	<div class="login">
+    <div class="login">
 
 
-		@if (Model.AuthentifyP)
-		{
-			//return Views_Partner_IndexPartner;
+        @if (Model.AuthentifyP)
+        {
+            //return Views_Partner_IndexPartner;
 
-			<h3>
-				Vous êtes déjà authentifié avec le login :
-				@Model.Partner.Nickname
-			</h3>
-			@Html.ActionLink("Voulez-vous vous déconnecter ?", "Deconnexion")
-		}
-		else
-		{
-			<p>
-				Veuillez vous authentifier :
-			</p>
-			using (Html.BeginForm("IndexPartner", "Login", FormMethod.Post))
-			{
+            <h3>
+                Vous êtes déjà authentifié avec le login :
+                @Model.Partner.Nickname
+            </h3>
+            @Html.ActionLink("Voulez-vous vous déconnecter ?", "Deconnexion")
+        }
+        else
+        {
+            <p>
+                Veuillez vous authentifier :
+            </p>
+            using (Html.BeginForm("IndexPartner", "Login", FormMethod.Post))
+            {
 
-				<div>
-					@Html.LabelFor(m => m.Partner.Nickname)
-					@Html.TextBoxFor(m => m.Partner.Nickname)
-					@Html.ValidationMessageFor(m => m.Partner.Nickname)
-				</div>
-				<div>
-					@Html.LabelFor(m => m.Partner.Password)
-					@Html.PasswordFor(m => m.Partner.Password)
-					@Html.ValidationMessageFor(m => m.Partner.Password)
-				</div>
-				<input type="submit" value="Log in" />
-				<br />
-				@Html.ActionLink("Créer un compte", "CreerCompte")
-			}
-		}
+                <div>
+                    @Html.LabelFor(m => m.Partner.Nickname)
+                    @Html.TextBoxFor(m => m.Partner.Nickname)
+                    @Html.ValidationMessageFor(m => m.Partner.Nickname)
+                </div>
+                <div>
+                    @Html.LabelFor(m => m.Partner.Password)
+                    @Html.PasswordFor(m => m.Partner.Password)
+                    @Html.ValidationMessageFor(m => m.Partner.Password)
+                </div>
+                <input type="submit" value="Log in" />
+                <br />
+                @Html.ActionLink("Créer un compte", "CreerCompte")
+            }
+        }
 
-	</div>
+    </div>
 
-       <section>
+    <section>
         <nav>
             <ul>
-                
-               
             </ul>
         </nav>
         <article>
-  
-       
-            </article>
-            </section>
+        </article>
+    </section>
 </body>
 </html>
 
 
-   

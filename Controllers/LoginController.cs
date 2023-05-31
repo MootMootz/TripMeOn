@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using System.Security.Claims;
 using TripMeOn.BL;
@@ -52,13 +54,19 @@ namespace TripMeOn.Controllers
                     var userPrincipal = new ClaimsPrincipal(new[] { ClaimIdentity });
 
                     HttpContext.SignInAsync(userPrincipal);
+                    var cookieOptions = new CookieOptions // on crée un nouvel objet CookieOptions
+                    {
+                        HttpOnly = true, // cette cookie sera accessible que par le serveur, pas par le coté client
+                        Expires = DateTime.UtcNow.AddDays(30), // on dit que 30 jours apres le cookie va expirer. Il peut etre utilie pour se souvenir de moi etc...
+                    };
+                    Response.Cookies.Append("Nickname", client.Nickname, cookieOptions); // ajout le cookier au Response et envoit au navigateur
 
                     if (!string.IsNullOrWhiteSpace(returnUrl) && Url.IsLocalUrl(returnUrl))
                         return Redirect(returnUrl);
 
 
 
-                   return Redirect("/");
+                    return Redirect("/");
                 }
                 ModelState.AddModelError("Client.Nickname", "le nom pu le mot de passe sont incorrects");
             }
@@ -95,6 +103,13 @@ namespace TripMeOn.Controllers
                     var userPrincipal = new ClaimsPrincipal(new[] { ClaimIdentity });
 
                     HttpContext.SignInAsync(userPrincipal);
+                    var cookieOptions = new CookieOptions // on crée un nouvel objet CookieOptions
+                    {
+                        HttpOnly = true, // cette cookie sera accessible que par le serveur, pas par le coté client
+                        Expires = DateTime.UtcNow.AddDays(30), // on dit que 30 jours apres le cookie va expirer. Il peut etre utilie pour se souvenir de moi etc...
+                    };
+                    Response.Cookies.Append("Nickname", partner.Nickname, cookieOptions); // ajout le cookier au Response et envoit au navigateur
+
 
                     if (!string.IsNullOrWhiteSpace(returnUrl) && Url.IsLocalUrl(returnUrl))
                         return Redirect(returnUrl);
@@ -103,13 +118,15 @@ namespace TripMeOn.Controllers
                 }
                 ModelState.AddModelError("Partner.Nickname", "le nom ou le mot de passe sont incorrects");
             }
-            return View("../Home/HomePage",viewModel);
+            return View("../Home/HomePage", viewModel);
         }
 
         public ActionResult Deconnexion()
         {
             HttpContext.SignOutAsync();
-            return RedirectToAction ("IndexPartner");
+
+            return RedirectToAction("HomePage", "Home");
+
         }
 
 
@@ -148,6 +165,6 @@ namespace TripMeOn.Controllers
         //            return Redirect("/");
         //        }
     }
-            }
-        
-    
+}
+
+

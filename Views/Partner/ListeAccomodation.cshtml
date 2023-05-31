@@ -1,6 +1,7 @@
 ﻿@model TripMeOn.ViewModels.PropositionServiceModel
 @{
-    Layout = null;
+    Layout = "_LayoutPartner";
+    ViewBag.Title = "ListeAccomodation";
 }
 
 <!DOCTYPE html>
@@ -52,7 +53,8 @@
     </style>
     <br />
     <br />
-    <a href="https://localhost:5001/partner/createaccomodation">create accomodation</a>
+    <a href="https://localhost:5001/partner/servicespartner">go back</a>
+    @*    <a href="https://localhost:5001/partner/createaccomodation">create accomodation</a>*@
     @*<a href="@Url.Action("Index", "Home")"><strong> Page d'accueil</strong></a>*@
 </body>
 </html>

@@ -6,15 +6,13 @@ namespace TripMeOn.BL.interfaces
 {
     public interface IUserService:IDisposable
     {
-       // public void CreateUser();
-
-
-        //List<Employee> GetEmployees();
-        //int CreateEmployee(string name, string firstname, string email, string password, string adress, string phonenumber, string jobTitle);
-        //List<Partner> GetPartners();
-        //int CreatePartner(string name, string firstname, string email, string password, string adress, string phonenumber, string companyName);
-        //List<Client> GetClients();
-        //int CreateClient(string name, string firstname, string email, string password, string adress, string phonenumber, string clientType);
-    }
+		void DeleteCreateDatabase();
+		
+		//à faire juste après -qqs
+		//int AddPartner(string nom, string password);
+		Partner AuthentifyP(string nickname, string password);
+		Partner GetPartner(int id);
+		Partner GetPartner(string idStr);
+	}
 }
 

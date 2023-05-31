@@ -30,6 +30,7 @@ namespace TripMeOn.BL
         {
             return _bddContext.Transportations.ToList();
         }
+
         public int CreateAccomodation(string name, string type, int capacity, double price, int partnerId, int destinationId)
         {
             Accomodation accomodation = new Accomodation() { Name = name, Type = type, Capacity = capacity, Price = price, PartnerId = partnerId, DestinationId = destinationId };

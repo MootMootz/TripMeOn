@@ -12,14 +12,16 @@ namespace TripMeOn.BL.interfaces
 		List<Theme> GetThemes();
 		List<TourPackage> GetTourPackages();
 		List<TourPackage> SearchByDestinationAndTheme(int destinationId, int themeId);
-		//void AddPackage(TourPackage tourPackage);
-		//void RemovePackage(TourPackage tourPackage);
-		//List<TourPackage> SearchByPackageId(int id);
-		//List<TourPackage> SearchByDestination(string keyword);
-		//List<TourPackage> SearchByTheme(string keyword);
-		// void ModifyProduct();
+        TourPackage CreatePackage(string name, string country, string themeName, string region, string city, string description, int startMonth, int endMonth, double price);
+        TourPackage ModifyPackage(int packageId, string name, string country, string themeName, string region, string city, string description, int startMonth, int endMonth, double price);
+        void RemovePackage(int packageId);
+       
+        //List<TourPackage> SearchByPackageId(int id);
+        //List<TourPackage> SearchByDestination(string keyword);
+        //List<TourPackage> SearchByTheme(string keyword);
+     
 
 
-		//etc...
-	}
+      
+    }
 }

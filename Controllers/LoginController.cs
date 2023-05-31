@@ -10,15 +10,17 @@ namespace TripMeOn.Controllers
 {
     public class LoginController : Controller
     {
-        private UserService userService;
+        private readonly UserService userService;
         public LoginController()
         {
             userService = new UserService();
         }
 
 
+
+
         //LOG IN CLIENT
-        //il va falloir changer les returns
+        //      il va falloir changer les returns
         public IActionResult Index()
         {
             ClientViewModel viewModel = new ClientViewModel { Authentify = HttpContext.User.Identity.IsAuthenticated };
@@ -54,7 +56,9 @@ namespace TripMeOn.Controllers
                     if (!string.IsNullOrWhiteSpace(returnUrl) && Url.IsLocalUrl(returnUrl))
                         return Redirect(returnUrl);
 
-                    return Redirect("/");
+
+
+                   return Redirect("/");
                 }
                 ModelState.AddModelError("Client.Nickname", "le nom pu le mot de passe sont incorrects");
             }
@@ -102,40 +106,41 @@ namespace TripMeOn.Controllers
             return View(viewModel);
         }
 
-        //A FAIRE JUSTE APRES
+                    //A FAIRE JUSTE APRES
 
-        //public IActionResult CreerCompte()
-        //{
-        //    return View();
-        //}
+                    //public IActionResult CreerCompte()
+                    //{
+                    //    return View();
+                    //}
 
-        //[HttpPost]
-        //public IActionResult CreerCompte(Utilisateur utilisateur)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        int id = dal.AjouterUtilisateur(utilisateur.Prenom, utilisateur.Password);
+                    //[HttpPost]
+                    //public IActionResult CreerCompte(Utilisateur utilisateur)
+                    //{
+                    //    if (ModelState.IsValid)
+                    //    {
+                    //        int id = dal.AjouterUtilisateur(utilisateur.Prenom, utilisateur.Password);
 
-        //        var userClaims = new List<Claim>()
-        //        {
-        //            new Claim(ClaimTypes.Name, id.ToString()),
-        //        };
+                    //        var userClaims = new List<Claim>()
+                    //        {
+                    //            new Claim(ClaimTypes.Name, id.ToString()),
+                    //        };
 
-        //        var ClaimIdentity = new ClaimsIdentity(userClaims, "User Identity");
+                    //        var ClaimIdentity = new ClaimsIdentity(userClaims, "User Identity");
 
-        //        var userPrincipal = new ClaimsPrincipal(new[] { ClaimIdentity });
-        //        HttpContext.SignInAsync(userPrincipal);
+                    //        var userPrincipal = new ClaimsPrincipal(new[] { ClaimIdentity });
+                    //        HttpContext.SignInAsync(userPrincipal);
 
-        //        return Redirect("/");
-        //    }
-        //    return View(utilisateur);
-        //}
+                    //        return Redirect("/");
+                    //    }
+                    //    return View(utilisateur);
+                    //}
 
-        public ActionResult Deconnexion()
-        {
-            HttpContext.SignOutAsync();
-            return Redirect("/");
-        }
-    }
-}
-
+                    //        public ActionResult Deconnexion()
+                    //        {
+                    //            HttpContext.SignOutAsync();
+                    //            return Redirect("/");
+                    //        }
+                }
+            }
+        
+    

@@ -1,0 +1,54 @@
+﻿@model TripMeOn.ViewModels.PropositionServiceModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Liste Transportation</title>
+</head>
+<body>
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div>@TempData["SuccessMessage"].ToString()</div>
+    }
+    <table border="1">
+        <tr>
+            <th>Type</th>
+            <th>Price</th>
+            <th>PartnerId</th>
+            <th>DestinationId</th>
+            <th>Action</th>
+        </tr>
+        @foreach (var transportation in Model.Transportations)
+        {
+            <tr>
+                <td>@transportation.Type</td>
+                <td>@transportation.Price</td>
+                <td>@transportation.PartnerId</td>
+                <td>@transportation.DestinationId</td>
+                <td>@Html.ActionLink("Modify","ModifyTransportation", "Partner", new { id = transportation.Id })</td>
+                <td>
+                    <form action="@Url.Action("ToggleOnlineStatusTransportation", "Partner")" method="post">
+                        <input type="hidden" name="id" value="@transportation.Id" />
+                        <input type="submit" value="@(transportation.IsOnline ? "Put offline" : "Put online")" />
+                    </form>
+                </td>
+            </tr>
+        }
+    </table>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+    </style>
+    <br />
+    <br />
+    <a href="https://localhost:5001/partner/createtransportation">create transportation</a>
+    @*<a href="@Url.Action("Index", "Home")"><strong> Page d'accueil</strong></a>*@
+</body>
+</html>

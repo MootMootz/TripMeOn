@@ -1,19 +1,14 @@
 ﻿@model TripMeOn.Models.PartnerProducts.Transportation
 @{
-    Layout = null;
+    Layout = "_LayoutPartner";
+    ViewBag.Title = "CreateTransportation";
 }
-<!DOCTYPE html>
-<html>
 
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Create Transportation</title>
-</head>
-<body>
+
     @using (Html.BeginForm())
     {
         <fieldset>
-            <legend>Create new transportation: </legend>
+            <legend>Ajouter service de transport : </legend>
             @Html.LabelFor(m => Model.Type)
             @Html.TextBoxFor(m => Model.Type)
             @Html.ValidationMessageFor(m => Model.Type)
@@ -31,6 +26,35 @@
             @Html.ValidationMessageFor(m => Model.DestinationId)
             <br />
 
+            <tr>
+                <td>
+                    Avalaible date :
+                </td>
+                <td>
+                    <input type="date" id="startDate" name="startDate" min="2023-06-01" max="2023-12-31" required> to :
+                    <input type="date" id="endDate" name="endDate" min="2023-06-01" max="2023-12-31" required>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Photo :
+                </td>
+                <td>
+                    <input type="file" name="file[]" id="file1">
+                    <input type="file" name="file[]" id="file2">
+                    <input type="file" name="file[]" id="file3">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Description :
+                </td>
+                <td>
+                    <textarea id="description" name="description" rows="8" cols="50"
+                              placeholder="Please give more details" maxlength="1000"></textarea>
+                </td>
+            </tr>
+
             <input type="submit" value="Create" />
         </fieldset>
 
@@ -39,5 +63,16 @@
     <script type="text/javascript" src="~/Scripts/jquery-3.3.1.js"></script>
     <script type="text/javascript" src="~/Scripts/jquery.validate-vsdoc.js"></script>
     <script type="text/javascript" src="~/Scripts/jquery.validate.unobtrusive.js"></script>
-</body>
-</html>
+
+@section Menu{
+
+    <button type="button">Modifier</button>
+
+    <button type="button">Supprimer</button>
+
+    <p>Ajouter un service</p>
+    <button type="submit"><a href="/Partner/CreateAccomodation">Hébergement</a></button>
+    <button type="submit"><a href="/Partner/CreateRestaurant">Restauration</a></button>
+    <button type="submit"><a href="/Partner/CreateTransportation">Transport</a></button>
+}
+

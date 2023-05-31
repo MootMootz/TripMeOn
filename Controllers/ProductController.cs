@@ -99,6 +99,17 @@ namespace TripMeOn.Controllers
             return RedirectToAction("PackageList");
         }
 
+        public IActionResult Details(int id)
+        {
+            var tourPackage = _productService.GetTourPackages().FirstOrDefault(tp => tp.Id == id);
+
+            if (tourPackage == null)
+            {
+                return NotFound(); // Handle the case when the tour package is not found
+            }
+
+            return View(tourPackage);
+        }
     }
 
 }

@@ -17,7 +17,19 @@
 
     <button type="button">Supprimer</button>
 
-    <button type="button">@Html.ActionLink("Add service", "AddService")</button>
+    <p>Ajouter un service</p>
+    <button type="submit"><a href="/Partner/CreateAccomodation">Hébergement</a></button>
+    <button type="submit"><a href="/Partner/CreateRestaurant">Restauration</a></button>
+    <button type="submit"><a href="/Partner/CreateTransportation">Transport</a></button>
+
+@*    <select name="service" id="service" required>
+        <option selected>Ajouter un service</option>
+        <option><a href="/Partner/CreateAccomodation">"Hébergement"</a></option>
+        <option>Restaurant</option>
+        <option>Transportation</option>
+        <option>Autres</option>
+    </select>
+    <button type="submit">OK</button>*@
 
 }
 

@@ -124,7 +124,9 @@ namespace TripMeOn.Controllers
         public ActionResult Deconnexion()
         {
             HttpContext.SignOutAsync();
+
             return RedirectToAction("HomePage", "Home");
+
         }
 
 

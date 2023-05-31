@@ -15,6 +15,7 @@ namespace TripMeOn.Controllers
 
     {
 
+
         //private readonly IUserService _userService;
 
         //public PartnerController(IUserService userService);
@@ -31,6 +32,7 @@ namespace TripMeOn.Controllers
         {
             _bddContext = new BddContext();
         }
+
         public IActionResult ServicesPartner()
         {
             return View();

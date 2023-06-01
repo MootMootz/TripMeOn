@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using TripMeOn.BL;
 using TripMeOn.BL.interfaces;
@@ -50,6 +49,7 @@ namespace TripMeOn.Controllers
                 {
                     LastName = model.LastName,
                     FirstName = model.FirstName,
+                    Nickname = model.Nickname,
                     Email = model.Email,
                     Password = model.Password,
                     Address = model.Address,
@@ -104,7 +104,7 @@ namespace TripMeOn.Controllers
                 return View(restaurant);
             using (PropositionService propositionService = new PropositionService())
             {
-                int id = propositionService.CreateRestaurant(restaurant.Name, restaurant.Type, restaurant.Price, restaurant.PartnerId, restaurant.DestinationId);
+                int id = propositionService.CreateRestaurant(restaurant.Name, restaurant.Type, restaurant.Price, restaurant.PartnerId, restaurant.DestinationId, restaurant.StartDate, restaurant.EndDate);
                 TempData["SuccessMessage"] = "Restaurant created successfully!";
                 return RedirectToAction("ListeRestaurant");
             }
@@ -132,7 +132,7 @@ namespace TripMeOn.Controllers
                 return View(accomodation);
             using (PropositionService propositionService = new PropositionService())
             {
-                int id = propositionService.CreateAccomodation(accomodation.Name, accomodation.Type, accomodation.Capacity, accomodation.Price, accomodation.PartnerId, accomodation.DestinationId);
+                int id = propositionService.CreateAccomodation(accomodation.Name, accomodation.Type, accomodation.Capacity, accomodation.Price, accomodation.PartnerId, accomodation.DestinationId, accomodation.StartDate, accomodation.EndDate);
                 TempData["SuccessMessage"] = "Accomodation created successfully!";
                 return RedirectToAction("ListeAccomodation");
             }
@@ -160,7 +160,7 @@ namespace TripMeOn.Controllers
                 return View(transportation);
             using (PropositionService propositionService = new PropositionService())
             {
-                int id = propositionService.CreateTransportation(transportation.Type, transportation.Price, transportation.PartnerId, transportation.DestinationId);
+                int id = propositionService.CreateTransportation(transportation.Type, transportation.Price, transportation.PartnerId, transportation.DestinationId, transportation.StartDate, transportation.EndDate);
                 TempData["SuccessMessage"] = "Transportation created successfully!";
                 return RedirectToAction("ListeTransportation");
             }

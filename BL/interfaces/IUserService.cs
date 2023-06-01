@@ -13,6 +13,12 @@ namespace TripMeOn.BL.interfaces
 		Partner AuthentifyP(string nickname, string password);
 		Partner GetPartner(int id);
 		Partner GetPartner(string idStr);
+
+		//authentification client
+		Client AuthentifyC(string nickname, string password);	
+		Client GetClient(int id);	
+		Client GetClient(string idSr);
+
 	}
 }
 

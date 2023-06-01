@@ -5,12 +5,14 @@ using System;
 using System.Collections.Generic;
 using System.Security.Claims;
 using TripMeOn.BL;
+using TripMeOn.Models;
 using TripMeOn.Models.Users;
 using TripMeOn.ViewModels;
 
 namespace TripMeOn.Controllers
 {
     public class LoginController : Controller
+
     {
         private readonly UserService userService;
         public LoginController()
@@ -20,33 +22,40 @@ namespace TripMeOn.Controllers
 
 
 
+        public IActionResult PartnerForm()
+        {
+            var viewModel = new ClientViewModel();
+            return View(viewModel);
+        }
+
 
         //LOG IN CLIENT
-        //      il va falloir changer les returns
-        public IActionResult Index()
+        public IActionResult LoginClient()
         {
-            ClientViewModel viewModel = new ClientViewModel { Authentify = HttpContext.User.Identity.IsAuthenticated };
-            if (viewModel.Authentify)
+            return View();
+        }
+        public IActionResult IndexClient()
+        {
+            NavigationViewModel viewModel = new NavigationViewModel { AuthentifyC = HttpContext.User.Identity.IsAuthenticated };
+            if (viewModel.AuthentifyC)
             {
-                viewModel.client = userService.GetClient(HttpContext.User.Identity.Name);
+                viewModel.Client = userService.GetClient(HttpContext.User.Identity.Name);
                 return View(viewModel);
             }
             return View(viewModel);
         }
 
         [HttpPost]
-        public IActionResult Index(ClientViewModel viewModel, string returnUrl)
+        public IActionResult IndexClient(NavigationViewModel viewModel, string returnUrl)
         {
             if (ModelState.IsValid)
             {
-                Client client = userService.Authentify(viewModel.client.Nickname, viewModel.client.Password);
+                Client client = userService.AuthentifyC(viewModel.Client.Nickname, viewModel.Client.Password);
                 if (client != null)
                 {
                     var userClaims = new List<Claim>()
                     {
                         new Claim(ClaimTypes.Name, client.Id.ToString()),
-                       //new Claim(ClaimTypes.Role, utilisateur.Role),
-
                     };
 
                     var ClaimIdentity = new ClaimsIdentity(userClaims, "User Identity");
@@ -61,16 +70,15 @@ namespace TripMeOn.Controllers
                     };
                     Response.Cookies.Append("Nickname", client.Nickname, cookieOptions); // ajout le cookier au Response et envoit au navigateur
 
+
                     if (!string.IsNullOrWhiteSpace(returnUrl) && Url.IsLocalUrl(returnUrl))
                         return Redirect(returnUrl);
 
-
-
-                    return Redirect("/");
+                    return Redirect("../Partner/IndexPartner");
                 }
-                ModelState.AddModelError("Client.Nickname", "le nom pu le mot de passe sont incorrects");
+                ModelState.AddModelError("Client.Nickname", "le nom ou le mot de passe sont incorrects");
             }
-            return View(viewModel);
+            return View("../Home/HomePage", viewModel);
         }
 
         //LOG IN PARTENAIRE

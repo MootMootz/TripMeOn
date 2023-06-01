@@ -19,7 +19,7 @@ namespace TripMeOn.BL
         }
 
         // CLIENT _ AUTHENTIFICATION
-        public Client Authentify(string nickname, string password)
+        public Client AuthentifyC(string nickname, string password)
         {
             string motDePasse = EncodeMD5(password);
             Client client = this._bddContext.Clients.FirstOrDefault(u => u.Nickname == nickname && u.Password == motDePasse);

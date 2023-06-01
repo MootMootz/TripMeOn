@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using TripMeOn.BL;
 using TripMeOn.Helper;
 using TripMeOn.Models.Order;
 using TripMeOn.Models.PartnerProducts;
@@ -50,7 +51,7 @@ namespace TripMeOn.Models
 
             var partners = new List<Partner>
             {
-                 new Partner { Id = 1, LastName = "BeauGoud", FirstName = "Sedar", Email = "bogosse.gmail.com", Password = "0597970983", Address= "123 Avenue Fromenteau,45091, France",PhoneNumber="076543211",CompanyName="EasyGo"},
+                 new Partner { Id = 1, LastName = "BeauGoud", FirstName = "Sedar", Nickname = "BG", Email = "bogosse.gmail.com", Password = UserService.EncodeMD5("0000"), Address= "123 Avenue Fromenteau,45091, France",PhoneNumber="076543211",CompanyName="EasyGo"},
             };
 
             var destinations = new List<Destination>

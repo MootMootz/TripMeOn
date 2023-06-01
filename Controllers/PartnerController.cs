@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using TripMeOn.BL;
 using TripMeOn.BL.interfaces;
@@ -61,6 +60,7 @@ namespace TripMeOn.Controllers
                 {
                     LastName = model.LastName,
                     FirstName = model.FirstName,
+                    Nickname = model.Nickname,
                     Email = model.Email,
                     Password = model.Password,
                     Address = model.Address,

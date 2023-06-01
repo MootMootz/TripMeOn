@@ -5,30 +5,30 @@
 }
 
 
-    @using (Html.BeginForm())
-    {
-        <fieldset>
-            <legend>Ajouter service de restauration </legend>
-            @Html.LabelFor(m => Model.Name)
-            @Html.TextBoxFor(m => Model.Name)
-            @Html.ValidationMessageFor(m => Model.Name)
-            <br />
-            @Html.LabelFor(m => Model.Type)
-            @Html.TextBoxFor(m => Model.Type)
-            @Html.ValidationMessageFor(m => Model.Type)
-            <br />
-            @Html.LabelFor(m => Model.Price)
-            @Html.TextBoxFor(m => Model.Price)
-            @Html.ValidationMessageFor(m => Model.Price)
-            <br />
-            @Html.LabelFor(m => Model.Partner)
-            @Html.DropDownListFor(m => m.PartnerId, (List<SelectListItem>)ViewBag.PartnerList, "Select a partner")
-            @Html.ValidationMessageFor(m => Model.PartnerId)
-            <br />
-            @Html.LabelFor(m => Model.Destination)
-            @Html.DropDownListFor(m => m.DestinationId, (List<SelectListItem>)ViewBag.DestinationList, "Select a destination")
-            @Html.ValidationMessageFor(m => Model.DestinationId)
-            <br />
+@using (Html.BeginForm())
+{
+    <fieldset>
+        <legend>Ajouter service de restauration </legend>
+        @Html.LabelFor(m => Model.Name)
+        @Html.TextBoxFor(m => Model.Name)
+        @Html.ValidationMessageFor(m => Model.Name)
+        <br />
+        @Html.LabelFor(m => Model.Type)
+        @Html.TextBoxFor(m => Model.Type)
+        @Html.ValidationMessageFor(m => Model.Type)
+        <br />
+        @Html.LabelFor(m => Model.Price)
+        @Html.TextBoxFor(m => Model.Price)
+        @Html.ValidationMessageFor(m => Model.Price)
+        <br />
+        @Html.LabelFor(m => Model.Partner)
+        @Html.DropDownListFor(m => m.PartnerId, (List<SelectListItem>)ViewBag.PartnerList, "Select a partner")
+        @Html.ValidationMessageFor(m => Model.PartnerId)
+        <br />
+        @Html.LabelFor(m => Model.Destination)
+        @Html.DropDownListFor(m => m.DestinationId, (List<SelectListItem>)ViewBag.DestinationList, "Select a destination")
+        @Html.ValidationMessageFor(m => Model.DestinationId)
+        <br />
         @Html.LabelFor(m => Model.StartDate)
         @Html.TextBoxFor(m => Model.StartDate, "{0:dd/MM/yyyy}", new { type = "date", @class = "date" })
         @Html.ValidationMessageFor(m => Model.StartDate)
@@ -37,54 +37,45 @@
         @Html.LabelFor(m => Model.EndDate)
         @Html.TextBoxFor(m => Model.EndDate, "{0:dd/MM/yyyy}", new { type = "date", @class = "date" })
         @Html.ValidationMessageFor(m => Model.EndDate)
-            <tr>
-                <td>
-                    Avalaible date :
-                </td>
-                <td>
-                    <input type="date" id="startDate" name="startDate" min="2023-06-01" max="2023-12-31" required> to :
-                    <input type="date" id="endDate" name="endDate" min="2023-06-01" max="2023-12-31" required>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Photo :
-                </td>
-                <td>
-                    <input type="file" name="file[]" id="file1">
-                    <input type="file" name="file[]" id="file2">
-                    <input type="file" name="file[]" id="file3">
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Description :
-                </td>
-                <td>
-                    <textarea id="description" name="description" rows="8" cols="50"
-                              placeholder="Please give more details" maxlength="1000"></textarea>
-                </td>
-            </tr>
+        <tr>
+            <td>
+                Photo :
+            </td>
+            <td>
+                <input type="file" name="file[]" id="file1">
+                <input type="file" name="file[]" id="file2">
+                <input type="file" name="file[]" id="file3">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Description :
+            </td>
+            <td>
+                <textarea id="description" name="description" rows="8" cols="50"
+                          placeholder="Please give more details" maxlength="1000"></textarea>
+            </td>
+        </tr>
 
-            <input type="submit" value="Create" />
-        </fieldset>
+        <input type="submit" value="Create" />
+    </fieldset>
 
 
-    }
-    <script type="text/javascript" src="~/Scripts/jquery-3.3.1.js"></script>
-    <script type="text/javascript" src="~/Scripts/jquery.validate-vsdoc.js"></script>
-    <script type="text/javascript" src="~/Scripts/jquery.validate.unobtrusive.js"></script>
-    
-    
-    @section Menu{
+}
+<script type="text/javascript" src="~/Scripts/jquery-3.3.1.js"></script>
+<script type="text/javascript" src="~/Scripts/jquery.validate-vsdoc.js"></script>
+<script type="text/javascript" src="~/Scripts/jquery.validate.unobtrusive.js"></script>
 
-        <button type="button">Modifier</button>
 
-        <button type="button">Supprimer</button>
+@section Menu{
 
-        <p>Ajouter un service</p>
-        <button type="submit"><a href="/Partner/CreateAccomodation">Hébergement</a></button>
-        <button type="submit"><a href="/Partner/CreateRestaurant">Restauration</a></button>
-        <button type="submit"><a href="/Partner/CreateTransportation">Transport</a></button>
+    <button type="button">Modifier</button>
+
+    <button type="button">Supprimer</button>
+
+    <p>Ajouter un service</p>
+    <button type="submit"><a href="/Partner/CreateAccomodation">Hébergement</a></button>
+    <button type="submit"><a href="/Partner/CreateRestaurant">Restauration</a></button>
+    <button type="submit"><a href="/Partner/CreateTransportation">Transport</a></button>
     }
 

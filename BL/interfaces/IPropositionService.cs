@@ -7,9 +7,9 @@ namespace TripMeOn.BL.interfaces
     public interface IPropositionService : IDisposable
     {
 
-        int CreateAccomodation(string name, string type, int capacity, double price, int partnerId, int destinationId);
-        int CreateRestaurant(string name, string type, double price, int partnerId, int destinationId);
-        int CreateTransportation(string type, double price, int partnerId, int destinationId);
+        int CreateAccomodation(string name, string type, int capacity, double price, int partnerId, int destinationId, DateTime startdate, DateTime enddate);
+        int CreateRestaurant(string name, string type, double price, int partnerId, int destinationId, DateTime startdate, DateTime enddate);
+        int CreateTransportation(string type, double price, int partnerId, int destinationId, DateTime startdate, DateTime enddate);
         List<Accomodation> GetAllAccomodations();
         List<Restaurant> GetAllRestaurants();
         List<Transportation> GetAllTransportations();

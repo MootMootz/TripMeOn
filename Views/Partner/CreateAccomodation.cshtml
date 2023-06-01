@@ -4,46 +4,45 @@
     ViewBag.Title = "CreateAccomodation";
 }
 
-    @using (Html.BeginForm())
-    {
-        <fieldset>
+@using (Html.BeginForm())
+{
+    <fieldset>
 
 
         <legend>Ajouter un hébergement </legend>
-            @Html.LabelFor(m => Model.Name)
-            @Html.TextBoxFor(m => Model.Name)
-            @Html.ValidationMessageFor(m => Model.Name)
-            <br />
-            @Html.LabelFor(m => Model.Type)
-            @Html.TextBoxFor(m => Model.Type)
-            @Html.ValidationMessageFor(m => Model.Type)
-            <br />
-            @Html.LabelFor(m => Model.Capacity)
-            @Html.TextBoxFor(m => Model.Capacity)
-            @Html.ValidationMessageFor(m => Model.Capacity)
-            <br />
-            @Html.LabelFor(m => Model.Price)
-            @Html.TextBoxFor(m => Model.Price)
-            @Html.ValidationMessageFor(m => Model.Price)
-            <br />
-            @Html.LabelFor(m => Model.Partner)
-            @Html.DropDownListFor(m => m.PartnerId, (List<SelectListItem>)ViewBag.PartnerList, "Select a partner")
-            @Html.ValidationMessageFor(m => Model.PartnerId)
-            <br />
-            @Html.LabelFor(m => Model.Destination)
-            @Html.DropDownListFor(m => m.DestinationId, (List<SelectListItem>)ViewBag.DestinationList, "Select a destination")
-            @Html.ValidationMessageFor(m => Model.DestinationId)
-            <br />
+        @Html.LabelFor(m => Model.Name)
+        @Html.TextBoxFor(m => Model.Name)
+        @Html.ValidationMessageFor(m => Model.Name)
+        <br />
+        @Html.LabelFor(m => Model.Type)
+        @Html.TextBoxFor(m => Model.Type)
+        @Html.ValidationMessageFor(m => Model.Type)
+        <br />
+        @Html.LabelFor(m => Model.Capacity)
+        @Html.TextBoxFor(m => Model.Capacity)
+        @Html.ValidationMessageFor(m => Model.Capacity)
+        <br />
+        @Html.LabelFor(m => Model.Price)
+        @Html.TextBoxFor(m => Model.Price)
+        @Html.ValidationMessageFor(m => Model.Price)
+        <br />
+        @Html.LabelFor(m => Model.Partner)
+        @Html.DropDownListFor(m => m.PartnerId, (List<SelectListItem>)ViewBag.PartnerList, "Select a partner")
+        @Html.ValidationMessageFor(m => Model.PartnerId)
+        <br />
+        @Html.LabelFor(m => Model.Destination)
+        @Html.DropDownListFor(m => m.DestinationId, (List<SelectListItem>)ViewBag.DestinationList, "Select a destination")
+        @Html.ValidationMessageFor(m => Model.DestinationId)
+        <br />
+        @Html.LabelFor(m => Model.StartDate)
+        @Html.TextBoxFor(m => Model.StartDate, "{0:dd/MM/yyyy}", new { type = "date", @class = "date" })
+        @Html.ValidationMessageFor(m => Model.StartDate)
+        <br />
 
-        <tr>
-            <td>
-                Avalaible date :
-            </td>
-            <td>
-                <input type="date" id="startDate" name="startDate" min="2023-06-01" max="2023-12-31" required> to :
-                <input type="date" id="endDate" name="endDate" min="2023-06-01" max="2023-12-31" required>
-            </td>
-        </tr>
+        @Html.LabelFor(m => Model.EndDate)
+        @Html.TextBoxFor(m => Model.EndDate, "{0:dd/MM/yyyy}", new { type = "date", @class = "date" })
+        @Html.ValidationMessageFor(m => Model.EndDate)
+        <br />
         <tr>
             <td>
                 Photo :
@@ -64,14 +63,14 @@
             </td>
         </tr>
 
-            <input type="submit" value="Create" />
-        </fieldset>
-    
+        <input type="submit" value="Create" />
+    </fieldset>
 
-    }
-    <script type="text/javascript" src="~/Scripts/jquery-3.3.1.js"></script>
-    <script type="text/javascript" src="~/Scripts/jquery.validate-vsdoc.js"></script>
-    <script type="text/javascript" src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+
+}
+<script type="text/javascript" src="~/Scripts/jquery-3.3.1.js"></script>
+<script type="text/javascript" src="~/Scripts/jquery.validate-vsdoc.js"></script>
+<script type="text/javascript" src="~/Scripts/jquery.validate.unobtrusive.js"></script>
 
 @section Menu{
 

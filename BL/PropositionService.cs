@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using TripMeOn.BL.interfaces;
 using TripMeOn.Models;
@@ -31,23 +32,23 @@ namespace TripMeOn.BL
             return _bddContext.Transportations.ToList();
         }
 
-        public int CreateAccomodation(string name, string type, int capacity, double price, int partnerId, int destinationId)
+        public int CreateAccomodation(string name, string type, int capacity, double price, int partnerId, int destinationId, DateTime startDate, DateTime endDate)
         {
-            Accomodation accomodation = new Accomodation() { Name = name, Type = type, Capacity = capacity, Price = price, PartnerId = partnerId, DestinationId = destinationId };
+            Accomodation accomodation = new Accomodation() { Name = name, Type = type, Capacity = capacity, Price = price, PartnerId = partnerId, DestinationId = destinationId, StartDate = startDate, EndDate = endDate };
             _bddContext.Accomodations.Add(accomodation);
             _bddContext.SaveChanges();
             return accomodation.Id;
         }
-        public int CreateRestaurant(string name, string type, double price, int partnerId, int destinationId)
+        public int CreateRestaurant(string name, string type, double price, int partnerId, int destinationId, DateTime startDate, DateTime endDate)
         {
-            Restaurant restaurant = new Restaurant() { Name = name, Type = type, Price = price, PartnerId = partnerId, DestinationId = destinationId };
+            Restaurant restaurant = new Restaurant() { Name = name, Type = type, Price = price, PartnerId = partnerId, DestinationId = destinationId, StartDate = startDate, EndDate = endDate };
             _bddContext.Restaurants.Add(restaurant);
             _bddContext.SaveChanges();
             return restaurant.Id;
         }
-        public int CreateTransportation(string type, double price, int partnerId, int destinationId)
+        public int CreateTransportation(string type, double price, int partnerId, int destinationId, DateTime startDate, DateTime endDate)
         {
-            Transportation transportation = new Transportation() { Type = type, Price = price, PartnerId = partnerId, DestinationId = destinationId };
+            Transportation transportation = new Transportation() { Type = type, Price = price, PartnerId = partnerId, DestinationId = destinationId, StartDate = startDate, EndDate = endDate };
             _bddContext.Transportations.Add(transportation);
             _bddContext.SaveChanges();
             return transportation.Id;

@@ -28,7 +28,7 @@ namespace TripMeOn.Models
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseMySql("server=localhost;user id=root;password=twitwiboo;database=TripMeOn");
+            optionsBuilder.UseMySql("server=localhost;user id=root;password=1530;database=TripMeOn");
         }
 
 
@@ -50,7 +50,7 @@ namespace TripMeOn.Models
             };
 
 
-			var partners = new List<Partner>
+            var partners = new List<Partner>
             {
                  new Partner { Id = 1, LastName = "Ustundag", FirstName = "Sedar", Nickname = "BG", Email = "bogosse.gmail.com", Password = UserService.EncodeMD5("0000"), Address= "123 Avenue Fromenteau,45091, France",PhoneNumber="076543211",CompanyName="EasyGo"},
             };
@@ -112,7 +112,7 @@ namespace TripMeOn.Models
                 new TourPackage { Id = 3, Name = "Lavender Fields", DestinationId = 1, ThemeId = 2,Description="4 days tour",TimePeriodId=8, Price = 1180 },
                 new TourPackage { Id = 4, Name = "Colmer in Autumn", DestinationId = 1, ThemeId = 10,Description="4 days tour",TimePeriodId=11},
 
-             }
+             };
 
             this.Clients.AddRange(clients);
             this.Employees.AddRange(employees);

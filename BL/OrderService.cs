@@ -9,11 +9,11 @@ namespace TripMeOn.BL
 {
     public class OrderService : IOrderService
 	{
-        private BddContext _bddContext;
+        private Models.BddContext _bddContext;
 
         public OrderService()
         {
-            _bddContext = new BddContext();
+            _bddContext = new Models.BddContext();
 		}
 
 		public int CreateCart()

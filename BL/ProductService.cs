@@ -12,17 +12,17 @@ namespace TripMeOn.BL
 {
     public class ProductService : IProductService
     {
-        private BddContext _bddContext;
+        private Models.BddContext _bddContext;
 
         public ProductService()
         {
-            _bddContext = new BddContext();
+            _bddContext = new Models.BddContext();
         }
         public List<Destination> GetDestinations()
         {
             List<Destination> destinations = new List<Destination>();
             //Debugged : Group the destinations from the same country and display the first one only to aviod duplicate entries
-            using (var _bddContext = new BddContext())
+            using (var _bddContext = new Models.BddContext())
             {
                 destinations = _bddContext.Destinations.ToList();// original code to retrieve all destinations in-memory LINQ-to-Objects       
 
@@ -37,7 +37,7 @@ namespace TripMeOn.BL
         {
             List<Theme> themes = new List<Theme>();
 
-            using (var dbContext = new BddContext())
+            using (var dbContext = new Models.BddContext())
             {
                 themes = dbContext.Themes.ToList();
             }
@@ -48,7 +48,7 @@ namespace TripMeOn.BL
         {
             List<TourPackage> tourPackages = new List<TourPackage>();
 
-            using (var dbContext = new BddContext())
+            using (var dbContext = new Models.BddContext())
             {
                 tourPackages = dbContext.TourPackages
                     .Include(tp => tp.Destination)
@@ -62,7 +62,7 @@ namespace TripMeOn.BL
 
         public TourPackage GetTourPackageById(int id)
         {
-            using (var dbContext = new BddContext())
+            using (var dbContext = new Models.BddContext())
             {
                 return dbContext.TourPackages
                     .Include(tp => tp.Destination)
@@ -73,7 +73,7 @@ namespace TripMeOn.BL
         }
         public List<TourPackage> GetTourPackagesByMonth(int month)
         {
-            using (var dbContext = new BddContext())
+            using (var dbContext = new Models.BddContext())
             {
                 return dbContext.TourPackages
                     .Include(tp => tp.Destination)
@@ -87,7 +87,7 @@ namespace TripMeOn.BL
         //Include = retrieve related entities along with the main entity in a single query to optimize performance.
         public List<TourPackage> SearchByDestinationAndTheme(int destinationId, int themeId)
         {
-            using (var _bddContext = new BddContext())
+            using (var _bddContext = new Models.BddContext())
             {
                 var packages = _bddContext.TourPackages.Include(tp => tp.Destination)
                                                        .Include(tp => tp.Theme)                                                      
@@ -99,7 +99,7 @@ namespace TripMeOn.BL
         }
         public TourPackage CreatePackage(string name, string country, string themeName, string region, string city, string description, int startMonth, int endMonth, double price)
         {
-            using (var _bddContext = new BddContext())
+            using (var _bddContext = new Models.BddContext())
             {
                 // Check if a destination with the same country, region, and city exists in the database to avoid duplicate
                 Destination destination = _bddContext.Destinations.FirstOrDefault(d =>
@@ -163,7 +163,7 @@ namespace TripMeOn.BL
 
         public TourPackage ModifyPackage(int packageId, string name, string country, string themeName, string region, string city, string description, int startMonth, int endMonth, double price)
         {
-            using (var _bddContext = new BddContext())
+            using (var _bddContext = new Models.BddContext())
             {
                 // Retrieve the existing TourPackage from the database
                 TourPackage package = _bddContext.TourPackages
@@ -228,7 +228,7 @@ namespace TripMeOn.BL
         }
         public void RemovePackage(int packageId)
         {
-            using (var _bddContext = new BddContext())
+            using (var _bddContext = new Models.BddContext())
             {
                 var package = _bddContext.TourPackages.FirstOrDefault(p => p.Id == packageId);
                 if (package != null)

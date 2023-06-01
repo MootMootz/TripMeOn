@@ -26,11 +26,11 @@ namespace TripMeOn.Controllers
         //    _userService = userService;
         //}
 
-        private BddContext _bddContext;
+        private Models.BddContext _bddContext;
 
         public PartnerController()
         {
-            _bddContext = new BddContext();
+            _bddContext = new Models.BddContext();
         }
 
         public IActionResult ServicesPartner()
@@ -54,7 +54,7 @@ namespace TripMeOn.Controllers
         public IActionResult SubmitPartnerForm(NavigationPartnerForm model)
         {
 
-            using (var dbContext = new BddContext())
+            using (var dbContext = new Models.BddContext())
             {
 
                 var partner = new Partner
@@ -71,7 +71,7 @@ namespace TripMeOn.Controllers
                 dbContext.Partners.Add(partner);
                 dbContext.SaveChanges();
 
-                return RedirectToAction("SignUpConfirmation");
+                return base.RedirectToAction("SignUpConfirmation");
             }
         }
 

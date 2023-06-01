@@ -29,6 +29,14 @@
             @Html.DropDownListFor(m => m.DestinationId, (List<SelectListItem>)ViewBag.DestinationList, "Select a destination")
             @Html.ValidationMessageFor(m => Model.DestinationId)
             <br />
+        @Html.LabelFor(m => Model.StartDate)
+        @Html.TextBoxFor(m => Model.StartDate, "{0:dd/MM/yyyy}", new { type = "date", @class = "date" })
+        @Html.ValidationMessageFor(m => Model.StartDate)
+        <br />
+
+        @Html.LabelFor(m => Model.EndDate)
+        @Html.TextBoxFor(m => Model.EndDate, "{0:dd/MM/yyyy}", new { type = "date", @class = "date" })
+        @Html.ValidationMessageFor(m => Model.EndDate)
             <tr>
                 <td>
                     Avalaible date :

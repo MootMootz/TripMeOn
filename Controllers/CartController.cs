@@ -86,20 +86,24 @@ namespace TripMeOn.Controllers
             return RedirectToAction("ViewCart");
         }
 
-        public IActionResult Checkout()
+
+        [HttpPost]
+        public IActionResult CheckoutForm(int id)
         {
-            // Perform any necessary actions for the checkout process, such as payment processing, order creation, etc.
-            // You can access the items in the cart using the `_orderService` or any other relevant service/repository.
+            var cartId = SessionHelper.GetObjectFromJson<int>(HttpContext.Session, "cartId");
+            var cart = _orderService.GetCart(cartId);
 
-            // Clear the cart after successful checkout
-            int cartId = SessionHelper.GetObjectFromJson<int>(HttpContext.Session, "cartId");
-            _orderService.ClearCart(cartId);
-            SessionHelper.SetObjectAsJson(HttpContext.Session, "cartId", 0);
-
-            // Optionally, you can redirect to an order confirmation page or display a success message.
-            return View("CheckoutConfirmation");
+            if (cart == null)
+            {
+                return NotFound();
+            }       
+            
+            return View("CheckoutForm", cart);
         }
-
+        public IActionResult PurchaseSuccess()
+        {
+            return View();
+        }
 
     }
 }

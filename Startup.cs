@@ -38,7 +38,7 @@ namespace TripMeOn
             {
                 app.UseDeveloperExceptionPage();
             }
-            using (BddContext ctx = new BddContext())
+            using (Models.BddContext ctx = new Models.BddContext())
             {
                 ctx.InitializeDb();
             }

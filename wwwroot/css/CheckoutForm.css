@@ -102,3 +102,26 @@ span.price {
     }
 }
 
+.select-container {
+    width: 100%;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+    .select-container::after {
+        content: '\25BC';
+        position: absolute;
+        top: 50%;
+        right: 12px;
+        transform: translateY(-50%);
+        pointer-events: none;
+    }
+
+select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    appearance: none;
+    background-color: white;
+}

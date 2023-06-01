@@ -7,11 +7,11 @@ namespace TripMeOn.BL
 {
     public class PartnerProductService
     {
-        private BddContext _bddContext;
+        private Models.BddContext _bddContext;
 
         public PartnerProductService()
         {
-            _bddContext = new BddContext();
+            _bddContext = new Models.BddContext();
         }  
         // Create
 

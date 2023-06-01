@@ -54,6 +54,7 @@ namespace TripMeOn.BL
                     .Include(tp => tp.Destination)
                     .Include(tp => tp.Theme)
                     .Include(tp => tp.TimePeriod)
+                    .Include(tp => tp.Image)
                     .ToList();
             }
 
@@ -68,6 +69,7 @@ namespace TripMeOn.BL
                     .Include(tp => tp.Destination)
                     .Include(tp => tp.Theme)
                     .Include(tp => tp.TimePeriod)
+                    .Include(tp => tp.Image)
                     .FirstOrDefault(tp => tp.Id == id);
             }
         }
@@ -75,10 +77,7 @@ namespace TripMeOn.BL
         {
             using (var dbContext = new Models.BddContext())
             {
-                return dbContext.TourPackages
-                    .Include(tp => tp.Destination)
-                    .Include(tp => tp.Theme)
-                    .Include(tp => tp.TimePeriod)
+                return dbContext.TourPackages.Include(tp => tp.Destination).Include(tp => tp.Theme).Include(tp => tp.TimePeriod).Include(tp => tp.Image)
                     .Where(tp => tp.TimePeriod.StartMonth == month)
                     .ToList();
             }
@@ -90,7 +89,8 @@ namespace TripMeOn.BL
             using (var _bddContext = new Models.BddContext())
             {
                 var packages = _bddContext.TourPackages.Include(tp => tp.Destination)
-                                                       .Include(tp => tp.Theme)                                                      
+                                                       .Include(tp => tp.Theme) 
+                                                       .Include(tp => tp.Image)
                                                        .Where(tp => tp.DestinationId == destinationId && tp.ThemeId == themeId)
                                                        .ToList();
 

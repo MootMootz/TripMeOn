@@ -19,6 +19,8 @@ namespace TripMeOn.Models.Products
         public string Description { get; set; }
         public int TimePeriodId { get; set; }
         public virtual TimePeriod TimePeriod { get; set; }
+        public int? ImageId { get; set; }
+        public virtual Image Image { get; set; }
 
         [Column(TypeName = "decimal(10, 2)")]
         public double Price { get; set; }

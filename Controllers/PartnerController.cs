@@ -60,6 +60,7 @@ namespace TripMeOn.Controllers
                 {
                     LastName = model.LastName,
                     FirstName = model.FirstName,
+                    Nickname = model.Nickname,
                     Email = model.Email,
                     Password = model.Password,
                     Address = model.Address,

@@ -1,5 +1,4 @@
-﻿using AspNetCore;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Linq;
 using TripMeOn.BL;
@@ -42,7 +41,8 @@ namespace TripMeOn.Controllers
                 {
                     LastName = model.LastName,
                     FirstName = model.FirstName,
-                    Email = model.Email,
+					Nickname = model.Nickname,
+					Email = model.Email,
                     Password = model.Password,
                     Address = model.Address,
                     PhoneNumber = model.PhoneNumber,
@@ -51,8 +51,8 @@ namespace TripMeOn.Controllers
 
                 dbContext.Clients.Add(client);
                 dbContext.SaveChanges();
-
-                return base.RedirectToAction("SignUpConfirmation");
+				
+				return View("/Home/HomePage");
             }
         }
 

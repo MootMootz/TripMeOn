@@ -51,7 +51,7 @@ namespace TripMeOn.Models
 
             var partners = new List<Partner>
             {
-                 new Partner { Id = 1, LastName = "BeauGoud", FirstName = "Sedar", Nickname = "NN", Email = "bogosse.gmail.com", Password = UserService.EncodeMD5("0000"), Address= "123 Avenue Fromenteau,45091, France",PhoneNumber="076543211",CompanyName="EasyGo"},
+                 new Partner { Id = 1, LastName = "BeauGoud", FirstName = "Sedar", Nickname = "BG", Email = "bogosse.gmail.com", Password = UserService.EncodeMD5("0000"), Address= "123 Avenue Fromenteau,45091, France",PhoneNumber="076543211",CompanyName="EasyGo"},
             };
 
             var destinations = new List<Destination>

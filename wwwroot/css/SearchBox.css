@@ -1,0 +1,31 @@
+﻿
+.search-results-heading {
+    text-align: center;
+    font-family: 'Your Beautiful Font', sans-serif;
+    margin-bottom: 20px;
+}
+
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.flex-box {
+    width: 50%;
+    height: 50vh; /* Adjust the height as needed */
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    padding: 20px;
+}
+
+    .flex-box .text-box {
+        flex: 1;
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+    }
+
+

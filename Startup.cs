@@ -22,6 +22,7 @@ namespace TripMeOn
             services.AddControllersWithViews();
 			services.AddScoped<IProductService, ProductService>();
             services.AddScoped<IOrderService, OrderService>();
+            services.AddScoped<IPropositionService, PropositionService>();
 
             services.AddDistributedMemoryCache();
             services.AddSession(options =>

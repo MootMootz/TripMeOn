@@ -28,10 +28,12 @@ namespace TripMeOn.Models
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+
             optionsBuilder.UseMySql("server=localhost;user id=root;password=1530;database=TripMeOn");
+
         }
-
-
+       
+                              
         public void InitializeDb()
         {
             this.Database.EnsureDeleted();
@@ -39,20 +41,19 @@ namespace TripMeOn.Models
 
             var clients = new List<Client>
             {
-                new Client { Id = 1, LastName = "Phone Mo", FirstName = "Nway Nway", Email = "nnpm.gmail.com", Password = "123456", Address= "21 bis Rue des Rossays,91600, France",PhoneNumber="0778146263",ClientType="Instagrammer"},
+                new Client { Id = 1, LastName = "Phone Mo", FirstName = "Nway Nway", Nickname = "NN", Email = "nnpm.gmail.com", Password = UserService.EncodeMD5("1111"), Address= "21 bis Rue des Rossays,91600, France",PhoneNumber="0778146263",ClientType="Instagrammer"},
                 new Client { Id = 2, LastName = "Kanobi", FirstName = "Obiwan", Email = "oldman.gmail.com", Password = "3546246", Address= "66 Clover Road, 43k67H,UK ",PhoneNumber="057789021",ClientType="TikToker"},
 
             };
 
             var employees = new List<Employee>
             {
-                 new Employee { Id = 1, LastName = "Lieby", FirstName = "Karen", Nickname = "QQs", Email = "mightK.gmail.com", Password = "4677646", Address= "3 Rue de Victor Hugo, 21670, France",PhoneNumber="0676455781",JobTitle="Admin"},
+                 new Employee { Id = 1, LastName = "Lieby", FirstName = "Karen", Email = "mightK.gmail.com", Password = "4677646", Address= "3 Rue de Victor Hugo, 21670, France",PhoneNumber="0676455781",JobTitle="Admin"},
             };
-
 
             var partners = new List<Partner>
             {
-                 new Partner { Id = 1, LastName = "Ustundag", FirstName = "Sedar", Nickname = "BG", Email = "bogosse.gmail.com", Password = UserService.EncodeMD5("0000"), Address= "123 Avenue Fromenteau,45091, France",PhoneNumber="076543211",CompanyName="EasyGo"},
+                 new Partner { Id = 1, LastName = "BeauGoud", FirstName = "Sedar", Nickname = "BG", Email = "bogosse.gmail.com", Password = UserService.EncodeMD5("0000"), Address= "123 Avenue Fromenteau,45091, France",PhoneNumber="076543211",CompanyName="EasyGo"},
             };
 
             var destinations = new List<Destination>
@@ -111,8 +112,7 @@ namespace TripMeOn.Models
                 new TourPackage { Id = 2, Name = "Confetti Field", DestinationId = 3, ThemeId = 2,Description="4 days tour",TimePeriodId=7, Price = 1180 },
                 new TourPackage { Id = 3, Name = "Lavender Fields", DestinationId = 1, ThemeId = 2,Description="4 days tour",TimePeriodId=8, Price = 1180 },
                 new TourPackage { Id = 4, Name = "Colmer in Autumn", DestinationId = 1, ThemeId = 10,Description="4 days tour",TimePeriodId=11},
-
-             };
+};
 
             this.Clients.AddRange(clients);
             this.Employees.AddRange(employees);

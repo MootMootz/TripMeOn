@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using TripMeOn.BL;
 using TripMeOn.BL.interfaces;
@@ -26,11 +25,11 @@ namespace TripMeOn.Controllers
         //    _userService = userService;
         //}
 
-        private BddContext _bddContext;
+        private Models.BddContext _bddContext;
 
         public PartnerController()
         {
-            _bddContext = new BddContext();
+            _bddContext = new Models.BddContext();
         }
 
         public IActionResult ServicesPartner()
@@ -54,13 +53,14 @@ namespace TripMeOn.Controllers
         public IActionResult SubmitPartnerForm(NavigationPartnerForm model)
         {
 
-            using (var dbContext = new BddContext())
+            using (var dbContext = new Models.BddContext())
             {
 
                 var partner = new Partner
                 {
                     LastName = model.LastName,
                     FirstName = model.FirstName,
+                    Nickname = model.Nickname,
                     Email = model.Email,
                     Password = model.Password,
                     Address = model.Address,
@@ -71,7 +71,7 @@ namespace TripMeOn.Controllers
                 dbContext.Partners.Add(partner);
                 dbContext.SaveChanges();
 
-                return RedirectToAction("SignUpConfirmation");
+                return base.RedirectToAction("SignUpConfirmation");
             }
         }
 

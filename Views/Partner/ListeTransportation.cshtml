@@ -32,6 +32,7 @@
                 <td>@transportation.PartnerId</td>
                 <td>@transportation.DestinationId</td>
                 <td>@Html.ActionLink("Edit","ModifyTransportation", "Partner", new { id = transportation.Id })</td>
+                <td>@Html.ActionLink("Delete", "DeleteTransportation", "Partner", new { id = transportation.Id })</td>
                 <td>
                     <form action="@Url.Action("ToggleOnlineStatusTransportation", "Partner")" method="post">
                         <input type="hidden" name="id" value="@transportation.Id" />

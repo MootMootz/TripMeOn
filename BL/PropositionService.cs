@@ -81,6 +81,16 @@ namespace TripMeOn.BL
             _bddContext.Restaurants.Remove(restaurant);
             _bddContext.SaveChanges();
         }
+        public void DeleteAccomodation(Accomodation accomodation) // applique les modifications sur restaurant et enregistre ces modifications dans la base de données
+        {
+            _bddContext.Accomodations.Remove(accomodation);
+            _bddContext.SaveChanges();
+        }
+        public void DeleteTransportation(Transportation transportation) // applique les modifications sur restaurant et enregistre ces modifications dans la base de données
+        {
+            _bddContext.Transportations.Remove(transportation);
+            _bddContext.SaveChanges();
+        }
 
 
         //public void ModifyAccomodation(int id, string name, string type, int capacity, double price, int partnerId, int destinationId)

@@ -427,40 +427,34 @@ namespace TripMeOn.Controllers
             }
         }
 
-        //public IActionResult DeleteRestaurant(int id) // afficher la vue de modification du restaurant
-        //{
-        //    if (id != 0)
-        //    {
-        //        using (IPropositionService propositionService = new PropositionService())
-        //        {
-        //            Restaurant restaurant = propositionService.GetAllRestaurants().Where(r => r.Id == id).FirstOrDefault();
-        //            if (restaurant == null)
-        //            {
-        //                return View("Error");
-        //            }
-        //            return View(restaurant);
-        //        }
-        //    }
-        //    return View("Error");
-        //}
+        public IActionResult DeleteRestaurant(int id)
+        {
+            using (IPropositionService propositionService = new PropositionService())
+            {
+                Restaurant restaurant = propositionService.GetAllRestaurants().Where(r => r.Id == id).FirstOrDefault();
+                propositionService.DeleteRestaurant(restaurant);
+                return RedirectToAction("ListeRestaurant");
+            }
+        }
 
-        //[HttpPost]
-        //public IActionResult DeleteRestaurant(Restaurant restaurant) // traiter la requête de modification
-        //{
-        //    if (!ModelState.IsValid)
-        //        return View(restaurant);
-        //    if (restaurant.Id != 0)
-        //    {
-        //        using (PropositionService propositionService = new PropositionService())
-        //        {
-        //            propositionService.DeleteRestaurant(restaurant);
-        //            return RedirectToAction("ListeRestaurant", new { @id = restaurant.Id });
-        //        }
-        //    }
-        //    else
-        //    {
-        //        return View("Error");
-        //    }
-        //}
+        public IActionResult DeleteAccomodation(int id)
+        {
+            using (IPropositionService propositionService = new PropositionService())
+            {
+                Accomodation accomodation = propositionService.GetAllAccomodations().Where(r => r.Id == id).FirstOrDefault();
+                propositionService.DeleteAccomodation(accomodation);
+                return RedirectToAction("ListeAccomodation");
+            }
+        }
+
+        public IActionResult DeleteTransportation(int id)
+        {
+            using (IPropositionService propositionService = new PropositionService())
+            {
+                Transportation transportation = propositionService.GetAllTransportations().Where(r => r.Id == id).FirstOrDefault();
+                propositionService.DeleteTransportation(transportation);
+                return RedirectToAction("ListeTransportation");
+            }
+        }
     }
 }

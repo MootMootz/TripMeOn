@@ -47,8 +47,12 @@ namespace TripMeOn.Controllers
                 dbContext.Clients.Add(client);
                 dbContext.SaveChanges();
 				
-				return View("/Home/HomePage");
+				return View("SignUpConfirmation");
             }
+        }
+        public IActionResult SignUpConfirmation()
+        {
+            return View();
         }
 
     }

@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 using TripMeOn.Models.Products;
 using TripMeOn.Models.Users;
 
@@ -11,6 +12,9 @@ namespace TripMeOn.Models.PartnerProducts
         public string Type { get; set; }
 
         public string Name { get; set; }
+
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
 
         public double Price { get; set; }
 

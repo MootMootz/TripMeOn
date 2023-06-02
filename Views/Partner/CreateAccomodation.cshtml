@@ -36,7 +36,7 @@
 
             <tr>
                 <td>@Html.LabelFor(m => Model.Partner)</td>
-                <td>@Html.DropDownListFor(m => m.PartnerId, (List<SelectListItem>)ViewBag.PartnerList, "Select a partner", new { disabled = "disabled" })</td>
+                <td class="essai">@Html.DropDownListFor(m => m.PartnerId, (List<SelectListItem>)ViewBag.PartnerList, "Select a partner")</td>
                 <td>@Html.ValidationMessageFor(m => Model.PartnerId)</td>
             </tr>
 
@@ -91,12 +91,17 @@
 
 @section Menu{
 
-    <button type="button">Modifier</button>
 
-    <button type="button">Supprimer</button>
 
-    <p>Ajouter un service</p>
+    <p>Add a service</p>
     <button type="submit">@Html.ActionLink("Create accomodation", "CreateAccomodation","Partner")</button>
     <button type="submit">@Html.ActionLink("Create restaurant", "CreateRestaurant","Partner")</button>
     <button type="submit">@Html.ActionLink("Create transportation", "CreateTransportation","Partner")</button>
 }
+
+<style>
+    .essai {
+        pointer-events: none;
+        background-color: gray;
+    }
+</style>

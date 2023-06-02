@@ -8,7 +8,7 @@
 
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Modify Accomodation</title>
+    <title>Edit Transportation</title>
 </head>
 <body>
     @if (TempData["SuccessMessage"] != null)
@@ -18,33 +18,43 @@
     @using (Html.BeginForm())
     {
         <fieldset>
-            <legend>Modify transportation: </legend>
-            @Html.LabelFor(m => Model.Type)
-            @Html.TextBoxFor(m => Model.Type)
-            @Html.ValidationMessageFor(m => Model.Type)
-            <br />
-            @Html.LabelFor(m => Model.Price)
-            @Html.TextBoxFor(m => Model.Price)
-            @Html.ValidationMessageFor(m => Model.Price)
-            <br />
-            @Html.LabelFor(m => Model.Partner)
-            @Html.DropDownListFor(m => m.PartnerId, (List<SelectListItem>)ViewBag.PartnerList, "Select a partner")
-            @Html.ValidationMessageFor(m => Model.PartnerId)
-            <br />
-            @Html.LabelFor(m => Model.Destination)
-            @Html.DropDownListFor(m => m.DestinationId, (List<SelectListItem>)ViewBag.DestinationList, "Select a destination")
-            @Html.ValidationMessageFor(m => Model.DestinationId)
-            <br />
-            @Html.LabelFor(m => Model.StartDate)
-            @Html.TextBoxFor(m => Model.StartDate, "{0:dd/MM/yyyy}", new { type = "date", @class = "form-control" })
-            @Html.ValidationMessageFor(m => Model.StartDate)
-            <br />
+            <legend>Edit transportation: </legend>
+            <table>
+                <tr>
+                    <td>@Html.LabelFor(m => Model.Type)</td>
+                    <td>@Html.TextBoxFor(m => Model.Type)</td>
+                    <td>@Html.ValidationMessageFor(m => Model.Type)</td>
+                </tr>
 
-            @Html.LabelFor(m => Model.EndDate)
-            @Html.TextBoxFor(m => Model.EndDate, "{0:dd/MM/yyyy}", new { type = "date", @class = "form-control" })
-            @Html.ValidationMessageFor(m => Model.EndDate)
-            <br />
-            <input type="submit" value="Modifier" />
+                <tr>
+                    <td>@Html.LabelFor(m => Model.Price)</td>
+                    <td>@Html.TextBoxFor(m => Model.Price)</td>
+                    <td>@Html.ValidationMessageFor(m => Model.Price)</td>
+                </tr>
+
+                <tr>
+                    <td>@Html.LabelFor(m => Model.Partner)</td>
+                    <td class="essai">@Html.DropDownListFor(m => m.PartnerId, (List<SelectListItem>)ViewBag.PartnerList, "Select a partner")</td>
+                    <td>@Html.ValidationMessageFor(m => Model.PartnerId)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => Model.Destination)</td>
+                    <td>@Html.DropDownListFor(m => m.DestinationId, (List<SelectListItem>)ViewBag.DestinationList, "Select a destination")</td>
+                    <td>@Html.ValidationMessageFor(m => Model.DestinationId)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => Model.StartDate)</td>
+                    <td>@Html.TextBoxFor(m => Model.StartDate, "{0:dd/MM/yyyy}", new { type = "date", @class = "date" })</td>
+                    <td>@Html.ValidationMessageFor(m => Model.StartDate)</td>
+                </tr>
+
+                <tr>
+                    <td>@Html.LabelFor(m => Model.EndDate)</td>
+                    <td>@Html.TextBoxFor(m => Model.EndDate, "{0:dd/MM/yyyy}", new { type = "date", @class = "date" })</td>
+                    <td>@Html.ValidationMessageFor(m => Model.EndDate)</td>
+                </tr>
+            </table>
+            <input type="submit" value="Edit" />
         </fieldset>
     }
     <script type="text/javascript" src="~/Scripts/jquery-3.3.1.js"></script>
@@ -52,3 +62,10 @@
     <script type="text/javascript" src="~/Scripts/jquery.validate.unobtrusive.js"></script>
 </body>
 </html>
+
+<style>
+    .essai {
+        pointer-events: none;
+        background-color: gray;
+    }
+</style>

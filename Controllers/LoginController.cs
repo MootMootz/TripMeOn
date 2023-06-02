@@ -129,7 +129,7 @@ namespace TripMeOn.Controllers
             return View("../Home/HomePage", viewModel);
         }
 
-        public ActionResult Deconnexion()
+        public ActionResult Deconnection()
         {
             HttpContext.SignOutAsync();
 

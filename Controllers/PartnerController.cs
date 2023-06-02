@@ -63,7 +63,7 @@ namespace TripMeOn.Controllers
                     FirstName = model.FirstName,
                     Nickname = model.Nickname,
                     Email = model.Email,
-                    Password = model.Password,
+                    Password = UserService.EncodeMD5(model.Password),
                     Address = model.Address,
                     PhoneNumber = model.PhoneNumber,
                     CompanyName = model.CompanyName
@@ -125,14 +125,14 @@ namespace TripMeOn.Controllers
         }
         public IActionResult CreateAccomodation()
         {
-            string partnerId = User.FindFirstValue(ClaimTypes.Name);
+            string partnerId = User.FindFirstValue(ClaimTypes.Name); // permet d'obtenir la valeur de claim pour l'utilisateur authentifié
             var partners = _bddContext.Partners.ToList();
             var destinations = _bddContext.Destinations.ToList();
             ViewBag.PartnerList = partners.Select(d => new SelectListItem
             {
                 Value = d.Id.ToString(),
                 Text = $"{d.FirstName} {d.LastName}, {d.CompanyName}",
-                Selected = d.Id.ToString() == partnerId
+                Selected = d.Id.ToString() == partnerId // permet de preselectionner partenaire si l'ID du partenaire correspond à partnerId
             }).ToList();
             ViewBag.DestinationList = destinations.Select(d => new SelectListItem
             {
@@ -201,14 +201,14 @@ namespace TripMeOn.Controllers
                     {
                         Value = d.Id.ToString(),
                         Text = $"{d.FirstName} {d.LastName}, {d.CompanyName}",
-                        Selected = d.Id == accomodation.PartnerId  // Ajoutez cette ligne
+                        Selected = d.Id == accomodation.PartnerId
                     }).ToList();
 
                     ViewBag.DestinationList = destinations.Select(d => new SelectListItem
                     {
                         Value = d.Id.ToString(),
                         Text = $"{d.Country}, {d.Region}, {d.City}",
-                        Selected = d.Id == accomodation.DestinationId  // Ajoutez cette ligne
+                        Selected = d.Id == accomodation.DestinationId
                     }).ToList();
                     return View(accomodation);
                 }
@@ -254,14 +254,14 @@ namespace TripMeOn.Controllers
                     {
                         Value = d.Id.ToString(),
                         Text = $"{d.FirstName} {d.LastName}, {d.CompanyName}",
-                        Selected = d.Id == restaurant.PartnerId  // Ajoutez cette ligne
+                        Selected = d.Id == restaurant.PartnerId
                     }).ToList();
 
                     ViewBag.DestinationList = destinations.Select(d => new SelectListItem
                     {
                         Value = d.Id.ToString(),
                         Text = $"{d.Country}, {d.Region}, {d.City}",
-                        Selected = d.Id == restaurant.DestinationId  // Ajoutez cette ligne
+                        Selected = d.Id == restaurant.DestinationId
                     }).ToList();
 
                     return View(restaurant);
@@ -308,14 +308,14 @@ namespace TripMeOn.Controllers
                     {
                         Value = d.Id.ToString(),
                         Text = $"{d.FirstName} {d.LastName}, {d.CompanyName}",
-                        Selected = d.Id == transportation.PartnerId  // Ajoutez cette ligne
+                        Selected = d.Id == transportation.PartnerId
                     }).ToList();
 
                     ViewBag.DestinationList = destinations.Select(d => new SelectListItem
                     {
                         Value = d.Id.ToString(),
                         Text = $"{d.Country}, {d.Region}, {d.City}",
-                        Selected = d.Id == transportation.DestinationId  // Ajoutez cette ligne
+                        Selected = d.Id == transportation.DestinationId
                     }).ToList();
                     return View(transportation);
                 }
@@ -443,6 +443,7 @@ namespace TripMeOn.Controllers
         //    }
         //    return View("Error");
         //}
+
         //[HttpPost]
         //public IActionResult DeleteRestaurant(Restaurant restaurant) // traiter la requête de modification
         //{

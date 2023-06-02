@@ -105,10 +105,11 @@ namespace TripMeOn.Controllers
 
             if (tourPackage == null)
             {
-                return NotFound(); // Handle the case when the tour package is not found
+                return NotFound(); 
             }
 
-            return View(tourPackage);
+            string viewName = $"/Views/Package/Details_{id}.cshtml";
+            return View(viewName, tourPackage);
         }
     }
 

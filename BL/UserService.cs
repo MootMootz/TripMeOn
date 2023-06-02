@@ -10,7 +10,7 @@ using System.Security.Cryptography;
 
 namespace TripMeOn.BL
 {
-    public class UserService//:IUserService
+    public class UserService:IUserService
     {
         private BddContext _bddContext;
         public UserService()

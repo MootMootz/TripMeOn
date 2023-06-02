@@ -12,7 +12,7 @@
 
 @if (Model != null && Model.Count > 0)
 {
-    <div class="flex-container mx-3">
+    <div class="flex-container" style="margin: 0 15px;">
         @foreach (var package in Model)
         {
             <div class="flex-box" style="background-image: url('@package.Image?.Url')">

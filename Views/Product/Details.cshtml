@@ -8,13 +8,11 @@
 
     <link rel="stylesheet" href="/css/PDetails.css">
 }
-
-
-
+<div class="flex-container">
 <div class="floating-box">
     <div class="background-photo"></div>
     <div class="overlay">
-        <h3>@Model.Name</h3>
+        <h2>@Model.Name</h2>
         <p>@Model.Description</p>
         <p>Country: @Model.Destination.Country</p>
         <p>Theme: @Model.Theme.Name</p>
@@ -29,10 +27,11 @@
             <button type="submit">Add to Cart</button>
         </form>
     </div>
+    </div>
 </div>    
 
     
-
+ @section ExtraScript{
 <script>
     function addToCart(packageId) {
         // Logic to add the tour package to the cart
@@ -41,3 +40,4 @@
         alert('Tour package added to cart: ' + packageId);
     }
 </script>
+ }

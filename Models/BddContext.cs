@@ -30,7 +30,7 @@ namespace TripMeOn.Models
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
 
-            optionsBuilder.UseMySql("server=localhost;user id=root;password=1530;database=TripMeOn");
+            optionsBuilder.UseMySql("server=localhost;user id=root;password=twitwiboo;database=TripMeOn");
 
         }
        
@@ -108,25 +108,19 @@ namespace TripMeOn.Models
             };
             var images = new List<Image>
             {
-                new Image { Id = 1,Url="/images/pink.jpg"},
+                new Image { Id = 1,Url="/images/pk1.jpg"},
                 new Image { Id = 2,Url="/images/pk2.jpg"}
 
             };
 
             var tourPackages = new List<TourPackage>
             {
-                new TourPackage { Id = 1, Name = "Bloomings in Paris", DestinationId = 1, ThemeId = 2,Description="4 days tour",TimePeriodId=5, Price = 986,ImageId=1 },
-                new TourPackage { Id = 2, Name = "Confetti Field", DestinationId = 3, ThemeId = 2,Description="4 days tour",TimePeriodId=7, Price = 1180 },
-
-                new TourPackage { Id = 3, Name = "Lavender Fields", DestinationId = 1, ThemeId = 2,Description="4 days tour",TimePeriodId=8, Price = 1180,ImageId=2 },
+                new TourPackage { Id = 1, Name = "Bloomings in Paris", DestinationId = 1, ThemeId = 2,Description="4 days tour",TimePeriodId=4, Price = 986,ImageId=1 },
+                new TourPackage { Id = 2, Name = "Lavender Fields", DestinationId = 1, ThemeId = 2,Description="4 days tour",TimePeriodId=8, Price = 1180,ImageId=2 },
+                new TourPackage { Id = 3, Name = "Confetti Field", DestinationId = 3, ThemeId = 2,Description="4 days tour",TimePeriodId=7, Price = 1180 },              
                 new TourPackage { Id = 4, Name = "Colmer in Autumn", DestinationId = 1, ThemeId = 10,Description="4 days tour",TimePeriodId=11 },
 
-            };      
-
-
-                new TourPackage { Id = 3, Name = "Lavender Fields", DestinationId = 1, ThemeId = 2,Description="4 days tour",TimePeriodId=8, Price = 1180 },
-                new TourPackage { Id = 4, Name = "Colmer in Autumn", DestinationId = 1, ThemeId = 10,Description="4 days tour",TimePeriodId=11},
-};
+            };                  
 
 
             this.Clients.AddRange(clients);

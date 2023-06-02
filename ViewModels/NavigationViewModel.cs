@@ -22,5 +22,9 @@ namespace TripMeOn.ViewModels
         //pour la méthode d'authentification du partenaire -qqs
         public Client Client { get; set; }
         public bool AuthentifyC { get; set; }
-	}
+
+        //pour la méthode d'authentification des employes -qqs
+        public Employee Employee { get; set; }
+        public bool AuthentifyE { get; set; }
+    }
 }

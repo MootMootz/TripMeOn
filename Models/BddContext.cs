@@ -25,11 +25,13 @@ namespace TripMeOn.Models
         public DbSet<TimePeriod> TimePeriods { get; set; }
         public DbSet<Cart> Carts { get; set; }
         public DbSet<Item> Items { get; set; }
+        public DbSet<Image> Images { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
 
-            optionsBuilder.UseMySql("server=localhost;user id=root;password=1530;database=TripMeOn");
+            optionsBuilder.UseMySql("server=localhost;user id=root;password=kukuskar;database=TripMeOn");
+
 
         }
        
@@ -48,7 +50,7 @@ namespace TripMeOn.Models
 
             var employees = new List<Employee>
             {
-                 new Employee { Id = 1, LastName = "Lieby", FirstName = "Karen", Email = "mightK.gmail.com", Password = "4677646", Address= "3 Rue de Victor Hugo, 21670, France",PhoneNumber="0676455781",JobTitle="Admin"},
+                 new Employee { Id = 1, LastName = "Lieby", FirstName = "Karen", Nickname = "QQs", Email = "karen.lieby@outlook.com", Password = UserService.EncodeMD5("2222"), Address= "192 ancienne route de Quissac, 30250, France",PhoneNumber="0676455781",JobTitle="Admin"},
             };
 
             var partners = new List<Partner>
@@ -105,14 +107,22 @@ namespace TripMeOn.Models
                 new Theme { Id = 9, Name = "Culinary" },
                 new Theme { Id = 10, Name = "Colors" },
             };
+            var images = new List<Image>
+            {
+                new Image { Id = 1,Url="/images/pk1.jpg"},
+                new Image { Id = 2,Url="/images/pk2.jpg"}
+
+            };
 
             var tourPackages = new List<TourPackage>
             {
-                new TourPackage { Id = 1, Name = "Bloomings in Paris", DestinationId = 1, ThemeId = 2,Description="4 days tour",TimePeriodId=5, Price = 986 },
-                new TourPackage { Id = 2, Name = "Confetti Field", DestinationId = 3, ThemeId = 2,Description="4 days tour",TimePeriodId=7, Price = 1180 },
-                new TourPackage { Id = 3, Name = "Lavender Fields", DestinationId = 1, ThemeId = 2,Description="4 days tour",TimePeriodId=8, Price = 1180 },
-                new TourPackage { Id = 4, Name = "Colmer in Autumn", DestinationId = 1, ThemeId = 10,Description="4 days tour",TimePeriodId=11},
-};
+                new TourPackage { Id = 1, Name = "Bloomings in Paris", DestinationId = 1, ThemeId = 2,Description="4 days tour",TimePeriodId=4, Price = 986,ImageId=1 },
+                new TourPackage { Id = 2, Name = "Lavender Fields", DestinationId = 1, ThemeId = 2,Description="4 days tour",TimePeriodId=8, Price = 1180,ImageId=2 },
+                new TourPackage { Id = 3, Name = "Confetti Field", DestinationId = 3, ThemeId = 2,Description="4 days tour",TimePeriodId=7, Price = 1180 },              
+                new TourPackage { Id = 4, Name = "Colmer in Autumn", DestinationId = 1, ThemeId = 10,Description="4 days tour",TimePeriodId=11 },
+
+            };                  
+
 
             this.Clients.AddRange(clients);
             this.Employees.AddRange(employees);
@@ -121,16 +131,9 @@ namespace TripMeOn.Models
             this.Themes.AddRange(themes);
             this.TourPackages.AddRange(tourPackages);
             this.TimePeriods.AddRange(timePeriods);
+            this.Images.AddRange(images);
             this.SaveChanges();
-        }
-        //protected override void OnModelCreating(ModelBuilder modelBuilder)
-        //{
-        //    modelBuilder.Entity<Item>()
-        //        .HasOne(i => i.TourPackage)
-        //        .WithMany()
-        //        .HasForeignKey(i => i.TourPackageId)
-        //        .OnDelete(DeleteBehavior.Cascade); // Add this line to enable cascade delete
-        //}
+        }      
 
     }
 }

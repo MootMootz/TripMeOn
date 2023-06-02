@@ -12,7 +12,7 @@ namespace TripMeOn.BL
 {
     public class UserService:IUserService
     {
-        private BddContext _bddContext;
+        private readonly BddContext _bddContext;
         public UserService()
         {
             _bddContext = new BddContext();
@@ -78,15 +78,6 @@ namespace TripMeOn.BL
         {
             _bddContext.Dispose();
         }
-
-
-
-        // Create
-
-        // Modify
-
-        // Delete
-
-        // etc...
+          
     }
 }

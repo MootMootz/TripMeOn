@@ -27,23 +27,43 @@ namespace TripMeOn.Controllers
             var viewModel = new ClientViewModel();
             return View(viewModel);
         }
-
-
-        //LOG IN CLIENT
-        public IActionResult LoginClient()
+        private NavigationViewModel SetupNavigationViewModel()
         {
-            return View();
-        }
-        public IActionResult IndexClient()
-        {
-            NavigationViewModel viewModel = new NavigationViewModel { AuthentifyC = HttpContext.User.Identity.IsAuthenticated };
+            var viewModel = new NavigationViewModel
+            {
+                AuthentifyC = HttpContext.User.Identity.IsAuthenticated
+            };
+
             if (viewModel.AuthentifyC)
             {
                 viewModel.Client = userService.GetClient(HttpContext.User.Identity.Name);
-                return View(viewModel);
             }
-            return View(viewModel);
+
+            return viewModel;
         }
+
+        public IActionResult CheckoutForm()
+        {
+            return View();
+        }
+        //LOG IN CLIENT
+        public IActionResult LoginClient()
+        {
+            ViewBag.ShowLoginClientBox = true;
+            return View(SetupNavigationViewModel());
+        }
+
+        public IActionResult IndexClient(string returnUrl)
+        {
+            var viewModel = new NavigationViewModel(); // Create an instance of the NavigationViewModel
+            if (!viewModel.AuthentifyC)
+            {
+                ViewBag.ShowLoginClientBox = true;
+            }
+
+            return View("LoginClient", viewModel); // Pass the NavigationViewModel to the LoginClient view
+        }
+
 
         [HttpPost]
         public IActionResult IndexClient(NavigationViewModel viewModel, string returnUrl)
@@ -74,11 +94,12 @@ namespace TripMeOn.Controllers
                     if (!string.IsNullOrWhiteSpace(returnUrl) && Url.IsLocalUrl(returnUrl))
                         return Redirect(returnUrl);
 
-                    return Redirect("../Partner/IndexPartner");
+                    return RedirectToAction("HomePage", "Home"); // add conditional
                 }
                 ModelState.AddModelError("Client.Nickname", "le nom ou le mot de passe sont incorrects");
             }
-            return View("../Home/HomePage", viewModel);
+            ViewBag.ShowLoginClientBox = true;
+            return View(viewModel);
         }
 
         //LOG IN PARTENAIRE

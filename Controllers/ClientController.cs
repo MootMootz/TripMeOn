@@ -43,7 +43,7 @@ namespace TripMeOn.Controllers
                     FirstName = model.FirstName,
 					Nickname = model.Nickname,
 					Email = model.Email,
-                    Password = model.Password,
+                    Password = UserService.EncodeMD5(model.Password),
                     Address = model.Address,
                     PhoneNumber = model.PhoneNumber,
                     ClientType = model.ClientType
@@ -52,8 +52,12 @@ namespace TripMeOn.Controllers
                 dbContext.Clients.Add(client);
                 dbContext.SaveChanges();
 				
-				return View("/Home/HomePage");
+				return View("SignUpConfirmation");
             }
+        }
+        public IActionResult SignUpConfirmation()
+        {
+            return View();
         }
 
     }

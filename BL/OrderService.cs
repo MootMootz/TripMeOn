@@ -9,7 +9,7 @@ namespace TripMeOn.BL
 {
     public class OrderService : IOrderService
 	{
-        private Models.BddContext _bddContext;
+        private readonly Models.BddContext _bddContext;
 
         public OrderService()
         {
@@ -23,12 +23,17 @@ namespace TripMeOn.BL
 			_bddContext.SaveChanges();
 			return cart.Id;
 		}
-		public Cart GetCart(int cartId)
-		{
+        public Cart GetCart(int cartId, int? clientId = null)
+        {
+            var query = _bddContext.Carts.Include(c => c.Items).ThenInclude(it => it.TourPackage).Where(c => c.Id == cartId);
 
-			return _bddContext.Carts.Include(c => c.Items).ThenInclude(it => it.TourPackage).Where(c => c.Id == cartId).FirstOrDefault();
-		}
-        
+            if (clientId.HasValue)
+            {
+                query = query.Where(cl => cl.ClientId == clientId.Value);
+            }
+
+            return query.FirstOrDefault();
+        }
         public void AddItem(int cartId, Item item)
         {
             Cart cart = _bddContext.Carts.Include(c => c.Items).FirstOrDefault(c => c.Id == cartId);

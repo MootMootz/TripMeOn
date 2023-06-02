@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using TripMeOn.Models.Users;
 
 namespace TripMeOn.Models.Order
 {
@@ -8,5 +9,7 @@ namespace TripMeOn.Models.Order
         [Key]
         public int Id { get; set; }
         public virtual List<Item> Items { get; set; }
+        public int? ClientId { get; set; }
+        public virtual Client Client { get; set; }
     }
 }

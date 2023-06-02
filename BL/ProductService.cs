@@ -12,7 +12,7 @@ namespace TripMeOn.BL
 {
     public class ProductService : IProductService
     {
-        private Models.BddContext _bddContext;
+        private readonly Models.BddContext _bddContext;
 
         public ProductService()
         {
@@ -86,7 +86,8 @@ namespace TripMeOn.BL
         //Include = retrieve related entities along with the main entity in a single query to optimize performance.
         public List<TourPackage> SearchByDestinationAndTheme(int destinationId, int themeId)
         {
-            using (var _bddContext = new Models.BddContext())
+            using var _bddContext = new Models.BddContext();
+
             {
                 var packages = _bddContext.TourPackages.Include(tp => tp.Destination)
                                                        .Include(tp => tp.Theme) 
@@ -99,7 +100,7 @@ namespace TripMeOn.BL
         }
         public TourPackage CreatePackage(string name, string country, string themeName, string region, string city, string description, int startMonth, int endMonth, double price)
         {
-            using (var _bddContext = new Models.BddContext())
+            using var _bddContext = new Models.BddContext();
             {
                 // Check if a destination with the same country, region, and city exists in the database to avoid duplicate
                 Destination destination = _bddContext.Destinations.FirstOrDefault(d =>
@@ -163,7 +164,7 @@ namespace TripMeOn.BL
 
         public TourPackage ModifyPackage(int packageId, string name, string country, string themeName, string region, string city, string description, int startMonth, int endMonth, double price)
         {
-            using (var _bddContext = new Models.BddContext())
+            using var _bddContext = new Models.BddContext();
             {
                 // Retrieve the existing TourPackage from the database
                 TourPackage package = _bddContext.TourPackages

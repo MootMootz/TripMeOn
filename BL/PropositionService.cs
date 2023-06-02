@@ -10,7 +10,7 @@ namespace TripMeOn.BL
     public class PropositionService : IPropositionService
     {
 
-        private BddContext _bddContext;
+        private readonly BddContext _bddContext;
 
         public PropositionService()
         {

@@ -54,11 +54,48 @@
         </tr>
     </table>
     <br>
-    <form action="/" method="get"> <!-- redirect to homepage-->
+    <form action="/" method="get">
+        <!-- redirect to homepage-->
         <button type="submit">Continue Shopping</button>
     </form>
-    <form action="/Cart/CheckoutForm" method="post">
-        <button type="submit">Check Out</button>
+
+
+  @*  <a href=@("/Cart/CheckoutForm?clientId="+Model.ClientId)>
+        <button >Check Out</button>
+
+    </a>*@
+    <form action="/Cart/CheckoutForm" method="get">
+@*        <input type="hidden" name="clientId" value="@Model.ClientId" />
+*@        <button type="submit">Check Out</button>
     </form>
 </body>
 </html>
+
+
+   @* <div id="checkoutButtons" style="display: none;">
+        @Html.ActionLink("Sign in to checkout", "LoginClient", "Login", null, new { @class = "btn btn-primary" })
+        @Html.ActionLink("Sign up to checkout", "ClientForm", "Client", null, new { @class = "btn btn-secondary" })
+    </div>
+
+    <form action="/" method="get">
+        <!-- redirect to homepage -->
+        <button type="submit" class="btn btn-primary">Continue Shopping</button>
+    </form>
+
+    <div id="checkoutForm" style="display: none;">
+        @using (Html.BeginForm("CheckoutForm", "Cart", FormMethod.Post))
+        {
+            <button type="submit" class="btn btn-success">Check Out</button>
+        }
+    </div>   
+
+</body>
+</html>
+@section ExtraScript {
+    <script>
+        document.getElementById('checkoutButtons').style.display = 'block';
+        document.querySelector('form[action="/"]').addEventListener('submit', function () {
+            document.getElementById('checkoutForm').style.display = 'block';
+        });
+    </script>
+}*@

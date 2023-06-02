@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Linq;
+using System.Security.Claims;
 using TripMeOn.BL;
 using TripMeOn.BL.interfaces;
 using TripMeOn.Models;
@@ -92,6 +93,7 @@ namespace TripMeOn.Controllers
 
         public IActionResult CreateRestaurant()
         {
+            string partnerId = User.FindFirstValue(ClaimTypes.Name);
             var partners = _bddContext.Partners.ToList(); // on récupere la liste des partenaires à partir de la base de donnée
             var destinations = _bddContext.Destinations.ToList(); // on récupere la liste des destinations à partir de la base de donnée
             ViewBag.PartnerList = partners.Select(d => new SelectListItem // on crée une liste SelecListItem pour créer dropdownlist.
@@ -99,7 +101,8 @@ namespace TripMeOn.Controllers
                                                                           // le nom et le nom de la compagnie. ViewBag.PartnerList permet d'acceder depuis la vue CreateRestaurant
             {
                 Value = d.Id.ToString(),
-                Text = $"{d.FirstName} {d.LastName}, {d.CompanyName}"
+                Text = $"{d.FirstName} {d.LastName}, {d.CompanyName}",
+                Selected = d.Id.ToString() == partnerId
             }).ToList();
             ViewBag.DestinationList = destinations.Select(d => new SelectListItem
             {
@@ -122,12 +125,14 @@ namespace TripMeOn.Controllers
         }
         public IActionResult CreateAccomodation()
         {
+            string partnerId = User.FindFirstValue(ClaimTypes.Name);
             var partners = _bddContext.Partners.ToList();
             var destinations = _bddContext.Destinations.ToList();
             ViewBag.PartnerList = partners.Select(d => new SelectListItem
             {
                 Value = d.Id.ToString(),
-                Text = $"{d.FirstName} {d.LastName}, {d.CompanyName}"
+                Text = $"{d.FirstName} {d.LastName}, {d.CompanyName}",
+                Selected = d.Id.ToString() == partnerId
             }).ToList();
             ViewBag.DestinationList = destinations.Select(d => new SelectListItem
             {
@@ -150,12 +155,14 @@ namespace TripMeOn.Controllers
         }
         public IActionResult CreateTransportation()
         {
+            string partnerId = User.FindFirstValue(ClaimTypes.Name);
             var partners = _bddContext.Partners.ToList();
             var destinations = _bddContext.Destinations.ToList();
             ViewBag.PartnerList = partners.Select(d => new SelectListItem
             {
                 Value = d.Id.ToString(),
-                Text = $"{d.FirstName} {d.LastName}, {d.CompanyName}"
+                Text = $"{d.FirstName} {d.LastName}, {d.CompanyName}",
+                Selected = d.Id.ToString() == partnerId
             }).ToList();
             ViewBag.DestinationList = destinations.Select(d => new SelectListItem
             {

@@ -13,16 +13,16 @@
 
 @section Menu{
 
-    <button type="button">Modifier</button>
+    <button type="button">Edit</button>
 
-    <button type="button">Supprimer</button>
+    <button type="button">Delete</button>
 
     <p>Ajouter un service</p>
-    <button type="submit"><a href="/Partner/CreateAccomodation">Hébergement</a></button>
-    <button type="submit"><a href="/Partner/CreateRestaurant">Restauration</a></button>
-    <button type="submit"><a href="/Partner/CreateTransportation">Transport</a></button>
+    <button type="submit">@Html.ActionLink("Create accomodation", "CreateAccomodation","Partner")</button>
+    <button type="submit">@Html.ActionLink("Create restaurant", "CreateRestaurant","Partner")</button>
+    <button type="submit">@Html.ActionLink("Create transportation", "CreateTransportation","Partner")</button>
 
-@*    <select name="service" id="service" required>
+    @*    <select name="service" id="service" required>
         <option selected>Ajouter un service</option>
         <option><a href="/Partner/CreateAccomodation">"Hébergement"</a></option>
         <option>Restaurant</option>

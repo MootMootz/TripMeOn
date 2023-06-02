@@ -7,64 +7,81 @@
 @using (Html.BeginForm())
 {
     <fieldset>
+        <legend>Add accommodation </legend>
+        <table>
+
+            <tr>
+                <td>@Html.LabelFor(m => Model.Name)</td>
+                <td>@Html.TextBoxFor(m => Model.Name)</td>
+                <td>@Html.ValidationMessageFor(m => Model.Name)</td>
+            </tr>
+
+            <tr>
+                <td>@Html.LabelFor(m => Model.Type)</td>
+                <td>@Html.TextBoxFor(m => Model.Type)</td>
+                <td>@Html.ValidationMessageFor(m => Model.Type)</td>
+            </tr>
+
+            <tr>
+                <td>@Html.LabelFor(m => Model.Capacity)</td>
+                <td>@Html.TextBoxFor(m => Model.Capacity)</td>
+                <td>@Html.ValidationMessageFor(m => Model.Capacity)</td>
+            </tr>
+
+            <tr>
+                <td>@Html.LabelFor(m => Model.Price)</td>
+                <td>@Html.TextBoxFor(m => Model.Price)</td>
+                <td>@Html.ValidationMessageFor(m => Model.Price)</td>
+            </tr>
+
+            <tr>
+                <td>@Html.LabelFor(m => Model.Partner)</td>
+                <td>@Html.DropDownListFor(m => m.PartnerId, (List<SelectListItem>)ViewBag.PartnerList, "Select a partner", new { disabled = "disabled" })</td>
+                <td>@Html.ValidationMessageFor(m => Model.PartnerId)</td>
+            </tr>
+
+            <tr>
+                <td>@Html.LabelFor(m => Model.Destination)</td>
+                <td>@Html.DropDownListFor(m => m.DestinationId, (List<SelectListItem>)ViewBag.DestinationList, "Select a destination")</td>
+                <td>@Html.ValidationMessageFor(m => Model.DestinationId)</td>
+            </tr>
+
+            <tr>
+                <td>@Html.LabelFor(m => Model.StartDate)</td>
+                <td>@Html.TextBoxFor(m => Model.StartDate, "{0:dd/MM/yyyy}", new { type = "date", @class = "date" })</td>
+                <td>@Html.ValidationMessageFor(m => Model.StartDate)</td>
+            </tr>
+
+            <tr>
+                <td>@Html.LabelFor(m => Model.EndDate)</td>
+                <td>@Html.TextBoxFor(m => Model.EndDate, "{0:dd/MM/yyyy}", new { type = "date", @class = "date" })</td>
+                <td>@Html.ValidationMessageFor(m => Model.EndDate)</td>
+            </tr>
+
+            <tr>
+                <td><label for="file1">Photo :</label></td>
+                <td>
+                    <input type="file" name="file[]" id="file1">
+                    <input type="file" name="file[]" id="file2">
+                    <input type="file" name="file[]" id="file3">
+                </td>
+            </tr>
+
+            <tr>
+                <td><label for="description">Description :</label></td>
+                <td>
+                    <textarea id="description" name="description" rows="8" cols="50"
+                              placeholder="Please give more details" maxlength="1000"></textarea>
+                </td>
+            </tr>
 
 
-        <legend>Ajouter un hébergement </legend>
-        @Html.LabelFor(m => Model.Name)
-        @Html.TextBoxFor(m => Model.Name)
-        @Html.ValidationMessageFor(m => Model.Name)
-        <br />
-        @Html.LabelFor(m => Model.Type)
-        @Html.TextBoxFor(m => Model.Type)
-        @Html.ValidationMessageFor(m => Model.Type)
-        <br />
-        @Html.LabelFor(m => Model.Capacity)
-        @Html.TextBoxFor(m => Model.Capacity)
-        @Html.ValidationMessageFor(m => Model.Capacity)
-        <br />
-        @Html.LabelFor(m => Model.Price)
-        @Html.TextBoxFor(m => Model.Price)
-        @Html.ValidationMessageFor(m => Model.Price)
-        <br />
-        @Html.LabelFor(m => Model.Partner)
-        @Html.DropDownListFor(m => m.PartnerId, (List<SelectListItem>)ViewBag.PartnerList, "Select a partner")
-        @Html.ValidationMessageFor(m => Model.PartnerId)
-        <br />
-        @Html.LabelFor(m => Model.Destination)
-        @Html.DropDownListFor(m => m.DestinationId, (List<SelectListItem>)ViewBag.DestinationList, "Select a destination")
-        @Html.ValidationMessageFor(m => Model.DestinationId)
-        <br />
-        @Html.LabelFor(m => Model.StartDate)
-        @Html.TextBoxFor(m => Model.StartDate, "{0:dd/MM/yyyy}", new { type = "date", @class = "date" })
-        @Html.ValidationMessageFor(m => Model.StartDate)
-        <br />
 
-        @Html.LabelFor(m => Model.EndDate)
-        @Html.TextBoxFor(m => Model.EndDate, "{0:dd/MM/yyyy}", new { type = "date", @class = "date" })
-        @Html.ValidationMessageFor(m => Model.EndDate)
-        <br />
-        <tr>
-            <td>
-                Photo :
-            </td>
-            <td>
-                <input type="file" name="file[]" id="file1">
-                <input type="file" name="file[]" id="file2">
-                <input type="file" name="file[]" id="file3">
-            </td>
-        </tr>
-        <tr>
-            <td>
-                Description :
-            </td>
-            <td>
-                <textarea id="description" name="description" rows="8" cols="50"
-                          placeholder="Please give more details" maxlength="1000"></textarea>
-            </td>
-        </tr>
-
+        </table>
         <input type="submit" value="Create" />
     </fieldset>
+
+
 
 
 }
@@ -79,7 +96,7 @@
     <button type="button">Supprimer</button>
 
     <p>Ajouter un service</p>
-    <button type="submit"><a href="/Partner/CreateAccomodation">Hébergement</a></button>
-    <button type="submit"><a href="/Partner/CreateRestaurant">Restauration</a></button>
-    <button type="submit"><a href="/Partner/CreateTransportation">Transport</a></button>
+    <button type="submit">@Html.ActionLink("Create accomodation", "CreateAccomodation","Partner")</button>
+    <button type="submit">@Html.ActionLink("Create restaurant", "CreateRestaurant","Partner")</button>
+    <button type="submit">@Html.ActionLink("Create transportation", "CreateTransportation","Partner")</button>
 }

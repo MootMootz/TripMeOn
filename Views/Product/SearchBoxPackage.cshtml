@@ -1,26 +1,30 @@
 ﻿@model List<TripMeOn.Models.Products.TourPackage>
 
 @{
-
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Search Results</h2>
+@section ExtraCss{
+    <link rel="stylesheet" href="/css/SearchBox.css">
+}
+
+<h2 class="search-results-heading">Search Results</h2>
 
 @if (Model != null && Model.Count > 0)
 {
-    <div class="flex-container">
+    <div class="flex-container" style="margin: 0 15px;">
         @foreach (var package in Model)
         {
-            <div class="flex-box">
-                <h3>@package.Name</h3>
-                <p>Destination: @package.Destination.Country</p>
-                <p>Theme: @package.Theme.Name</p>
-                <p>Price: @package.Price</p>
-                <form action="@Url.Action("Details", "Product", new { id = package.Id })" method="get">
-                    <button type="submit">View Details</button>
-                </form>
-
+            <div class="flex-box" style="background-image: url('@package.Image?.Url')">
+                <div class="text-box">
+                    <h3>@package.Name</h3>
+                    <p>Destination: @package.Destination.Country</p>
+                    <p>Theme: @package.Theme.Name</p>
+                    <p>Price: @package.Price</p>
+                    <form action="@Url.Action("Details", "Product", new { id = package.Id })" method="get">
+                        <button type="submit" class="btn btn-primary">View Details</button>
+                    </form>
+                </div>
             </div>
         }
     </div>
@@ -29,20 +33,3 @@ else
 {
     <p>No search results found.</p>
 }
-
-<style>
-    .flex-container {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-around;
-    }
-
-    .flex-box {
-        width: 300px;
-        padding: 20px;
-        margin-bottom: 20px;
-        background-color: #f0f0f0;
-        border-radius: 4px;
-    }
-</style>
-

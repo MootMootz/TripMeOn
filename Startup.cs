@@ -9,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using TripMeOn.BL;
 using TripMeOn.BL.interfaces;
@@ -32,6 +33,16 @@ namespace TripMeOn
                 options.Cookie.HttpOnly = true;
                 options.Cookie.IsEssential = true;
             });
+
+            services.AddAuthentication("CookieAuthentication") // ajoute le service d'authentification qui utilise l'authentification par cookie
+                .AddCookie("CookieAuthentication", options =>
+                {
+                    options.Cookie.Name = "TripMeOn.AuthCookie"; // définit le nom du cookie d'authentification
+                    options.Cookie.HttpOnly = true; // le cookie ne peut être accédé que par le serveur et pas coté client
+                    options.ExpireTimeSpan = TimeSpan.FromMinutes(30); // la durée de validité du cookie est 30 minutes
+                    options.LoginPath = "/Login/LoginClient";
+                    options.AccessDeniedPath = "/Login/AccessDenied";
+                });
         }
 
 
@@ -47,6 +58,8 @@ namespace TripMeOn
             }
             app.UseRouting();
             app.UseStaticFiles();
+            app.UseAuthentication(); // Ajouter cette ligne pour activer l'authentification
+            app.UseAuthorization();
             app.UseSession(); // Add this line to enable session state
 
             app.UseEndpoints(endpoints =>

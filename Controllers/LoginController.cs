@@ -128,6 +128,13 @@ namespace TripMeOn.Controllers
             return View("../Home/HomePage", viewModel);
         }
 
+        public ActionResult Deconnection()
+        {
+            HttpContext.SignOutAsync();
+
+            return RedirectToAction("HomePage", "Home");
+        }
+
         //LOG IN EMPLOYE
         public IActionResult IndexAdmin()
         {
@@ -175,15 +182,7 @@ namespace TripMeOn.Controllers
             }
             return View("../Home/HomePage", viewModel);
         }
-        public ActionResult Deconnexion()
-        {
-            HttpContext.SignOutAsync();
-
-            return RedirectToAction("HomePage", "Home");
-
-        }
-
-
+   
         //A FAIRE JUSTE APRES
 
         //public IActionResult CreerCompte()

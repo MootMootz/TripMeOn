@@ -17,6 +17,8 @@ namespace TripMeOn.Models.PartnerProducts
         public DateTime EndDate { get; set; }
 
         public double Price { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
 
         public int PartnerId { get; set; } // foreign key for Partner
         public virtual Partner Partner { get; set; } // navigation property

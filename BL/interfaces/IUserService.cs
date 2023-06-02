@@ -6,7 +6,7 @@ namespace TripMeOn.BL.interfaces
 {
     public interface IUserService:IDisposable
     {
-		void DeleteCreateDatabase();
+	
 		
 		//à faire juste après -qqs
 		//int AddPartner(string nom, string password);

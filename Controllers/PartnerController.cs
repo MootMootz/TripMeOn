@@ -62,7 +62,7 @@ namespace TripMeOn.Controllers
                     FirstName = model.FirstName,
                     Nickname = model.Nickname,
                     Email = model.Email,
-                    Password = model.Password,
+                    Password = UserService.EncodeMD5(model.Password),
                     Address = model.Address,
                     PhoneNumber = model.PhoneNumber,
                     CompanyName = model.CompanyName

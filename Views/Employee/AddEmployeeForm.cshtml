@@ -1,0 +1,77 @@
+﻿@model TripMeOn.ViewModels.EmployeeViewModel
+@{
+    ViewBag.Title = "AddEmployeeForm";
+    Layout = null;
+}
+
+@section ExtraCss{
+    <link rel="stylesheet" href="/css/PartnerForm.css">
+}
+nav>
+<img src="~/images/logo.png" alt="logo">
+<button type="button">@Html.ActionLink("Accueil", "IndexAdmin")</button>
+
+@if (!String.IsNullOrEmpty(Context.Request.Cookies["Nickname"])) // si la valeur du cookie Nickname n'est pas vide
+{
+    <span>Bonjour @Context.Request.Cookies["Nickname"]</span>
+    // on affiche le message Bonjour suivi de la valeur de Cookie nickname
+}
+<button type="submit">@Html.ActionLink("Se déconnecter", "Deconnexion", "Login")</button>
+</nav>
+
+@using (Html.BeginForm("SubmitEmployeeForm", "Employee", FormMethod.Post))
+{
+    <div class="form-container">
+        <fieldset>
+            <legend>Sign Up Form</legend>
+            <div class="form-group">
+                @Html.LabelFor(model => model.LastName)
+                @Html.TextBoxFor(model => model.LastName, new { @class = "form-control" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.FirstName)
+                @Html.TextBoxFor(model => model.FirstName, new { @class = "form-control" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Nickname)
+                @Html.TextBoxFor(model => model.Nickname, new { @class = "form-control" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Email)
+                @Html.TextBoxFor(model => model.Email, new { @class = "form-control" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Password)
+                @Html.PasswordFor(model => model.Password, new { @class = "form-control" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Address)
+                @Html.TextBoxFor(model => model.Address, new { @class = "form-control" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.PhoneNumber)
+                @Html.TextBoxFor(model => model.PhoneNumber, new { @class = "form-control" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.JobTitle)
+                @Html.TextBoxFor(model => model.JobTitle, new { @class = "form-control" })
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </fieldset>
+    </div>
+
+}
+@section ExtraScript{
+    <script type="text/javascript" src="~/Scripts/jquery-3.3.1.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.validate-vsdoc.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+}
+
+

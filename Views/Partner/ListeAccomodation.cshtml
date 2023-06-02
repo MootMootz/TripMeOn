@@ -35,7 +35,8 @@
                 <td>@accomodation.Price</td>
                 <td>@accomodation.PartnerId</td>
                 <td>@accomodation.DestinationId</td>
-                <td>@Html.ActionLink("Modify","ModifyAccomodation", "Partner", new { id = accomodation.Id })</td>
+                <td>@Html.ActionLink("Edit","ModifyAccomodation", "Partner", new { id = accomodation.Id })</td>
+                <td>@Html.ActionLink("Delete", "DeleteAccomodation", "Partner", new { id = accomodation.Id })</td>
                 <td>
                     <form action="@Url.Action("ToggleOnlineStatusAccomodation", "Partner")" method="post">
                         <input type="hidden" name="id" value="@accomodation.Id" />
@@ -53,8 +54,7 @@
     </style>
     <br />
     <br />
-    <a href="https://localhost:5001/partner/servicespartner">go back</a>
-    <a href="https://localhost:5001/partner/createaccomodation">create accomodation</a>
+    @Html.ActionLink("Retour arrière", "ServicesPartner", "Partner")
     @*<a href="@Url.Action("Index", "Home")"><strong> Page d'accueil</strong></a>*@
 </body>
 </html>

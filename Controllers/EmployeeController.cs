@@ -5,54 +5,53 @@ using TripMeOn.ViewModels;
 
 namespace TripMeOn.Controllers
 {
-    public class ClientController : Controller
+    public class EmployeeController : Controller
     {
-        public IActionResult Index()
+        public IActionResult IndexAdmin()
         {
             return View();
         }
-        
+
+        //méthode pour ajouter un employée
+
         private Models.BddContext _bddContext;
 
-        public ClientController()
+        public EmployeeController()
         {
             _bddContext = new Models.BddContext();
         }
+
         [HttpGet]
-        public IActionResult ClientForm()
+        public IActionResult AddEmployeeForm()
         {
-            var viewModel = new ClientViewModel();
-            return View("AddClientForm");
+            var viewModel = new EmployeeViewModel();
+            return View("AddEmployeeForm");
         }
 
         [HttpPost]
-        public IActionResult SubmitClientForm(ClientViewModel model)
+        public IActionResult SubmitEmployeeForm(EmployeeViewModel model)
         {
 
             using (var dbContext = new Models.BddContext())
             {
 
-                var client = new Client
+                var employee = new Employee
                 {
                     LastName = model.LastName,
                     FirstName = model.FirstName,
-					Nickname = model.Nickname,
-					Email = model.Email,
+                    Nickname = model.Nickname,
+                    Email = model.Email,
                     Password = UserService.EncodeMD5(model.Password),
                     Address = model.Address,
                     PhoneNumber = model.PhoneNumber,
-                    ClientType = model.ClientType
+                    JobTitle = model.JobTitle
                 };
 
-                dbContext.Clients.Add(client);
+                dbContext.Employees.Add(employee);
                 dbContext.SaveChanges();
-				
-				return View("SignUpConfirmation");
+
+                return View("../Employee/IndexAdmin");
             }
-        }
-        public IActionResult SignUpConfirmation()
-        {
-            return View();
         }
 
     }

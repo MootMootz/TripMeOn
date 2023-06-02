@@ -1,0 +1,18 @@
+﻿@{
+    ViewBag.title = "IndexAdmin";
+    Layout = null;
+}
+<nav>
+    <img src="~/images/logo.png" alt="logo">
+    <button type="button">@Html.ActionLink("Accueil", "IndexAdmin")</button>
+
+    @if (!String.IsNullOrEmpty(Context.Request.Cookies["Nickname"])) // si la valeur du cookie Nickname n'est pas vide
+    {
+        <span>Bonjour @Context.Request.Cookies["Nickname"]</span>
+        // on affiche le message Bonjour suivi de la valeur de Cookie nickname
+    }
+    <button type="submit">@Html.ActionLink("Se déconnecter", "Deconnexion", "Login")</button>
+</nav>
+
+<button type="button">@Html.ActionLink("Ajouter employé", "AddEmployeeForm")</button>
+<h3 class="titre">Coucou Flo ! voici la page à faire toute belle :)</h3>

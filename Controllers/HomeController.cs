@@ -24,7 +24,7 @@ namespace TripMeOn.Controllers
             return View("HomePage", navigationViewModel);
         }
 
-        
+
     }
 }
 

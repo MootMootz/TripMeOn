@@ -5,7 +5,6 @@ using System;
 using System.Collections.Generic;
 using System.Security.Claims;
 using TripMeOn.BL;
-using TripMeOn.Models;
 using TripMeOn.Models.Users;
 using TripMeOn.ViewModels;
 
@@ -150,15 +149,61 @@ namespace TripMeOn.Controllers
             return View("../Home/HomePage", viewModel);
         }
 
-        public ActionResult Deconnexion()
+        public ActionResult Deconnection()
         {
             HttpContext.SignOutAsync();
 
             return RedirectToAction("HomePage", "Home");
-
         }
 
+        //LOG IN EMPLOYE
+        public IActionResult IndexAdmin()
+        {
+            NavigationViewModel viewModel = new NavigationViewModel { AuthentifyE = HttpContext.User.Identity.IsAuthenticated };
+            if (viewModel.AuthentifyE)
+            {
+                viewModel.Employee = userService.GetEmployee(HttpContext.User.Identity.Name);
+                return View(viewModel);
+            }
+            return View(viewModel);
+        }
 
+        [HttpPost]
+        public IActionResult IndexAdmin(NavigationViewModel viewModel, string returnUrl)
+        {
+            if (ModelState.IsValid)
+            {
+                Employee employee= userService.AuthentifyE(viewModel.Employee.Nickname, viewModel.Employee.Password);
+                if (employee != null)
+                {
+                    var userClaims = new List<Claim>()
+                    {
+                        new Claim(ClaimTypes.Name, employee.Id.ToString()),
+                    };
+
+                    var ClaimIdentity = new ClaimsIdentity(userClaims, "User Identity");
+
+                    var userPrincipal = new ClaimsPrincipal(new[] { ClaimIdentity });
+
+                    HttpContext.SignInAsync(userPrincipal);
+                    var cookieOptions = new CookieOptions // on crée un nouvel objet CookieOptions
+                    {
+                        HttpOnly = true, // cette cookie sera accessible que par le serveur, pas par le coté client
+                        Expires = DateTime.UtcNow.AddDays(30), // on dit que 30 jours apres le cookie va expirer. Il peut etre utilie pour se souvenir de moi etc...
+                    };
+                    Response.Cookies.Append("Nickname", employee.Nickname, cookieOptions); // ajout le cookier au Response et envoit au navigateur
+
+
+                    if (!string.IsNullOrWhiteSpace(returnUrl) && Url.IsLocalUrl(returnUrl))
+                        return Redirect(returnUrl);
+
+                    return Redirect("../Employee/IndexAdmin");
+                }
+                ModelState.AddModelError("Employee.Nickname", "le nom ou le mot de passe sont incorrects");
+            }
+            return View("../Home/HomePage", viewModel);
+        }
+   
         //A FAIRE JUSTE APRES
 
         //public IActionResult CreerCompte()

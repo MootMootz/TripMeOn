@@ -67,6 +67,29 @@ namespace TripMeOn.BL
             return null;
         }
 
+        // EMPLOYEE _ AUTHENTIFICATION
+        public Employee AuthentifyE(string nickname, string password)
+        {
+            string motDePasse = EncodeMD5(password);
+            Employee employee = this._bddContext.Employees.FirstOrDefault(u => u.Nickname == nickname && u.Password == motDePasse);
+            return employee;
+        }
+
+        public Employee GetEmployee(int id)
+        {
+            return this._bddContext.Employees.Find(id);
+        }
+
+        public Employee GetEmployee(string idStr)
+        {
+            int id;
+            if (int.TryParse(idStr, out id))
+            {
+                return this.GetEmployee(id);
+            }
+            return null;
+        }
+
         public static string EncodeMD5(string motDePasse)
         {
             string motDePasseSel = "UnUser" + motDePasse + "ASP.NET MVC";

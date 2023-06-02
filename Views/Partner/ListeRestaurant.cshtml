@@ -33,7 +33,8 @@
                 <td>@restaurant.Price</td>
                 <td>@restaurant.PartnerId</td>
                 <td>@restaurant.DestinationId</td>
-                <td>@Html.ActionLink("Modify","ModifyRestaurant", "Partner", new { id = restaurant.Id })</td>
+                <td>@Html.ActionLink("Edit","ModifyRestaurant", "Partner", new { id = restaurant.Id })</td>
+                <td>@Html.ActionLink("Delete", "DeleteRestaurant", "Partner", new { id = restaurant.Id })</td>
                 <td>
                     <form action="@Url.Action("ToggleOnlineStatusRestaurant", "Partner")" method="post">
                         <input type="hidden" name="id" value="@restaurant.Id" />
@@ -51,7 +52,7 @@
     </style>
     <br />
     <br />
-    <a href="https://localhost:5001/partner/createrestaurant">create restaurant</a>
+    @Html.ActionLink("Retour arrière", "ServicesPartner", "Partner")
     @*<a href="@Url.Action("Index", "Home")"><strong> Page d'accueil</strong></a>*@
 </body>
 </html>

@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Linq;
+using System.Security.Claims;
 using TripMeOn.BL;
 using TripMeOn.BL.interfaces;
 using TripMeOn.Models;
@@ -51,7 +52,7 @@ namespace TripMeOn.Controllers
                     FirstName = model.FirstName,
                     Nickname = model.Nickname,
                     Email = model.Email,
-                    Password = model.Password,
+                    Password = UserService.EncodeMD5(model.Password),
                     Address = model.Address,
                     PhoneNumber = model.PhoneNumber,
                     CompanyName = model.CompanyName
@@ -81,6 +82,7 @@ namespace TripMeOn.Controllers
 
         public IActionResult CreateRestaurant()
         {
+            string partnerId = User.FindFirstValue(ClaimTypes.Name);
             var partners = _bddContext.Partners.ToList(); // on récupere la liste des partenaires à partir de la base de donnée
             var destinations = _bddContext.Destinations.ToList(); // on récupere la liste des destinations à partir de la base de donnée
             ViewBag.PartnerList = partners.Select(d => new SelectListItem // on crée une liste SelecListItem pour créer dropdownlist.
@@ -88,7 +90,8 @@ namespace TripMeOn.Controllers
                                                                           // le nom et le nom de la compagnie. ViewBag.PartnerList permet d'acceder depuis la vue CreateRestaurant
             {
                 Value = d.Id.ToString(),
-                Text = $"{d.FirstName} {d.LastName}, {d.CompanyName}"
+                Text = $"{d.FirstName} {d.LastName}, {d.CompanyName}",
+                Selected = d.Id.ToString() == partnerId
             }).ToList();
             ViewBag.DestinationList = destinations.Select(d => new SelectListItem
             {
@@ -111,12 +114,14 @@ namespace TripMeOn.Controllers
         }
         public IActionResult CreateAccomodation()
         {
+            string partnerId = User.FindFirstValue(ClaimTypes.Name); // permet d'obtenir la valeur de claim pour l'utilisateur authentifié
             var partners = _bddContext.Partners.ToList();
             var destinations = _bddContext.Destinations.ToList();
             ViewBag.PartnerList = partners.Select(d => new SelectListItem
             {
                 Value = d.Id.ToString(),
-                Text = $"{d.FirstName} {d.LastName}, {d.CompanyName}"
+                Text = $"{d.FirstName} {d.LastName}, {d.CompanyName}",
+                Selected = d.Id.ToString() == partnerId // permet de preselectionner partenaire si l'ID du partenaire correspond à partnerId
             }).ToList();
             ViewBag.DestinationList = destinations.Select(d => new SelectListItem
             {
@@ -139,12 +144,14 @@ namespace TripMeOn.Controllers
         }
         public IActionResult CreateTransportation()
         {
+            string partnerId = User.FindFirstValue(ClaimTypes.Name);
             var partners = _bddContext.Partners.ToList();
             var destinations = _bddContext.Destinations.ToList();
             ViewBag.PartnerList = partners.Select(d => new SelectListItem
             {
                 Value = d.Id.ToString(),
-                Text = $"{d.FirstName} {d.LastName}, {d.CompanyName}"
+                Text = $"{d.FirstName} {d.LastName}, {d.CompanyName}",
+                Selected = d.Id.ToString() == partnerId
             }).ToList();
             ViewBag.DestinationList = destinations.Select(d => new SelectListItem
             {
@@ -183,14 +190,14 @@ namespace TripMeOn.Controllers
                     {
                         Value = d.Id.ToString(),
                         Text = $"{d.FirstName} {d.LastName}, {d.CompanyName}",
-                        Selected = d.Id == accomodation.PartnerId  // Ajoutez cette ligne
+                        Selected = d.Id == accomodation.PartnerId
                     }).ToList();
 
                     ViewBag.DestinationList = destinations.Select(d => new SelectListItem
                     {
                         Value = d.Id.ToString(),
                         Text = $"{d.Country}, {d.Region}, {d.City}",
-                        Selected = d.Id == accomodation.DestinationId  // Ajoutez cette ligne
+                        Selected = d.Id == accomodation.DestinationId
                     }).ToList();
                     return View(accomodation);
                 }
@@ -236,14 +243,14 @@ namespace TripMeOn.Controllers
                     {
                         Value = d.Id.ToString(),
                         Text = $"{d.FirstName} {d.LastName}, {d.CompanyName}",
-                        Selected = d.Id == restaurant.PartnerId  // Ajoutez cette ligne
+                        Selected = d.Id == restaurant.PartnerId
                     }).ToList();
 
                     ViewBag.DestinationList = destinations.Select(d => new SelectListItem
                     {
                         Value = d.Id.ToString(),
                         Text = $"{d.Country}, {d.Region}, {d.City}",
-                        Selected = d.Id == restaurant.DestinationId  // Ajoutez cette ligne
+                        Selected = d.Id == restaurant.DestinationId
                     }).ToList();
 
                     return View(restaurant);
@@ -290,14 +297,14 @@ namespace TripMeOn.Controllers
                     {
                         Value = d.Id.ToString(),
                         Text = $"{d.FirstName} {d.LastName}, {d.CompanyName}",
-                        Selected = d.Id == transportation.PartnerId  // Ajoutez cette ligne
+                        Selected = d.Id == transportation.PartnerId
                     }).ToList();
 
                     ViewBag.DestinationList = destinations.Select(d => new SelectListItem
                     {
                         Value = d.Id.ToString(),
                         Text = $"{d.Country}, {d.Region}, {d.City}",
-                        Selected = d.Id == transportation.DestinationId  // Ajoutez cette ligne
+                        Selected = d.Id == transportation.DestinationId
                     }).ToList();
                     return View(transportation);
                 }
@@ -409,39 +416,34 @@ namespace TripMeOn.Controllers
             }
         }
 
-        //public IActionResult DeleteRestaurant(int id) // afficher la vue de modification du restaurant
-        //{
-        //    if (id != 0)
-        //    {
-        //        using (IPropositionService propositionService = new PropositionService())
-        //        {
-        //            Restaurant restaurant = propositionService.GetAllRestaurants().Where(r => r.Id == id).FirstOrDefault();
-        //            if (restaurant == null)
-        //            {
-        //                return View("Error");
-        //            }
-        //            return View(restaurant);
-        //        }
-        //    }
-        //    return View("Error");
-        //}
-        //[HttpPost]
-        //public IActionResult DeleteRestaurant(Restaurant restaurant) // traiter la requête de modification
-        //{
-        //    if (!ModelState.IsValid)
-        //        return View(restaurant);
-        //    if (restaurant.Id != 0)
-        //    {
-        //        using (PropositionService propositionService = new PropositionService())
-        //        {
-        //            propositionService.DeleteRestaurant(restaurant);
-        //            return RedirectToAction("ListeRestaurant", new { @id = restaurant.Id });
-        //        }
-        //    }
-        //    else
-        //    {
-        //        return View("Error");
-        //    }
-        //}
+        public IActionResult DeleteRestaurant(int id)
+        {
+            using (IPropositionService propositionService = new PropositionService())
+            {
+                Restaurant restaurant = propositionService.GetAllRestaurants().Where(r => r.Id == id).FirstOrDefault();
+                propositionService.DeleteRestaurant(restaurant);
+                return RedirectToAction("ListeRestaurant");
+            }
+        }
+
+        public IActionResult DeleteAccomodation(int id)
+        {
+            using (IPropositionService propositionService = new PropositionService())
+            {
+                Accomodation accomodation = propositionService.GetAllAccomodations().Where(r => r.Id == id).FirstOrDefault();
+                propositionService.DeleteAccomodation(accomodation);
+                return RedirectToAction("ListeAccomodation");
+            }
+        }
+
+        public IActionResult DeleteTransportation(int id)
+        {
+            using (IPropositionService propositionService = new PropositionService())
+            {
+                Transportation transportation = propositionService.GetAllTransportations().Where(r => r.Id == id).FirstOrDefault();
+                propositionService.DeleteTransportation(transportation);
+                return RedirectToAction("ListeTransportation");
+            }
+        }
     }
 }

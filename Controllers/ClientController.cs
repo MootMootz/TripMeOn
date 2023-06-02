@@ -1,10 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using System.Linq;
-using TripMeOn.BL;
-using TripMeOn.BL.interfaces;
-using TripMeOn.Models;
-using TripMeOn.Models.PartnerProducts;
 using TripMeOn.Models.Users;
 using TripMeOn.ViewModels;
 

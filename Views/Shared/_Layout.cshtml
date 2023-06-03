@@ -1,4 +1,5 @@
 ﻿@using TripMeOn.Models.Products;
+@using TripMeOn.Helper;
 
 
 <!DOCTYPE html>
@@ -10,6 +11,7 @@
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/Layout.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
 	@RenderSection("ExtraCss",required:false)
 </head>
 <body>  
@@ -92,13 +94,13 @@
 			<!--   -------------------------------------------------------------------------   -->
 
 			<li class="parent">
-				<a href="#">Insta-tips</a>
+				<a href="/Content/InstaTips">Insta-tips</a>
 			</li>
 
 			<!--   -------------------------------------------------------------------------   -->
 
 			<li class="parent">
-				<a href="#">About us</a>
+				<a href="/Content/AboutUs">About Us</a>
 			</li>
 
 			<!--   -------------------------------------------------------------------------   -->
@@ -133,8 +135,7 @@
 			</ul>
 		</div>
 	<!--   -------------------------------------------------------------------------   -->
-
-	@*TODO: Debug duplicate countries in dropdownlist*@
+	
    	<!-- Transparent Search Box -->
 	<div class="search-container">
 		<div class="search-box">
@@ -143,14 +144,28 @@
 				<label for="destinations">Destinations</label>
 				@{
 					List<Destination> destinations = new TripMeOn.BL.ProductService().GetDestinations();
+					destinations.Insert(0, new Destination { Id = 0, Country = "All Destinations" });
 					SelectList selectList = new SelectList(destinations, "Id", "Country");
 				}
 				@Html.DropDownList("destination", selectList)
 
-
 				<label for="themes">Themes</label>
-				@Html.DropDownList("theme", new SelectList(new TripMeOn.BL.ProductService().GetThemes(),"Id","Name"))
+				@{
+					List<Theme> themes = new TripMeOn.BL.ProductService().GetThemes();
+					themes.Insert(0, new Theme { Id = 0, Name = "All Themes" });
+					SelectList themeList = new SelectList(themes, "Id", "Name");
+				}
+				@Html.DropDownList("theme", themeList)
+
+				<label for="months">Months</label>
+				@{
+					List<SelectListItem> monthList = DateTimeHelper.GetMonths();
+					monthList.Insert(0, new SelectListItem { Value = "0", Text = "All Months" });
+				}
+				@Html.DropDownList("month", monthList)
 				<button type="submit" class="btn btn-primary">Search</button>
+
+
 			</form>
 		</div>
 

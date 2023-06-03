@@ -15,13 +15,22 @@ namespace TripMeOn.Controllers
         }
 
 
-        public IActionResult SearchPackage(int destination, int theme)
-        {
-            var searchResults = _productService.SearchByDestinationAndTheme(destination, theme);
-            return View("SearchBoxPackage", searchResults);
-        }
+		//public IActionResult SearchPackage(int destination, int theme, int month)
+		//{
+		//    var searchResults = _productService.SearchByDestinationThemeMonth(destination, theme, month);
+		//    return View("SearchBoxPackage", searchResults);
+		//}
+		public IActionResult SearchPackage(int destination, int theme, int month)
+		{
+			var searchResults = _productService.SearchByDestinationThemeMonth(
+				destination == 0 ? (int?)null : destination,
+				theme == 0 ? (int?)null : theme,
+				month == 0 ? (int?)null : month);
 
-        public IActionResult PackageList()
+			return View("SearchBoxPackage", searchResults);
+		}
+
+		public IActionResult PackageList()
         {
             var packages = _productService.GetTourPackages();
 

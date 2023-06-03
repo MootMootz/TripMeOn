@@ -24,5 +24,17 @@ namespace TripMeOn.Models.Products
 
         [Column(TypeName = "decimal(10, 2)")]
         public double Price { get; set; }
-	}
+
+        public override string ToString()
+        {
+            if (Price % 1 == 0)
+            {
+                return Price.ToString("0") + " €";
+            }
+            else
+            {
+                return Price.ToString("0.00") + " €";
+            }
+        }
+    }
 }

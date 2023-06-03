@@ -8,7 +8,7 @@ namespace TripMeOn.BL.interfaces
     {
 	
 		
-		int AddPartner(string nom, string password);
+		//int AddPartner(string nom, string password);
 		Partner AuthentifyP(string nickname, string password);
 		Partner GetPartner(int id);
 		Partner GetPartner(string idStr);

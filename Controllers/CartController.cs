@@ -97,6 +97,7 @@ namespace TripMeOn.Controllers
             var cartId = SessionHelper.GetObjectFromJson<int>(HttpContext.Session, "cartId");
             var cart = _orderService.GetCart(cartId);
             var clientId = Convert.ToInt32(User.Identity.Name);//
+            _ = clientId.ToString();
 
             if (cart == null)
             {
@@ -109,7 +110,8 @@ namespace TripMeOn.Controllers
         public IActionResult PurchaseSuccess()
         {
             return View();
-        }
 
+        }
+      
     }
 }

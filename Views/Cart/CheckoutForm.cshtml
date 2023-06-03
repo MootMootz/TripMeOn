@@ -1,4 +1,5 @@
 ﻿@model TripMeOn.Models.Order.Cart
+@using System.Text;
 @using TripMeOn.Helper
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -89,16 +90,16 @@
                     <label>
                         <input type="checkbox" checked="checked" name="sameadr"> Shipping address same as billing
                     </label>
-                    <input type="button" value="Continue to checkout" class="btn" onclick="redirectToPurchaseSuccess()">
+                    <input type="button" value="Continue to checkout" class="btn" onclick="validateFormAndSubmit()">
                 </form>
             </div>
         </div>
-
-
+               
         <div class="col-25">
             <div class="container">
                 <h4>Cart <span class="price" style="color:black"><i class="fa fa-shopping-cart"></i> <b>@Model.Items.Count</b></span></h4>
-
+                <p>Client's Name: @User.Identity.Name</p> <!--only retrns Id-->
+             
                 @foreach (var item in Model.Items)
                 {
                     <p><a href="#">@item.TourPackage.Name</a> <span class="price">$@item.TourPackage.Price</span></p>
@@ -114,14 +115,46 @@
 </html>
 
   @section ExtraScript{
+  
+        <script src="~/Scripts/jquery-3.3.1.js" ></script>
     <script>
-        function redirectToPurchaseSuccess() {
-            // Perform any necessary form validation or other actions here
+      
+        function validateFormAndSubmit() {
+            var firstName = document.getElementById("fname").value;
+            var email = document.getElementById("email").value;
+            var address = document.getElementById("adr").value;
+            var city = document.getElementById("city").value;
+            var state = document.getElementById("state").value;
+            var zip = document.getElementById("zip").value;
+            var cardName = document.getElementById("cname").value;
+            var cardNumber = document.getElementById("ccnum").value;
+            var expMonth = document.getElementById("expmonth").value;
+            var expYear = document.getElementById("expyear").value;
+            var cvv = document.getElementById("cvv").value;
 
-            // Redirect to the PurchaseSuccess page
+            if (
+                firstName === "" ||
+                email === "" ||
+                address === "" ||
+                city === "" ||
+                state === "" ||
+                zip === "" ||
+                cardName === "" ||
+                cardNumber === "" ||
+                expMonth === "" ||
+                expYear === "" ||
+                cvv === ""
+            ) {
+                alert("Please fill in all fields before proceeding to checkout.");
+            } else {
+              
+                redirectToPurchaseSuccess();
+            }
+        }
+        function redirectToPurchaseSuccess() {
             window.location.href = "/Cart/PurchaseSuccess";
         }
-
+       
     </script>
   }
 

@@ -4,41 +4,63 @@
     font-family: 'Your Beautiful Font', sans-serif;
     margin-bottom: 20px;
     margin-top:20px;
+    align-content:center;
 }
 
 .flex-container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
-    margin: 0 -10px; /* Add negative margin to create space between flex containers */
+    justify-content: space-evenly;
+    margin-bottom: 30px;
 }
 
 .flex-box {
     width: 40%;
-    height: 60vh; /* Adjust the height as needed */
+    height: 60vh;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     display: flex;
-    align-items: center;
-    padding: 20px;
-    margin: 10px; /* Add margin to create space around each flex container */
+    align-items: flex-start;
+    padding: 5px;
+    position: relative;
+    margin-bottom: 30px;
+    border-radius: 60px; /*  give round corners */
 }
 
+
+    .flex-box::before { /*child of flexbox*/
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;      
+        z-index: 1; /*stacking z-index 1 is behind z-index 2*/
+    }
     .flex-box .text-box {
-        flex: 1;
-        overflow-wrap: break-word;
-        word-wrap: break-word;
-        color: black;
+        position: absolute;
+        bottom: 5px;
+        left: 5px;
+        z-index: 2;
+        border: 2px solid white;
+        padding: 20px;
         margin: 10px;
-        text-shadow: 2px 2px 4px #7dd3c8;
+        text-shadow: 2px 2px 4px blue;
         font-weight: bold;
-        font-family: 'Lato', sans-serif;
-        font-size: 22px
+        color: white;
+        font-size: 20px;
+        text-align: center;
+        background-color: rgba(1, 0, 0, 0.5);
+        border-radius: 30px;
     }
         .flex-box .text-box h3 {
             font-size: 34px; 
         }
-        
+.package-info p {
+    display: inline;
+    margin-right: 20px; 
+}
+
 
 

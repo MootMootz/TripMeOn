@@ -40,6 +40,12 @@ namespace TripMeOn.BL
             }
             return null;
         }
+        private Client GetClientByName(string firstName, string lastName)
+        {
+            // Logic to retrieve a client by first name and last name
+            // Replace the following line with your actual logic
+            return _bddContext.Clients.FirstOrDefault(c => c.FirstName == firstName && c.LastName == lastName);
+        }
 
 
 

@@ -30,12 +30,12 @@ namespace TripMeOn.Models
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
 
-            optionsBuilder.UseMySql("server=localhost;user id=root;password=kukuskar;database=TripMeOn");
+            optionsBuilder.UseMySql("server=localhost;user id=root;password=1530;database=TripMeOn");
 
 
         }
-       
-                              
+
+
         public void InitializeDb()
         {
             this.Database.EnsureDeleted();
@@ -118,10 +118,10 @@ namespace TripMeOn.Models
             {
                 new TourPackage { Id = 1, Name = "Bloomings in Paris", DestinationId = 1, ThemeId = 2,Description="4 days tour",TimePeriodId=4, Price = 986,ImageId=1 },
                 new TourPackage { Id = 2, Name = "Lavender Fields", DestinationId = 1, ThemeId = 2,Description="4 days tour",TimePeriodId=8, Price = 1180,ImageId=2 },
-                new TourPackage { Id = 3, Name = "Confetti Field", DestinationId = 3, ThemeId = 2,Description="4 days tour",TimePeriodId=7, Price = 1180 },              
+                new TourPackage { Id = 3, Name = "Confetti Field", DestinationId = 3, ThemeId = 2,Description="4 days tour",TimePeriodId=7, Price = 1180 },
                 new TourPackage { Id = 4, Name = "Colmer in Autumn", DestinationId = 1, ThemeId = 10,Description="4 days tour",TimePeriodId=11 },
 
-            };                  
+            };
 
 
             this.Clients.AddRange(clients);
@@ -133,7 +133,7 @@ namespace TripMeOn.Models
             this.TimePeriods.AddRange(timePeriods);
             this.Images.AddRange(images);
             this.SaveChanges();
-        }      
+        }
 
     }
 }

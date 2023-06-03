@@ -10,7 +10,7 @@ namespace TripMeOn.Controllers
         {
             return View();
         }
-        
+
         private Models.BddContext _bddContext;
 
         public ClientController()
@@ -35,8 +35,8 @@ namespace TripMeOn.Controllers
                 {
                     LastName = model.LastName,
                     FirstName = model.FirstName,
-					Nickname = model.Nickname,
-					Email = model.Email,
+                    Nickname = model.Nickname,
+                    Email = model.Email,
                     Password = model.Password,
                     Address = model.Address,
                     PhoneNumber = model.PhoneNumber,
@@ -45,8 +45,8 @@ namespace TripMeOn.Controllers
 
                 dbContext.Clients.Add(client);
                 dbContext.SaveChanges();
-				
-				return View("/Home/HomePage");
+
+                return View("/Home/HomePage");
             }
         }
 

@@ -1,0 +1,17 @@
+﻿@{
+    ViewBag.title = "IndexAdmin";
+    Layout = null;
+}
+<nav>
+    <img src="~/images/logo.png" alt="logo">
+    <button type="button">@Html.ActionLink("Accueil", "IndexAdmin")</button>
+    <br />
+    @Html.ActionLink("List partners", "ListePartner", "Employee")
+    <br />
+    @Html.ActionLink("List clients", "ListeClient", "Employee")
+
+
+</nav>
+
+
+<h3 class="titre">Coucou Flo ! voici la page à faire toute belle :)</h3>

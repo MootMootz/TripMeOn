@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,7 @@ using TripMeOn.Models.Products;
 
 namespace TripMeOn.Controllers
 {
+   
 	public class CartController : Controller
 	{
 		private readonly IOrderService _orderService;
@@ -18,6 +20,7 @@ namespace TripMeOn.Controllers
 		{
 			_orderService = orderService;
 		}
+        
 
 		public IActionResult ViewCart()
 		{
@@ -33,7 +36,7 @@ namespace TripMeOn.Controllers
 			}
 			return View(cart);
 		}
-        [HttpPost]
+      
         public IActionResult AddToCart(int tourPackageId, int quantity)
         {
 
@@ -62,6 +65,7 @@ namespace TripMeOn.Controllers
 		{
 			var cartId = SessionHelper.GetObjectFromJson<int>(HttpContext.Session, "cartId");
 			_orderService.RemoveItem(cartId, id);
+
 			return RedirectToAction("ViewCart");
 		}
 		// return item.id if product is already in item 
@@ -86,12 +90,14 @@ namespace TripMeOn.Controllers
             return RedirectToAction("ViewCart");
         }
 
-
-        [HttpPost]
-        public IActionResult CheckoutForm(int id)
+        [Authorize]
+        [HttpGet]
+        public IActionResult CheckoutForm()
         {
             var cartId = SessionHelper.GetObjectFromJson<int>(HttpContext.Session, "cartId");
             var cart = _orderService.GetCart(cartId);
+            var clientId = Convert.ToInt32(User.Identity.Name);//
+            _ = clientId.ToString();
 
             if (cart == null)
             {
@@ -100,10 +106,12 @@ namespace TripMeOn.Controllers
             
             return View("CheckoutForm", cart);
         }
+
         public IActionResult PurchaseSuccess()
         {
             return View();
-        }
 
+        }
+      
     }
 }

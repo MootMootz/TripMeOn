@@ -8,16 +8,22 @@ namespace TripMeOn.BL.interfaces
     {
 	
 		
-		//à faire juste après -qqs
 		//int AddPartner(string nom, string password);
 		Partner AuthentifyP(string nickname, string password);
 		Partner GetPartner(int id);
 		Partner GetPartner(string idStr);
 
 		//authentification client
+		
 		Client AuthentifyC(string nickname, string password);	
 		Client GetClient(int id);	
 		Client GetClient(string idSr);
+
+		//authentification employee
+		Employee AuthentifyE(string nickname, string password);
+		Employee GetEmployee(int id);
+		Employee GetEmployee(string idStr);
+
 
 	}
 }

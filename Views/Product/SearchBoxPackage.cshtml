@@ -1,4 +1,5 @@
 ﻿@model List<TripMeOn.Models.Products.TourPackage>
+@using TripMeOn.Helper
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -7,29 +8,44 @@
 @section ExtraCss{
     <link rel="stylesheet" href="/css/SearchBox.css">
 }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <h2 class="search-results-heading">Search Results</h2>
 
-<h2 class="search-results-heading">Search Results</h2>
-
-@if (Model != null && Model.Count > 0)
-{
-    <div class="flex-container" style="margin: 0 15px;">
-        @foreach (var package in Model)
-        {
-            <div class="flex-box" style="background-image: url('@package.Image?.Url')">
-                <div class="text-box">
-                    <h3>@package.Name</h3>
-                    <p>Destination: @package.Destination.Country</p>
-                    <p>Theme: @package.Theme.Name</p>
-                    <p>Price: @package.Price</p>
-                    <form action="@Url.Action("Details", "Product", new { id = package.Id })" method="get">
-                        <button type="submit" class="btn btn-primary">View Details</button>
-                    </form>
+    @if (Model != null && Model.Count > 0)
+    {
+        <div class="flex-container" style="margin: 0 15px;">
+            @foreach (var package in Model)
+            {
+                <div class="flex-box" style="background-image: url('@package.Image?.Url')">
+                    <div class="text-box">
+                        <h3>@package.Name</h3>
+                        <div class="package-info">
+                            <p>Destination: @package.Destination.Country</p>
+                            <p>Theme: @package.Theme.Name</p>
+                        </div>
+                        <p>
+                            Best Months to visit:  @if (package.TimePeriod != null)
+                            {
+                                @DateTimeHelper.GetMonthNameRange(package.TimePeriod.StartMonth, package.TimePeriod.EndMonth)
+                            }</p>
+                        <p>Price: @package.Price.ToString("0.##")&euro;</p>
+                        <form action="@Url.Action("Details", "Product", new { id = package.Id })" method="get">
+                            <button type="submit" class="btn btn-primary">View Details</button>
+                        </form>
+                    </div>
                 </div>
-            </div>
-        }
-    </div>
-}
-else
-{
-    <p>No search results found.</p>
-}
+            }
+        </div>
+    }
+    else
+    {
+        <p>No search results found.</p>
+    }
+</body>
+</html>

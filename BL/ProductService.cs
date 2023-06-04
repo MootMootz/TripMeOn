@@ -12,7 +12,7 @@ namespace TripMeOn.BL
 {
     public class ProductService : IProductService
     {
-        private Models.BddContext _bddContext;
+        private readonly Models.BddContext _bddContext;
 
         public ProductService()
         {
@@ -26,12 +26,12 @@ namespace TripMeOn.BL
             {
                 destinations = _bddContext.Destinations.ToList();// original code to retrieve all destinations in-memory LINQ-to-Objects       
 
-			}
-			// the query will be performed on the client side instead of being translated to SQL:InvalidOperationException
-			destinations = destinations.GroupBy(d => d.Country) // groups the destinations by country
-							  .Select(group => group.First())  //selects the first destination from each group
-							  .ToList();
-			return destinations;
+            }
+            // the query will be performed on the client side instead of being translated to SQL:InvalidOperationException
+            destinations = destinations.GroupBy(d => d.Country) // groups the destinations by country
+                              .Select(group => group.First())  //selects the first destination from each group
+                              .ToList();
+            return destinations;
         }
         public List<Theme> GetThemes()
         {
@@ -63,43 +63,55 @@ namespace TripMeOn.BL
 
         public TourPackage GetTourPackageById(int id)
         {
-            using (var dbContext = new Models.BddContext())
-            {
-                return dbContext.TourPackages
-                    .Include(tp => tp.Destination)
-                    .Include(tp => tp.Theme)
-                    .Include(tp => tp.TimePeriod)
-                    .Include(tp => tp.Image)
-                    .FirstOrDefault(tp => tp.Id == id);
-            }
+            using var dbContext = new Models.BddContext();
+            return dbContext.TourPackages
+                .Include(tp => tp.Destination)
+                .Include(tp => tp.Theme)
+                .Include(tp => tp.TimePeriod)
+                .Include(tp => tp.Image)
+                .FirstOrDefault(tp => tp.Id == id);
         }
         public List<TourPackage> GetTourPackagesByMonth(int month)
         {
-            using (var dbContext = new Models.BddContext())
-            {
-                return dbContext.TourPackages.Include(tp => tp.Destination).Include(tp => tp.Theme).Include(tp => tp.TimePeriod).Include(tp => tp.Image)
-                    .Where(tp => tp.TimePeriod.StartMonth == month)
-                    .ToList();
-            }
+            using var dbContext = new Models.BddContext();
+            return dbContext.TourPackages.Include(tp => tp.Destination).Include(tp => tp.Theme).Include(tp => tp.TimePeriod).Include(tp => tp.Image)
+                .Where(tp => tp.TimePeriod.StartMonth == month)
+                .ToList();
         }
 
-        //Include = retrieve related entities along with the main entity in a single query to optimize performance.
-        public List<TourPackage> SearchByDestinationAndTheme(int destinationId, int themeId)
-        {
-            using (var _bddContext = new Models.BddContext())
-            {
-                var packages = _bddContext.TourPackages.Include(tp => tp.Destination)
-                                                       .Include(tp => tp.Theme) 
-                                                       .Include(tp => tp.Image)
-                                                       .Where(tp => tp.DestinationId == destinationId && tp.ThemeId == themeId)
-                                                       .ToList();
+		//Include = retrieve related entities along with the main entity in a single query to optimize performance.
+		public List<TourPackage> SearchByDestinationThemeMonth(int? destinationId, int? themeId, int? month)
+		{
+			using var dbContext = new Models.BddContext();
 
-                return packages;
-            }
-        }
-        public TourPackage CreatePackage(string name, string country, string themeName, string region, string city, string description, int startMonth, int endMonth, double price)
+			var query = dbContext.TourPackages.Include(tp => tp.Destination)
+											  .Include(tp => tp.Theme)
+											  .Include(tp => tp.TimePeriod)
+											  .Include(tp => tp.Image)
+											  .AsQueryable();
+
+			if (destinationId.HasValue)
+			{
+				query = query.Where(tp => tp.DestinationId == destinationId.Value);
+			}
+
+			if (themeId.HasValue)
+			{
+				query = query.Where(tp => tp.ThemeId == themeId.Value);
+			}
+
+			if (month.HasValue)
+			{
+				query = query.Where(tp => tp.TimePeriod.StartMonth == month.Value);
+			}
+
+			return query.ToList(); ;
+		}
+
+
+		public TourPackage CreatePackage(string name, string country, string themeName, string region, string city, string description, int startMonth, int endMonth, double price)
         {
-            using (var _bddContext = new Models.BddContext())
+            using var _bddContext = new Models.BddContext();
             {
                 // Check if a destination with the same country, region, and city exists in the database to avoid duplicate
                 Destination destination = _bddContext.Destinations.FirstOrDefault(d =>
@@ -163,7 +175,7 @@ namespace TripMeOn.BL
 
         public TourPackage ModifyPackage(int packageId, string name, string country, string themeName, string region, string city, string description, int startMonth, int endMonth, double price)
         {
-            using (var _bddContext = new Models.BddContext())
+            using var _bddContext = new Models.BddContext();
             {
                 // Retrieve the existing TourPackage from the database
                 TourPackage package = _bddContext.TourPackages

@@ -12,7 +12,7 @@ namespace TripMeOn.BL
 {
     public class UserService:IUserService
     {
-        private BddContext _bddContext;
+        private readonly BddContext _bddContext;
         public UserService()
         {
             _bddContext = new BddContext();
@@ -39,6 +39,12 @@ namespace TripMeOn.BL
                 return this.GetClient(id);
             }
             return null;
+        }
+        private Client GetClientByName(string firstName, string lastName)
+        {
+            // Logic to retrieve a client by first name and last name
+            // Replace the following line with your actual logic
+            return _bddContext.Clients.FirstOrDefault(c => c.FirstName == firstName && c.LastName == lastName);
         }
 
 
@@ -101,15 +107,6 @@ namespace TripMeOn.BL
         {
             _bddContext.Dispose();
         }
-
-
-
-        // Create
-
-        // Modify
-
-        // Delete
-
-        // etc...
+          
     }
 }

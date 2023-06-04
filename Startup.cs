@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -34,15 +35,18 @@ namespace TripMeOn
                 options.Cookie.IsEssential = true;
             });
 
-            services.AddAuthentication("CookieAuthentication") // ajoute le service d'authentification qui utilise l'authentification par cookie
-                .AddCookie("CookieAuthentication", options =>
-                {
-                    options.Cookie.Name = "TripMeOn.AuthCookie"; // définit le nom du cookie d'authentification
-                    options.Cookie.HttpOnly = true; // le cookie ne peut être accédé que par le serveur et pas coté client
-                    options.ExpireTimeSpan = TimeSpan.FromMinutes(30); // la durée de validité du cookie est 30 minutes
-                    options.LoginPath = "/Login/LoginClient";
-                    options.AccessDeniedPath = "/Login/AccessDenied";
-                });
+
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+            .AddCookie(options =>
+            {
+                options.Cookie.Name = "TripMeOn.AuthCookie"; // dÃ©finit le nom du cookie d'authentification
+                options.Cookie.HttpOnly = true; // le cookie ne peut Ãªtre accÃ©dÃ© que par le serveur et pas cotÃ© client
+                options.ExpireTimeSpan = TimeSpan.FromMinutes(30); // la durÃ©e de validitÃ© du cookie est 30 minutes
+                options.LoginPath = "/Login/IndexClient";
+                options.AccessDeniedPath = "/Login/AccessDenied";
+
+            });
+
         }
 
 
@@ -61,16 +65,17 @@ namespace TripMeOn
             app.UseAuthentication(); // Ajouter cette ligne pour activer l'authentification
             app.UseAuthorization();
             app.UseSession(); // Add this line to enable session state
-
+            app.UseAuthentication();
+            app.UseAuthorization();
             app.UseEndpoints(endpoints =>
             {
-
-                endpoints.MapControllerRoute(
+				
+				endpoints.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Home}/{action=HomePage}/{id?}");
-
-
             });
+
+
         }
     }
 }

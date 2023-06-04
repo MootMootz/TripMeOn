@@ -1,0 +1,35 @@
+﻿@model List<TripMeOn.ViewModels.OrderViewModel>
+@using TripMeOn.Helper
+
+
+@{
+    var orders = SessionHelper.GetObjectFromJson<List<TripMeOn.ViewModels.OrderViewModel>>(Context.Session, "Orders");
+}
+
+@if (orders != null)
+{
+    <h3>Order Status:</h3>
+    <table>
+        <tr>
+            <th>Cart ID</th>
+            <th>Client ID</th>
+            <th>Quantity</th>
+            <th>Total Price</th>
+        </tr>
+        @foreach (var order in orders)
+        {
+            <tr>
+                <td>@order.CartId</td>
+                <td>@order.ClientId</td>
+                <td>@order.Quantity</td>
+                <td>@order.TotalPrice</td>
+            </tr>
+        }
+    </table>
+}
+
+
+
+
+
+

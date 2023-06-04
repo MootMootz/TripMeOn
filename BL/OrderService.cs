@@ -16,13 +16,13 @@ namespace TripMeOn.BL
             _bddContext = new Models.BddContext();
 		}
 
-		public int CreateCart()
-		{
-			Cart cart = new Cart() { Items = new List<Item>() };
-			_bddContext.Carts.Add(cart);
-			_bddContext.SaveChanges();
-			return cart.Id;
-		}
+        public int CreateCart()
+        {
+            Cart cart = new Cart() { Items = new List<Item>() };
+            _bddContext.Carts.Add(cart);
+            _bddContext.SaveChanges();
+            return cart.Id;
+        }
         public Cart GetCart(int cartId, int? clientId = null)
         {
             var query = _bddContext.Carts.Include(c => c.Items).ThenInclude(it => it.TourPackage).Where(c => c.Id == cartId);
@@ -34,6 +34,19 @@ namespace TripMeOn.BL
 
             return query.FirstOrDefault();
         }
+        public Cart GetCartWithClient(int cartId, int clientId)
+        {
+            var query = _bddContext.Carts
+                .Include(c => c.Items)
+                .ThenInclude(it => it.TourPackage)
+                .Where(c => c.Id == cartId && c.ClientId == clientId);
+
+            return query.FirstOrDefault();
+        }
+
+
+
+
         public void AddItem(int cartId, Item item)
         {
             Cart cart = _bddContext.Carts.Include(c => c.Items).FirstOrDefault(c => c.Id == cartId);
@@ -100,6 +113,13 @@ namespace TripMeOn.BL
             }
         }
 
+        public List<Cart> GetOrdersByUserId(int clientId)
+        {
+            return _bddContext.Carts
+                .Include(c => c.Items)
+                .Where(c => c.ClientId == clientId)
+                .ToList();
+        }
 
         public void Dispose()
 		{

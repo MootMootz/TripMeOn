@@ -1,6 +1,7 @@
 ﻿@model TripMeOn.Models.Order.Cart
 @using System.Text;
 @using TripMeOn.Helper
+
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -90,7 +91,8 @@
                     <label>
                         <input type="checkbox" checked="checked" name="sameadr"> Shipping address same as billing
                     </label>
-                    <input type="button" value="Continue to checkout" class="btn" onclick="validateFormAndSubmit()">
+                    <input type="button" value="Continue to checkout" class="btn" onclick="validateFormAndSubmit(@Model.TourPackageId, @Model.Quantity)">
+
                 </form>
             </div>
         </div>

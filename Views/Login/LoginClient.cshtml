@@ -15,10 +15,14 @@
     
 
             <h3>
-                Vous êtes déjà authentifié avec le login :
+               You are already log in :
                 @Model.Client.Nickname
             </h3>
             @Html.ActionLink("Voulez-vous vous déconnecter ?", "Deconnexion")
+
+        <p>
+            @Html.ActionLink("Check Order Status", "OrderStatus", "Cart")
+        </p>
         }
         else
         {

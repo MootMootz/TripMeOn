@@ -1,10 +1,12 @@
 ﻿.navbar {
     width: 100%;
-    height: 60px; 
-    background-color: #C0B9DD; 
+    height: 60px;
+    background-color: #C0B9DD;
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
+    z-index: 10;
 }
 
 header {

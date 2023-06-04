@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using TripMeOn.Models.Order;
 
 namespace TripMeOn.BL.interfaces
@@ -13,6 +14,7 @@ namespace TripMeOn.BL.interfaces
         void UpdateItemQuantity(int ItemId, int quantity);
         void RemoveItem(int cartId, int itemId);
         void ClearCart(int cartId);
-
+        List<Cart> GetOrdersByUserId(int clientId);
+        Cart GetCartWithClient(int cartId, int clientId);
     }
 }

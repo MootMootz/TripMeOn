@@ -8,7 +8,8 @@ namespace TripMeOn.ViewModels
     {
         public int CartId { get; set; }
         public int ClientId { get; set; }
-        public List<Item> Items { get; set; }
+        public string ClientName { get; set; }
+        public List<ItemViewModel> Items { get; set; }
         public bool IsRefunded { get; set; }    
         public int Quantity { get; set; }
         public double TotalPrice { get; set; }

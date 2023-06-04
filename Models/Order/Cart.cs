@@ -13,7 +13,6 @@ namespace TripMeOn.Models.Order
         public int? ClientId { get; set; }
         public virtual Client Client { get; set; }
         public bool IsRefunded { get; set; } // Add this property to represent refund status
-        public int TourPackageId { get; internal set; }
-        public int Quantity { get; internal set; }
+      
     }
 }

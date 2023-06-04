@@ -34,6 +34,7 @@ namespace TripMeOn.BL
 
             return query.FirstOrDefault();
         }
+
         public Cart GetCartWithClient(int cartId, int clientId)
         {
             var query = _bddContext.Carts
@@ -44,7 +45,15 @@ namespace TripMeOn.BL
             return query.FirstOrDefault();
         }
 
-
+        public void UpdateCartClient(int cartId, int clientId)
+        {
+            var cart = _bddContext.Carts.FirstOrDefault(c => c.Id == cartId);
+            if (cart != null)
+            {
+                cart.ClientId = clientId;
+                _bddContext.SaveChanges();
+            }
+        }
 
 
         public void AddItem(int cartId, Item item)

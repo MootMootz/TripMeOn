@@ -1,4 +1,4 @@
-﻿@model TripMeOn.Models.Order.Cart
+﻿@model TripMeOn.ViewModels.CheckoutViewModel
 @using System.Text;
 @using TripMeOn.Helper
 
@@ -91,7 +91,9 @@
                     <label>
                         <input type="checkbox" checked="checked" name="sameadr"> Shipping address same as billing
                     </label>
-                    <input type="button" value="Continue to checkout" class="btn" onclick="validateFormAndSubmit(@Model.TourPackageId, @Model.Quantity)">
+                    <input type="button" value="Continue to checkout" class="btn" onclick="buyProduct(@Model.TourPackageId, @Model.Quantity)">
+
+
 
                 </form>
             </div>
@@ -156,7 +158,22 @@
         function redirectToPurchaseSuccess() {
             window.location.href = "/Cart/PurchaseSuccess";
         }
-       
+
+        function buyProduct(tourPackageId, quantity) {
+            $.ajax({
+                url: '@Url.Action("BuyProduct", "Cart")',
+                type: 'POST',
+                data: { tourPackageId: tourPackageId, quantity: quantity },
+                success: function (result) {
+                  
+                    window.location.href = '@Url.Action("PurchaseSuccess", "Cart")';
+                },
+                error: function () {
+                   //TODO: 
+                }
+            });
+        }
+
     </script>
   }
 

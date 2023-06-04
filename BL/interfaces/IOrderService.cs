@@ -16,5 +16,6 @@ namespace TripMeOn.BL.interfaces
         void ClearCart(int cartId);
         List<Cart> GetOrdersByUserId(int clientId);
         Cart GetCartWithClient(int cartId, int clientId);
+        void UpdateCartClient(int cartId, int clientId);
     }
 }

@@ -1,0 +1,51 @@
+﻿@model TripMeOn.ViewModels.ManageAccountModel
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Liste Client</title>
+</head>
+<body>
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div>@TempData["SuccessMessage"].ToString()</div>
+    }
+    <table border="1">
+        <tr>
+            <th>FirstName</th>
+            <th>LastName</th>
+            <th>Nickname</th>
+            <th>Email</th>
+            <th>Password</th>
+            <th>Adress</th>
+            <th>PhoneNumber</th>
+            <th>ClientType</th>
+        </tr>
+        @foreach (var client in Model.Clients)
+        {
+            <tr>
+                <td>@client.FirstName</td>
+                <td>@client.LastName</td>
+                <td>@client.Nickname</td>
+                <td>@client.Email</td>
+                <td>@client.Password</td>
+                <td>@client.Address</td>
+                <td>@client.PhoneNumber</td>
+                <td>@client.ClientType</td>
+                <td>@Html.ActionLink("Edit","ModifyClient", "Employee", new { id = client.Id })</td>
+                <td>@Html.ActionLink("Delete", "DeleteClient", "Employee", new { id = client.Id })</td>
+            </tr>
+        }
+    </table>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+    </style>
+    <br />
+    <br />
+    @Html.ActionLink("Accueil", "IndexAdmin", "Employee")
+</body>
+</html>

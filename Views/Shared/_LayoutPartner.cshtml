@@ -14,13 +14,13 @@
     <div id="fixNav">
         <nav>
             <img src="~/images/logo.png" alt="logo">
-            <button type="button">@Html.ActionLink("Home", "IndexPartner")</button>
-            <button type="button">@Html.ActionLink("My services", "ServicesPartner")</button>
             @if (!String.IsNullOrEmpty(Context.Request.Cookies["Nickname"])) // si la valeur du cookie Nickname n'est pas vide
             {
-                <span>Bonjour @Context.Request.Cookies["Nickname"]</span>
+                <span> <strong>Bonjour @Context.Request.Cookies["Nickname"]</strong></span>
                 // on affiche le message Bonjour suivi de la valeur de Cookie nickname
             }
+            <button type="button">@Html.ActionLink("Home", "IndexPartner")</button>
+            <button type="button">@Html.ActionLink("My services", "ServicesPartner")</button>
             <button type="submit">@Html.ActionLink("Deconnection", "Deconnection", "Login")</button>
         </nav>
     </div>

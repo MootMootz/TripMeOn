@@ -1,0 +1,76 @@
+﻿@model TripMeOn.Models.Users.Client
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Edit Client</title>
+</head>
+<body>
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div>@TempData["SuccessMessage"].ToString()</div>
+    }
+    @using (Html.BeginForm())
+    {
+        <fieldset>
+            <legend>Edit client </legend>
+            <table>
+
+                <tr>
+                    <td>@Html.LabelFor(m => Model.FirstName)</td>
+                    <td>@Html.TextBoxFor(m => Model.FirstName)</td>
+                    <td>@Html.ValidationMessageFor(m => Model.FirstName)</td>
+                </tr>
+
+                <tr>
+                    <td>@Html.LabelFor(m => Model.LastName)</td>
+                    <td>@Html.TextBoxFor(m => Model.LastName)</td>
+                    <td>@Html.ValidationMessageFor(m => Model.LastName)</td>
+                </tr>
+
+                <tr>
+                    <td>@Html.LabelFor(m => Model.Email)</td>
+                    <td>@Html.TextBoxFor(m => Model.Email)</td>
+                    <td>@Html.ValidationMessageFor(m => Model.Email)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => Model.Nickname)</td>
+                    <td>@Html.TextBoxFor(m => Model.Nickname)</td>
+                    <td>@Html.ValidationMessageFor(m => Model.Nickname)</td>
+                </tr>
+
+                <tr>
+                    <td>@Html.LabelFor(m => Model.Password)</td>
+                    <td>@Html.TextBoxFor(m => Model.Password)</td>
+                    <td>@Html.ValidationMessageFor(m => Model.Password)</td>
+                </tr>
+
+                <tr>
+                    <td>@Html.LabelFor(m => Model.Address)</td>
+                    <td>@Html.TextBoxFor(m => Model.Address)</td>
+                    <td>@Html.ValidationMessageFor(m => Model.Address)</td>
+                </tr>
+
+                <tr>
+                    <td>@Html.LabelFor(m => Model.PhoneNumber)</td>
+                    <td>@Html.TextBoxFor(m => Model.PhoneNumber)</td>
+                    <td>@Html.ValidationMessageFor(m => Model.PhoneNumber)</td>
+                </tr>
+
+                <tr>
+                    <td>@Html.LabelFor(m => Model.ClientType)</td>
+                    <td>@Html.TextBoxFor(m => Model.ClientType)</td>
+                    <td>@Html.ValidationMessageFor(m => Model.ClientType)</td>
+                </tr>
+            </table>
+
+            <input type="submit" value="Edit" />
+        </fieldset>
+    }
+    <script type="text/javascript" src="~/Scripts/jquery-3.3.1.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.validate-vsdoc.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+</body>
+</html>

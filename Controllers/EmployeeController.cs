@@ -147,39 +147,45 @@ namespace TripMeOn.Controllers
                 manageAccount.DeleteClient(client);
                 return RedirectToAction("ListeClient");
 
-        [HttpGet]
-        public IActionResult AddEmployeeForm()
-        {
-            var viewModel = new EmployeeViewModel();
-            return View("AddEmployeeForm");
+            }
         }
-
-        [HttpPost]
-        public IActionResult SubmitEmployeeForm(EmployeeViewModel model)
-        {
-
-            using (var dbContext = new Models.BddContext())
-            {
-
-                var employee = new Employee
+                [HttpGet]
+                public IActionResult AddEmployeeForm()
                 {
-                    LastName = model.LastName,
-                    FirstName = model.FirstName,
-                    Nickname = model.Nickname,
-                    Email = model.Email,
-                    Password = UserService.EncodeMD5(model.Password),
-                    Address = model.Address,
-                    PhoneNumber = model.PhoneNumber,
-                    JobTitle = model.JobTitle
-                };
+                    var viewModel = new EmployeeViewModel();
+                    return View("AddEmployeeForm");
+                }
+            
+        
+                [HttpPost]
+                public IActionResult SubmitEmployeeForm(EmployeeViewModel model)
+                {
 
-                dbContext.Employees.Add(employee);
-                dbContext.SaveChanges();
+                    using (var dbContext = new Models.BddContext())
+                    {
 
-                return View("../Employee/IndexAdmin");
+                        var employee = new Employee
+                        {
+                            LastName = model.LastName,
+                            FirstName = model.FirstName,
+                            Nickname = model.Nickname,
+                            Email = model.Email,
+                            Password = UserService.EncodeMD5(model.Password),
+                            Address = model.Address,
+                            PhoneNumber = model.PhoneNumber,
+                            JobTitle = model.JobTitle
+                        };
+
+                        dbContext.Employees.Add(employee);
+                        dbContext.SaveChanges();
+
+                        return View("../Employee/IndexAdmin");
+
+                    }
+                }
 
             }
         }
+    
 
-    }
-}
+

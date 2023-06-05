@@ -45,8 +45,26 @@ namespace TripMeOn.Controllers
         public IActionResult AddToCart(int tourPackageId, int quantity)
         {
 
-            return BuyProduct(tourPackageId, quantity);
+            var cartId = SessionHelper.GetObjectFromJson<int>(HttpContext.Session, "cartId");
+          
+
+            if (cartId == 0)
+            {
+                cartId = _orderService.CreateCart();
+                _orderService.AddItem(cartId, new Item { TourPackageId = tourPackageId, Quantity = quantity });              
+                SessionHelper.SetObjectAsJson(HttpContext.Session, "cartId", cartId);
+            }
+            else
+            {
+                _orderService.AddItem(cartId, new Item { TourPackageId = tourPackageId, Quantity = quantity });
+            }
+
+            HttpContext.Response.Cookies.Append("CartId", cartId.ToString());
+
+            return RedirectToAction("ViewCart", new { tourPackageId, quantity });
+
         }
+
 
         //public IActionResult BuyProduct(int tourPackageId, int quantity)
         //{
@@ -65,6 +83,7 @@ namespace TripMeOn.Controllers
 
         //    return RedirectToAction("ViewCart", "Cart"); // Redirect to the cart page after adding the item
         //}
+        [Authorize]
         public IActionResult BuyProduct(int tourPackageId, int quantity)
         {
             var cartId = SessionHelper.GetObjectFromJson<int>(HttpContext.Session, "cartId");
@@ -183,9 +202,10 @@ namespace TripMeOn.Controllers
                     TourPackageName = item.TourPackage != null ? item.TourPackage.Name : string.Empty,
                     TourPackagePrice = item.TourPackage != null ? item.TourPackage.Price : 0.0
                 }).ToList() : new List<ItemViewModel>(),
+
                 IsRefunded = cart.IsRefunded,
                 Quantity = cart.Items != null ? cart.Items.Sum(item => item.Quantity) : 0,
-                TotalPrice = cart.Items != null ? cart.Items.Sum(item => item.Quantity * (item.TourPackage != null ? item.TourPackage.Price : 0.0)) : 0.0
+                TotalPrice = cart.Items != null ? cart.Items.Sum(item => item.Quantity * (item.TourPackage != null ? item.TourPackage.Price : 1.0)) : 0.0
 
             }).ToList();
 
@@ -194,11 +214,6 @@ namespace TripMeOn.Controllers
 
             return View("OrderStatusView", orders);
         }
-
-
-
-
-
 
         public IActionResult OrderStatusView()
         {
@@ -210,13 +225,21 @@ namespace TripMeOn.Controllers
 
 
         [Authorize]
-        public IActionResult RequestReturn(int cartId)
+        [HttpPost]
+        public IActionResult Refund(int cartId)
         {
-            // Logic to handle the return request for the specified cartId
-            // ...
+            // Retrieve the cart with the specified ID
+            Cart cart = _orderService.GetCart(cartId);
 
-            return RedirectToAction("OrderStatus");
+            if (cart != null)
+            {
+              
+                return RedirectToAction("Refund");           }
+
+           
+            return RedirectToAction("RefundError");
         }
+
     }
 }
 

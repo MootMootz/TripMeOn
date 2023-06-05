@@ -27,6 +27,7 @@ namespace TripMeOn
             services.AddScoped<IProductService, ProductService>();
             services.AddScoped<IOrderService, OrderService>();
             services.AddScoped<IPropositionService, PropositionService>();
+            services.AddScoped<IUserService, UserService>();
 
             services.AddDistributedMemoryCache();
             services.AddSession(options =>
@@ -65,12 +66,10 @@ namespace TripMeOn
             app.UseAuthentication(); // Ajouter cette ligne pour activer l'authentification
             app.UseAuthorization();
             app.UseSession(); // Add this line to enable session state
-            app.UseAuthentication();
-            app.UseAuthorization();
             app.UseEndpoints(endpoints =>
             {
-				
-				endpoints.MapControllerRoute(
+
+                endpoints.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Home}/{action=HomePage}/{id?}");
             });

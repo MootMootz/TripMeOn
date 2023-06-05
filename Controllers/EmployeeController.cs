@@ -148,6 +148,13 @@ namespace TripMeOn.Controllers
                 return RedirectToAction("ListeClient");
             }
         }
+                [HttpGet]
+                public IActionResult AddEmployeeForm()
+                {
+                    var viewModel = new EmployeeViewModel();
+                    return View("AddEmployeeForm");
+                }
+
 
         [HttpGet]
         public IActionResult AddEmployeeForm()
@@ -156,15 +163,12 @@ namespace TripMeOn.Controllers
             return View("AddEmployeeForm");
         }
 
-
         [HttpPost]
         public IActionResult SubmitEmployeeForm(EmployeeViewModel model)
         {
 
             using (var dbContext = new Models.BddContext())
             {
-
-
                 var employee = new Employee
                 {
                     LastName = model.LastName,
@@ -184,8 +188,8 @@ namespace TripMeOn.Controllers
 
             }
         }
-
     }
 }
+
 
 

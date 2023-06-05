@@ -146,6 +146,8 @@ namespace TripMeOn.Controllers
                 Client client = manageAccount.GetAllClients().Where(r => r.Id == id).FirstOrDefault();
                 manageAccount.DeleteClient(client);
                 return RedirectToAction("ListeClient");
+            }
+        }
 
             }
         }
@@ -164,17 +166,18 @@ namespace TripMeOn.Controllers
                     using (var dbContext = new Models.BddContext())
                     {
 
-                        var employee = new Employee
-                        {
-                            LastName = model.LastName,
-                            FirstName = model.FirstName,
-                            Nickname = model.Nickname,
-                            Email = model.Email,
-                            Password = UserService.EncodeMD5(model.Password),
-                            Address = model.Address,
-                            PhoneNumber = model.PhoneNumber,
-                            JobTitle = model.JobTitle
-                        };
+                        
+                var employee = new Employee
+                {
+                    LastName = model.LastName,
+                    FirstName = model.FirstName,
+                    Nickname = model.Nickname,
+                    Email = model.Email,
+                    Password = UserService.EncodeMD5(model.Password),
+                    Address = model.Address,
+                    PhoneNumber = model.PhoneNumber,
+                    Role = model.Role
+                };
 
                         dbContext.Employees.Add(employee);
                         dbContext.SaveChanges();
@@ -187,5 +190,4 @@ namespace TripMeOn.Controllers
             }
         }
     
-
 

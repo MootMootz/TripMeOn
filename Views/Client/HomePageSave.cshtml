@@ -1,0 +1,149 @@
+﻿@using TripMeOn.ViewModels
+@model NavigationViewModel
+@{
+    ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@*@section ExtraCss{
+    <link rel="stylesheet" href="/css/HomePage.css">
+}*@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <div class="login">
+
+
+        @if (Model.AuthentifyP)
+        {
+            //return Views_Partner_IndexPartner;
+
+            <h3>
+                Vous êtes déjà authentifié avec le login :
+                @Model.Partner.Nickname
+            </h3>
+            @Html.ActionLink("Voulez-vous vous déconnecter ?", "Deconnexion")
+        }
+        else
+        {
+            <p>
+                LOG IN PARTENAIRE
+                Veuillez vous authentifier :
+            </p>
+            using (Html.BeginForm("IndexPartner", "Login", FormMethod.Post))
+            {
+
+                <div>
+                    @Html.LabelFor(m => m.Partner.Nickname)
+                    @Html.TextBoxFor(m => m.Partner.Nickname)
+                    @Html.ValidationMessageFor(m => m.Partner.Nickname)
+                </div>
+                <div>
+                    @Html.LabelFor(m => m.Partner.Password)
+                    @Html.PasswordFor(m => m.Partner.Password)
+                    @Html.ValidationMessageFor(m => m.Partner.Password)
+                </div>
+                <input type="submit" value="Log in" />
+                <br />
+
+            }
+        }
+
+    </div>
+
+    <div class="login">
+
+
+        @if (Model.AuthentifyC)
+        {
+
+
+            <h3>
+                LOGIN CLIENT
+
+                Vous êtes déjà authentifié avec le login :
+                @Model.Client.Nickname
+            </h3>
+            @Html.ActionLink("Voulez-vous vous déconnecter ?", "Deconnexion")
+        }
+        else
+        {
+            <p>
+                LOG IN CLIENT
+                Veuillez vous authentifier :
+            </p>
+            using (Html.BeginForm("IndexClient", "Login", FormMethod.Post))
+            {
+
+                <div>
+                    @Html.LabelFor(m => m.Client.Nickname)
+                    @Html.TextBoxFor(m => m.Client.Nickname)
+                    @Html.ValidationMessageFor(m => m.Client.Nickname)
+                </div>
+                <div>
+                    @Html.LabelFor(m => m.Client.Password)
+                    @Html.PasswordFor(m => m.Client.Password)
+                    @Html.ValidationMessageFor(m => m.Client.Password)
+                </div>
+                <input type="submit" value="Log in" />
+                <br />
+
+            }
+        }
+    </div>
+
+
+    <div class="login">
+
+
+        @if (Model.AuthentifyC)
+        {
+
+
+            <h3>
+                LOGIN EMPLOYEE
+
+                Vous êtes déjà authentifié avec le login :
+                @Model.Employee.Nickname
+            </h3>
+            @Html.ActionLink("Voulez-vous vous déconnecter ?", "Deconnexion")
+        }
+        else
+        {
+            <p>
+                LOG IN EMPLOYEE
+                Veuillez vous authentifier :
+            </p>
+            using (Html.BeginForm("IndexAdmin", "Login", FormMethod.Post))
+            {
+
+                <div>
+                    @Html.LabelFor(m => m.Employee.Nickname)
+                    @Html.TextBoxFor(m => m.Employee.Nickname)
+                    @Html.ValidationMessageFor(m => m.Employee.Nickname)
+                </div>
+                <div>
+                    @Html.LabelFor(m => m.Employee.Password)
+                    @Html.PasswordFor(m => m.Employee.Password)
+                    @Html.ValidationMessageFor(m => m.Employee.Password)
+                </div>
+                <input type="submit" value="Log in" />
+                <br />
+
+            }
+        }
+    </div>
+
+    <section>
+        <nav>
+            <ul>
+            </ul>
+        </nav>
+        <article>
+        </article>
+    </section>
+</body>
+</html>

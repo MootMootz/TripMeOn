@@ -13,21 +13,21 @@
     @if (Model.AuthentifyC)
     {
 
-            <h3>
-               You are already log in :
-                @Model.Client.Nickname
-            </h3>
-            @Html.ActionLink("Voulez-vous vous déconnecter ?", "Deconnexion")
+        <h3>
+            You are already log in :
+            @Model.Client.Nickname
+        </h3>
+        @Html.ActionLink("Voulez-vous vous déconnecter ?", "Deconnexion")
 
         <p>
             @Html.ActionLink("Check Order Status", "OrderStatus", "Cart")
         </p>
-        }
-        else
-        {
-            <p>
-                Veuillez vous authentifier :
-            </p>
+    }
+    else
+    {
+        <p>
+            Veuillez vous authentifier :
+        </p>
 
         using (Html.BeginForm())
         {
@@ -46,6 +46,7 @@
             <br />
             @Html.ActionLink("create account", "ClientForm", "Client")
         }
+    }
 
-    </div>
+</div>
 

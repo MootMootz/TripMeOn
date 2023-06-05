@@ -26,8 +26,8 @@
 
 
 
-        <h1>#TRIP ME ON</h1>
-    </header>
+    <h1>#TRIP ME ON</h1>
+    @*</header>*@
 
     <!-- Bootstrap Navigation Bar code goes here -->
     <div class="navbar">
@@ -103,7 +103,6 @@
             </li>
 
             <!--   -------------------------------------------------------------------------   -->
-
             @*
             <li class="parent">
             <a href="/Content/InstaTips">Insta-tips</a>
@@ -141,13 +140,13 @@
 
             <!--   -------------------------------------------------------------------------   -->
 
- @*           <li class="parent">
-                <a href="#">Staff Only<span class="expand"></span></a>
+            <li class="parent">
+                <a href="#">Admin<span class="expand"></span></a>
                 <ul class="child">
-                    <li><a href="#">Log in</a></li>
-                    <li><a href=" /Product/PackageList">Check Products</a></li>
+                    <li>@Html.ActionLink("Log in Admin", "LoginAdmin", "Login")</li>
+                    @*<li><a href=" /Product/PackageList">Check Products</a></li>*@
                 </ul>
-            </li>*@
+            </li>
 
         </ul>
     </div>

@@ -155,16 +155,7 @@ namespace TripMeOn.Controllers
                     return View("AddEmployeeForm");
                 }
 
-
-            }
-        }
-                [HttpGet]
-                public IActionResult AddEmployeeForm()
-                {
-                    var viewModel = new EmployeeViewModel();
-                    return View("AddEmployeeForm");
-                }
-            
+         
 
                 [HttpPost]
                 public IActionResult SubmitEmployeeForm(EmployeeViewModel model)

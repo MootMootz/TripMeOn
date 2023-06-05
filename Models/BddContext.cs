@@ -51,7 +51,8 @@ namespace TripMeOn.Models
 
             var partners = new List<Partner>
             {
-                 new Partner { Id = 1, LastName = "BeauGoud", FirstName = "Sedar", Nickname = "BG", Email = "bogosse.gmail.com", Password = UserService.EncodeMD5("0000"), Address= "123 Avenue Fromenteau,45091, France",PhoneNumber="076543211",CompanyName="EasyGo"},
+                 new Partner { Id = 1, LastName = "Usungtand", FirstName = "Sedar", Nickname = "BG", Email = "bogosse.gmail.com", Password = UserService.EncodeMD5("0000"), Address= "123 Avenue Fromenteau,45091, France",PhoneNumber="076543211",CompanyName="EasyGo"},
+                  new Partner { Id = 2, LastName = "Perez", FirstName = "Exequiel", Nickname = "ArgPartner", Email = "exequielP@gmail.com", Password = UserService.EncodeMD5("0000"), Address= "10 av Salta, Salta, Argentine",PhoneNumber="076543211",CompanyName="ApptSalta"},
             };
 
             var destinations = new List<Destination>
@@ -116,7 +117,20 @@ namespace TripMeOn.Models
                 new Image { Id = 9,Url="/images/cover/pk9.jpg"},
                 new Image { Id = 10,Url="/images/cover/pk10.jpg"},
                 new Image { Id = 11, Url="/images/cover/p11.jpg"},
-                new Image { Id = 12, Url="/images/cover/pk12.jpg"}
+                new Image { Id = 12, Url="/images/cover/pk12.jpg"},
+                new Image { Id = 13, Url="/images/accomodation/htlSalta.jpg"},
+                new Image { Id = 14, Url="/images/accomodation/htlJujuy.jpg"},
+                new Image { Id = 15, Url="/images/accomodation/htlUshuaia.jpg"},
+                new Image { Id = 16, Url="/images/accomodation/htlUshuaia2.jpg"},
+                new Image { Id = 17, Url="/images/accomodation/htlCalafate.jpg"},
+                new Image { Id = 18, Url="/images/accomodation/htlParis1.jpg"},
+                new Image { Id = 19, Url="/images/accomodation/htlParis2.jpg"},
+                new Image { Id = 20, Url="/images/accomodation/htlParis3.jpg"},
+                new Image { Id = 21, Url="/images/restaurant/restoJujuy.jpg"},
+                new Image { Id = 22, Url="/images/restaurant/restoSalta.jpg"},
+                new Image { Id = 23, Url="/images/restaurant/restoUshuaia.jpg"},
+                new Image { Id = 24, Url="/images/restaurant/restoUshuaia2.jpg"}
+                
             };
 
             var tourPackages = new List<TourPackage>            {
@@ -133,7 +147,22 @@ namespace TripMeOn.Models
                 new TourPackage { Id = 10, Name = "Sweet December Colmer", DestinationId = 1, ThemeId = 4,Description="4 days tour",TimePeriodId=11,Price= 776,ImageId = 10 },
                 new TourPackage { Id = 11, Name = "Colored mountains in Argentina", DestinationId = 9, ThemeId = 10, Description="5 days tour", TimePeriodId=5, Price= 650, ImageId= 11 },
                 new TourPackage { Id = 12, Name = "Go wild at the End of the World", DestinationId = 8, ThemeId = 7, Description= "5 days tour", TimePeriodId=2, Price=880, ImageId= 12}
-            };           
+            };
+
+            var accomodation = new List<Accomodation> {
+                new Accomodation { Id =  1, Capacity = 2, Name = "Chez Exequiel", Type= "Appartment", Price= 16, StartDate = new DateTime(2023, 04, 01), EndDate = new DateTime(2023, 11, 30), Description= "Beautiful appartment in the city center of Salta", PartnerId = 2, DestinationId = 9, ImageId = 13},
+                new Accomodation { Id =  2, Capacity = 30, Name = "Colores de Purmamarcal", Type= "Hotel", Price= 20, StartDate = new DateTime(2023, 04, 01), EndDate = new DateTime(2023, 11, 30), Description= "Beautiful hotel in the city center of Jujuy", PartnerId = 2, DestinationId = 9, ImageId = 14},
+                new Accomodation { Id =  3, Capacity = 4, Name = "Mountain paradise", Type= "Maison", Price= 60, StartDate = new DateTime(2023, 10, 01), EndDate = new DateTime(2023,04,01), Description= "Cabane in the middle of the mountains", PartnerId = 2, DestinationId = 8, ImageId = 15},
+                new Accomodation { Id =  4, Capacity = 35, Name = "Trip me Here", Type= "Hotel", Price= 50, StartDate = new DateTime(2023, 10, 01), EndDate = new DateTime(2023, 04, 30), Description= "Amazing hotel in Ushuaia", PartnerId = 2, DestinationId = 8, ImageId = 16},
+                new Accomodation { Id =  5, Capacity = 5, Name = "Chez Posada", Type= "Hotel", Price= 70, StartDate = new DateTime(2023, 09, 01), EndDate = new DateTime(2023, 05, 01), Description= "Best view of the Lake Argentino from the dinning room", PartnerId = 2, DestinationId = 8, ImageId = 17},
+                new Accomodation { Id =  6, Capacity = 6, Name = "Esplendor", Type= "Appartment", Price= 120, StartDate = new DateTime(2023, 01, 01), EndDate = new DateTime(2023, 12, 31), Description= "Comfortable appartement in the center of Paris", PartnerId = 1, DestinationId = 1, ImageId = 18},
+                new Accomodation { Id =  7, Capacity = 20, Name = "The View", Type= "Hotel", Price= 90, StartDate = new DateTime(2023, 01, 01), EndDate = new DateTime(2023, 12, 31), Description= "Hotel in the city center with an excellent view", PartnerId = 1, DestinationId = 1, ImageId = 19},
+                new Accomodation { Id =  8, Capacity = 2, Name = "WaterTrip", Type= "Boat", Price= 60, StartDate = new DateTime(2023, 01, 01), EndDate = new DateTime(2023, 12, 31), Description= "Relaxing experience of sleeping in a boat at the Seine", PartnerId = 1, DestinationId = 1, ImageId = 20},
+            };
+
+            //var restaurant = new List<Restaurant> {
+            //    new Restaurant {  Id = 1, Name = }
+            //};
 
 
 
@@ -146,6 +175,8 @@ namespace TripMeOn.Models
             this.TourPackages.AddRange(tourPackages);
             this.TimePeriods.AddRange(timePeriods);
             this.Images.AddRange(images);
+            this.Accomodations.AddRange(accomodation);
+          //  this.Restaurants.AddRange(restaurant);
             this.SaveChanges();
         }
 

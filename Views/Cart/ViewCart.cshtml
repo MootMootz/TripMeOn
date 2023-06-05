@@ -60,14 +60,14 @@
     </form>
 
 
-  @*  <a href=@("/Cart/CheckoutForm?clientId="+Model.ClientId)>
-        <button >Check Out</button>
-
-    </a>*@
-    <form action="/Cart/CheckoutForm" method="get">
-@*        <input type="hidden" name="clientId" value="@Model.ClientId" />
-*@        <button type="submit">Check Out</button>
+  
+    <form action="/Cart/CheckoutForm?clientId=@Model.ClientId" method="get">
+        <button type="submit">Check Out</button>
     </form>
+
+    @*<form action="/Cart/CheckoutForm" method="get">       
+        <button type="submit">Check Out</button>
+    </form>*@
 </body>
 </html>
 

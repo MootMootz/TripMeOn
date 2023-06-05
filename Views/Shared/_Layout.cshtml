@@ -16,6 +16,7 @@
 </head>
 <body>
     <header>
+
         <h1>#TRIP ME ON</h1> @*delete title, put the logo top left instead*@
     </header>
 
@@ -23,6 +24,10 @@
         <!-- put LOGO here ? -->
     </div>
 
+
+
+        <h1>#TRIP ME ON</h1>
+    </header>
 
     <!-- Bootstrap Navigation Bar code goes here -->
     <div class="navbar">
@@ -98,6 +103,7 @@
             </li>
 
             <!--   -------------------------------------------------------------------------   -->
+
             @*
             <li class="parent">
             <a href="/Content/InstaTips">Insta-tips</a>
@@ -113,13 +119,17 @@
             <a href="#">Become a Partner</a>
             </li>*@
 
+
             <!--   -------------------------------------------------------------------------   -->
 
             <li class="parent">
                 <a href="#">Log in<span class="expand"></span></a>
                 <ul class="child">
-                    <li><a href="/Partner/PartnerForm">I am a Partner</a></li>
-                    <li><a href="/Login/LoginClient">I am a Traveller</a></li>
+
+
+                    <li>@Html.ActionLink("I am a Partner", "LoginPartner", "Login")</li>
+                    <li>@Html.ActionLink("I am a Traveller", "LoginClient", "Login")</li>
+
                     <li class="parent">
                         <a href="#">Create account?</a>
                         <ul class="child">
@@ -130,6 +140,7 @@
             </li>
 
             <!--   -------------------------------------------------------------------------   -->
+
  @*           <li class="parent">
                 <a href="#">Staff Only<span class="expand"></span></a>
                 <ul class="child">
@@ -137,6 +148,7 @@
                     <li><a href=" /Product/PackageList">Check Products</a></li>
                 </ul>
             </li>*@
+
         </ul>
     </div>
     <!--   -------------------------------------------------------------------------   -->
@@ -177,6 +189,9 @@
     </div>
 
     @RenderBody()
+
+
+
 
     <footer>
         <div class="social-icons">

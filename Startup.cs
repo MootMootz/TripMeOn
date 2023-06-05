@@ -27,7 +27,10 @@ namespace TripMeOn
             services.AddScoped<IProductService, ProductService>();
             services.AddScoped<IOrderService, OrderService>();
             services.AddScoped<IPropositionService, PropositionService>();
+            services.AddScoped<IUserService, UserService>();
 
+
+            services.AddHttpContextAccessor();
             services.AddDistributedMemoryCache();
             services.AddSession(options =>
             {
@@ -41,7 +44,7 @@ namespace TripMeOn
             {
                 options.Cookie.Name = "TripMeOn.AuthCookie"; // définit le nom du cookie d'authentification
                 options.Cookie.HttpOnly = true; // le cookie ne peut être accédé que par le serveur et pas coté client
-                options.ExpireTimeSpan = TimeSpan.FromMinutes(30); // la durée de validité du cookie est 30 minutes
+                options.ExpireTimeSpan = TimeSpan.FromMinutes(60); // la durée de validité du cookie est 30 minutes
                 options.LoginPath = "/Login/IndexClient";
                 options.AccessDeniedPath = "/Login/AccessDenied";
 
@@ -64,13 +67,12 @@ namespace TripMeOn
             app.UseStaticFiles();
             app.UseAuthentication(); // Ajouter cette ligne pour activer l'authentification
             app.UseAuthorization();
-            app.UseSession(); // Add this line to enable session state
-            app.UseAuthentication();
-            app.UseAuthorization();
+
+            app.UseSession(); // Add this line to enable session state           
             app.UseEndpoints(endpoints =>
             {
-				
-				endpoints.MapControllerRoute(
+
+                endpoints.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Home}/{action=HomePage}/{id?}");
             });

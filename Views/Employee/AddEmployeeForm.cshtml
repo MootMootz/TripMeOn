@@ -17,7 +17,6 @@ nav>
     // on affiche le message Bonjour suivi de la valeur de Cookie nickname
 }
 <button type="submit">@Html.ActionLink("Se déconnecter", "Deconnexion", "Login")</button>
-</nav>
 
 @using (Html.BeginForm("SubmitEmployeeForm", "Employee", FormMethod.Post))
 {
@@ -60,8 +59,8 @@ nav>
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.JobTitle)
-                @Html.TextBoxFor(model => model.JobTitle, new { @class = "form-control" })
+                @Html.LabelFor(model => model.Role)
+                @Html.TextBoxFor(model => model.Role, new { @class = "form-control" })
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </fieldset>

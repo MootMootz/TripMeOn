@@ -11,7 +11,7 @@ namespace TripMeOn.Controllers
         {
             return View();
         }
-        
+
         private Models.BddContext _bddContext;
 
         public ClientController()
@@ -36,8 +36,8 @@ namespace TripMeOn.Controllers
                 {
                     LastName = model.LastName,
                     FirstName = model.FirstName,
-					Nickname = model.Nickname,
-					Email = model.Email,
+				            Nickname = model.Nickname,
+					          Email = model.Email,
                     Password = UserService.EncodeMD5(model.Password),
                     Address = model.Address,
                     PhoneNumber = model.PhoneNumber,
@@ -48,6 +48,7 @@ namespace TripMeOn.Controllers
                 dbContext.SaveChanges();
 				
 				return View("SignUpConfirmation");
+
             }
         }
         public IActionResult SignUpConfirmation()

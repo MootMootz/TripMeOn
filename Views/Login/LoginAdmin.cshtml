@@ -1,0 +1,48 @@
+﻿@model TripMeOn.ViewModels.NavigationViewModel
+@{
+    ViewBag.Title = "LoginClient";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section ExtraCss{
+    <link rel="stylesheet" href="/css/HomePage.css">
+
+}<div class="login">
+
+
+    @if (Model.AuthentifyE)
+    {
+
+
+        <h3>
+            LOGIN EMPLOYEE
+
+            Vous êtes déjà authentifié avec le login :
+            @Model.Employee.Nickname
+        </h3>
+        @Html.ActionLink("Voulez-vous vous déconnecter ?", "Deconnexion")
+    }
+    else
+    {
+        <p>
+            LOG IN EMPLOYEE
+            Veuillez vous authentifier :
+        </p>
+        using (Html.BeginForm("IndexAdmin", "Login", FormMethod.Post))
+        {
+
+            <div>
+                @Html.LabelFor(m => m.Employee.Nickname)
+                @Html.TextBoxFor(m => m.Employee.Nickname)
+                @Html.ValidationMessageFor(m => m.Employee.Nickname)
+            </div>
+            <div>
+                @Html.LabelFor(m => m.Employee.Password)
+                @Html.PasswordFor(m => m.Employee.Password)
+                @Html.ValidationMessageFor(m => m.Employee.Password)
+            </div>
+            <input type="submit" value="Log in" />
+            <br />
+
+        }
+    }
+</div>

@@ -102,6 +102,11 @@ namespace TripMeOn.Controllers
         }
 
         //LOG IN PARTENAIRE
+        public IActionResult LoginPartner()
+        {
+            ViewBag.ShowLoginPartnerBox = true;
+            return View(SetupNavigationViewModel());
+        }
         public IActionResult IndexPartner()
         {
             NavigationViewModel viewModel = new NavigationViewModel { AuthentifyP = HttpContext.User.Identity.IsAuthenticated };
@@ -142,7 +147,7 @@ namespace TripMeOn.Controllers
                     if (!string.IsNullOrWhiteSpace(returnUrl) && Url.IsLocalUrl(returnUrl))
                         return Redirect(returnUrl);
 
-                    return Redirect("../Partner/IndexPartner");
+                    return RedirectToAction("IndexPartner");
                 }
                 ModelState.AddModelError("Partner.Nickname", "le nom ou le mot de passe sont incorrects");
             }
@@ -157,6 +162,11 @@ namespace TripMeOn.Controllers
         }
 
         //LOG IN EMPLOYE
+        public IActionResult LoginAdmin()
+        {
+            ViewBag.ShowLoginAdminBox = true;
+            return View(SetupNavigationViewModel());
+        }
         public IActionResult IndexAdmin()
         {
             NavigationViewModel viewModel = new NavigationViewModel { AuthentifyE = HttpContext.User.Identity.IsAuthenticated };
@@ -173,7 +183,7 @@ namespace TripMeOn.Controllers
         {
             if (ModelState.IsValid)
             {
-                Employee employee= userService.AuthentifyE(viewModel.Employee.Nickname, viewModel.Employee.Password);
+                Employee employee = userService.AuthentifyE(viewModel.Employee.Nickname, viewModel.Employee.Password);
                 if (employee != null)
                 {
                     var userClaims = new List<Claim>()
@@ -203,7 +213,7 @@ namespace TripMeOn.Controllers
             }
             return View("../Home/HomePage", viewModel);
         }
-   
+
         //A FAIRE JUSTE APRES
 
         //public IActionResult CreerCompte()

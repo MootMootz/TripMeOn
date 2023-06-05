@@ -19,9 +19,9 @@
                 <span> <strong>Bonjour @Context.Request.Cookies["Nickname"]</strong></span>
                 // on affiche le message Bonjour suivi de la valeur de Cookie nickname
             }
-            <button type="button">@Html.ActionLink("Home", "IndexPartner")</button>
-            <button type="button">@Html.ActionLink("My services", "ServicesPartner")</button>
-            <button type="submit">@Html.ActionLink("Deconnection", "Deconnection", "Login")</button>
+            <button type="button">@Html.ActionLink("Home", "IndexPartner", "Login")</button>
+            <button type="button">@Html.ActionLink("My services", "ServicesPartner", "Partner")</button>
+            <button type="submit">@Html.ActionLink("Logout", "Deconnection", "Login")</button>
         </nav>
     </div>
 

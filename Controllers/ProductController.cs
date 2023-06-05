@@ -15,22 +15,22 @@ namespace TripMeOn.Controllers
         }
 
 
-		//public IActionResult SearchPackage(int destination, int theme, int month)
-		//{
-		//    var searchResults = _productService.SearchByDestinationThemeMonth(destination, theme, month);
-		//    return View("SearchBoxPackage", searchResults);
-		//}
-		public IActionResult SearchPackage(int destination, int theme, int month)
-		{
-			var searchResults = _productService.SearchByDestinationThemeMonth(
-				destination == 0 ? (int?)null : destination,
-				theme == 0 ? (int?)null : theme,
-				month == 0 ? (int?)null : month);
+        //public IActionResult SearchPackage(int destination, int theme, int month)
+        //{
+        //    var searchResults = _productService.SearchByDestinationThemeMonth(destination, theme, month);
+        //    return View("SearchBoxPackage", searchResults);
+        //}
+        public IActionResult SearchPackage(int destination, int theme, int month)
+        {
+            var searchResults = _productService.SearchByDestinationThemeMonth(
+                destination == 0 ? (int?)null : destination,
+                theme == 0 ? (int?)null : theme,
+                month == 0 ? (int?)null : month);
 
-			return View("SearchBoxPackage", searchResults);
-		}
+            return View("SearchBoxPackage", searchResults);
+        }
 
-		public IActionResult PackageList()
+        public IActionResult PackageList()
         {
             var packages = _productService.GetTourPackages();
 
@@ -47,7 +47,7 @@ namespace TripMeOn.Controllers
             return View("PackageList", packages);
         }
         //GetTourPackages return a collection , had to use using System.Linq;
-        
+
         [HttpGet]
         public IActionResult ModifyPackage(int packageId)
         {
@@ -114,7 +114,7 @@ namespace TripMeOn.Controllers
 
             if (tourPackage == null)
             {
-                return NotFound(); 
+                return NotFound();
             }
 
             string viewName = $"/Views/Package/Details_{id}.cshtml";

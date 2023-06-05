@@ -1,7 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using TripMeOn.BL;
 using TripMeOn.Helper;
 using TripMeOn.Models.Order;
@@ -29,6 +27,7 @@ namespace TripMeOn.Models
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+
             optionsBuilder.UseMySql("server=localhost;user id=root;password=kukuskar;database=TripMeOn");
 
         }
@@ -47,7 +46,7 @@ namespace TripMeOn.Models
 
             var employees = new List<Employee>
             {
-                 new Employee { Id = 1, LastName = "Lieby", FirstName = "Karen", Nickname = "QQs", Email = "karen.lieby@outlook.com", Password = UserService.EncodeMD5("2222"), Address= "192 ancienne route de Quissac, 30250, France",PhoneNumber="0676455781",JobTitle="Admin"},
+                 new Employee { Id = 1, LastName = "Lieby", FirstName = "Karen", Nickname = "QQs", Email = "karen.lieby@outlook.com", Password = UserService.EncodeMD5("2222"), Address= "192 ancienne route de Quissac, 30250, France",PhoneNumber="0676455781",Role="Admin"},
             };
 
             var partners = new List<Partner>
@@ -141,7 +140,7 @@ namespace TripMeOn.Models
                 new TourPackage { Id = 3, Name = "Confetti Field of Pershore ", DestinationId = 3, ThemeId = 2,Description="4 days tour",TimePeriodId=6, Price = 1180,ImageId=3 },
                 new TourPackage { Id = 4, Name = "Colmer in Autumn", DestinationId = 1, ThemeId = 10,Description="4 days tour",TimePeriodId=11,Price= 776,ImageId = 4 },
                 new TourPackage { Id = 5, Name = "Wisteria and Sakura in Paris", DestinationId = 1, ThemeId = 2,Description="4 days tour",TimePeriodId=4,Price= 776,ImageId = 5},
-                new TourPackage { Id = 6, Name = "May Bloomings in Paris", DestinationId = 1, ThemeId = 2,Description="4 days tour",TimePeriodId=5,Price= 776,ImageId = 6 },                
+                new TourPackage { Id = 6, Name = "May Bloomings in Paris", DestinationId = 1, ThemeId = 2,Description="4 days tour",TimePeriodId=5,Price= 776,ImageId = 6 },
                 new TourPackage { Id = 7, Name = "Medieval Splendors in Belgium", DestinationId = 10, ThemeId = 3,Description="4 days tour",TimePeriodId=12,Price= 776,ImageId = 7 },
                 new TourPackage { Id = 8, Name = "Floating village in tulip season", DestinationId = 5, ThemeId = 2,Description="4 days tour",TimePeriodId=4,Price= 776,ImageId = 8 },
                 new TourPackage { Id = 9, Name = "Springtime Serenade in Colmer", DestinationId = 1, ThemeId = 10,Description="4 days tour",TimePeriodId=4,Price= 776,ImageId = 9 },
@@ -164,6 +163,7 @@ namespace TripMeOn.Models
             //var restaurant = new List<Restaurant> {
             //    new Restaurant {  Id = 1, Name = }
             //};
+
 
 
 

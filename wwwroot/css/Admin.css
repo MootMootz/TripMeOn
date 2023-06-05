@@ -1,0 +1,80 @@
+﻿#header, #menu, #mainContent, #footer {
+    padding: 1px 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#header {
+    background-color: lightcoral;
+    text-align: center;
+    background-size: 100px;
+}
+
+#main {
+    margin: auto;
+}
+
+#menu {
+    float: left;
+    width: 176px;
+    height: 800px;
+    background-color: gold;
+    text-align: center;
+}
+
+#logout {
+    display: flex;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+#mainContent {
+    background-color: white;
+}
+
+#mainContentTop {
+    text-align: left;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 15px;
+    width: 500px;
+}
+
+#actionRequiredBlock {
+    position: absolute;
+    display: flex;
+    width: 70%;
+}
+
+#actionRequiredContainer {
+    position: absolute;
+    width: inherit;
+    height: 88px;
+    top: 207px;
+    border-radius: 25px;
+    background-color: rgba(0, 0, 0, 0.05625);
+    display: flex;
+    align-items: center;
+    justify-content: left;
+}
+
+#actionRequiredContent {
+    margin-left: 15px;
+}
+
+#footer {
+    background-color: lightgreen;
+    text-align: center;
+    clear: both;
+}
+
+.pageTitle {
+    font-weight: bold;
+    text-align: center;
+    text-decoration: solid;
+    text-underline-offset: 10%;
+    border-bottom-color: black;
+}
+
+.selectionne {
+    color: red;
+}

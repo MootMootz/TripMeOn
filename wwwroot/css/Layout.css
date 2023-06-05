@@ -9,19 +9,6 @@
     z-index: 10;
 }
 
-header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-body {
-    font-family: 'Open Sans', sans-serif;
-    background: #ecf0f1;
-    height: 100vh;
-    margin: 0;
-    padding: 0;
-}
-
 .parent {
     display: inline-block;
     position: relative;
@@ -29,7 +16,6 @@ body {
     line-height: 50px;
     background-color: #C0B9DD;
     border-right: #CCC 1px solid;
-   
 }
 
     .parent a {
@@ -85,15 +71,7 @@ li:hover {
     float: right;
     margin-right: 5px;
 }
-.social-icons {
-    font-size: 35px;
-}
 
-    .social-icons a {
-        color: #000000;
-        margin-right: 10px;
-        
-    }
 .search-container {
     display: flex;
     justify-content: center;
@@ -119,4 +97,15 @@ li:hover {
 
     .search-box label {
         flex: 0 0 100px; /* Adjust the width as needed */
+    }
+
+
+
+.social-icons {
+    font-size: 35px;
+}
+
+    .social-icons a {
+        color: #000000;
+        margin-right: 10px;
     }

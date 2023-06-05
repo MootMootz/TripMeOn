@@ -1,0 +1,139 @@
+﻿@model TripMeOn.Models.Products.TourPackage
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section ExtraCss{
+    <link rel="stylesheet" href="/css/PDetails.css">
+}
+
+<div class="flex-container">
+    <div class="floating-box">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="photo-container">
+                    <img src="~/images/p11/jujuy.jpg" alt="Photo 1" class="img-fluid rounded">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="photo-container">
+                    <img src="~/images/p11/cafayate.jpg" alt="Photo 2" class="img-fluid rounded">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="photo-container">
+                    <img src="~/images/p11/salinas.jpg" alt="Photo 3" class="img-fluid rounded">
+                </div>
+            </div>
+        </div>
+        <!------------------------------------------------------------------------------------------------------->
+        <div class="row">
+            <div class="col-md-6">
+                <div class="overlay">
+                    <h3>@Model.Name</h3>
+                    <p>@Model.Description</p>
+                    <p>Country: @Model.Destination.Country</p>
+                    <p>Theme: @Model.Theme.Name</p>
+                    <p>Region: @Model.Destination.Region</p>
+                    <p>City: @Model.Destination.City</p>
+                    <p>Price: @Model.Price</p>
+                    <p>TripMeOn invites you to visit the north of Argentina, where in the middle of a dessert land colorful mountains open the path of adventure travelers. From there your path will continue to amaze your eyes, going from full colors to a white land of salt and sun. The hospitality of the people, the great food, and the quality of the pictures you will be able to take, worth the long trip.</p>
+                </div>
+            </div>
+            <!------------------------------------------------------------------------------------------------->
+
+            <div class="col-md-6">
+                <div class="itinerary-container hidden">
+                    <h4>
+                       Colour mountains and white flat lands in Argentina
+                    </h4>
+                    <div class="itinerary-details">
+                        <!-- Day 1 -->
+                        <div class="day">
+                            <h5>
+                                <span class="toggle-day-icon">&#9660;</span>
+                                <span class="toggle-day-title">Day 1</span>
+                                <span class="toggle-day-text">Show Itinerary Details</span>
+                            </h5>
+                            <p class="itinerary-details-text">Day 1 details...</p>
+                            <p class="itinerary-details-text" style="display: none;">Find your rented car at the local airport. You can make your check-in at any time. Dinner at the restaurant of the hotel in Salta</p>
+                            <p class="itinerary-details-text" style="display: none;"> You'll have the whole day to visit Salta "the beautiful". The most traditional restaurant of the city has booked one special table for you, and the hotel owner will give you a map with the best places to visit and the time of the day</p>
+                            <p class="itinerary-details-text" style="display: none;">
+                                Don't forget to go dancing the traditional folklore when you're there!
+                            </p>
+                        </div>
+                        <!-- Day 2 -->
+                        <div class="day">
+                            <h5>
+                                <span class="toggle-day-icon">&#9660;</span>
+                                <span class="toggle-day-title">Day 2</span>
+                                <span class="toggle-day-text">Show Itinerary Details</span>
+                            </h5>
+                            <p class="itinerary-details-text">Day 2 details...</p>
+                            <p class="itinerary-details-text" style="display: none;">Take your car and drive south all the to Cafayate. </p>
+                            <p class="itinerary-details-text" style="display: none;">You can eat "chivito" at noon and go take the best pics in the red mountains that suround the region </p>
+                            <p class="itinerary-details-textstyle=" display: none;"">You're free to have dinner wherever you feel like ;)'</p>
+                        </div>
+                        <!-- Day 3 -->
+                        <div class="day">
+                            <h5>
+                                <span class="toggle-day-icon">&#9660;</span>
+                                <span class="toggle-day-title">Day 3</span>
+                                <span class="toggle-day-text">Show Itinerary Details</span>
+                            </h5>
+                            <p class="itinerary-details-text">Day 3 details...</p>
+                            <p class="itinerary-details-text" style="display: none;">Go early in the morning to Humahuaca, the 7 colors mountain, the light is perfect and usually nobody goes that early in the morning. At the hotel they will prepare you a breakfat to go (pretty awesome, right?).</p>
+                            <p class="itinerary-details-text" style="display: none;">Keep going straight noth until La Quiaca. You're second hotel is waiting for your arrival.</p>
+                        </div>
+                        <!-- Day 4 -->
+                        <div class="day">
+                            <h5>
+                                <span class="toggle-day-icon">&#9660;</span>
+                                <span class="toggle-day-title">Day 4</span>
+                                <span class="toggle-day-text">Show Itinerary Details</span>
+                            </h5>
+                            <p class="itinerary-details-text">Day 4 details...</p>
+                            <p class="itinerary-details-text" style="display: none;">The day of the Salt flats. Don't forget to wear a lot of sunscreen, and good sunglasses</p>
+                            <p class="itinerary-details-text" style="display: none;">Drive you back on time for Airport/train transfer</p>
+                        </div>
+                        <!-- Day 5 -->
+                        <div class="day">
+                            <h5>
+                                <span class="toggle-day-icon">&#9660;</span>
+                                <span class="toggle-day-title">Day 5</span>
+                                <span class="toggle-day-text">Show Itinerary Details</span>
+                            </h5>
+                            <p class="itinerary-details-text">Day 5 details...</p>
+                            <p class="itinerary-details-text" style="display: none;">A visit to the national park "Los Flamencos" is waiting for you during the morning. </p>
+                            <p class="itinerary-details-text" style="display: none;">Drive you back on time for Airport. Remember to leave the car keys to the RentACar company.</p>
+                        </div>
+                    </div>
+                </div>
+                <form action="/Cart/AddToCart" method="post">
+                    <input type="hidden" name="tourPackageId" value="@Model.Id" />
+                    <label for="quantity">Quantity:</label>
+                    <input type="number" name="quantity" id="quantity" value="1" min="1" />
+                    <button type="submit">Add to Cart</button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+@section ExtraScript {
+    <script>
+        $(document).ready(function () {
+            $('.toggle-day-icon').on('click', function () {
+                var day = $(this).closest('.day');
+                day.find('.itinerary-details-text').slideToggle();
+                $(this).toggleClass('rotate');
+                var toggleDayText = day.find('.toggle-day-text');
+                toggleDayText.text(function (i, text) {
+                    return text === 'Show Itinerary Details' ? 'Hide Itinerary Details' : 'Show Itinerary Details';
+                });
+            });
+        });
+    </script>
+}

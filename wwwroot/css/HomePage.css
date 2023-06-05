@@ -168,8 +168,9 @@ footer {
     width: 100%;
     height: 800px;
 }
+
     .diapo div {
-        display:flex;
+        display: flex;
         background-size: cover;
         background-position: center;
         justify-content: center;
@@ -195,12 +196,11 @@ footer {
 
 .boxPic {
     display: flex;
-    width:20%;
+    width: 20%;
     height: 60px;
-    margin-top:600px;
+    margin-top: 600px;
     margin-bottom: auto;
     background-color: red;
-    justify-content: center;
     border-radius: 5px;
 }
 
@@ -208,7 +208,6 @@ footer {
     display: flex;
     width: auto;
     align-items: center;
-    justify-content: center;
     color: white;
 }
 
@@ -236,62 +235,106 @@ footer {
         border-width: thin;
         align-content: center;
         justify-content: center;
-        text-align: center;
         /*border-radius: 1px;*/
     }
-    
-    #search-searchbox{
-    background-color:red;
-    color : white;
-    }
+
+#search-searchbox {
+    background-color: red;
+    color: white;
+}
 
 
 #testimony-block {
     display: grid;
-    width: 100%;    
-    height:500px;
+    width: 100%;
+    height: 500px;
     grid-template-columns: 150px 800px 300px 150px;
     align-items: center;
-    border-block-color: black;
     justify-content: center;
     margin-bottom: 50px;
 }
 
 #testimony-block-customer-pic {
     background-image: url(https://projet-isika.com/wp-content/uploads/2018/02/patrick-250x300.jpg);
-    height:300px;
+    height: 300px;
     border-radius: 50%;
     background-size: cover;
-    background-position:top;
+    background-position: top;
     justify-content: center;
+}
+
+.testimony-block-arrows {
+    width: 150px;
+    height: 100px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
 }
 
 #testimony-block-left-arrow {
-    background-image: url(https://media4.giphy.com/media/XYPXQnu0XFqG4/giphy.gif?cid=ecf05e47z86szj2qvvymhzcigjy4rkceifp7ixp2tb83omqc&ep=v1_gifs_search&rid=giphy.gif&ct=g);
-    width: 30px;
-    height: 30px;
-    background-size: cover;
+    width: 150px;
+    background-image: url(/images/retour-rapide.png);
     background-position: center;
-    justify-content: center;
+    background-repeat: no-repeat;
+    background-size: contain;
 }
 
+#testimony-block-right-arrow {
+    width: 150px;
+    background-image: url(/images/avance-rapide.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
 
 .partnerships {
     display: grid;
-    width: auto;
-    grid-template-columns: repeat(3, 1fr);
-    column-gap: 1px;
+    width: 100%;
+    height: 300px;
+    grid-template-columns: repeat(7, 1fr);
     justify-content: center;
     align-content: center;
     align-items: center;
-    margin-bottom:50px;
 }
 
-.partnerships div {
-    height:100px;
-    border-block-color: black;
-    border-style: solid;
-    border-color: black;
-    border-width: thin;
+    .partnerships div {
+        width: 150px;
+        height: 100px;
+        margin-right: auto;
+        margin-left: auto;
+        /*border-block-color: black;
+        border-style: solid;
+        border-color: black;
+        border-width: thin;*/
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
 
+#partnerships-pic1 {
+    background-image: url(/images/logos-rs/Meta_Platforms_Inc._logo.svg.png);
+}
+
+#partnerships-pic2 {
+    background-image: url(/images/logos-rs/TikTok-Logo.png);
+}
+
+#partnerships-pic3 {
+    background-image: url(/images/logos-rs/twitch-app-logo-png-3.png);
+}
+
+#partnerships-pic4 {
+    background-image: url(/images/logos-rs/youtube-logo-hd-8.png);
+}
+
+#partnerships-pic5 {
+    background-image: url(/images/logos-rs/20190808214526!Logo-Snapchat.png);
+}
+
+#partnerships-pic6 {
+    background-image: url(/images/logos-rs/Logo-BeReal.png);
+}
+
+#partnerships-pic7 {
+    background-image: url(/images/logos-rs/Logo_of_Twitter.svg.png);
 }

@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using TripMeOn.BL;
 using TripMeOn.Helper;
@@ -135,6 +136,17 @@ namespace TripMeOn.Models
                 new TourPackage { Id = 10, Name = "Sweet December Colmer", DestinationId = 1, ThemeId = 4,Description="4 days tour",TimePeriodId=11,Price= 776,ImageId = 10 }
             };
 
+            var accomodation = new List<Accomodation> {
+                new Accomodation { Id =  1, Capacity = 2, Name = "Chez Exequiel", Type= "Appartment", Price= 16, StartDate = new DateTime(2023, 04, 01), EndDate = new DateTime(2023, 11, 30), Description= "Beautiful appartment in the city center of Salta", PartnerId = 2, DestinationId = 9},
+                new Accomodation { Id =  2, Capacity = 30, Name = "Colores de Purmamarcal", Type= "Hotel", Price= 20, StartDate = new DateTime(2023, 04, 01), EndDate = new DateTime(2023, 11, 30), Description= "Beautiful hotel in the city center of Jujuy", PartnerId = 2, DestinationId = 9},
+                new Accomodation { Id =  3, Capacity = 4, Name = "Mountain paradise", Type= "Maison", Price= 60, StartDate = new DateTime(2023, 10, 01), EndDate = new DateTime(2023,04,01), Description= "Cabane in the middle of the mountains", PartnerId = 2, DestinationId = 8},
+                new Accomodation { Id =  4, Capacity = 35, Name = "Trip me Here", Type= "Hotel", Price= 50, StartDate = new DateTime(2023, 10, 01), EndDate = new DateTime(2023, 04, 30), Description= "Amazing hotel in Ushuaia", PartnerId = 2, DestinationId = 8},
+                new Accomodation { Id =  5, Capacity = 5, Name = "Chez Posada", Type= "Hotel", Price= 70, StartDate = new DateTime(2023, 09, 01), EndDate = new DateTime(2023, 05, 01), Description= "Best view of the Lake Argentino from the dinning room", PartnerId = 2, DestinationId = 8},
+                new Accomodation { Id =  6, Capacity = 6, Name = "Esplendor", Type= "Appartment", Price= 120, StartDate = new DateTime(2023, 01, 01), EndDate = new DateTime(2023, 12, 31), Description= "Comfortable appartement in the center of Paris", PartnerId = 1, DestinationId = 1},
+                new Accomodation { Id =  7, Capacity = 20, Name = "The View", Type= "Hotel", Price= 90, StartDate = new DateTime(2023, 01, 01), EndDate = new DateTime(2023, 12, 31), Description= "Hotel in the city center with an excellent view", PartnerId = 1, DestinationId = 1},
+                new Accomodation { Id =  8, Capacity = 2, Name = "WaterTrip", Type= "Boat", Price= 60, StartDate = new DateTime(2023, 01, 01), EndDate = new DateTime(2023, 12, 31), Description= "Relaxing experience of sleeping in a boat at the Seine", PartnerId = 1, DestinationId = 1},
+            };
+
 
 
             this.Clients.AddRange(clients);
@@ -145,6 +157,7 @@ namespace TripMeOn.Models
             this.TourPackages.AddRange(tourPackages);
             this.TimePeriods.AddRange(timePeriods);
             this.Images.AddRange(images);
+            this.Accomodations.AddRange(accomodation);
             this.SaveChanges();
         }
 

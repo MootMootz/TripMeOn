@@ -20,10 +20,11 @@ namespace TripMeOn.Models.PartnerProducts
 
         public int PartnerId { get; set; } // foreign key for Partner
         public virtual Partner Partner { get; set; } // navigation property
-      
+
         public int DestinationId { get; set; }
         public virtual Destination Destination { get; set; }
         public bool IsOnline { get; set; }
+        public bool IsApproved { get; set; }
     }
 }
 

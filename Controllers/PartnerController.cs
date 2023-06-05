@@ -14,7 +14,7 @@ namespace TripMeOn.Controllers
     public class PartnerController : Controller
 
     {
-                
+
         private Models.BddContext _bddContext;
 
         public PartnerController()

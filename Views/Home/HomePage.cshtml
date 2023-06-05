@@ -15,17 +15,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-  
 
-  
+
+
     <div class="diapo">
         <div id="picLeft">
             <div class="boxPic">
-               <div class="textBoxPic">
+                <div class="textBoxPic">
                     link theme 1
-               </div> 
+                </div>
             </div>
-       </div>
+        </div>
         <div id="picRight">
             <div class="boxPic">
                 <div class="textBoxPic">
@@ -33,6 +33,7 @@
                 </div>
             </div>
         </div>
+    </div>
 
     @*<div class="login"> VOIR SUR VS
 
@@ -98,7 +99,7 @@
     </p>
     using (Html.BeginForm("IndexClient", "Login", FormMethod.Post))
     {
-*@
+    *@
 
     <div class="search">
         <div id="search-block">
@@ -115,6 +116,7 @@
                 SearchBox
             </div>
         </div>
+    </div>
 
     @* <div> ENCORE ET ENCORE A REVISER
     @Html.LabelFor(m => m.Client.Nickname)
@@ -139,17 +141,20 @@
 
 
 
-    <div class="testimony">
-        <h1>Ils parlent de nous</h1>
-        <div id="testimony-block">
-            <div id="testimony-block-left-arrow">left arrows</div>
-            <div>J'ai essayé TripMeOn suite au témoignage d'un influenceur que je follow. 
-                Je dois dire que je ne suis pas décu !<br/>
-                Les réservations étaient parfaitement comme décrites sur le site.
-                Et les panoramas... suberbes.<br />
-                Merci TripMeOn, je garde de beaux souvenirs.. et de belles photos !</div>
-            <div id="testimony-block-customer-pic"></div>
-            <div id="testimony-block-right-arrow">right arrows</div>
+        <div class="testimony">
+            <h1>Ils parlent de nous</h1>
+            <div id="testimony-block">
+                <div id="testimony-block-left-arrow">left arrows</div>
+                <div>
+                    J'ai essayé TripMeOn suite au témoignage d'un influenceur que je follow.
+                    Je dois dire que je ne suis pas décu !<br />
+                    Les réservations étaient parfaitement comme décrites sur le site.
+                    Et les panoramas... suberbes.<br />
+                    Merci TripMeOn, je garde de beaux souvenirs.. et de belles photos !
+                </div>
+                <div id="testimony-block-customer-pic"></div>
+                <div id="testimony-block-right-arrow">right arrows</div>
+            </div>
         </div>
     </div>
 
@@ -160,45 +165,44 @@
         <div id="partnerships-pic2">LOGO</div>
         <div id="partnerships-pic3">LOGO</div>
 
-    @if (Model.AuthentifyE)
-    {
+        @if (Model.AuthentifyE)
+        {
 
 
-    <h3>
-    LOGIN EMPLOYEE
+            <h3>
+                LOGIN EMPLOYEE
 
-    Vous êtes déjà authentifié avec le login :
-    @Model.Employee.Nickname
-    </h3>
-    @Html.ActionLink("Voulez-vous vous déconnecter ?", "Deconnexion")
-    }
-    else
-    {
-    <p>
-    LOG IN EMPLOYEE
-    Veuillez vous authentifier :
-    </p>
-    using (Html.BeginForm("IndexAdmin", "Login", FormMethod.Post))
-    {
+                Vous êtes déjà authentifié avec le login :
+                @Model.Employee.Nickname
+            </h3>
+            @Html.ActionLink("Voulez-vous vous déconnecter ?", "Deconnexion")
+        }
+        else
+        {
+            <p>
+                LOG IN EMPLOYEE
+                Veuillez vous authentifier :
+            </p>
+            using (Html.BeginForm("IndexAdmin", "Login", FormMethod.Post))
+            {
 
-    <div>
-    @Html.LabelFor(m => m.Employee.Nickname)
-    @Html.TextBoxFor(m => m.Employee.Nickname)
-    @Html.ValidationMessageFor(m => m.Employee.Nickname)
+                <div>
+                    @Html.LabelFor(m => m.Employee.Nickname)
+                    @Html.TextBoxFor(m => m.Employee.Nickname)
+                    @Html.ValidationMessageFor(m => m.Employee.Nickname)
 
+                </div>
+                <div>
+                    @Html.LabelFor(m => m.Employee.Password)
+                    @Html.PasswordFor(m => m.Employee.Password)
+                    @Html.ValidationMessageFor(m => m.Employee.Password)
+                </div>
+                <input type="submit" value="Log in" />
+                <br />
+
+            }
+        }
     </div>
-    <div>
-    @Html.LabelFor(m => m.Employee.Password)
-    @Html.PasswordFor(m => m.Employee.Password)
-    @Html.ValidationMessageFor(m => m.Employee.Password)
-    </div>
-    <input type="submit" value="Log in" />
-    <br />
-
-    }
-    }
-    </div>*@
-
 </body>
 </html>
 

@@ -22,5 +22,6 @@ namespace TripMeOn.Models.PartnerProducts
         public int? ImageId { get; set; }
         public virtual Image Image { get; set; }
         public bool IsOnline { get; set; }
+        public bool IsApproved { get; set; }
     }
 }

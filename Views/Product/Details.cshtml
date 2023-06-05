@@ -20,7 +20,7 @@
         <p>City: @Model.Destination.City</p>
         <p>Price: @Model.Price</p>
         <p>Description of the tour package goes here...</p>
-        <form action="/Cart/AddToCart" method="post">
+        <form action="/Cart/BuyProduct" method="post">
             <input type="hidden" name="tourPackageId" value="@Model.Id" />
             <label for="quantity">Quantity:</label>
             <input type="number" name="quantity" id="quantity" value="1" min="1" />

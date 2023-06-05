@@ -165,8 +165,9 @@ namespace TripMeOn.Models
             };
 
             var accomodation = new List<Accomodation> {
+
                 new Accomodation { Id =  1, Capacity = 2, Name = "Chez Exequiel", Type= "Appartment", Price= 16, StartDate = new DateTime(2023, 04, 01), EndDate = new DateTime(2023, 11, 30), Description= "Beautiful appartment in the city center of Salta", PartnerId = 2, DestinationId = 8, ImageId = 13},
-                new Accomodation { Id =  2, Capacity = 30, Name = "Colores de Purmamarcal", Type= "Hotel", Price= 20, StartDate = new DateTime(2023, 04, 01), EndDate = new DateTime(2023, 11, 30), Description= "Beautiful hotel in the city center of Jujuy", PartnerId = 2, DestinationId = 8, ImageId = 14},
+                new Accomodation { Id =  2, Capacity = 30, Name = "Colores de Purmamarca", Type= "Hotel", Price= 20, StartDate = new DateTime(2023, 04, 01), EndDate = new DateTime(2023, 11, 30), Description= "Beautiful hotel in the city center of Jujuy", PartnerId = 2, DestinationId = 8, ImageId = 14},
                 new Accomodation { Id =  3, Capacity = 4, Name = "Mountain paradise", Type= "Maison", Price= 60, StartDate = new DateTime(2023, 10, 01), EndDate = new DateTime(2024,04,01), Description= "Cabane in the middle of the mountains", PartnerId = 2, DestinationId = 8, ImageId = 15},
                 new Accomodation { Id =  4, Capacity = 35, Name = "Trip me Here", Type= "Hotel", Price= 50, StartDate = new DateTime(2023, 10, 01), EndDate = new DateTime(2024, 04, 30), Description= "Amazing hotel in Ushuaia", PartnerId = 2, DestinationId = 8, ImageId = 16},
                 new Accomodation { Id =  5, Capacity = 5, Name = "Chez Posada", Type= "Hotel", Price= 70, StartDate = new DateTime(2023, 09, 01), EndDate = new DateTime(2024, 05, 01), Description= "Best view of the Lake Argentino from the dinning room", PartnerId = 2, DestinationId = 8, ImageId = 17},
@@ -193,9 +194,6 @@ namespace TripMeOn.Models
                 new Transportation {  Id = 4, Type = "bike", Price = 30, StartDate = new DateTime(2023, 01, 01), EndDate = new DateTime(2023, 12, 31), PartnerId = 2, DestinationId = 1, ImageId= 30, Description = "Rent an electric bike in Paris" }
 
             };
-
-
-
 
             this.Clients.AddRange(clients);
             this.Employees.AddRange(employees);

@@ -26,8 +26,12 @@
   </ItemGroup>
 
   <ItemGroup>
+
+    <Folder Include="wwwroot\images\logos-rs\" />
+
     <Folder Include="wwwroot\images\accomodation\" />
     <Folder Include="wwwroot\images\p11\" />
+
   </ItemGroup>
 
 </Project>

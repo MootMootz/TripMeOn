@@ -26,9 +26,9 @@ namespace TripMeOn.Models.PartnerProducts
         public int DestinationId { get; set; }
         public virtual Destination Destination { get; set; }
         public bool IsOnline { get; set; }
+        public bool IsApproved { get; set; }
         public int? ImageId { get; set; }
         public virtual Image Image { get; set; }
-
 
         //public virtual IFormFile[] Files { get; set; }
     }

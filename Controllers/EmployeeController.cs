@@ -148,24 +148,22 @@ namespace TripMeOn.Controllers
                 return RedirectToAction("ListeClient");
             }
         }
-                [HttpGet]
-                public IActionResult AddEmployeeForm()
-                {
-                    var viewModel = new EmployeeViewModel();
-                    return View("AddEmployeeForm");
-                }
-
-         
-
-                [HttpPost]
-                public IActionResult SubmitEmployeeForm(EmployeeViewModel model)
-                {
-
-                    using (var dbContext = new Models.BddContext())
-                    {
 
 
-                        
+        [HttpGet]
+        public IActionResult AddEmployeeForm()
+        {
+            var viewModel = new EmployeeViewModel();
+            return View("AddEmployeeForm");
+        }
+
+
+        [HttpPost]
+        public IActionResult SubmitEmployeeForm(EmployeeViewModel model)
+        {
+
+            using (var dbContext = new Models.BddContext())
+            {
                 var employee = new Employee
                 {
                     LastName = model.LastName,
@@ -178,14 +176,15 @@ namespace TripMeOn.Controllers
                     Role = model.Role
                 };
 
-                        dbContext.Employees.Add(employee);
-                        dbContext.SaveChanges();
+                dbContext.Employees.Add(employee);
+                dbContext.SaveChanges();
 
-                        return View("../Employee/IndexAdmin");
-
-                    }
-                }
+                return View("../Employee/IndexAdmin");
 
             }
         }
-    
+    }
+}
+
+
+

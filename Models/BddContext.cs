@@ -25,11 +25,12 @@ namespace TripMeOn.Models
         public DbSet<Cart> Carts { get; set; }
         public DbSet<Item> Items { get; set; }
         public DbSet<Image> Images { get; set; }
+        public DbSet<Notification> Notifications { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
 
-            optionsBuilder.UseMySql("server=localhost;user id=root;password=kukuskar;database=TripMeOn");
+            optionsBuilder.UseMySql("server=localhost;user id=root;password=1530;database=TripMeOn");
 
         }
 
@@ -131,7 +132,7 @@ namespace TripMeOn.Models
                 new Image { Id = 22, Url="/images/restaurant/restoSalta.jpg"},
                 new Image { Id = 23, Url="/images/restaurant/restoUshuaia.jpg"},
                 new Image { Id = 24, Url="/images/restaurant/restoUshuaia2.jpg"}
-                
+
             };
 
             var tourPackages = new List<TourPackage>            {
@@ -176,7 +177,7 @@ namespace TripMeOn.Models
             this.Images.AddRange(images);
             this.Accomodations.AddRange(accomodation);
 
-          //  this.Restaurants.AddRange(restaurant);
+            //  this.Restaurants.AddRange(restaurant);
 
             this.SaveChanges();
         }

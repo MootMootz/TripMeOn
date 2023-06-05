@@ -12,20 +12,24 @@ namespace TripMeOn.Controllers
 {
     public class EmployeeController : Controller
     {
+        private Models.BddContext _bddContext;
+        private readonly IPropositionService _propositionService;
+
+        public EmployeeController(IPropositionService propositionService)
+        {
+            _bddContext = new Models.BddContext();
+            _propositionService = propositionService;
+        }
+        public IActionResult Notifications()
+        {
+            var notifications = _propositionService.GetAllNotifications();
+            return View(notifications);
+        }
+
         public IActionResult IndexAdmin()
         {
             return View();
         }
-
-        //méthode pour ajouter un employée
-
-        private Models.BddContext _bddContext;
-
-        public EmployeeController()
-        {
-            _bddContext = new Models.BddContext();
-        }
-
 
         public IActionResult ManageAccounts()
         {
@@ -148,14 +152,6 @@ namespace TripMeOn.Controllers
                 return RedirectToAction("ListeClient");
             }
         }
-                [HttpGet]
-                public IActionResult AddEmployeeForm()
-                {
-                    var viewModel = new EmployeeViewModel();
-                    return View("AddEmployeeForm");
-                }
-
-
         [HttpGet]
         public IActionResult AddEmployeeForm()
         {

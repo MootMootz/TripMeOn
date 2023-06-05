@@ -17,5 +17,9 @@ namespace TripMeOn.BL.interfaces
         List<Accomodation> GetAllAccomodations();
         List<Restaurant> GetAllRestaurants();
         List<Transportation> GetAllTransportations();
+        List<Accomodation> GetAccomodationsByPartnerId(int partnerId);
+        List<Restaurant> GetRestaurantsByPartnerId(int partnerId);
+        List<Transportation> GetTransportationsByPartnerId(int partnerId);
+        List<Notification> GetAllNotifications();
     }
 }

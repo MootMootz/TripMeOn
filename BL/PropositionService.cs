@@ -91,52 +91,5 @@ namespace TripMeOn.BL
             _bddContext.Transportations.Remove(transportation);
             _bddContext.SaveChanges();
         }
-
-
-        //public void ModifyAccomodation(int id, string name, string type, int capacity, double price, int partnerId, int destinationId)
-        //{
-        //    Accomodation accomodation = _bddContext.Accomodations.Find(id);
-        //    if (accomodation != null)
-        //    {
-        //        accomodation.Name = name; // on met à jour
-        //        accomodation.Type = type;
-        //        accomodation.Price = price;
-        //        accomodation.PartnerId = partnerId;
-        //        accomodation.DestinationId = destinationId;
-        //        accomodation.Capacity = capacity;
-        //        _bddContext.SaveChanges(); // on enregistre les changements
-        //    }
-        //}
-
-
-        //public void ModifyRestaurant(int id, string name, string type, double price, int partnerId, int destinationId)
-        //{
-        //    Restaurant restaurant = _bddContext.Restaurants.Find(id);
-        //    if (restaurant != null)
-        //    {
-        //        restaurant.Name = name; // on met à jour
-        //        restaurant.Type = type;
-        //        restaurant.Price = price;
-        //        restaurant.PartnerId = partnerId;
-        //        restaurant.DestinationId = destinationId;
-        //        _bddContext.SaveChanges(); // on enregistre les changements
-        //    }
-        //}
-
-
-
-
-        //public void ModifyTransportation(int id, string type, double price, int partnerId, int destinationId)
-        //{
-        //    Transportation transportation = _bddContext.Transportations.Find(id);
-        //    if (transportation != null)
-        //    {
-        //        transportation.Type = type; // on met à jour
-        //        transportation.Price = price;
-        //        transportation.PartnerId = partnerId;
-        //        transportation.DestinationId = destinationId;
-        //        _bddContext.SaveChanges(); // on enregistre les changements
-        //    }
-        //}
     }
 }

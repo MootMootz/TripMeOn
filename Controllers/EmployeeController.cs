@@ -146,6 +146,8 @@ namespace TripMeOn.Controllers
                 Client client = manageAccount.GetAllClients().Where(r => r.Id == id).FirstOrDefault();
                 manageAccount.DeleteClient(client);
                 return RedirectToAction("ListeClient");
+            }
+        }
 
         [HttpGet]
         public IActionResult AddEmployeeForm()
@@ -170,7 +172,7 @@ namespace TripMeOn.Controllers
                     Password = UserService.EncodeMD5(model.Password),
                     Address = model.Address,
                     PhoneNumber = model.PhoneNumber,
-                    JobTitle = model.JobTitle
+                    Role = model.Role
                 };
 
                 dbContext.Employees.Add(employee);
@@ -183,3 +185,5 @@ namespace TripMeOn.Controllers
 
     }
 }
+
+

@@ -10,183 +10,182 @@
     <title>#TripMeOn</title>
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/Layout.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
-	@RenderSection("ExtraCss",required:false)
+    @RenderSection("ExtraCss",required:false)
 </head>
-<body>  
-	<header>
-		<h1>#TRIP ME ON</h1>		
-	</header>
+<body>
+    <header>
+        <h1>#TRIP ME ON</h1>
+    </header>
     <!-- Bootstrap Navigation Bar code goes here -->
     <div class="navbar">
-       		<ul id="menu" style="text-align: center">
-			<li class="parent">
-				<a href="/Home/HomePage">Home</a>
-			</li>
-			
-			<!--   -------------------------------------------------------------------------   -->
-			
-			<li class="parent">
-				<a href="#">Destinations<span class="expand"></span></a>
-				<ul class="child">
-					<li><a href="#">France</a></li>
-					<li><a href="#">The UK</a></li>
-					<li><a href="#">Netherlands</a></li>
-					<li><a href="#">Turkey</a></li>
-					<li><a href="#">Agentina</a></li>
-					<li><a href="#">Blegium</a></li>
-					<li><a href="#">Spain</a></li>
-					<li><a href="#">Switzerland</a></li>
-					<li><a href="#">Portugal</a></li>
-					<li><a href="#">Italy</a></li>
-				</ul>
-			</li>
+        <ul id="menu" style="text-align: center">
+            <li class="parent">
+                <a href="/Home/HomePage">Home</a>
+            </li>
 
-			<!--   -------------------------------------------------------------------------   -->
+            <!--   -------------------------------------------------------------------------   -->
 
-			<li class="parent">
-				<a href="#">Themes<span class="expand"></span></a>
-				<ul class="child">
-					<li><a href="#">Trekking</a></li>
-					<li><a href="#">Floral</a></li>
-					<li><a href="#">Cultural</a></li>
-					<li><a href="#">Heritage</a></li>
-					<li><a href="#">Snap and relax</a></li>
-					<li><a href="#">InstaSpots</a></li>
-					<li><a href="#">Nature</a></li>
-					<li><a href="#">Beach</a></li>
-					<li><a href="#">Culinary</a></li>
-					<li><a href="#">Colors</a></li>
-				</ul>
-			</li>
+            <li class="parent">
+                <a href="#">Destinations<span class="expand"></span></a>
+                <ul class="child">
+                    <li><a href="#">France</a></li>
+                    <li><a href="#">The UK</a></li>
+                    <li><a href="#">Netherlands</a></li>
+                    <li><a href="#">Turkey</a></li>
+                    <li><a href="#">Agentina</a></li>
+                    <li><a href="#">Blegium</a></li>
+                    <li><a href="#">Spain</a></li>
+                    <li><a href="#">Switzerland</a></li>
+                    <li><a href="#">Portugal</a></li>
+                    <li><a href="#">Italy</a></li>
+                </ul>
+            </li>
 
-			<!--   -------------------------------------------------------------------------   -->
+            <!--   -------------------------------------------------------------------------   -->
 
-			<li class="parent">
-				<a href="#">Holiday Finder<span class="expand"></span></a>
-				<ul class="child">
-					<li><a href="#">Accommodation</a></li>
-					<li class="parent">
-						<a href="#">Land Services</a>
-						<ul class="child">
-							<li><a href="#">Taxi</a></li>
-							<li><a href="#">Rent a car</a></li>
-							<li><a href="#">Rent a bike</a></li>
-							<li><a href="#">Get a tour guide</a></li>
-						</ul>
-					</li>
-					<li><a href="#">Restaurants</a></li>
-				</ul>
-			</li>
-			<!--   -------------------------------------------------------------------------   -->
+            <li class="parent">
+                <a href="#">Themes<span class="expand"></span></a>
+                <ul class="child">
+                    <li><a href="#">Trekking</a></li>
+                    <li><a href="#">Floral</a></li>
+                    <li><a href="#">Cultural</a></li>
+                    <li><a href="#">Heritage</a></li>
+                    <li><a href="#">Snap and relax</a></li>
+                    <li><a href="#">InstaSpots</a></li>
+                    <li><a href="#">Nature</a></li>
+                    <li><a href="#">Beach</a></li>
+                    <li><a href="#">Culinary</a></li>
+                    <li><a href="#">Colors</a></li>
+                </ul>
+            </li>
 
-			<li class="parent">
-				<a href="#">Tour Packages</a>
-				<ul class="child">
-					<li><a href="#">Day Tours</a></li>
-					<li><a href="#">3 days Tours</a></li>
-					<li><a href="#">5 days Tours</a></li>
-					<li><a href="#">7 days Tours</a></li>
-			</ul>
-			</li>
+            <!--   -------------------------------------------------------------------------   -->
 
-			<!--   -------------------------------------------------------------------------   -->
+            <li class="parent">
+                <a href="#">Holiday Finder<span class="expand"></span></a>
+                <ul class="child">
+                    <li><a href="#">Accommodation</a></li>
+                    <li class="parent">
+                        <a href="#">Land Services</a>
+                        <ul class="child">
+                            <li><a href="#">Taxi</a></li>
+                            <li><a href="#">Rent a car</a></li>
+                            <li><a href="#">Rent a bike</a></li>
+                            <li><a href="#">Get a tour guide</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Restaurants</a></li>
+                </ul>
+            </li>
+            <!--   -------------------------------------------------------------------------   -->
 
-			<li class="parent">
-				<a href="/Content/InstaTips">Insta-tips</a>
-			</li>
+            <li class="parent">
+                <a href="#">Tour Packages</a>
+                <ul class="child">
+                    <li><a href="#">Day Tours</a></li>
+                    <li><a href="#">3 days Tours</a></li>
+                    <li><a href="#">5 days Tours</a></li>
+                    <li><a href="#">7 days Tours</a></li>
+                </ul>
+            </li>
 
-			<!--   -------------------------------------------------------------------------   -->
+            <!--   -------------------------------------------------------------------------   -->
 
-			<li class="parent">
-				<a href="/Content/AboutUs">About Us</a>
-			</li>
+            <li class="parent">
+                <a href="/Content/InstaTips">Insta-tips</a>
+            </li>
 
-			<!--   -------------------------------------------------------------------------   -->
+            <!--   -------------------------------------------------------------------------   -->
 
-			<li class="parent">
-				<a href="#">Become a Partner</a>			
-			</li>
+            <li class="parent">
+                <a href="/Content/AboutUs">About Us</a>
+            </li>
 
-			<!--   -------------------------------------------------------------------------   -->
+            <!--   -------------------------------------------------------------------------   -->
 
-			<li class="parent">
-				<a href="#">Log in<span class="expand"></span></a>
-				<ul class="child">
-					<li><a href="/Partner/PartnerForm">I am a Partner</a></li>
-					<li><a href="/Login/LoginClient">I am a Traveller</a></li>
-					<li class="parent">
-					<a href="#">Create account?</a>
-					<ul class="child">
-							<li><a href="/Client/ClientForm">Add Client</a></li>
-							<li><a href="/Partner/PartnerForm">Partner</a></li>
-						</ul>
-				</ul>
-			</li>	
-			
-			<!--   -------------------------------------------------------------------------   -->
-			<li class="parent">
-				<a href="#">Staff Only<span class="expand"></span></a>
-				<ul class="child">
-				<li><a href="#">Log in</a></li>
-					<li><a href=" /Product/PackageList">Check Products</a></li>
-				</ul>
-			</ul>
-		</div>
-	<!--   -------------------------------------------------------------------------   -->
-	
-   	<!-- Transparent Search Box -->
-	<div class="search-container">
-		<div class="search-box">
-			<form action="/Product/SearchPackage" method="get">
-				
-				<label for="destinations">Destinations</label>
-				@{
-					List<Destination> destinations = new TripMeOn.BL.ProductService().GetDestinations();
-					destinations.Insert(0, new Destination { Id = 0, Country = "All Destinations" });
-					SelectList selectList = new SelectList(destinations, "Id", "Country");
-				}
-				@Html.DropDownList("destination", selectList)
+            <li class="parent">
+                <a href="#">Become a Partner</a>
+            </li>
 
-				<label for="themes">Themes</label>
-				@{
-					List<Theme> themes = new TripMeOn.BL.ProductService().GetThemes();
-					themes.Insert(0, new Theme { Id = 0, Name = "All Themes" });
-					SelectList themeList = new SelectList(themes, "Id", "Name");
-				}
-				@Html.DropDownList("theme", themeList)
+            <!--   -------------------------------------------------------------------------   -->
 
-				<label for="months">Months</label>
-				@{
-					List<SelectListItem> monthList = DateTimeHelper.GetMonths();
-					monthList.Insert(0, new SelectListItem { Value = "0", Text = "All Months" });
-				}
-				@Html.DropDownList("month", monthList)
-				<button type="submit" class="btn btn-primary">Search</button>
+            <li class="parent">
+                <a href="#">Log in<span class="expand"></span></a>
+                <ul class="child">
+                    <li>@Html.ActionLink("I am a Partner", "LoginPartner", "Login")</li>
+                    <li>@Html.ActionLink("I am a Traveller", "LoginClient", "Login")</li>
+                    <li class="parent">
+                        <a href="#">Create account?</a>
+                        <ul class="child">
+                            <li><a href="/Client/ClientForm">Add Client</a></li>
+                            <li><a href="/Partner/PartnerForm">Partner</a></li>
+                        </ul>
+                </ul>
+            </li>
 
+            <!--   -------------------------------------------------------------------------   -->
+            <li class="parent">
+                <a href="#">Staff Only<span class="expand"></span></a>
+                <ul class="child">
+                    <li>@Html.ActionLink("Log in Admin", "LoginAdmin", "Login")</li>
+                    <li><a href=" /Product/PackageList">Check Products</a></li>
+                </ul>
+        </ul>
+    </div>
+    <!--   -------------------------------------------------------------------------   -->
+    <!-- Transparent Search Box -->
+    <div class="search-container">
+        <div class="search-box">
+            <form action="/Product/SearchPackage" method="get">
 
-			</form>
-		</div>
+                <label for="destinations">Destinations</label>
+                @{
+                    List<Destination> destinations = new TripMeOn.BL.ProductService().GetDestinations();
+                    destinations.Insert(0, new Destination { Id = 0, Country = "All Destinations" });
+                    SelectList selectList = new SelectList(destinations, "Id", "Country");
+                }
+                @Html.DropDownList("destination", selectList)
+
+                <label for="themes">Themes</label>
+                @{
+                    List<Theme> themes = new TripMeOn.BL.ProductService().GetThemes();
+                    themes.Insert(0, new Theme { Id = 0, Name = "All Themes" });
+                    SelectList themeList = new SelectList(themes, "Id", "Name");
+                }
+                @Html.DropDownList("theme", themeList)
+
+                <label for="months">Months</label>
+                @{
+                    List<SelectListItem> monthList = DateTimeHelper.GetMonths();
+                    monthList.Insert(0, new SelectListItem { Value = "0", Text = "All Months" });
+                }
+                @Html.DropDownList("month", monthList)
+                <button type="submit" class="btn btn-primary">Search</button>
 
 
-	</div>
+            </form>
+        </div>
 
-	@RenderBody()
-	<footer>
-		<div class="social-icons">
-			<a href="https://twitter.com"><i class="fab fa-twitter"></i></a>
-			<a href="https://facebook.com"><i class="fab fa-facebook"></i></a>
-			<a href="https://instagram.com"><i class="fab fa-instagram"></i></a>
-			<a href="https://www.tiktok.com"><i class="fab fa-tiktok"></i></a>
-			<a href="https://youtube.com"><i class="fab fa-youtube"></i></a>
-		</div>
-	</footer>
+
+    </div>
+
+    @RenderBody()
+    <footer>
+        <div class="social-icons">
+            <a href="https://twitter.com"><i class="fab fa-twitter"></i></a>
+            <a href="https://facebook.com"><i class="fab fa-facebook"></i></a>
+            <a href="https://instagram.com"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.tiktok.com"><i class="fab fa-tiktok"></i></a>
+            <a href="https://youtube.com"><i class="fab fa-youtube"></i></a>
+        </div>
+    </footer>
 
     <script src="bootstrap.js"></script>
-	<script type="text/javascript" src="~/Scripts/jquery-3.3.1.js"></script>
-	<script type="text/javascript" src="~/Scripts/jquery.validate-vsdoc.js"></script>
-	<script type="text/javascript" src="~/Scripts/jquery.validate.unobtrusive.js"></script>
-	@RenderSection("ExtraScript",required:false)
+    <script type="text/javascript" src="~/Scripts/jquery-3.3.1.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.validate-vsdoc.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    @RenderSection("ExtraScript",required:false)
 </body>
 </html>

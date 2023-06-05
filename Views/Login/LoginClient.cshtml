@@ -1,4 +1,4 @@
-﻿@model TripMeOn.ViewModels.NavigationViewModel
+@model TripMeOn.ViewModels.NavigationViewModel
 @{
     ViewBag.Title = "LoginClient";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -7,12 +7,11 @@
     <link rel="stylesheet" href="/css/HomePage.css">
 }
 
-    <div class="login">
+<div class="login">
 
 
-        @if (Model.AuthentifyC)
-        {
-    
+    @if (Model.AuthentifyC)
+    {
 
             <h3>
                You are already log in :
@@ -29,22 +28,24 @@
             <p>
                 Veuillez vous authentifier :
             </p>
-        using (Html.BeginForm())
-            {
 
-                <div>
-                    @Html.LabelFor(m => m.Client.Nickname)
-                    @Html.TextBoxFor(m => m.Client.Nickname)
-                    @Html.ValidationMessageFor(m => m.Client.Nickname)
-                </div>
-                <div>
-                    @Html.LabelFor(m => m.Client.Password)
-                    @Html.PasswordFor(m => m.Client.Password)
-                    @Html.ValidationMessageFor(m => m.Client.Password)
-                </div>
-                <input type="submit" value="Log in" /> 
-                <br />
-                @Html.ActionLink("Créer un compte", "CreerCompte")
-            }
+        using (Html.BeginForm())
+        {
+
+            <div>
+                @Html.LabelFor(m => m.Client.Nickname)
+                @Html.TextBoxFor(m => m.Client.Nickname)
+                @Html.ValidationMessageFor(m => m.Client.Nickname)
+            </div>
+            <div>
+                @Html.LabelFor(m => m.Client.Password)
+                @Html.PasswordFor(m => m.Client.Password)
+                @Html.ValidationMessageFor(m => m.Client.Password)
+            </div>
+            <input type="submit" value="Log in" />
+            <br />
+            @Html.ActionLink("create account", "ClientForm", "Client")
         }
+
     </div>
+

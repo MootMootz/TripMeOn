@@ -1,4 +1,7 @@
-﻿namespace TripMeOn.Models.Users
+﻿using System.Collections.Generic;
+using TripMeOn.Models.Order;
+
+namespace TripMeOn.Models.Users
 {
     public class Client
     {
@@ -11,5 +14,6 @@
         public string Address { get; set; }
         public string PhoneNumber { get; set; }
         public string ClientType { get; set; }
+        public virtual ICollection<Cart> Carts { get; set; }
     }
 }

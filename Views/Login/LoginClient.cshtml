@@ -1,4 +1,4 @@
-﻿@model TripMeOn.ViewModels.NavigationViewModel
+@model TripMeOn.ViewModels.NavigationViewModel
 @{
     ViewBag.Title = "LoginClient";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -13,18 +13,22 @@
     @if (Model.AuthentifyC)
     {
 
+            <h3>
+               You are already log in :
+                @Model.Client.Nickname
+            </h3>
+            @Html.ActionLink("Voulez-vous vous déconnecter ?", "Deconnexion")
 
-        <h3>
-            Vous êtes déjà authentifié avec le login :
-            @Model.Client.Nickname
-        </h3>
-        @Html.ActionLink("Voulez-vous vous déconnecter ?", "Deconnexion")
-    }
-    else
-    {
         <p>
-            Veuillez vous authentifier :
+            @Html.ActionLink("Check Order Status", "OrderStatus", "Cart")
         </p>
+        }
+        else
+        {
+            <p>
+                Veuillez vous authentifier :
+            </p>
+
         using (Html.BeginForm())
         {
 
@@ -42,5 +46,6 @@
             <br />
             @Html.ActionLink("create account", "ClientForm", "Client")
         }
-    }
-</div>
+
+    </div>
+

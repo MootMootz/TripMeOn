@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using TripMeOn.BL;
 using TripMeOn.Helper;
@@ -150,6 +151,7 @@ namespace TripMeOn.Models
             };
 
             var accomodation = new List<Accomodation> {
+
                 new Accomodation { Id =  1, Capacity = 2, Name = "Chez Exequiel", Type= "Appartment", Price= 16, StartDate = new DateTime(2023, 04, 01), EndDate = new DateTime(2023, 11, 30), Description= "Beautiful appartment in the city center of Salta", PartnerId = 2, DestinationId = 9, ImageId = 13},
                 new Accomodation { Id =  2, Capacity = 30, Name = "Colores de Purmamarcal", Type= "Hotel", Price= 20, StartDate = new DateTime(2023, 04, 01), EndDate = new DateTime(2023, 11, 30), Description= "Beautiful hotel in the city center of Jujuy", PartnerId = 2, DestinationId = 9, ImageId = 14},
                 new Accomodation { Id =  3, Capacity = 4, Name = "Mountain paradise", Type= "Maison", Price= 60, StartDate = new DateTime(2023, 10, 01), EndDate = new DateTime(2023,04,01), Description= "Cabane in the middle of the mountains", PartnerId = 2, DestinationId = 8, ImageId = 15},
@@ -164,9 +166,6 @@ namespace TripMeOn.Models
             //    new Restaurant {  Id = 1, Name = }
             //};
 
-
-
-
             this.Clients.AddRange(clients);
             this.Employees.AddRange(employees);
             this.Partners.AddRange(partners);
@@ -176,7 +175,9 @@ namespace TripMeOn.Models
             this.TimePeriods.AddRange(timePeriods);
             this.Images.AddRange(images);
             this.Accomodations.AddRange(accomodation);
+
           //  this.Restaurants.AddRange(restaurant);
+
             this.SaveChanges();
         }
 

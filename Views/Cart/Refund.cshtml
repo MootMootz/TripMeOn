@@ -1,12 +1,13 @@
 ﻿@model List<TripMeOn.Models.Order.Cart>
 
-<h2>Refund Confirmation</h2>
+<h2>Refund Confirmation-- get lost! your money is mine</h2>
 
-@foreach (var cart in Model)
+@*@foreach (var cart in Model)
 {
     <h4>Order ID: @cart.Id</h4>
     <p>Are you sure you want to get refund for this order?</p>
-    <form method="post" action="@Url.Action("Refund", new { cartId = cart.Id })">
+    <form method="post" action="@Url.Action("Refund", "Cart", new { cartId = cart.Id })">
         <button type="submit">Confirm Refund</button>
     </form>
+*@
 }

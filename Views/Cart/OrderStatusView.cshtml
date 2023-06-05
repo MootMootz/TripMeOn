@@ -24,6 +24,16 @@
                 <td>@Html.DisplayFor(modelItem => order.ClientName)</td>
                 <td>@Html.DisplayFor(modelItem => order.Quantity)</td>
                 <td>@Html.DisplayFor(modelItem => order.TotalPrice)</td>
+                <td>
+                    @if (!order.IsRefunded)
+                    {
+                        <a href="@Url.Action("RequestReturn", "Cart", new { cartId = order.CartId })" class="btn btn-primary">Refund</a>
+                    }
+                    else
+                    {
+                        <span>Refunded</span>
+                    }
+                </td>
             </tr>
         }
     </table>

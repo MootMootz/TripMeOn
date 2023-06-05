@@ -146,40 +146,42 @@ namespace TripMeOn.Controllers
                 Client client = manageAccount.GetAllClients().Where(r => r.Id == id).FirstOrDefault();
                 manageAccount.DeleteClient(client);
                 return RedirectToAction("ListeClient");
-
-        [HttpGet]
-        public IActionResult AddEmployeeForm()
-        {
-            var viewModel = new EmployeeViewModel();
-            return View("AddEmployeeForm");
+            }
         }
-
-        [HttpPost]
-        public IActionResult SubmitEmployeeForm(EmployeeViewModel model)
-        {
-
-            using (var dbContext = new Models.BddContext())
-            {
-
-                var employee = new Employee
+                [HttpGet]
+                public IActionResult AddEmployeeForm()
                 {
-                    LastName = model.LastName,
-                    FirstName = model.FirstName,
-                    Nickname = model.Nickname,
-                    Email = model.Email,
-                    Password = UserService.EncodeMD5(model.Password),
-                    Address = model.Address,
-                    PhoneNumber = model.PhoneNumber,
-                    JobTitle = model.JobTitle
-                };
+                    var viewModel = new EmployeeViewModel();
+                    return View("AddEmployeeForm");
+                }
 
-                dbContext.Employees.Add(employee);
-                dbContext.SaveChanges();
+                [HttpPost]
+                public IActionResult SubmitEmployeeForm(EmployeeViewModel model)
+                {
 
-                return View("../Employee/IndexAdmin");
+                    using (var dbContext = new Models.BddContext())
+                    {
+
+                        var employee = new Employee
+                        {
+                            LastName = model.LastName,
+                            FirstName = model.FirstName,
+                            Nickname = model.Nickname,
+                            Email = model.Email,
+                            Password = UserService.EncodeMD5(model.Password),
+                            Address = model.Address,
+                            PhoneNumber = model.PhoneNumber,
+                            JobTitle = model.JobTitle
+                        };
+
+                        dbContext.Employees.Add(employee);
+                        dbContext.SaveChanges();
+
+                        return View("../Employee/IndexAdmin");
+
+                    }
+                }
 
             }
         }
-
-    }
-}
+    

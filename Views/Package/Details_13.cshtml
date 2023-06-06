@@ -1,0 +1,128 @@
+﻿@model TripMeOn.Models.Products.TourPackage
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section ExtraCss{
+        <link rel="stylesheet" href="/css/PDetails.css">
+}
+
+<div class="flex-container">
+    <div class="floating-box">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="photo-container">
+                    <img src="~/images/p13/turkey2.png" alt="Photo 1" class="img-fluid rounded">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="photo-container">
+                    <img src="~/images/p13/turkey1.png" alt="Photo 2" class="img-fluid rounded">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="photo-container">
+                    <img src="~/images/p13/turkey3.png" alt="Photo 3" class="img-fluid rounded">
+                </div>
+            </div>
+        </div>
+       <!------------------------------------------------------------------------------------------------------->
+        <div class="row">
+            <div class="col-md-6">
+                <div class="overlay">
+                    <h3>@Model.Name</h3>
+                    <p>@Model.Description</p>
+                    <p>Country: @Model.Destination.Country</p>
+                    <p>Theme: @Model.Theme.Name</p>
+                    <p>Region: @Model.Destination.Region</p>
+                    <p>City: @Model.Destination.City</p>
+                    <p>Price: @Model.Price</p>
+                    <p>Like in a dream, you can find yourself floating in the freedom of being where you want to be. Come see Capadocia in Turkey and live a great adventure</p>
+                </div>
+            </div>
+            <!------------------------------------------------------------------------------------------------->
+
+            <div class="col-md-6">
+                <div class="itinerary-container hidden">
+                    <h4>
+                        Fly away in Capadocia, Turkey
+                    </h4>
+                    <div class="itinerary-details">
+                        <!-- Day 1 -->
+                        <div class="day">
+                            <h5>
+                                <span class="toggle-day-icon">&#9660;</span>
+                                <span class="toggle-day-title">Day 1</span>
+                                <span class="toggle-day-text">Show Itinerary Details</span>
+                            </h5>
+                            <p class="itinerary-details-text">Day 1 details...</p>
+                            <p class="itinerary-details-text" style="display: none;">Airport/Train transfer to a unique hotel in Capadocia</p>
+                            <p class="itinerary-details-text" style="display: none;">
+                                Enjoy your private Cappadocia tour with free lunch in amazing landscape. You will experience the Goreme Open Air Museum, Love Valley, Pasabag Fairy Chimneys, Kaymakli and others. Lunch and entrance fees included.               
+                            </p>
+                        </div>
+                        <!-- Day 2 -->
+                        <div class="day">
+                            <h5>
+                                <span class="toggle-day-icon">&#9660;</span>
+                                <span class="toggle-day-title">Day 2</span>
+                                <span class="toggle-day-text">Show Itinerary Details</span>
+                            </h5>
+                            <p class="itinerary-details-text">Day 2 details...</p>
+                            <p class="itinerary-details-text" style="display: none;">
+                                Get aerial views of Cappadocia’s eroded rock formations, valleys, and caves on an early-morning hot-air balloon flight that includes a light breakfast and post-flight celebration. </p>
+                            <p class="itinerary-details-text" style="display: none;">Morning light and panoramic views from the hot-air balloon are ideal for photographing the remarkable landscape, and door-to-door transport means you can sleep in a little bit later.</p>
+                         </div>
+                        <!-- Day 3 -->
+                        <div class="day">
+                            <h5>
+                                <span class="toggle-day-icon">&#9660;</span>
+                                <span class="toggle-day-title">Day 3</span>
+                                <span class="toggle-day-text">Show Itinerary Details</span>
+                            </h5>
+                            <p class="itinerary-details-text">Day 3 details...</p>
+                            <p class="itinerary-details-text" style="display: none;">The buggy day.</p>
+                            <p class="itinerary-details-text" style="display: none;">Early pick-up at the hotel so you can make a tour in your own quad-bike. You'll see some highlights of Capadocia, such as the Ladiss Monastery or the Swords Valley. </p>
+                            <p class="itinerary-details-text" style="display: none;">Lunch at the dessert is included, and a relaxing dinner at a restaurant rooftop is waiting for you to take the best pictures ever. </p>
+                        </div>
+                        <!-- Day 4 -->
+                        <div class="day">
+                            <h5>
+                                <span class="toggle-day-icon">&#9660;</span>
+                                <span class="toggle-day-title">Day 4</span>
+                                <span class="toggle-day-text">Show Itinerary Details</span>
+                            </h5>
+                            <p class="itinerary-details-text">Day 4 details...</p>
+                            <p class="itinerary-details-text" style="display: none;">Camel safari during the morning (yes, Camel ! isn't that awesome?) and back to the hotel for a big lunch.'</p>
+                            <p class="itinerary-details-text" style="display: none;">That(s it, back to the airport... wasn't that the best trip ever ?!'</p>
+                        </div>
+                    </div>
+                </div>
+                <form action="/Cart/AddToCart" method="post">
+                    <input type="hidden" name="tourPackageId" value="@Model.Id" />
+                    <label for="quantity">Quantity:</label>
+                    <input type="number" name="quantity" id="quantity" value="1" min="1" />
+                    <button type="submit">Add to Cart</button>
+                </form>
+            </div>
+        </div>        
+
+        </div>
+    </div>
+
+
+@section ExtraScript {
+        <script>
+            $(document).ready(function () {
+                $('.toggle-day-icon').on('click', function () {
+                    var day = $(this).closest('.day');
+                    day.find('.itinerary-details-text').slideToggle();
+                    $(this).toggleClass('rotate');
+                    var toggleDayText = day.find('.toggle-day-text');
+                    toggleDayText.text(function (i, text) {
+                        return text === 'Show Itinerary Details' ? 'Hide Itinerary Details' : 'Show Itinerary Details';
+                    });
+                });
+            });
+        </script>
+}

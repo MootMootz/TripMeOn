@@ -25,7 +25,7 @@ namespace TripMeOn.BL
         }
         public Cart GetCart(int cartId, int? clientId = null)
         {
-            var query = _bddContext.Carts.Include(c => c.Items).ThenInclude(it => it.TourPackage).Where(c => c.Id == cartId);
+            var query = _bddContext.Carts.Include(c=>c.Client).Include(c => c.Items).ThenInclude(it => it.TourPackage).Where(c => c.Id == cartId);
 
             if (clientId.HasValue)
             {
@@ -125,7 +125,8 @@ namespace TripMeOn.BL
         public List<Cart> GetOrdersByUserId(int clientId)
         {
             return _bddContext.Carts
-                .Include(c => c.Items)
+                .Include(c => c.Items).ThenInclude(it=>it.TourPackage)
+                .Include(c=>c.Client)
                 .Where(c => c.ClientId == clientId)
                 .ToList();
         }

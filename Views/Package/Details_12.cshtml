@@ -1,0 +1,137 @@
+﻿@model TripMeOn.Models.Products.TourPackage
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section ExtraCss{
+    <link rel="stylesheet" href="/css/PDetails.css">
+}
+
+<div class="flex-container">
+    <div class="floating-box">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="photo-container">
+                    <img src="~/images/p12/TdF.jpg" alt="Photo 1" class="img-fluid rounded">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="photo-container">
+                    <img src="~/images/p12/TdF2.jpg" alt="Photo 2" class="img-fluid rounded">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="photo-container">
+                    <img src="~/images/p12/TdF3.jpg" alt="Photo 3" class="img-fluid rounded">
+                </div>
+            </div>
+        </div>
+        <!------------------------------------------------------------------------------------------------------->
+        <div class="row">
+            <div class="col-md-6">
+                <div class="overlay">
+                    <h3>@Model.Name</h3>
+                    <p>@Model.Description</p>
+                    <p>Country: @Model.Destination.Country</p>
+                    <p>Theme: @Model.Theme.Name</p>
+                    <p>Region: @Model.Destination.Region</p>
+                    <p>City: @Model.Destination.City</p>
+                    <p>Price: @Model.Price</p>
+                    <p>Your next great Adventure has a name, and it's "The End of the World". Come live an extraordinary experience in the deep south in Argentina, where the pinguins say hello and big pick-ups open the path into the wild lands of Argentina.</p>
+                </div>
+            </div>
+            <!------------------------------------------------------------------------------------------------->
+
+            <div class="col-md-6">
+                <div class="itinerary-container hidden">
+                    <h4>
+                        XtremeAdventure at the End of the World
+                    </h4>
+                    <div class="itinerary-details">
+                        <!-- Day 1 -->
+                        <div class="day">
+                            <h5>
+                                <span class="toggle-day-icon">&#9660;</span>
+                                <span class="toggle-day-title">Day 1</span>
+                                <span class="toggle-day-text">Show Itinerary Details</span>
+                            </h5>
+                            <p class="itinerary-details-text">Day 1 details...</p>
+                            <p class="itinerary-details-text" style="display: none;">Find your rented car at the local airport. You can make your check-in at any time. Dinner at the restaurant of the hotel in Ushuaia</p>
+                            <p class="itinerary-details-text" style="display: none;">Get your big pick-up and drive to the forest. A beautiful tea house is at the begining of this path. You can't miss it. Grab a big breakfast in there (they're waiting for you) and go into the wild. It's a whole day walk, at the tea house they'll give you everything you need for food and drink.</p>
+                            <p class="itinerary-details-text" style="display: none;">A great dinner will be waiting for you at the hotel at your arrival.</p>
+                        </div>
+                        <!-- Day 2 -->
+                        <div class="day">
+                            <h5>
+                                <span class="toggle-day-icon">&#9660;</span>
+                                <span class="toggle-day-title">Day 2</span>
+                                <span class="toggle-day-text">Show Itinerary Details</span>
+                            </h5>
+                            <p class="itinerary-details-text">Day 2 details...</p>
+                            <p class="itinerary-details-text" style="display: none;">A 4x4 will come pick you up right after breakfast and will take you on a trip into the forest where you'll see different lakes and wildlife' . </p>
+                            <p class="itinerary-details-text" style="display: none;">You will cook your meal in the middle of the forest. A great party is coming.</p>
+                            <p class="itinerary-details-textstyle=" display: none;"">When they drop you off, get some rest because the best restaurant of the city is waiting for you.</p>
+                        </div>
+                        <!-- Day 3 -->
+                        <div class="day">
+                            <h5>
+                                <span class="toggle-day-icon">&#9660;</span>
+                                <span class="toggle-day-title">Day 3</span>
+                                <span class="toggle-day-text">Show Itinerary Details</span>
+                            </h5>
+                            <p class="itinerary-details-text">Day 3 details...</p>
+                            <p class="itinerary-details-text" style="display: none;">Today's the day: drive straight into the Ushuaia port, a boat will take you say hello to the sea lions.</p>
+                            <p class="itinerary-details-text" style="display: none;">You're free for dinner. Enjoy ;).</p>
+                        </div>
+                        <!-- Day 4 -->
+                        <div class="day">
+                            <h5>
+                                <span class="toggle-day-icon">&#9660;</span>
+                                <span class="toggle-day-title">Day 4</span>
+                                <span class="toggle-day-text">Show Itinerary Details</span>
+                            </h5>
+                            <p class="itinerary-details-text">Day 4 details...</p>
+                            <p class="itinerary-details-text" style="display: none;">Get ready very early, you're going to your next city: Calafate</p>
+                            <p class="itinerary-details-text" style="display: none;">Get comfortable at the hotel, put yourself some good shoes, a big coat, and go visit the glaciars Perito Moreno</p>
+                        </div>
+                        <!-- Day 5 -->
+                        <div class="day">
+                            <h5>
+                                <span class="toggle-day-icon">&#9660;</span>
+                                <span class="toggle-day-title">Day 5</span>
+                                <span class="toggle-day-text">Show Itinerary Details</span>
+                            </h5>
+                            <p class="itinerary-details-text">Day 5 details...</p>
+                            <p class="itinerary-details-text" style="display: none;">Put your alarm before sunset, because you're going to see the sunrise from a kayak between the glaciars at the Perito Moreno. </p>
+                            <p class="itinerary-details-text" style="display: none;">Get a good shower, back to the car, back to the airport... you just had the most amazing trip of your life.</p>
+                        </div>
+                    </div>
+                </div>
+                <form action="/Cart/AddToCart" method="post">
+                    <input type="hidden" name="tourPackageId" value="@Model.Id" />
+                    <label for="quantity">Quantity:</label>
+                    <input type="number" name="quantity" id="quantity" value="1" min="1" />
+                    <button type="submit">Add to Cart</button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+@section ExtraScript {
+    <script>
+        $(document).ready(function () {
+            $('.toggle-day-icon').on('click', function () {
+                var day = $(this).closest('.day');
+                day.find('.itinerary-details-text').slideToggle();
+                $(this).toggleClass('rotate');
+                var toggleDayText = day.find('.toggle-day-text');
+                toggleDayText.text(function (i, text) {
+                    return text === 'Show Itinerary Details' ? 'Hide Itinerary Details' : 'Show Itinerary Details';
+                });
+            });
+        });
+    </script>
+}

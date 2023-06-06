@@ -16,8 +16,8 @@ namespace TripMeOn.ViewModels
         public string Connect { get; set; }
 
         //pour la méthode d'authentification du partenaire -qqs
-		public Partner Partner { get; set; }
-		public bool AuthentifyP { get; set; }
+        public Partner Partner { get; set; }
+        public bool AuthentifyP { get; set; }
 
         //pour la méthode d'authentification du partenaire -qqs
         public Client Client { get; set; }

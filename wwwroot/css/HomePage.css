@@ -1,158 +1,4 @@
 ﻿body {
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-/* Style the header */
-header {
-    display: flex;
-    padding: 30px;
-    font-size: 35px;
-    justify-content: center;
-}
-
-/* Create two columns/boxes that floats next to each other */
-nav {
-    float: left;
-    width: 8%;
-    height: 405px;
-    background: #9AD4D6;
-    padding: 0;
-}
-
-    /* Style the list inside the menu */
-    nav ul {
-        list-style-type: none;
-        padding: 0;
-    }
-
-article {
-    float: left;
-    padding: 20px;
-    width: 85%;
-    background-color: #F2FDFF;
-    height: auto;
-}
-
-/* Clear floats after the columns */
-section::after {
-    content: "";
-    display: table;
-    clear: both;
-}
-
-/* Style the footer */
-footer {
-    background-color: #DBCBD8;
-    padding: 10px;
-    text-align: center;
-    color: rgb(18, 3, 46);
-}
-
-/* Responsive layout - makes the two columns/boxes stack on top of each other instead of next to each other, on small screens */
-@media (max-width: 800px) {
-
-    nav,
-    article {
-        width: 100%;
-        height: auto;
-    }
-}
-
-.container {
-    align-items: center;
-    float: left;
-}
-
-.image {
-    float: left;
-    padding: 5px;
-}
-
-
-body {
-    text-align: center;
-}
-
-h1,
-h2 {
-    text-transform: uppercase;
-}
-
-h1,
-h2,
-h3,
-h4 {
-    text-align: center;
-}
-
-p {
-    text-align: left;
-}
-
-h1 {
-    font-size: 60px;
-}
-
-h2 {
-    font-size: 36px;
-}
-
-h3 {
-    font-size: 28px;
-}
-
-h4 {
-    font-size: 24px;
-}
-
-p {
-    font-size: 20px;
-}
-/* CSS HEX */
-/*--ultra-violet: #564787ff;
---thistle: #dbcbd8ff;
---azure-web: #f2fdffff;
---tiffany-blue: #9ad4d6ff;
---oxford-blue: #101935ff;*/
-/* CSS HSL */
-/*--ultra-violet: hsla(254, 31%, 40%, 1);
---thistle: hsla(311, 18%, 83%, 1);
---azure-web: hsla(189, 100%, 97%, 1);
---tiffany-blue: hsla(182, 42%, 72%, 1);
---oxford-blue: hsla(225, 54%, 14%, 1);*/
-/* SCSS HEX */
-/*$ultra-violet: #564787ff;
-$thistle: #dbcbd8ff;
-$azure-web: #f2fdffff;
-$tiffany-blue: #9ad4d6ff;
-$oxford-blue: #101935ff;*/
-/* SCSS HSL */
-/*$ultra-violet: hsla(254, 31%, 40%, 1);
-$thistle: hsla(311, 18%, 83%, 1);
-$azure-web: hsla(189, 100%, 97%, 1);
-$tiffany-blue: hsla(182, 42%, 72%, 1);
-$oxford-blue: hsla(225, 54%, 14%, 1);*/
-/* SCSS RGB */
-/*$ultra-violet: rgba(86, 71, 135, 1);
-$thistle: rgba(219, 203, 216, 1);
-$azure-web: rgba(242, 253, 255, 1);
-$tiffany-blue: rgba(154, 212, 214, 1);
-$oxford-blue: rgba(16, 25, 53, 1);*/
-/* SCSS Gradient */
-/*$gradient-top: linear-gradient(0deg, #564787ff, #dbcbd8ff, #f2fdffff, #9ad4d6ff, #101935ff);
-$gradient-right: linear-gradient(90deg, #564787ff, #dbcbd8ff, #f2fdffff, #9ad4d6ff, #101935ff);
-$gradient-bottom: linear-gradient(180deg, #564787ff, #dbcbd8ff, #f2fdffff, #9ad4d6ff, #101935ff);
-$gradient-left: linear-gradient(270deg, #564787ff, #dbcbd8ff, #f2fdffff, #9ad4d6ff, #101935ff);
-$gradient-top-right: linear-gradient(45deg, #564787ff, #dbcbd8ff, #f2fdffff, #9ad4d6ff, #101935ff);
-$gradient-bottom-right: linear-gradient(135deg, #564787ff, #dbcbd8ff, #f2fdffff, #9ad4d6ff, #101935ff);
-$gradient-top-left: linear-gradient(225deg, #564787ff, #dbcbd8ff, #f2fdffff, #9ad4d6ff, #101935ff);
-$gradient-bottom-left: linear-gradient(315deg, #564787ff, #dbcbd8ff, #f2fdffff, #9ad4d6ff, #101935ff);
-$gradient-radial: radial-gradient(#564787ff, #dbcbd8ff, #f2fdffff, #9ad4d6ff, #101935ff);*/
-
-
-
-
-body {
     font-family: 'Open Sans', sans-serif;
     background: #ecf0f1;
     height: 100vh;
@@ -163,44 +9,81 @@ body {
 footer {
 }
 
-.diapo {
-    display: inline-block;
-    width: 100%;
-    height: 800px;
+.search-container {
+    display: flex;
+    height: 80px;
+    width: 40%;
+    position: absolute;
+    top: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    border-radius: 50px;
+    background: rgba(255, 255, 255, 0.75);
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
 }
+
+.search-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 10px;
+}
+
+    .search-box label,
+    .search-box input {
+        margin: 0 5px;
+    }
+
+    .search-box label {
+        flex: 0 0 100px; /* Adjust the width as needed */
+    }
+
+
+
+.diapo {
+    display: flex;
+    width: 100%;
+    height: 1000px;
+    padding-top:-150px;
+}
+
     .diapo div {
-        display:flex;
+        display: flex;
         background-size: cover;
         background-position: center;
         justify-content: center;
     }
 
 #picLeft {
-    width: 50%;
-    height: 800px;
+    width: 49.5%;
+    height: 1000px;
     margin-left: 0;
     margin-right: auto;
     float: left;
-    background-image: url(https://www.radiofrance.fr/s3/cruiser-production/2023/01/7fd8aaa3-8215-4749-8a14-67d024af6320/1200x680_chaton-getty-picture-alliance.jpg);
+    background-image: url(/images/homepage/Inde_madhya_pradesh.jpg);
 }
 
 #picRight {
-    width: 50%;
-    height: 800px;
+    width:49.5%;
+    height: 1000px;
     margin-left: auto;
     margin-right: 0;
     float: right;
-    background-image: url(https://www.gammvert.fr/conseils/sites/default/files/styles/large/public/2022-03/age_chat_AdobeStock_104400672.jpg?itok=03WZPO74);
+    background-image: url(/images/homepage/613109-landscape-nature-beautiful-forest-area-wild-sky-landscapes.jpg);
 }
 
 .boxPic {
     display: flex;
-    width:20%;
+    width: 20%;
     height: 60px;
-    margin-top:600px;
+    margin-top: 600px;
     margin-bottom: auto;
     background-color: red;
-    justify-content: center;
     border-radius: 5px;
 }
 
@@ -208,7 +91,6 @@ footer {
     display: flex;
     width: auto;
     align-items: center;
-    justify-content: center;
     color: white;
 }
 
@@ -236,62 +118,106 @@ footer {
         border-width: thin;
         align-content: center;
         justify-content: center;
-        text-align: center;
         /*border-radius: 1px;*/
     }
-    
-    #search-searchbox{
-    background-color:red;
-    color : white;
-    }
+
+#search-searchbox {
+    background-color: red;
+    color: white;
+}
 
 
 #testimony-block {
     display: grid;
-    width: 100%;    
-    height:500px;
+    width: 100%;
+    height: 500px;
     grid-template-columns: 150px 800px 300px 150px;
     align-items: center;
-    border-block-color: black;
     justify-content: center;
     margin-bottom: 50px;
 }
 
 #testimony-block-customer-pic {
     background-image: url(https://projet-isika.com/wp-content/uploads/2018/02/patrick-250x300.jpg);
-    height:300px;
+    height: 300px;
     border-radius: 50%;
     background-size: cover;
-    background-position:top;
+    background-position: top;
     justify-content: center;
+}
+
+.testimony-block-arrows {
+    width: 150px;
+    height: 100px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
 }
 
 #testimony-block-left-arrow {
-    background-image: url(https://media4.giphy.com/media/XYPXQnu0XFqG4/giphy.gif?cid=ecf05e47z86szj2qvvymhzcigjy4rkceifp7ixp2tb83omqc&ep=v1_gifs_search&rid=giphy.gif&ct=g);
-    width: 30px;
-    height: 30px;
-    background-size: cover;
+    width: 150px;
+    background-image: url(/images/retour-rapide.png);
     background-position: center;
-    justify-content: center;
+    background-repeat: no-repeat;
+    background-size: contain;
 }
 
+#testimony-block-right-arrow {
+    width: 150px;
+    background-image: url(/images/avance-rapide.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
 
 .partnerships {
     display: grid;
-    width: auto;
-    grid-template-columns: repeat(3, 1fr);
-    column-gap: 1px;
+    width: 100%;
+    height: 300px;
+    grid-template-columns: repeat(7, 1fr);
     justify-content: center;
     align-content: center;
     align-items: center;
-    margin-bottom:50px;
 }
 
-.partnerships div {
-    height:100px;
-    border-block-color: black;
-    border-style: solid;
-    border-color: black;
-    border-width: thin;
+    .partnerships div {
+        width: 150px;
+        height: 100px;
+        margin-right: auto;
+        margin-left: auto;
+        /*border-block-color: black;
+        border-style: solid;
+        border-color: black;
+        border-width: thin;*/
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
 
+#partnerships-pic1 {
+    background-image: url(/images/logos-rs/Meta_Platforms_Inc._logo.svg.png);
+}
+
+#partnerships-pic2 {
+    background-image: url(/images/logos-rs/TikTok-Logo.png);
+}
+
+#partnerships-pic3 {
+    background-image: url(/images/logos-rs/twitch-app-logo-png-3.png);
+}
+
+#partnerships-pic4 {
+    background-image: url(/images/logos-rs/youtube-logo-hd-8.png);
+}
+
+#partnerships-pic5 {
+    background-image: url(/images/logos-rs/20190808214526!Logo-Snapchat.png);
+}
+
+#partnerships-pic6 {
+    background-image: url(/images/logos-rs/Logo-BeReal.png);
+}
+
+#partnerships-pic7 {
+    background-image: url(/images/logos-rs/Logo_of_Twitter.svg.png);
 }

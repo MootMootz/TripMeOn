@@ -15,14 +15,8 @@
     @RenderSection("ExtraCss",required:false)
 </head>
 <body>
-    <header>
-
-        <h1>#TRIP ME ON</h1> @*delete title, put the logo top left instead*@
-    </header>
-
-    <div>
-        <!-- put LOGO here ? -->
-    </div>
+    <div id="logo"></div>
+    <div id="logo-shadow"></div>
 
     <!-- Bootstrap Navigation Bar code goes here -->
     <div class="navbar">
@@ -91,14 +85,13 @@
                 <a href="#">Tour Packages</a>
                 <ul class="child">
                     <li><a href="#">Day Tours</a></li>
-                    <li><a href="#">3 days Tours</a></li>
+                    <li><a href="#">4 days Tours</a></li>
                     <li><a href="#">5 days Tours</a></li>
                     <li><a href="#">7 days Tours</a></li>
                 </ul>
             </li>
 
             <!--   -------------------------------------------------------------------------   -->
-
             @*
             <li class="parent">
             <a href="/Content/InstaTips">Insta-tips</a>
@@ -136,52 +129,35 @@
 
             <!--   -------------------------------------------------------------------------   -->
 
- @*           <li class="parent">
-                <a href="#">Staff Only<span class="expand"></span></a>
+            <li class="parent">
+                <a href="#">Admin<span class="expand"></span></a>
                 <ul class="child">
-                    <li><a href="#">Log in</a></li>
-                    <li><a href=" /Product/PackageList">Check Products</a></li>
+                    <li>@Html.ActionLink("Log in Admin", "LoginAdmin", "Login")</li>
+                    @*<li><a href=" /Product/PackageList">Check Products</a></li>*@
                 </ul>
-            </li>*@
+            </li>
+
+
+            <li class="parent">
+                @if (!String.IsNullOrEmpty(Context.Request.Cookies["Nickname"])) // si la valeur du cookie Nickname n'est pas vide
+                {
+                    <span>Hello @Context.Request.Cookies["Nickname"]</span>
+                    // on affiche le message Bonjour suivi de la valeur de Cookie nickname
+                }
+            </li>
+
+            <li class="parent">
+                @Html.ActionLink("Logout", "Deconnection", "Login")
+            </li>
+
+            <li class="parent">
+                @Html.ActionLink("Catalog", "Catalog", "Product")
+            </li>
 
         </ul>
     </div>
     <!--   -------------------------------------------------------------------------   -->
-    <!-- Transparent Search Box -->
-    <div class="search-container">
-        <div class="search-box">
-            <form action="/Product/SearchPackage" method="get">
-
-                <label for="destinations">Destinations</label>
-                @{
-                    List<Destination> destinations = new TripMeOn.BL.ProductService().GetDestinations();
-                    destinations.Insert(0, new Destination { Id = 0, Country = "All Destinations" });
-                    SelectList selectList = new SelectList(destinations, "Id", "Country");
-                }
-                @Html.DropDownList("destination", selectList)
-
-                <label for="themes">Themes</label>
-                @{
-                    List<Theme> themes = new TripMeOn.BL.ProductService().GetThemes();
-                    themes.Insert(0, new Theme { Id = 0, Name = "All Themes" });
-                    SelectList themeList = new SelectList(themes, "Id", "Name");
-                }
-                @Html.DropDownList("theme", themeList)
-
-                <label for="months">Months</label>
-                @{
-                    List<SelectListItem> monthList = DateTimeHelper.GetMonths();
-                    monthList.Insert(0, new SelectListItem { Value = "0", Text = "All Months" });
-                }
-                @Html.DropDownList("month", monthList)
-                <button type="submit" class="btn btn-primary">Search</button>
-
-
-            </form>
-        </div>
-
-
-    </div>
+    
 
     @RenderBody()
 

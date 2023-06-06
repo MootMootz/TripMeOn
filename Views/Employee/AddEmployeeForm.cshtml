@@ -9,60 +9,123 @@
 }
 nav>
 <img src="~/images/logo.png" alt="logo">
-<button type="button">@Html.ActionLink("Accueil", "IndexAdmin")</button>
+<button type="button">@Html.ActionLink("Home", "IndexAdmin")</button>
 
 @if (!String.IsNullOrEmpty(Context.Request.Cookies["Nickname"])) // si la valeur du cookie Nickname n'est pas vide
 {
     <span>Bonjour @Context.Request.Cookies["Nickname"]</span>
     // on affiche le message Bonjour suivi de la valeur de Cookie nickname
 }
-<button type="submit">@Html.ActionLink("Se déconnecter", "Deconnexion", "Login")</button>
+<button type="submit">@Html.ActionLink("Logout", "Deconnection", "Login")</button>
 
 @using (Html.BeginForm("SubmitEmployeeForm", "Employee", FormMethod.Post))
 {
     <div class="form-container">
         <fieldset>
             <legend>Sign Up Form</legend>
-            <div class="form-group">
-                @Html.LabelFor(model => model.LastName)
-                @Html.TextBoxFor(model => model.LastName, new { @class = "form-control" })
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.FirstName)
-                @Html.TextBoxFor(model => model.FirstName, new { @class = "form-control" })
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.Nickname)
-                @Html.TextBoxFor(model => model.Nickname, new { @class = "form-control" })
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.Email)
-                @Html.TextBoxFor(model => model.Email, new { @class = "form-control" })
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.Password)
-                @Html.PasswordFor(model => model.Password, new { @class = "form-control" })
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.Address)
-                @Html.TextBoxFor(model => model.Address, new { @class = "form-control" })
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.PhoneNumber)
-                @Html.TextBoxFor(model => model.PhoneNumber, new { @class = "form-control" })
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.Role)
-                @Html.TextBoxFor(model => model.Role, new { @class = "form-control" })
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <table>
+                <tr>
+                    <td>
+                        <div class="form-group">
+                            <label for="LastName">Last Name</label>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <input type="text" id="LastName" name="LastName" class="form-control" />
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-group">
+                            <label for="FirstName">First Name</label>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <input type="text" id="FirstName" name="FirstName" class="form-control" />
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-group">
+                            <label for="Nickname">Nickname</label>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <input type="text" id="Nickname" name="Nickname" class="form-control" />
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-group">
+                            <label for="Email">Email</label>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <input type="text" id="Email" name="Email" class="form-control" />
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-group">
+                            <label for="Password">Password</label>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <input type="password" id="Password" name="Password" class="form-control" />
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-group">
+                            <label for="Address">Address</label>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <input type="text" id="Address" name="Address" class="form-control" />
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-group">
+                            <label for="PhoneNumber">Phone Number</label>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <input type="text" id="PhoneNumber" name="PhoneNumber" class="form-control" />
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-group">
+                            <label for="Role">Role</label>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <input type="text" id="Role" name="Role" class="form-control" />
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </td>
+                </tr>
+            </table>
         </fieldset>
     </div>
 

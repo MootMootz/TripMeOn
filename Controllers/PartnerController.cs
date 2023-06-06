@@ -5,6 +5,7 @@ using System.Security.Claims;
 using TripMeOn.BL;
 using TripMeOn.BL.interfaces;
 using TripMeOn.Models;
+using TripMeOn.Models.Admin;
 using TripMeOn.Models.PartnerProducts;
 using TripMeOn.Models.Users;
 using TripMeOn.ViewModels;
@@ -14,7 +15,7 @@ namespace TripMeOn.Controllers
     public class PartnerController : Controller
 
     {
-                
+
         private Models.BddContext _bddContext;
 
         public PartnerController()
@@ -46,7 +47,7 @@ namespace TripMeOn.Controllers
             using (var dbContext = new Models.BddContext())
             {
 
-                var partner = new Partner
+                var partner = new Models.Users.Partner
                 {
                     LastName = model.LastName,
                     FirstName = model.FirstName,
@@ -378,7 +379,8 @@ namespace TripMeOn.Controllers
             using (IPropositionService propositionService = new PropositionService())
             {
                 PropositionServiceModel viewModel = new PropositionServiceModel();
-                viewModel.Accomodations = propositionService.GetAllAccomodations();
+                int partnerId = int.Parse(User.FindFirstValue(ClaimTypes.Name));
+                viewModel.Accomodations = propositionService.GetAccomodationsByPartnerId(partnerId);
                 return View(viewModel);
             }
         }
@@ -387,7 +389,8 @@ namespace TripMeOn.Controllers
             using (IPropositionService propositionService = new PropositionService())
             {
                 PropositionServiceModel viewModel = new PropositionServiceModel();
-                viewModel.Restaurants = propositionService.GetAllRestaurants();
+                int partnerId = int.Parse(User.FindFirstValue(ClaimTypes.Name));
+                viewModel.Restaurants = propositionService.GetRestaurantsByPartnerId(partnerId);
                 return View(viewModel);
             }
         }
@@ -396,7 +399,8 @@ namespace TripMeOn.Controllers
             using (IPropositionService propositionService = new PropositionService())
             {
                 PropositionServiceModel viewModel = new PropositionServiceModel();
-                viewModel.Transportations = propositionService.GetAllTransportations();
+                int partnerId = int.Parse(User.FindFirstValue(ClaimTypes.Name));
+                viewModel.Transportations = propositionService.GetTransportationsByPartnerId(partnerId);
                 return View(viewModel);
             }
         }

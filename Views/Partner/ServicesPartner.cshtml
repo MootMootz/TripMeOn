@@ -3,29 +3,8 @@
     ViewBag.Title = "Forum";
 }
 
-<h3>List of services</h3>
-@*<p>Ici on devrait avoir la liste des services proposés par ce partenaire, à cliquer sur le service qu'on veut modifier ou supprimer (att! la liste doit apparaître sur le PartnerController). le bouton "ajouter" devrait aller sur une autre "view" qui s'affiche ici avec le formulaire pour ajouter un autre</p>*@
-@Html.ActionLink("List of accomodations", "ListeAccomodation", "Partner")
-<br />
-@Html.ActionLink("List of restaurants", "ListeRestaurant", "Partner")
-<br />
-@Html.ActionLink("List of transportation", "ListeTransportation", "Partner")
 
-@section Menu{
-
-    <p>Add a service</p>
-    <button type="submit">@Html.ActionLink("Create accomodation", "CreateAccomodation","Partner")</button>
-    <button type="submit">@Html.ActionLink("Create restaurant", "CreateRestaurant","Partner")</button>
-    <button type="submit">@Html.ActionLink("Create transportation", "CreateTransportation","Partner")</button>
-
-    @*    <select name="service" id="service" required>
-        <option selected>Ajouter un service</option>
-        <option><a href="/Partner/CreateAccomodation">"Hébergement"</a></option>
-        <option>Restaurant</option>
-        <option>Transportation</option>
-        <option>Autres</option>
-    </select>
-    <button type="submit">OK</button>*@
+   
 
 }
 

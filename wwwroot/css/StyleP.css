@@ -1,0 +1,71 @@
+﻿#entete, #menu, #contenu {
+    padding: 10px 10px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+}
+
+
+#fixNav {
+    background-color: rgb(191, 202, 223);
+    text-align: justify;
+    padding-inline: 20px;
+    align-items: flex-start
+}
+
+#button {
+    padding-left: 30px;
+    color: darkslategrey;
+    background-color:dimgrey;
+    text-decoration: none;
+    border-radius:4px, 4px;
+}
+
+#main {
+    margin: auto;
+    
+}
+
+#menu {
+    float: left;
+    width: 240px;
+    background-color: rgb(230, 184, 248);
+    color: darkslategray;
+    font-style: normal;
+}
+
+
+#contenu {
+    margin-left: 245px;
+    background-image: src(/images/P2.jpg)
+}
+
+#footer {
+    background-color: rgb(55, 52, 96);
+    text-align: center;
+    clear: both;
+    font-family: Autography;
+    font-size: large;
+    color: antiquewhite;
+}
+a:link {
+    color: aliceblue;
+    text-emphasis-style:none;
+}
+
+/* visited link */
+a:visited {
+    color: darkslategrey;
+}
+
+/* mouse over link */
+a:hover {
+    color: rgb(88, 40, 107);
+}
+
+/* selected link */
+a:active {
+    color: blue;
+}
+a {
+    text-decoration: none;
+}
+

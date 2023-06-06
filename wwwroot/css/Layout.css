@@ -109,3 +109,8 @@ li:hover {
         color: #000000;
         margin-right: 10px
     }
+
+.header {
+        background-color: white;
+        text-size-adjust:auto;
+}

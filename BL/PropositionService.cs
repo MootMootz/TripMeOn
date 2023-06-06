@@ -60,18 +60,18 @@ namespace TripMeOn.BL
             _bddContext.SaveChanges();
             return accomodation.Id;
         }
-        public int CreateRestaurant(string name, string type, double price, int partnerId, int destinationId, DateTime startDate, DateTime endDate)
+        public int CreateRestaurant(string name, string type, double price, int partnerId, int destinationId, DateTime startDate, DateTime endDate, string description)
         {
-            Restaurant restaurant = new Restaurant() { Name = name, Type = type, Price = price, PartnerId = partnerId, DestinationId = destinationId, StartDate = startDate, EndDate = endDate };
+            Restaurant restaurant = new Restaurant() { Name = name, Type = type, Price = price, PartnerId = partnerId, DestinationId = destinationId, StartDate = startDate, EndDate = endDate, Description = description };
             _bddContext.Restaurants.Add(restaurant);
             Notification notification = new Notification() { Message = $"A new restaurant has been created by partner {partnerId}.", CreatedAt = DateTime.Now };
             _bddContext.Notifications.Add(notification);
             _bddContext.SaveChanges();
             return restaurant.Id;
         }
-        public int CreateTransportation(string type, double price, int partnerId, int destinationId, DateTime startDate, DateTime endDate)
+        public int CreateTransportation(string type, double price, int partnerId, int destinationId, DateTime startDate, DateTime endDate, string description)
         {
-            Transportation transportation = new Transportation() { Type = type, Price = price, PartnerId = partnerId, DestinationId = destinationId, StartDate = startDate, EndDate = endDate };
+            Transportation transportation = new Transportation() { Type = type, Price = price, PartnerId = partnerId, DestinationId = destinationId, StartDate = startDate, EndDate = endDate, Description = description };
             _bddContext.Transportations.Add(transportation);
             Notification notification = new Notification() { Message = $"A new transportation has been created by partner {partnerId}.", CreatedAt = DateTime.Now };
             _bddContext.Notifications.Add(notification);

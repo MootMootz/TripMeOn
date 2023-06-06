@@ -1,4 +1,5 @@
 ﻿@model TripMeOn.Models.Order.Cart
+@using TripMeOn.ViewModels
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -18,6 +19,9 @@
             <tr>
                 <th>Id</th>
                 <th>Name of the tour package</th>               
+                <th>Date of Purchase</th>
+               @* <th>From:</th>
+                <th>To:</th>*@
                 <th>Price</th>
                 <th>Quantity</th>
                 <th>Sub Total</th>
@@ -31,14 +35,15 @@
                     <td>@item.TourPackage.Id</td>
                     <td>
                         <div class="d-flex">
-                          @*  <img src="@item.TourPackage.Image?.Url" style="width: 20%;">*@
-                                <div class="details">
-                            </div>
+                          @*  <img src="@item.TourPackage.Image?.Url" style="width: 20%;">*@                           
                             <div class="details">
                                 <p>@item.TourPackage.Name</p>                           
                             </div>
                         </div>
-                    </td>                   
+                    </td>                 
+                    <td>@DateTime.Now</td>
+                   @* <td>@DateTime.DaysInMonth</td>
+                    <td>@DateTime.DaysInMonth</td>*@
                     <td>@item.TourPackage.Price</td>
                     <td>
                         <form method="post" action="/Cart/UpdateQuantity">

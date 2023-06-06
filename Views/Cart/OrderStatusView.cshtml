@@ -3,41 +3,54 @@
 
 @{
     var orders = Model;
-}
 
+}
+<link rel="stylesheet" href="/css/Orderstatus.css">
+
+<h3 class="text-center">Order Status:</h3>
 @if (orders != null && orders.Count > 0)
 {
-    <h3>Order Status:</h3>
-    <table>
-        <tr>
-            <th>Cart ID</th>
-            <th>Client ID</th>
-            <th>Client Name</th>
-            <th>Quantity</th>
-            <th>Total Price</th>
-        </tr>
-        @foreach (var order in orders)
-        {
+    <div class="order-status">
+        <table class="table">
             <tr>
-                <td>@Html.DisplayFor(modelItem => order.CartId)</td>
-                <td>@Html.DisplayFor(modelItem => order.ClientId)</td>
-                <td>@Html.DisplayFor(modelItem => order.ClientName)</td>
-                <td>@Html.DisplayFor(modelItem => order.Quantity)</td>
-                <td>@Html.DisplayFor(modelItem => order.TotalPrice)</td>
-                <td>
-                    @if (!order.IsRefunded)
-                    {
-                        <a href="@Url.Action("RequestReturn", "Cart", new { cartId = order.CartId })" class="btn btn-primary">Refund</a>
-                    }
-                    else
-                    {
-                        <span>Refunded</span>
-                    }
-                </td>
+                <th>Cart ID</th>
+                <th>Client ID</th>
+                <th>Client Name</th>
+                <th>Quantity</th>
+                <th>Total Price</th>
+               @* <th>Image</th>*@
             </tr>
-        }
-    </table>
+            @foreach (var order in orders)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => order.CartId)</td>
+                    <td>@Html.DisplayFor(modelItem => order.ClientId)</td>
+                    <td>@Html.DisplayFor(modelItem => order.ClientName)</td>
+                    <td>@Html.DisplayFor(modelItem => order.Quantity)</td>
+                    <td>@Html.DisplayFor(modelItem => order.TotalPrice)</td>
+                  @*  <td>
+                        @foreach (var item in order.Items)
+                        {
+                            <img src="@item.ImageUrl" alt="Product Image" />
+                        }
+                    </td>*@
+                    <td>
+                    <td>
+                            @if (!order.IsRefunded)
+                            {
+                            <a href="@Url.Action("Refund", "Cart", new { cartId = order.CartId })" class="btn btn-primary">Refund</a>
+                            }
+                        else
+                        {
+                            <span>Refunded</span>
+                        }
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
 }
+
 else
 {
     <p>No orders found.</p>

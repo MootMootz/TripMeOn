@@ -49,7 +49,6 @@ namespace TripMeOn
                 options.AccessDeniedPath = "/Login/AccessDenied";
 
             });
-
         }
 
 

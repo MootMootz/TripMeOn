@@ -1,13 +1,18 @@
 @using TripMeOn.ViewModels
+@using TripMeOn.Models.Products;
+@using TripMeOn.Helper;
 @model NavigationViewModel
+@using TripMeOn.Models.Products;
+@using TripMeOn.Helper;
 
 @{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "Home_Page";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @section ExtraCss{
     <link rel="stylesheet" href="/css/HomePage.css">
 }
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,24 +21,61 @@
 </head>
 <body>
 
+    <!-- Transparent Search Box -->
+
+    <div class="search-container">
+        <div class="search-box">
+            <form action="/Product/SearchPackage" method="get">
+
+                <label for="destinations">Destinations</label>
+                @{
+                    List<Destination> destinations = new TripMeOn.BL.ProductService().GetDestinations();
+                    destinations.Insert(0, new Destination { Id = 0, Country = "All Destinations" });
+                    SelectList selectList = new SelectList(destinations, "Id", "Country");
+                }
+                @Html.DropDownList("destination", selectList)
+
+                <label for="themes">Themes</label>
+                @{
+                    List<Theme> themes = new TripMeOn.BL.ProductService().GetThemes();
+                    themes.Insert(0, new Theme { Id = 0, Name = "All Themes" });
+                    SelectList themeList = new SelectList(themes, "Id", "Name");
+                }
+                @Html.DropDownList("theme", themeList)
+
+                <label for="months">Months</label>
+                @{
+                    List<SelectListItem> monthList = DateTimeHelper.GetMonths();
+                    monthList.Insert(0, new SelectListItem { Value = "0", Text = "All Months" });
+                }
+                @Html.DropDownList("month", monthList)
+                <button type="submit" class="btn btn-primary">Search</button>
+
+
+            </form>
+        </div>
+
+
+    </div>
 
 
     <div class="diapo">
         <div id="picLeft">
-            <div class="boxPic">
-                <div class="textBoxPic">
-                    link theme 1
-                </div>
+            @*<div class="boxPic">
+            <div class="textBoxPic">
+            link theme 1
             </div>
+            </div>*@
         </div>
         <div id="picRight">
-            <div class="boxPic">
-                <div class="textBoxPic">
-                    link theme 2
-                </div>
+            @*<div class="boxPic">
+            <div class="textBoxPic">
+            link theme 2
             </div>
+            </div>*@
         </div>
     </div>
+
 
     <div class="search">
         <div id="search-block">
@@ -51,38 +93,37 @@
             </div>
         </div>
     </div>
-
-    <div class="login">
-
-        <div class="testimony">
-            <h1>Ils parlent de nous</h1>
-            <div id="testimony-block">
-                <div class="testimony-block-arrows" id="testimony-block-left-arrow"></div>
-                <div>
-                    J'ai essayé TripMeOn suite au témoignage d'un influenceur que je follow.
-                    Je dois dire que je ne suis pas décu !<br />
-                    Les réservations étaient parfaitement comme décrites sur le site.
-                    Et les panoramas... suberbes.<br />
-                    Merci TripMeOn, je garde de beaux souvenirs.. et de belles photos !
-                </div>
-                <div id="testimony-block-customer-pic"></div>
-                <div class="testimony-block-arrows" id="testimony-block-right-arrow"></div>
+    <div class="testimony">
+        <h1>Ils parlent de nous</h1>
+        <div id="testimony-block">
+            <div class="testimony-block-arrows" id="testimony-block-left-arrow"></div>
+            <div>
+                J'ai essayé TripMeOn suite au témoignage d'un influenceur que je follow.
+                Je dois dire que je ne suis pas décu !<br />
+                Les réservations étaient parfaitement comme décrites sur le site.
+                Et les panoramas... suberbes.<br />
+                Merci TripMeOn, je garde de beaux souvenirs.. et de belles photos !
             </div>
+            <div id="testimony-block-customer-pic"></div>
+            <div id="testimony-block-right-arrow">right arrows</div>
+            <div class="testimony-block-arrows" id="testimony-block-right-arrow"></div>
         </div>
+    </div>
     </div>
 
     <h1>Partners</h1>
     Ils nous font confiance :
     <div class="partnerships">
-        <div id="partnerships-pic1"></div>
-        <div id="partnerships-pic2"></div>
-        <div id="partnerships-pic3"></div>
-        <div id="partnerships-pic4"></div>
-        <div id="partnerships-pic5"></div>
-        <div id="partnerships-pic6"></div>
-        <div id="partnerships-pic7"></div>
     </div>
 
+    <div id="partnerships-pic1"></div>
+    <div id="partnerships-pic2"></div>
+    <div id="partnerships-pic3"></div>
+    <div id="partnerships-pic4"></div>
+    <div id="partnerships-pic5"></div>
+    <div id="partnerships-pic6"></div>
+    <div id="partnerships-pic7"></div>
+    </div>
 
 </body>
 </html>

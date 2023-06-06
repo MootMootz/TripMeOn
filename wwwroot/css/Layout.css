@@ -1,26 +1,53 @@
-﻿.navbar {
+﻿#logo {
+    background-image: url(/images/logo.png);
+    height: 80px;
+    width: 80px;
+    position: absolute;
+    top:10px;
+    left:50px;
+    background-size: cover;
+    background-position: center;
+/*  border : solid 1px white;*/    
+    border-radius:25px;
+    z-index:102;
+}
+#logo-shadow {
+    display:flex;
+    height: 80px;
+    width: 80px;
+    position: absolute;
+    top: 12px;
+    left: 52px;
+    background-color: hotpink;
+    border-radius: 25px;
+    z-index: 101;
+}
+
+.navbar {
     width: 100%;
-    height: 60px;
-    background-color: #C0B9DD;
-    display: flex;
+    height: 100px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    font:bold;
     justify-content: center;
-    align-items: center;
-    position: relative;
-    z-index: 10;
+    z-index: 100;
 }
 
 .parent {
     display: inline-block;
-    position: relative;
-    float: left;
-    line-height: 50px;
-    background-color: #C0B9DD;
-    border-right: #CCC 1px solid;
+    align-content:center;
+    /*float: left;*/
+    line-height: 60px;
+    /*background: rgba(255, 255, 255, 0.1);*/
+    /*border-right: #CCC 1px solid;*/
+    border-radius: 5px 5px 0px 0px;
 }
 
     .parent a {
         margin: 10px;
-        color: darkblue;
+        color: white;
+        background-color: transparent;
         text-decoration: wavy;
     }
 
@@ -31,6 +58,7 @@
 
 .child {
     display: none;
+    background: rgba(255, 255, 255, 0.5);
 }
 
     .child li {
@@ -71,34 +99,6 @@ li:hover {
     float: right;
     margin-right: 5px;
 }
-
-.search-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 10px;
-    /* flex-direction: column;
-    text-align: center;
-    width: 100%;
-    height: 100%;*/
-}
-
-.search-box {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0 10px;
-}
-
-    .search-box label,
-    .search-box input {
-        margin: 0 5px;
-    }
-
-    .search-box label {
-        flex: 0 0 100px; /* Adjust the width as needed */
-    }
-
 
 
 .social-icons {

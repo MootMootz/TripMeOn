@@ -12,10 +12,11 @@
     {
         <div>
             <h3>
-                Vous êtes déjà authentifié avec le login : @Model.Partner.Nickname
+                You are already log in :
+                @Model.Partner.Nickname
             </h3>
             <p>
-                @Html.ActionLink("Voulez-vous vous déconnecter ?", "Deconnexion")
+                @Html.ActionLink("Would you like to disconnect?", "Deconnection", "Login")
             </p>
         </div>
     }
@@ -24,6 +25,13 @@
         <div>
             <p>LOG IN PARTNER</p>
             <p>Please log in :</p>
+
+            @if (!ViewData.ModelState.IsValid)
+            {
+                <div class="alert alert-danger">
+                    @ViewData.ModelState[""].Errors.First().ErrorMessage
+                </div>
+            }
 
             @using (Html.BeginForm("IndexPartner", "Login", FormMethod.Post))
             {

@@ -19,17 +19,17 @@ namespace TripMeOn.BL
         }
         public List<Accomodation> GetAllAccomodations()
         {
-            return _bddContext.Accomodations.ToList();
+            return _bddContext.Accomodations.Include(a => a.Image).ToList();
         }
 
         public List<Restaurant> GetAllRestaurants()
         {
-            return _bddContext.Restaurants.ToList();
+            return _bddContext.Restaurants.Include(r => r.Image).ToList();
         }
 
         public List<Transportation> GetAllTransportations()
         {
-            return _bddContext.Transportations.ToList();
+            return _bddContext.Transportations.Include(t => t.Image).ToList();
         }
 
         public List<Accomodation> GetAccomodationsByPartnerId(int partnerId)

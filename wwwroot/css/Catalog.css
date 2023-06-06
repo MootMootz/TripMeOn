@@ -1,0 +1,99 @@
+﻿#header {
+    display: grid;
+    height: 100px;
+    width: auto;
+    grid-template-columns: repeat(3, 1fr);
+    padding-bottom: 50px;
+    padding-top: 100px;
+    ​
+}
+
+​
+#header div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+​
+#header-pic1 {
+    background-color: blueviolet;
+}
+
+​
+#header-pic2 {
+    background-color: blueviolet;
+}
+
+​
+#filter-bloc {
+    display: block;
+    width: 33%;
+    height: auto;
+    position: absolute;
+    float: left;
+    background-color: rgba(0, 0, 255, 0.24);
+}
+
+​
+#filter-bloc-title {
+    text-align: center;
+}
+
+​
+#filter-bloc-section-bar {
+    border: 1px solid #111111;
+    width: 30%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    ​
+}
+
+​
+.filter-bloc-cat {
+    display: block;
+    height: auto;
+    width: 100%;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 20px;
+}
+
+​
+#filter-icons {
+    display: grid;
+    height: 300px;
+    width: 66%;
+    float: right;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 150px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    align-items: center;
+    ​
+}
+
+    ​
+    #filter-icons div {
+        display: flex;
+        height: 100px;
+        width: 100px;
+        border: 1px solid black;
+        border-radius: 25%;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        margin-left: auto;
+        margin-right: auto;
+        background-color: #111111;
+    }
+
+​
+.filter-icons-title {
+    display: flex;
+    color: rgb(0, 0, 0);
+    margin-bottom: -130px;
+    ​
+}

@@ -22,6 +22,7 @@
             <th>Price</th>
             <th>PartnerId</th>
             <th>DestinationId</th>
+            <th>Description</th>
             <th>Action</th>
         </tr>
         @foreach (var transportation in Model.Transportations)
@@ -31,6 +32,7 @@
                 <td>@transportation.Price</td>
                 <td>@transportation.PartnerId</td>
                 <td>@transportation.DestinationId</td>
+                <td>@transportation.Description</td>
                 <td>@Html.ActionLink("Edit","ModifyTransportation", "Partner", new { id = transportation.Id })</td>
                 <td>@Html.ActionLink("Delete", "DeleteTransportation", "Partner", new { id = transportation.Id })</td>
                 <td>

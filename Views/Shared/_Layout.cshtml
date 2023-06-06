@@ -66,17 +66,9 @@
             <li class="parent">
                 <a href="#">Holiday Finder<span class="expand"></span></a>
                 <ul class="child">
-                    <li><a href="#">Accommodation</a></li>
-                    <li class="parent">
-                        <a href="#">Land Services</a>
-                        <ul class="child">
-                            <li><a href="#">Taxi</a></li>
-                            <li><a href="#">Rent a car</a></li>
-                            <li><a href="#">Rent a bike</a></li>
-                            <li><a href="#">Get a tour guide</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#">Restaurants</a></li>
+                    <li>@Html.ActionLink("Restaurants", "ShowRestaurantList", "Home")</li>
+                    <li>@Html.ActionLink("Accomodations", "ShowAccomodationList", "Home")</li>
+                    <li>@Html.ActionLink("Land Services", "ShowTransportationList", "Home")</li>
                 </ul>
             </li>
             <!--   -------------------------------------------------------------------------   -->

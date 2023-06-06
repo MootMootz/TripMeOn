@@ -23,6 +23,12 @@
             </tr>
 
             <tr>
+                <td>@Html.LabelFor(m => Model.Description)</td>
+                <td>@Html.TextBoxFor(m => Model.Description)</td>
+                <td>@Html.ValidationMessageFor(m => Model.Description)</td>
+            </tr>
+
+            <tr>
                 <td>@Html.LabelFor(m => Model.Partner)</td>
                 <td class="essai">@Html.DropDownListFor(m => m.PartnerId, (List<SelectListItem>)ViewBag.PartnerList, "Select a partner")</td>
                 <td>@Html.ValidationMessageFor(m => Model.PartnerId)</td>

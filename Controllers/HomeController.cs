@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using TripMeOn.BL.interfaces;
+using TripMeOn.BL;
 using TripMeOn.ViewModels;
 
 namespace TripMeOn.Controllers
@@ -24,7 +26,38 @@ namespace TripMeOn.Controllers
             return View("HomePage", navigationViewModel);
         }
 
+        public IActionResult ShowRestaurantList()
+        {
+            using (IPropositionService propositionService = new PropositionService())
+            {
+                PropositionServiceModel viewModel = new PropositionServiceModel();
+                //int partnerId = int.Parse(User.FindFirstValue(ClaimTypes.Name));
+                viewModel.Restaurants = propositionService.GetAllRestaurants();
+                return View(viewModel);
+            }
+        }
 
+        public IActionResult ShowAccomodationList()
+        {
+            using (IPropositionService propositionService = new PropositionService())
+            {
+                PropositionServiceModel viewModel = new PropositionServiceModel();
+                //int partnerId = int.Parse(User.FindFirstValue(ClaimTypes.Name));
+                viewModel.Accomodations = propositionService.GetAllAccomodations();
+                return View(viewModel);
+            }
+        }
+
+        public IActionResult ShowTransportationList()
+        {
+            using (IPropositionService propositionService = new PropositionService())
+            {
+                PropositionServiceModel viewModel = new PropositionServiceModel();
+                //int partnerId = int.Parse(User.FindFirstValue(ClaimTypes.Name));
+                viewModel.Transportations = propositionService.GetAllTransportations();
+                return View(viewModel);
+            }
+        }
     }
 }
 

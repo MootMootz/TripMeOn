@@ -1,13 +1,18 @@
 @using TripMeOn.ViewModels
+@using TripMeOn.Models.Products;
+@using TripMeOn.Helper;
 @model NavigationViewModel
+@using TripMeOn.Models.Products;
+@using TripMeOn.Helper;
 
 @{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "Home_Page";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @section ExtraCss{
     <link rel="stylesheet" href="/css/HomePage.css">
 }
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,90 +21,61 @@
 </head>
 <body>
 
+    <!-- Transparent Search Box -->
+
+    <div class="search-container">
+        <div class="search-box">
+            <form action="/Product/SearchPackage" method="get">
+
+                <label for="destinations">Destinations</label>
+                @{
+                    List<Destination> destinations = new TripMeOn.BL.ProductService().GetDestinations();
+                    destinations.Insert(0, new Destination { Id = 0, Country = "All Destinations" });
+                    SelectList selectList = new SelectList(destinations, "Id", "Country");
+                }
+                @Html.DropDownList("destination", selectList)
+
+                <label for="themes">Themes</label>
+                @{
+                    List<Theme> themes = new TripMeOn.BL.ProductService().GetThemes();
+                    themes.Insert(0, new Theme { Id = 0, Name = "All Themes" });
+                    SelectList themeList = new SelectList(themes, "Id", "Name");
+                }
+                @Html.DropDownList("theme", themeList)
+
+                <label for="months">Months</label>
+                @{
+                    List<SelectListItem> monthList = DateTimeHelper.GetMonths();
+                    monthList.Insert(0, new SelectListItem { Value = "0", Text = "All Months" });
+                }
+                @Html.DropDownList("month", monthList)
+                <button type="submit" class="btn btn-primary">Search</button>
+
+
+            </form>
+        </div>
+
+
+    </div>
 
 
     <div class="diapo">
         <div id="picLeft">
-            <div class="boxPic">
-                <div class="textBoxPic">
-                    link theme 1
-                </div>
+            @*<div class="boxPic">
+            <div class="textBoxPic">
+            link theme 1
             </div>
+            </div>*@
         </div>
         <div id="picRight">
-            <div class="boxPic">
-                <div class="textBoxPic">
-                    link theme 2
-                </div>
+            @*<div class="boxPic">
+            <div class="textBoxPic">
+            link theme 2
             </div>
+            </div>*@
         </div>
     </div>
 
-    @*<div class="login"> VOIR SUR VS
-
-
-    @if (Model.AuthentifyP)
-    {
-    //return Views_Partner_IndexPartner;
-
-    <h3>
-    Vous êtes déjà authentifié avec le login :
-    @Model.Partner.Nickname
-    </h3>
-    @Html.ActionLink("Voulez-vous vous déconnecter ?", "Deconnexion")
-    }
-    else
-    {
-    <p>
-    LOG IN PARTENAIRE
-    Veuillez vous authentifier :
-    </p>
-    using (Html.BeginForm("IndexPartner", "Login", FormMethod.Post))
-    {
-
-    <div>
-    @Html.LabelFor(m => m.Partner.Nickname)
-    @Html.TextBoxFor(m => m.Partner.Nickname)
-    @Html.ValidationMessageFor(m => m.Partner.Nickname)
-    </div>
-    <div>
-    @Html.LabelFor(m => m.Partner.Password)
-    @Html.PasswordFor(m => m.Partner.Password)
-    @Html.ValidationMessageFor(m => m.Partner.Password)
-
-    </div>
-    <input type="submit" value="Log in" />
-    <br />
-
-    }
-    }
-
-    </div>*@
-
-    @*<div class="login"> ENCORE A REGARDER SUR VS
-
-
-    @if (Model.AuthentifyC)
-    {
-
-
-    <h3>
-    LOGIN CLIENT
-
-    Vous êtes déjà authentifié avec le login :
-    @Model.Client.Nickname
-    </h3>
-    @Html.ActionLink("Voulez-vous vous déconnecter ?", "Deconnexion")
-    }
-    else
-    {
-    <p>
-    LOG IN CLIENT
-    Veuillez vous authentifier :
-    </p>
-    using (Html.BeginForm("IndexClient", "Login", FormMethod.Post))
-    {
-    *@
 
     <div class="search">
         <div id="search-block">
@@ -117,94 +93,37 @@
             </div>
         </div>
     </div>
-
-    @* <div> ENCORE ET ENCORE A REVISER
-    @Html.LabelFor(m => m.Client.Nickname)
-    @Html.TextBoxFor(m => m.Client.Nickname)
-    @Html.ValidationMessageFor(m => m.Client.Nickname)
-
-    </div>
-    <div>
-    @Html.LabelFor(m => m.Client.Password)
-    @Html.PasswordFor(m => m.Client.Password)
-    @Html.ValidationMessageFor(m => m.Client.Password)
-    </div>
-    <input type="submit" value="Log in" />
-    <br />
-
-    }
-    }
-    </div>*@
-
-
-    <div class="login">
-
-
-
-        <div class="testimony">
-            <h1>Ils parlent de nous</h1>
-            <div id="testimony-block">
-                <div id="testimony-block-left-arrow">left arrows</div>
-                <div>
-                    J'ai essayé TripMeOn suite au témoignage d'un influenceur que je follow.
-                    Je dois dire que je ne suis pas décu !<br />
-                    Les réservations étaient parfaitement comme décrites sur le site.
-                    Et les panoramas... suberbes.<br />
-                    Merci TripMeOn, je garde de beaux souvenirs.. et de belles photos !
-                </div>
-                <div id="testimony-block-customer-pic"></div>
-                <div id="testimony-block-right-arrow">right arrows</div>
-            </div>
-        </div>
-
-        <h1>Partners</h1>
-        Ils nous font confiance :
-        <div class="partnerships">
-            <div id="parnterships-pic1">LOGO</div>
-            <div id="partnerships-pic2">LOGO</div>
-            <div id="partnerships-pic3">LOGO</div>
-
-            @*@if (Model.AuthentifyE)
-            {
-
-
-            <h3>
-            LOGIN EMPLOYEE
-
-            Vous êtes déjà authentifié avec le login :
-            @Model.Employee.Nickname
-            </h3>
-            @Html.ActionLink("Voulez-vous vous déconnecter ?", "Deconnexion")
-            }
-            else
-            {
-            <p>
-            LOG IN EMPLOYEE
-            Veuillez vous authentifier :
-            </p>
-            using (Html.BeginForm("IndexAdmin", "Login", FormMethod.Post))
-            {
-
+    <div class="testimony">
+        <h1>Ils parlent de nous</h1>
+        <div id="testimony-block">
+            <div class="testimony-block-arrows" id="testimony-block-left-arrow"></div>
             <div>
-            @Html.LabelFor(m => m.Employee.Nickname)
-            @Html.TextBoxFor(m => m.Employee.Nickname)
-            @Html.ValidationMessageFor(m => m.Employee.Nickname)
-
+                J'ai essayé TripMeOn suite au témoignage d'un influenceur que je follow.
+                Je dois dire que je ne suis pas décu !<br />
+                Les réservations étaient parfaitement comme décrites sur le site.
+                Et les panoramas... suberbes.<br />
+                Merci TripMeOn, je garde de beaux souvenirs.. et de belles photos !
             </div>
-            <div>
-            @Html.LabelFor(m => m.Employee.Password)
-            @Html.PasswordFor(m => m.Employee.Password)
-            @Html.ValidationMessageFor(m => m.Employee.Password)
-            </div>
-            <input type="submit" value="Log in" />
-            <br />
-
-            }
-            }*@
+            <div id="testimony-block-customer-pic"></div>
+            <div id="testimony-block-right-arrow">right arrows</div>
+            <div class="testimony-block-arrows" id="testimony-block-right-arrow"></div>
         </div>
+    </div>
+    </div>
+
+    <h1>Partners</h1>
+    Ils nous font confiance :
+    <div class="partnerships">
+    </div>
+
+    <div id="partnerships-pic1"></div>
+    <div id="partnerships-pic2"></div>
+    <div id="partnerships-pic3"></div>
+    <div id="partnerships-pic4"></div>
+    <div id="partnerships-pic5"></div>
+    <div id="partnerships-pic6"></div>
+    <div id="partnerships-pic7"></div>
     </div>
 
 </body>
 </html>
-
-

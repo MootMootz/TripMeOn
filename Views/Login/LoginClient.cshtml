@@ -17,7 +17,10 @@
             You are already log in :
             @Model.Client.Nickname
         </h3>
+
         @Html.ActionLink("Would you like to logout?", "Deconnection", "Login")
+
+
 
         <p>
             @Html.ActionLink("Check Order Status", "OrderStatus", "Cart")
@@ -25,11 +28,12 @@
     }
     else
     {
-        <p>
-            Veuillez vous authentifier :
-        </p>
+        <p>LOG IN CLIENT</p>
+        <p>Please log in :</p>
 
-        using (Html.BeginForm("IndexClient", "Login", FormMethod.Post))
+
+        @using (Html.BeginForm("IndexClient", "Login", FormMethod.Post))
+
         {
 
             <div>

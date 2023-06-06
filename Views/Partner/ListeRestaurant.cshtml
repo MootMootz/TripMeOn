@@ -23,6 +23,7 @@
             <th>Price</th>
             <th>PartnerId</th>
             <th>DestinationId</th>
+            <th>Description</th>
             <th>Actions</th>
         </tr>
         @foreach (var restaurant in Model.Restaurants)
@@ -33,6 +34,7 @@
                 <td>@restaurant.Price</td>
                 <td>@restaurant.PartnerId</td>
                 <td>@restaurant.DestinationId</td>
+                <td>@restaurant.Description</td>
                 <td>@Html.ActionLink("Edit","ModifyRestaurant", "Partner", new { id = restaurant.Id })</td>
                 <td>@Html.ActionLink("Delete", "DeleteRestaurant", "Partner", new { id = restaurant.Id })</td>
                 <td>

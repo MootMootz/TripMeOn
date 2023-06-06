@@ -31,7 +31,9 @@ namespace TripMeOn.Models
         {
 
 
+
             optionsBuilder.UseMySql("server=localhost;user id=root;password=twitwiboo;database=TripMeOn");
+
 
 
         }
@@ -200,8 +202,8 @@ namespace TripMeOn.Models
                 new Transportation {  Id = 1, Type = "car", Price = 40, StartDate = new DateTime(2023, 03, 01), EndDate = new DateTime(2023, 10, 31), PartnerId = 2, DestinationId = 8, ImageId= 28, Description = "Pick up and drop off at the airport of Salta, north of Argentina" },
                 new Transportation {  Id = 2, Type = "car", Price = 50, StartDate = new DateTime(2023, 09, 01), EndDate = new DateTime(2024, 05, 31), PartnerId = 2, DestinationId = 8, ImageId= 29, Description = "Pick up and drop off at the airport of Ushuaia, south of Argentina" },
                 new Transportation {  Id = 5, Type = "car", Price = 30, StartDate = new DateTime(2023, 09, 01), EndDate = new DateTime(2024, 05, 31), PartnerId = 2, DestinationId = 8, ImageId= 32, Description = "Pick up and drop off at the airport of Ushuaia, south of Argentina" },
-                new Transportation {  Id = 3, Type = "bike", Price = 20, StartDate = new DateTime(2023, 01, 01), EndDate = new DateTime(2023, 12, 31), PartnerId = 2, DestinationId = 1, ImageId= 31, Description = "Rent a bike for as many days as you need to in Paris" },
-                new Transportation {  Id = 4, Type = "bike", Price = 30, StartDate = new DateTime(2023, 01, 01), EndDate = new DateTime(2023, 12, 31), PartnerId = 2, DestinationId = 1, ImageId= 30, Description = "Rent an electric bike in Paris" }
+                new Transportation {  Id = 3, Type = "bike", Price = 20, StartDate = new DateTime(2023, 01, 01), EndDate = new DateTime(2023, 12, 31), PartnerId = 1, DestinationId = 1, ImageId= 31, Description = "Rent a bike for as many days as you need to in Paris" },
+                new Transportation {  Id = 4, Type = "bike", Price = 30, StartDate = new DateTime(2023, 01, 01), EndDate = new DateTime(2023, 12, 31), PartnerId = 1, DestinationId = 1, ImageId= 30, Description = "Rent an electric bike in Paris" }
 
             };
 

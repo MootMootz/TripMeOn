@@ -54,7 +54,7 @@ namespace TripMeOn.Models
             var partners = new List<Partner>
             {
                  new Partner { Id = 1, LastName = "Usungtand", FirstName = "Sedar", Nickname = "BG", Email = "bogosse.gmail.com", Password = UserService.EncodeMD5("0000"), Address= "123 Avenue Fromenteau,45091, France",PhoneNumber="076543211",CompanyName="EasyGo"},
-                  new Partner { Id = 2, LastName = "Perez", FirstName = "Exequiel", Nickname = "ArgPartner", Email = "exequielP@gmail.com", Password = UserService.EncodeMD5("0000"), Address= "10 av Salta, Salta, Argentine",PhoneNumber="076543211",CompanyName="ApptSalta"},
+                  new Partner { Id = 2, LastName = "Gauto", FirstName = "Nehemias", Nickname = "Nemo", Email = "nemo@gmail.com", Password = UserService.EncodeMD5("0000"), Address= "10 av Salta, Salta, Argentine",PhoneNumber="076543211",CompanyName="ApptSalta"},
             };
 
             var destinations = new List<Destination>
@@ -131,7 +131,21 @@ namespace TripMeOn.Models
                 new Image { Id = 21, Url="/images/restaurant/restoJujuy.jpg"},
                 new Image { Id = 22, Url="/images/restaurant/restoSalta.jpg"},
                 new Image { Id = 23, Url="/images/restaurant/restoUshuaia.jpg"},
-                new Image { Id = 24, Url="/images/restaurant/restoUshuaia2.jpg"}
+                new Image { Id = 24, Url="/images/restaurant/restoUshuaia2.jpg"},
+                new Image { Id = 25, Url= "/images/restaurant/restoParis.jpg"},
+                new Image { Id = 26, Url= "/images/restaurant/restoParis2.jpg"},
+                new Image { Id = 27, Url= "/images/restaurant/restoParis3.jpg"},
+                new Image { Id = 28, Url= "/images/transports/pickUp.jpg"},
+                new Image { Id = 29, Url= "/images/transports/pickUp2.jpg"},
+                new Image { Id = 30, Url= "/images/transports/bike.jpg"},
+                new Image { Id = 31, Url= "/images/transports/bike2.jpg"},
+                new Image { Id = 32, Url= "/images/transports/jeep.jpg"},
+                new Image { Id = 33, Url= "/images/cover/pk13.jpg"},
+                new Image { Id = 34, Url= "/images/p13/turkey1.jpg"},
+                new Image { Id = 35, Url= "/images/p13/turkey2.jpg"},
+                new Image { Id = 36, Url= "/images/p13/turkey3.jpg"}
+
+
 
             };
 
@@ -143,29 +157,45 @@ namespace TripMeOn.Models
                 new TourPackage { Id = 4, Name = "Colmer in Autumn", DestinationId = 1, ThemeId = 10,Description="4 days tour",TimePeriodId=11,Price= 776,ImageId = 4 },
                 new TourPackage { Id = 5, Name = "Wisteria and Sakura in Paris", DestinationId = 1, ThemeId = 2,Description="4 days tour",TimePeriodId=4,Price= 776,ImageId = 5},
                 new TourPackage { Id = 6, Name = "May Bloomings in Paris", DestinationId = 1, ThemeId = 2,Description="4 days tour",TimePeriodId=5,Price= 776,ImageId = 6 },
-                new TourPackage { Id = 7, Name = "Medieval Splendors in Belgium", DestinationId = 10, ThemeId = 3,Description="4 days tour",TimePeriodId=12,Price= 776,ImageId = 7 },
+                new TourPackage { Id = 7, Name = "Medieval Splendors in Belgium", DestinationId = 10, ThemeId = 3,Description="4 days tour",TimePeriodId=1,Price= 776,ImageId = 7 },
                 new TourPackage { Id = 8, Name = "Floating village in tulip season", DestinationId = 5, ThemeId = 2,Description="4 days tour",TimePeriodId=4,Price= 776,ImageId = 8 },
                 new TourPackage { Id = 9, Name = "Springtime Serenade in Colmer", DestinationId = 1, ThemeId = 10,Description="4 days tour",TimePeriodId=4,Price= 776,ImageId = 9 },
-                new TourPackage { Id = 10, Name = "Sweet December Colmer", DestinationId = 1, ThemeId = 4,Description="4 days tour",TimePeriodId=11,Price= 776,ImageId = 10 },
-                new TourPackage { Id = 11, Name = "Colored mountains in Argentina", DestinationId = 9, ThemeId = 10, Description="5 days tour", TimePeriodId=5, Price= 650, ImageId= 11 },
-                new TourPackage { Id = 12, Name = "Go wild at the End of the World", DestinationId = 8, ThemeId = 7, Description= "5 days tour", TimePeriodId=2, Price=880, ImageId= 12}
+                new TourPackage { Id = 10, Name = "Sweet December Colmer", DestinationId = 1, ThemeId = 4,Description="4 days tour",TimePeriodId=12,Price= 776,ImageId = 10 },
+                new TourPackage { Id = 11, Name = "Colored mountains in Argentina", DestinationId = 8, ThemeId = 10, Description="5 days tour", TimePeriodId=5, Price= 650, ImageId= 11 },
+                new TourPackage { Id = 12, Name = "Wildlife at the End of the World", DestinationId = 8, ThemeId = 7, Description= "5 days tour", TimePeriodId=2, Price=880, ImageId= 12},
+                new TourPackage { Id = 13, Name = "Flying away in Turkey", DestinationId = 7, ThemeId = 7, Description= "4 days tour", TimePeriodId=10, Price=760, ImageId= 33}
             };
 
             var accomodation = new List<Accomodation> {
 
-                new Accomodation { Id =  1, Capacity = 2, Name = "Chez Exequiel", Type= "Appartment", Price= 16, StartDate = new DateTime(2023, 04, 01), EndDate = new DateTime(2023, 11, 30), Description= "Beautiful appartment in the city center of Salta", PartnerId = 2, DestinationId = 9, ImageId = 13},
-                new Accomodation { Id =  2, Capacity = 30, Name = "Colores de Purmamarcal", Type= "Hotel", Price= 20, StartDate = new DateTime(2023, 04, 01), EndDate = new DateTime(2023, 11, 30), Description= "Beautiful hotel in the city center of Jujuy", PartnerId = 2, DestinationId = 9, ImageId = 14},
-                new Accomodation { Id =  3, Capacity = 4, Name = "Mountain paradise", Type= "Maison", Price= 60, StartDate = new DateTime(2023, 10, 01), EndDate = new DateTime(2023,04,01), Description= "Cabane in the middle of the mountains", PartnerId = 2, DestinationId = 8, ImageId = 15},
-                new Accomodation { Id =  4, Capacity = 35, Name = "Trip me Here", Type= "Hotel", Price= 50, StartDate = new DateTime(2023, 10, 01), EndDate = new DateTime(2023, 04, 30), Description= "Amazing hotel in Ushuaia", PartnerId = 2, DestinationId = 8, ImageId = 16},
-                new Accomodation { Id =  5, Capacity = 5, Name = "Chez Posada", Type= "Hotel", Price= 70, StartDate = new DateTime(2023, 09, 01), EndDate = new DateTime(2023, 05, 01), Description= "Best view of the Lake Argentino from the dinning room", PartnerId = 2, DestinationId = 8, ImageId = 17},
+                new Accomodation { Id =  1, Capacity = 2, Name = "Chez Exequiel", Type= "Appartment", Price= 16, StartDate = new DateTime(2023, 04, 01), EndDate = new DateTime(2023, 11, 30), Description= "Beautiful appartment in the city center of Salta", PartnerId = 2, DestinationId = 8, ImageId = 13},
+                new Accomodation { Id =  2, Capacity = 30, Name = "Colores de Purmamarca", Type= "Hotel", Price= 20, StartDate = new DateTime(2023, 04, 01), EndDate = new DateTime(2023, 11, 30), Description= "Beautiful hotel in the city center of Jujuy", PartnerId = 2, DestinationId = 8, ImageId = 14},
+                new Accomodation { Id =  3, Capacity = 4, Name = "Mountain paradise", Type= "Maison", Price= 60, StartDate = new DateTime(2023, 10, 01), EndDate = new DateTime(2024,04,01), Description= "Cabane in the middle of the mountains", PartnerId = 2, DestinationId = 8, ImageId = 15},
+                new Accomodation { Id =  4, Capacity = 35, Name = "Trip me Here", Type= "Hotel", Price= 50, StartDate = new DateTime(2023, 10, 01), EndDate = new DateTime(2024, 04, 30), Description= "Amazing hotel in Ushuaia", PartnerId = 2, DestinationId = 8, ImageId = 16},
+                new Accomodation { Id =  5, Capacity = 5, Name = "Chez Posada", Type= "Hotel", Price= 70, StartDate = new DateTime(2023, 09, 01), EndDate = new DateTime(2024, 05, 01), Description= "Best view of the Lake Argentino from the dinning room", PartnerId = 2, DestinationId = 8, ImageId = 17},
                 new Accomodation { Id =  6, Capacity = 6, Name = "Esplendor", Type= "Appartment", Price= 120, StartDate = new DateTime(2023, 01, 01), EndDate = new DateTime(2023, 12, 31), Description= "Comfortable appartement in the center of Paris", PartnerId = 1, DestinationId = 1, ImageId = 18},
                 new Accomodation { Id =  7, Capacity = 20, Name = "The View", Type= "Hotel", Price= 90, StartDate = new DateTime(2023, 01, 01), EndDate = new DateTime(2023, 12, 31), Description= "Hotel in the city center with an excellent view", PartnerId = 1, DestinationId = 1, ImageId = 19},
                 new Accomodation { Id =  8, Capacity = 2, Name = "WaterTrip", Type= "Boat", Price= 60, StartDate = new DateTime(2023, 01, 01), EndDate = new DateTime(2023, 12, 31), Description= "Relaxing experience of sleeping in a boat at the Seine", PartnerId = 1, DestinationId = 1, ImageId = 20},
             };
 
-            //var restaurant = new List<Restaurant> {
-            //    new Restaurant {  Id = 1, Name = }
-            //};
+            var restaurant = new List<Restaurant> {
+                new Restaurant { Id = 1, Type = "Restaurant", Name = "Cozy Place", StartDate = new DateTime(2023, 01, 01), EndDate = new DateTime(2023, 12, 31), Price= 40, PartnerId= 1, DestinationId=1, ImageId= 26 },
+                new Restaurant { Id = 2, Type = "Restaurant", Name = "The Terrasse", StartDate = new DateTime(2023, 01, 01), EndDate = new DateTime(2023, 12, 31), Price= 35, PartnerId= 1, DestinationId=1, ImageId= 25 },
+                new Restaurant { Id = 3, Type = "Restaurant", Name= "Tree", StartDate = new DateTime(2023, 01, 01), EndDate = new DateTime(2023, 12, 31), Price= 35, PartnerId= 1, DestinationId=1, ImageId= 27 },
+                new Restaurant { Id = 4, Type = "Coffee House", Name = "El Club", StartDate = new DateTime(2023, 09, 01), EndDate = new DateTime(2024, 05, 31), Price= 10, PartnerId= 2, DestinationId=8, ImageId= 23 },
+                new Restaurant { Id = 5, Type = "Cofee House", Name = "Mi Casa es tu Casa", StartDate = new DateTime(2023, 09, 01), EndDate = new DateTime(2024, 05, 31), Price= 15, PartnerId= 2, DestinationId=8, ImageId= 24 },
+                new Restaurant { Id = 6, Type = "Restaurant", Name = "Bambolero", StartDate = new DateTime(2023, 03, 01), EndDate = new DateTime(2023, 10, 31), Price= 12, PartnerId= 2, DestinationId=8, ImageId= 21 },
+                new Restaurant { Id = 7, Type = "Restaurant", Name = "El Patio", StartDate = new DateTime(2023, 03, 01), EndDate = new DateTime(2023, 10, 31), Price= 20, PartnerId= 2, DestinationId=8, ImageId= 22 }
+            };
+
+            var transport = new List<Transportation> {
+                new Transportation {  Id = 1, Type = "car", Price = 40, StartDate = new DateTime(2023, 03, 01), EndDate = new DateTime(2023, 10, 31), PartnerId = 2, DestinationId = 8, ImageId= 28, Description = "Pick up and drop off at the airport of Salta, north of Argentina" },
+                new Transportation {  Id = 2, Type = "car", Price = 50, StartDate = new DateTime(2023, 09, 01), EndDate = new DateTime(2024, 05, 31), PartnerId = 2, DestinationId = 8, ImageId= 29, Description = "Pick up and drop off at the airport of Ushuaia, south of Argentina" },
+                new Transportation {  Id = 5, Type = "car", Price = 30, StartDate = new DateTime(2023, 09, 01), EndDate = new DateTime(2024, 05, 31), PartnerId = 2, DestinationId = 8, ImageId= 32, Description = "Pick up and drop off at the airport of Ushuaia, south of Argentina" },
+                new Transportation {  Id = 3, Type = "bike", Price = 20, StartDate = new DateTime(2023, 01, 01), EndDate = new DateTime(2023, 12, 31), PartnerId = 2, DestinationId = 1, ImageId= 31, Description = "Rent a bike for as many days as you need to in Paris" },
+                new Transportation {  Id = 4, Type = "bike", Price = 30, StartDate = new DateTime(2023, 01, 01), EndDate = new DateTime(2023, 12, 31), PartnerId = 2, DestinationId = 1, ImageId= 30, Description = "Rent an electric bike in Paris" }
+
+            };
 
             this.Clients.AddRange(clients);
             this.Employees.AddRange(employees);
@@ -176,9 +206,8 @@ namespace TripMeOn.Models
             this.TimePeriods.AddRange(timePeriods);
             this.Images.AddRange(images);
             this.Accomodations.AddRange(accomodation);
-
-            //  this.Restaurants.AddRange(restaurant);
-
+            this.Restaurants.AddRange(restaurant);
+            this.Transportations.AddRange(transport);
             this.SaveChanges();
         }
 

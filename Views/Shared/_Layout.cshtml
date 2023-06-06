@@ -37,9 +37,9 @@
                     <li><a href="#">Agentina</a></li>
                     <li><a href="#">Blegium</a></li>
                     <li><a href="#">Spain</a></li>
-                    <li><a href="#">Switzerland</a></li>
+                    @*<li><a href="#">Switzerland</a></li>
                     <li><a href="#">Portugal</a></li>
-                    <li><a href="#">Italy</a></li>
+                    <li><a href="#">Italy</a></li>*@
                 </ul>
             </li>
 
@@ -48,15 +48,15 @@
             <li class="parent">
                 <a href="#">Themes<span class="expand"></span></a>
                 <ul class="child">
-                    <li><a href="#">Trekking</a></li>
+                    @* <li><a href="#">Trekking</a></li>*@
                     <li><a href="#">Floral</a></li>
                     <li><a href="#">Cultural</a></li>
                     <li><a href="#">Heritage</a></li>
                     <li><a href="#">Snap and relax</a></li>
                     <li><a href="#">InstaSpots</a></li>
-                    <li><a href="#">Nature</a></li>
-                    <li><a href="#">Beach</a></li>
-                    <li><a href="#">Culinary</a></li>
+                    <li><a href="#">Xtreme Adventure</a></li>
+                    @*<li><a href="#">Beach</a></li>
+                    <li><a href="#">Culinary</a></li>*@
                     <li><a href="#">Colors</a></li>
                 </ul>
             </li>
@@ -73,7 +73,7 @@
             </li>
             <!--   -------------------------------------------------------------------------   -->
 
-            <li class="parent">
+            @*<li class="parent">
                 <a href="#">Tour Packages</a>
                 <ul class="child">
                     <li><a href="#">Day Tours</a></li>
@@ -81,7 +81,7 @@
                     <li><a href="#">5 days Tours</a></li>
                     <li><a href="#">7 days Tours</a></li>
                 </ul>
-            </li>
+            </li>*@
 
             <!--   -------------------------------------------------------------------------   -->
             @*
@@ -105,17 +105,14 @@
             <li class="parent">
                 <a href="#">Log in<span class="expand"></span></a>
                 <ul class="child">
-
-
-                    <li>@Html.ActionLink("I am a Partner", "LoginPartner", "Login")</li>
-                    <li>@Html.ActionLink("I am a Traveller", "LoginClient", "Login")</li>
-
                     <li class="parent">
                         <a href="#">Create account?</a>
                         <ul class="child">
                             <li><a href="/Client/ClientForm">Add Client</a></li>
                             <li><a href="/Partner/PartnerForm">Partner</a></li>
                         </ul>
+                    <li>@Html.ActionLink("I am a Partner", "LoginPartner", "Login")</li>
+                    <li>@Html.ActionLink("I am a Traveller", "LoginClient", "Login")</li>
                 </ul>
             </li>
 
@@ -140,8 +137,8 @@
                 @Html.ActionLink("Logout", "Deconnection", "Login")
             </li>
 
-            <li class="parent">
-                @Html.ActionLink("Catalog", "Catalog", "Product")
+            @*<li class="parent">
+            @Html.ActionLink("Catalog", "Catalog", "Product")*@
             </li>
 
         </ul>

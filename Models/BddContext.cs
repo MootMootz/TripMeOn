@@ -30,7 +30,7 @@ namespace TripMeOn.Models
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
 
-            optionsBuilder.UseMySql("server=localhost;user id=root;password=1530;database=TripMeOn");
+            optionsBuilder.UseMySql("server=localhost;user id=root;password=kukuskar;database=TripMeOn");
 
         }
 
@@ -179,13 +179,13 @@ namespace TripMeOn.Models
             };
 
             var restaurant = new List<Restaurant> {
-                new Restaurant { Id = 1, Type = "Restaurant", Name = "Cozy Place", StartDate = new DateTime(2023, 01, 01), EndDate = new DateTime(2023, 12, 31), Price= 40, PartnerId= 1, DestinationId=1, ImageId= 26 },
-                new Restaurant { Id = 2, Type = "Restaurant", Name = "The Terrasse", StartDate = new DateTime(2023, 01, 01), EndDate = new DateTime(2023, 12, 31), Price= 35, PartnerId= 1, DestinationId=1, ImageId= 25 },
-                new Restaurant { Id = 3, Type = "Restaurant", Name= "Tree", StartDate = new DateTime(2023, 01, 01), EndDate = new DateTime(2023, 12, 31), Price= 35, PartnerId= 1, DestinationId=1, ImageId= 27 },
-                new Restaurant { Id = 4, Type = "Coffee House", Name = "El Club", StartDate = new DateTime(2023, 09, 01), EndDate = new DateTime(2024, 05, 31), Price= 10, PartnerId= 2, DestinationId=8, ImageId= 23 },
-                new Restaurant { Id = 5, Type = "Cofee House", Name = "Mi Casa es tu Casa", StartDate = new DateTime(2023, 09, 01), EndDate = new DateTime(2024, 05, 31), Price= 15, PartnerId= 2, DestinationId=8, ImageId= 24 },
-                new Restaurant { Id = 6, Type = "Restaurant", Name = "Bambolero", StartDate = new DateTime(2023, 03, 01), EndDate = new DateTime(2023, 10, 31), Price= 12, PartnerId= 2, DestinationId=8, ImageId= 21 },
-                new Restaurant { Id = 7, Type = "Restaurant", Name = "El Patio", StartDate = new DateTime(2023, 03, 01), EndDate = new DateTime(2023, 10, 31), Price= 20, PartnerId= 2, DestinationId=8, ImageId= 22 }
+                new Restaurant { Id = 1, Type = "Restaurant", Name = "Cozy Place", StartDate = new DateTime(2023, 01, 01), EndDate = new DateTime(2023, 12, 31), Price= 40, PartnerId= 1, DestinationId=1, ImageId= 26, Description= "Three course meal with 1 drinks" },
+                new Restaurant { Id = 2, Type = "Restaurant", Name = "The Terrasse", StartDate = new DateTime(2023, 01, 01), EndDate = new DateTime(2023, 12, 31), Price= 35, PartnerId= 1, DestinationId=1, ImageId= 25, Description= "Three course meal with 1 drinks" },
+                new Restaurant { Id = 3, Type = "Restaurant", Name= "Tree", StartDate = new DateTime(2023, 01, 01), EndDate = new DateTime(2023, 12, 31), Price= 35, PartnerId= 1, DestinationId=1, ImageId= 27, Description= "Three course meal with 1 drinks" },
+                new Restaurant { Id = 4, Type = "Coffee House", Name = "El Club", StartDate = new DateTime(2023, 09, 01), EndDate = new DateTime(2024, 05, 31), Price= 10, PartnerId= 2, DestinationId=8, ImageId= 23, Description= "American breakfast" },
+                new Restaurant { Id = 5, Type = "Cofee House", Name = "Mi Casa es tu Casa", StartDate = new DateTime(2023, 09, 01), EndDate = new DateTime(2024, 05, 31), Price= 15, PartnerId= 2, DestinationId=8, ImageId= 24, Description = "Continental breakfast" },
+                new Restaurant { Id = 6, Type = "Restaurant", Name = "Bambolero", StartDate = new DateTime(2023, 03, 01), EndDate = new DateTime(2023, 10, 31), Price= 12, PartnerId= 2, DestinationId=8, ImageId= 21, Description = "Two course meal with 2 drinks" },
+                new Restaurant { Id = 7, Type = "Restaurant", Name = "El Patio", StartDate = new DateTime(2023, 03, 01), EndDate = new DateTime(2023, 10, 31), Price= 20, PartnerId= 2, DestinationId=8, ImageId= 22, Description= "Three course meal with 1 drink"}
             };
 
             var transport = new List<Transportation> {

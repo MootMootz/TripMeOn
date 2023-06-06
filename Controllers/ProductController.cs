@@ -120,6 +120,11 @@ namespace TripMeOn.Controllers
             string viewName = $"/Views/Package/Details_{id}.cshtml";
             return View(viewName, tourPackage);
         }
+
+        public IActionResult Catalog()
+        {
+            return View();
+        }
     }
 
 }

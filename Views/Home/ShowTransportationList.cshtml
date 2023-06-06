@@ -1,0 +1,52 @@
+﻿@using TripMeOn.ViewModels
+@model PropositionServiceModel
+
+@{
+    ViewBag.Title = "TransportationsList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section ExtraCss{
+    <link rel="stylesheet" href="/css/HomePage.css">
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Liste Transportations</title>
+</head>
+<body>
+    @*    @if (TempData["SuccessMessage"] != null)
+    {
+    <div>@TempData["SuccessMessage"].ToString()</div>
+    }*@
+    <table border="1">
+        <tr>
+            <th>Type</th>
+            <th>Price</th>
+            <th>Description</th>
+            <th>Image</th>
+        </tr>
+        @foreach (var transportation in Model.Transportations)
+        {
+            <tr>
+                <td>@transportation.Type</td>
+                <td>@transportation.Price</td>
+                <td>@transportation.Description</td>
+                <td><img src="@transportation.Image?.Url" alt="@transportation.Type" style="width:200px;height:200px;"></td>
+            </tr>
+        }
+    </table>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+    </style>
+    <br />
+    <br />
+    @*    @Html.ActionLink("Back to the previous page", "ServicesPartner", "Partner")*@
+    @*<a href="@Url.Action("Index", "Home")"><strong> Page d'accueil</strong></a>*@
+</body>
+</html>

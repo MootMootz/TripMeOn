@@ -25,11 +25,12 @@ namespace TripMeOn.Models
         public DbSet<Cart> Carts { get; set; }
         public DbSet<Item> Items { get; set; }
         public DbSet<Image> Images { get; set; }
+        public DbSet<Notification> Notifications { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
 
-            optionsBuilder.UseMySql("server=localhost;user id=root;password=kukuskar;database=TripMeOn");
+            optionsBuilder.UseMySql("server=localhost;user id=root;password=1530;database=TripMeOn");
 
         }
 
@@ -143,6 +144,7 @@ namespace TripMeOn.Models
                 new Image { Id = 34, Url= "/images/p13/turkey1.jpg"},
                 new Image { Id = 35, Url= "/images/p13/turkey2.jpg"},
                 new Image { Id = 36, Url= "/images/p13/turkey3.jpg"}
+
 
 
             };

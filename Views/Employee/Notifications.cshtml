@@ -1,0 +1,31 @@
+﻿@model List<TripMeOn.Models.PartnerProducts.Notification>
+
+@{
+    ViewBag.title = "IndexAdmin";
+    Layout = null;
+}
+<nav>
+    <img src="~/images/logo.png" alt="logo">
+    <button type="button">@Html.ActionLink("Home", "IndexAdmin")</button>
+
+</nav>
+
+<h1>Notifications</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Message</th>
+            <th>Created At</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var notification in Model)
+        {
+            <tr>
+                <td>@notification.Message</td>
+                <td>@notification.CreatedAt</td>
+            </tr>
+        }
+    </tbody>
+</table>

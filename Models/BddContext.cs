@@ -31,7 +31,7 @@ namespace TripMeOn.Models
         {
 
 
-            optionsBuilder.UseMySql("server=localhost;user id=root;password=kukuskar;database=TripMeOn");
+            optionsBuilder.UseMySql("server=localhost;user id=root;password=rrrrr;database=TripMeOn");
 
         }
 

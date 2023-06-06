@@ -6,15 +6,30 @@
     padding: 0;
 }
 
-footer {
-}
-
 .search-container {
     display: flex;
     height: 80px;
     width: 40%;
     position: absolute;
     top: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    border-radius: 50px;
+    background: rgba(255, 255, 255, 0.75);
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+
+.search-container-shadow {
+    display: flex;
+    height: 80px;
+    width: 40%;
+    position: absolute;
+    top: 601px;
     margin-left: auto;
     margin-right: auto;
     left: 0;

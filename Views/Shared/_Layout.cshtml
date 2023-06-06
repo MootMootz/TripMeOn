@@ -19,8 +19,9 @@
     <div id="logo-shadow"></div>
 
     <!-- Bootstrap Navigation Bar code goes here -->
-    <div class="navbar">
-        <ul id="menu" style="text-align: center">
+    <div id="navbar">
+@*        <div id=""></div>
+*@        <ul id="menu" style="text-align: center">
             <li class="parent">
                 <a href="/Home/HomePage">Home</a>
             </li>
@@ -142,27 +143,23 @@
                 @Html.ActionLink("Logout", "Deconnection", "Login")
             </li>
 
-            <li class="parent">
-                @Html.ActionLink("Catalog", "Catalog", "Product")
-            </li>
-
         </ul>
     </div>
     <!--   -------------------------------------------------------------------------   -->
-    
-
     @RenderBody()
 
 
 
 
     <footer>
-        <div class="social-icons">
-            <a href="https://twitter.com"><i class="fab fa-twitter"></i></a>
-            <a href="https://facebook.com"><i class="fab fa-facebook"></i></a>
-            <a href="https://instagram.com"><i class="fab fa-instagram"></i></a>
-            <a href="https://www.tiktok.com"><i class="fab fa-tiktok"></i></a>
-            <a href="https://youtube.com"><i class="fab fa-youtube"></i></a>
+        <div>
+            <div class="social-icons">
+                <a href="https://twitter.com"><i class="fab fa-twitter"></i></a>
+                <a href="https://facebook.com"><i class="fab fa-facebook"></i></a>
+                <a href="https://instagram.com"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.tiktok.com"><i class="fab fa-tiktok"></i></a>
+                <a href="https://youtube.com"><i class="fab fa-youtube"></i></a>
+            </div>
         </div>
     </footer>
 

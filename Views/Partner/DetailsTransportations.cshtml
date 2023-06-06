@@ -1,0 +1,34 @@
+﻿@model TripMeOn.Models.PartnerProducts.Accomodation
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section ExtraCss{
+    <link rel="stylesheet" href="/css/Details.css">
+}
+<div class="flex-container">
+    <div class="floating-box">
+        <div class="background-photo"></div>
+        <div class="overlay">
+            <h2>@Model.Name</h2>
+            <p>Destination: @Model.Destination?.Country</p>
+            <p>Type: @Model.Type</p>
+            <p>Available from: @Model.StartDate.ToString("MMMM") to @Model.EndDate.ToString("MMMM")</p>
+            <p>Price: @Model.Price.ToString("0.##")&euro;</p>
+            <form action="@Url.Action("AddToCart", "Cart", new { id = Model.Id })" method="get">
+                <label for="quantity">Quantity:</label>
+                <input type="number" name="quantity" id="quantity" value="1" min="1" />
+                <button type="submit">Add to Cart</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section ExtraScript{
+    <script>
+        function addToCart(accomodationId) {
+            alert('Accomodation added to cart: ' + accomodationId);
+        }
+    </script>
+}

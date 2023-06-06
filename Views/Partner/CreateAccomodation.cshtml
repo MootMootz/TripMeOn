@@ -57,15 +57,13 @@
                 <td>@Html.TextBoxFor(m => Model.EndDate, "{0:dd/MM/yyyy}", new { type = "date", @class = "date" })</td>
                 <td>@Html.ValidationMessageFor(m => Model.EndDate)</td>
             </tr>
-
             <tr>
-                <td><label for="file1">Photo :</label></td>
+                <td><label for="file1">Image :</label></td>
                 <td>
-                    <input type="file" name="file[]" id="file1">
-                    <input type="file" name="file[]" id="file2">
-                    <input type="file" name="file[]" id="file3">
+                    <input type="file" name="file" id="file1">
                 </td>
             </tr>
+
 
             <tr>
                 <td><label for="description">Description :</label></td>

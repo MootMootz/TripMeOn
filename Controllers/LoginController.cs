@@ -149,7 +149,7 @@ namespace TripMeOn.Controllers
 
                     return RedirectToAction("IndexPartner");
                 }
-                ModelState.AddModelError("Partner.Nickname", "le nom ou le mot de passe sont incorrects");
+                ModelState.AddModelError("Partner.Nickname", "Incorrect username or password");
             }
             return View("../Home/HomePage", viewModel);
         }
@@ -157,8 +157,8 @@ namespace TripMeOn.Controllers
         public ActionResult Deconnection()
         {
             HttpContext.SignOutAsync();
-
-            return RedirectToAction("HomePage", "Home");
+            Response.Cookies.Delete("Nickname");
+            return Redirect("../Home/HomePage");
         }
 
         //LOG IN EMPLOYE

@@ -1,0 +1,41 @@
+﻿.order-status {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+    background-color: #f2f2f2;
+    padding: 20px;
+}
+
+    .order-status .table {
+        margin: 0;
+        background-color: white;
+        border-radius: 5px;
+        overflow: hidden;
+    }
+
+        .order-status .table thead {
+            background-color: #6c5ce7;
+            color: white;
+        }
+
+        .order-status .table th,
+        .order-status .table td {
+            padding: 15px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .order-status .table tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+    .order-status a {
+        color: blue;
+        text-decoration: underline;
+    }
+
+        .order-status a:hover {
+            color: red;
+            text-decoration: none;
+        }

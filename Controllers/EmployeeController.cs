@@ -152,12 +152,18 @@ namespace TripMeOn.Controllers
                 return RedirectToAction("ListeClient");
             }
         }
+
+             
+               
+            
+
         [HttpGet]
         public IActionResult AddEmployeeForm()
         {
             var viewModel = new EmployeeViewModel();
             return View("AddEmployeeForm");
         }
+
 
 
         [HttpPost]

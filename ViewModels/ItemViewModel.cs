@@ -6,5 +6,6 @@
         public string TourPackageName { get; set; }
         public double TourPackagePrice { get; set; }
         public int Quantity { get; set; }
+        public string ImageUrl { get; set; }
     }
 }

@@ -41,54 +41,19 @@ namespace TripMeOn.Controllers
             }
             return View(cart);
         }
+
+
+
+
+
         public IActionResult AddToCart(int tourPackageId, int quantity)
         {
 
             return BuyProduct(tourPackageId, quantity);
         }
 
-        //public IActionResult AddToCart(int tourPackageId, int quantity)
-        //{
-
-        //    var cartId = SessionHelper.GetObjectFromJson<int>(HttpContext.Session, "cartId");
-          
-
-        //    if (cartId == 0)
-        //    {
-        //        cartId = _orderService.CreateCart();
-        //        _orderService.AddItem(cartId, new Item { TourPackageId = tourPackageId, Quantity = quantity });              
-        //        SessionHelper.SetObjectAsJson(HttpContext.Session, "cartId", cartId);
-        //    }
-        //    else
-        //    {
-        //        _orderService.AddItem(cartId, new Item { TourPackageId = tourPackageId, Quantity = quantity });
-        //    }
-
-        //    HttpContext.Response.Cookies.Append("CartId", cartId.ToString());
-
-        //    return RedirectToAction("ViewCart", new { tourPackageId, quantity });
-
-        //}
-
-
-        //public IActionResult BuyProduct(int tourPackageId, int quantity)
-        //{
-        //    var cartId = SessionHelper.GetObjectFromJson<int>(HttpContext.Session, "cartId");
-
-        //    if (cartId == 0)
-        //    {
-        //        cartId = _orderService.CreateCart();
-        //        _orderService.AddItem(cartId, new Item { TourPackageId = tourPackageId, Quantity = quantity });
-        //        SessionHelper.SetObjectAsJson(HttpContext.Session, "cartId", cartId);
-        //    }
-        //    else
-        //    {
-        //        _orderService.AddItem(cartId, new Item { TourPackageId = tourPackageId, Quantity = quantity });
-        //    }
-
-        //    return RedirectToAction("ViewCart", "Cart"); // Redirect to the cart page after adding the item
-        //}
-        [Authorize]
+        
+     
         [HttpPost]
         public IActionResult BuyProduct(int tourPackageId, int quantity)
         {
@@ -128,17 +93,7 @@ namespace TripMeOn.Controllers
         }
         // return item.id if product is already in item 
         // return -1 otherwise
-        private int ProductExistInCart(Cart cart, int tourPackageId)
-        {
-            foreach (var item in cart.Items)
-            {
-                if (item.TourPackageId == tourPackageId)
-                {
-                    return item.Id;
-                }
-            }
-            return -1;
-        }
+       
 
         [HttpPost]
         public IActionResult UpdateQuantity(int itemId, int quantity)
@@ -147,22 +102,7 @@ namespace TripMeOn.Controllers
 
             return RedirectToAction("ViewCart");
         }
-
-        //[Authorize]
-        //[HttpGet]
-        //public IActionResult CheckoutForm()
-        //{
-        //    var cartId = SessionHelper.GetObjectFromJson<int>(HttpContext.Session, "cartId");
-        //    var cart = _orderService.GetCart(cartId);
-        //    var clientId = Convert.ToInt32(User.Identity.Name);
-
-        //    if (cart == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    return View("CheckoutForm", cart);
-        //}
+            
 
         [Authorize]
         [HttpGet]
@@ -183,7 +123,8 @@ namespace TripMeOn.Controllers
                 Id = cart.Id,
                 Items = cart.Items,
                 ClientId = cart.ClientId,
-                Client = cart.Client,
+                //Client = cart.Client,
+                ClientName = cart.Client != null ? cart.Client.FirstName + " " + cart.Client.LastName : string.Empty,
                 IsRefunded = cart.IsRefunded,
                 TourPackageId = item.TourPackageId,
                 Quantity = item.Quantity
@@ -203,19 +144,22 @@ namespace TripMeOn.Controllers
             int clientId = Convert.ToInt32(User.Identity.Name);
             List<Cart> carts = _orderService.GetOrdersByUserId(clientId);
 
-            var test = carts[0].Items.Sum(item => item.Quantity * (item.TourPackage != null && item.TourPackage.Price > 0.0 ? item.TourPackage.Price : 1.0));
+            //var test = carts[0].Items.Sum(item => item.Quantity * (item.TourPackage != null && item.TourPackage.Price > 0.0 ? item.TourPackage.Price : 1.0));
 
             List<OrderViewModel> orders = carts.Select(cart => new OrderViewModel
             {
                 CartId = cart.Id,
                 ClientId = (int)cart.ClientId,
                 ClientName = cart.Client != null ? cart.Client.FirstName + " " + cart.Client.LastName : string.Empty,
+
                 Items = cart.Items != null ? cart.Items.Select(item => new ItemViewModel
                 {
                     TourPackageId = item.TourPackageId,
                     TourPackageName = item.TourPackage != null ? item.TourPackage.Name : string.Empty,
-                    TourPackagePrice = item.TourPackage != null ? item.TourPackage.Price : 0.0
+                    TourPackagePrice = item.TourPackage != null ? item.TourPackage.Price : 0.0,
+                    ImageUrl = item.TourPackage != null && item.TourPackage.Image != null ? item.TourPackage.Image.Url : string.Empty
                 }).ToList() : new List<ItemViewModel>(),
+
 
                 IsRefunded = cart.IsRefunded,
                 Quantity = cart.Items != null ? cart.Items.Sum(item => item.Quantity) : 0,
@@ -239,10 +183,7 @@ namespace TripMeOn.Controllers
 
 
         [Authorize]
-        [HttpPost]
-
-        // need to be refunded
-        //refund 
+        [HttpGet]
         public IActionResult Refund(int cartId)
         {
             // Retrieve the cart with the specified ID
@@ -250,41 +191,16 @@ namespace TripMeOn.Controllers
 
             if (cart != null)
             {
-              
-                return RedirectToAction("Refund");           }
+                ViewData["RefundMessage"] = "Refund initiated successfully, it will be processed in 5 business days";
+            }
+            else
+            {
+                ViewData["RefundMessage"] = "Error: Cart not found.";
+            }
 
-           
-            return RedirectToAction("RefundError");
+            // Return the "Refund" view
+            return View("Refund");
         }
-
     }
 }
-
-    //[Authorize]
-    //[HttpPost]
-    //public IActionResult Refund(int cartId)
-    //{
-    //    int clientId = Convert.ToInt32(User.Identity.Name);
-
-    //    // Get the cart for the specified cartId and clientId
-    //    Cart cart = _orderService.GetCart(cartId, clientId);
-
-    //    if (cart != null)
-    //    {
-    //        // Perform the refund logic here
-    //        // ...
-
-    //        // Update the cart or mark it as refunded in the database
-    //        // ...
-
-    //        return RedirectToAction("Refund");
-    //    }
-
-    //    // If the cart is not found, handle the error accordingly
-    //    return NotFound();
-    //}
-
-
-
-    
 

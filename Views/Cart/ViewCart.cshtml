@@ -1,101 +1,90 @@
 ﻿@model TripMeOn.Models.Order.Cart
+@using TripMeOn.ViewModels
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <!DOCTYPE html>
-
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
+    <title>View Cart</title>
+    <link rel="stylesheet" href="/css/ViewCart.css">
 </head>
 <body>
 
-    <h3>Cart Page</h3>
-    <table cellpadding="2" cellspacing="2" border="1">
-        <tr>
-            <th>Option</th>
-            <th>Id</th>
-            <th>Name</th>
-            <th>Price</th>
-            <th>Quantity</th>
-            <th>Sub Total</th>
-        </tr>
-        @foreach (var item in Model.Items)
-        {
+    <h3>Your Shopping Cart! Please Sign in or Sign up</h3>
+    <table class="table">
+        <thead>
             <tr>
-                <td>
-                    @Html.ActionLink("Remove", "RemoveProduct", "Cart", new { id = @item.Id }, new { @class = "btn btn-danger" })
-
-                    <br>
-                    <form method="post" action="/Cart/UpdateQuantity">
-                        <input type="hidden" name="itemId" value="@item.Id" />
-                        <select name="quantity" onchange="this.form.submit()">
-                            @for (int i = 1; i <= 10; i++) // Change the upper limit of the loop to 10, maybe 20?
-                            { //ternary operator, A ? b: C = if A is true b, else C 
-                                <option value="@i" @(i == item.Quantity ? "selected" : "--")>@i</option>
-                            }
-                        </select>
-                    </form>
-                </td>
-                <td>@item.TourPackage.Id</td>
-                <td>@item.TourPackage.Name</td>
-                <td>@item.TourPackage.Price</td>
-                <td>@item.Quantity</td>
-                <td>@(item.TourPackage.Price * item.Quantity)</td>
+                <th>Id</th>
+                <th>Name of the tour package</th>               
+                <th>Date of Purchase</th>
+               @* <th>From:</th>
+                <th>To:</th>*@
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Sub Total</th>
+                <th>Remove</th>
             </tr>
-        }
-        <tr>
-            <td align="right" colspan="6">Sum</td>
-            <td>
-                @(Model.Items.Sum(item => item.TourPackage.Price * item.Quantity))
-            </td>
-        </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Items)
+            {
+                <tr>
+                    <td>@item.TourPackage.Id</td>
+                    <td>
+                        <div class="d-flex">
+                          @*  <img src="@item.TourPackage.Image?.Url" style="width: 20%;">*@                           
+                            <div class="details">
+                                <p>@item.TourPackage.Name</p>                           
+                            </div>
+                        </div>
+                    </td>                 
+                    <td>@DateTime.Now</td>
+                   @* <td>@DateTime.DaysInMonth</td>
+                    <td>@DateTime.DaysInMonth</td>*@
+                    <td>@item.TourPackage.Price</td>
+                    <td>
+                        <form method="post" action="/Cart/UpdateQuantity">
+                            <input type="hidden" name="itemId" value="@item.Id" />
+                            <select name="quantity" class="adjust-dropdown">
+                                @for (int i = 1; i <= 20; i++)
+                                {
+                                    <option value="@i" @(i == item.Quantity ? "selected" : "")>@i</option>
+                                }
+                            </select>
+                            <button type="submit">Adjust</button>
+                        </form>
+                    </td>
+                    <td>@(item.TourPackage.Price * item.Quantity)</td>
+                    <td>
+                        <div class="remove-button">
+                            @Html.ActionLink("Empty Shopping Cart", "RemoveProduct", "Cart", new { id = @item.Id }, new { @class = "btn btn-danger" })
+                        </div>
+                    </td>
+                </tr>
+            }
+            <tr>
+                <td align="right" colspan="7">Sum</td>
+                <td colspan="2">
+                    @(Model.Items.Sum(item => item.TourPackage.Price * item.Quantity))
+                </td>               
+            </tr>
+        </tbody>
     </table>
-    <br>
-    <form action="/" method="get">
-        <!-- redirect to homepage-->
-        <button type="submit">Continue Shopping</button>
-    </form>
-
-
-  
-    <form action="/Cart/CheckoutForm?clientId=@Model.ClientId" method="get">
-        <button type="submit">Check Out</button>
-    </form>
-
-    @*<form action="/Cart/CheckoutForm" method="get">       
-        <button type="submit">Check Out</button>
-    </form>*@
-</body>
-</html>
-
-
-   @* <div id="checkoutButtons" style="display: none;">
-        @Html.ActionLink("Sign in to checkout", "LoginClient", "Login", null, new { @class = "btn btn-primary" })
-        @Html.ActionLink("Sign up to checkout", "ClientForm", "Client", null, new { @class = "btn btn-secondary" })
-    </div>
-
-    <form action="/" method="get">
-        <!-- redirect to homepage -->
-        <button type="submit" class="btn btn-primary">Continue Shopping</button>
-    </form>
-
-    <div id="checkoutForm" style="display: none;">
-        @using (Html.BeginForm("CheckoutForm", "Cart", FormMethod.Post))
-        {
+    <div class="text-center">
+        <form action="/" method="get" class="d-inline-block">
+            <button type="submit" class="btn btn-primary">Continue Shopping</button>
+        </form>
+        <form action="/Cart/CheckoutForm?clientId=@Model.ClientId" method="get" class="d-inline-block">
             <button type="submit" class="btn btn-success">Check Out</button>
-        }
-    </div>   
+        </form>
+    </div>  
 
 </body>
 </html>
 @section ExtraScript {
-    <script>
-        document.getElementById('checkoutButtons').style.display = 'block';
-        document.querySelector('form[action="/"]').addEventListener('submit', function () {
-            document.getElementById('checkoutForm').style.display = 'block';
-        });
-    </script>
-}*@
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+}

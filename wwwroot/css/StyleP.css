@@ -1,12 +1,10 @@
 ﻿#entete, #menu, #contenu, #footer {
     padding: 1px 0;
+    background-color: wheat;
 }
 
 #entete {
-    background-color: lightcoral;
-    text-align: center;
-    background: #FF9900 url("/Content/Images/supertuto.png") 5px center no-repeat;
-    background-size: 100px;
+    background-color: ghostwhite;
 }
 
 #main {
@@ -16,18 +14,21 @@
 #menu {
     float: left;
     width: 240px;
-    background-color: lightsalmon;
+    background-color: ghostwhite;
 }
 
 #contenu {
     margin-left: 245px;
-    background-color: lightblue;
+    background-color: wheat;
+    padding: 30px;
+
 }
 
 #footer {
-    background-color: lightgreen;
+    background-color: wheat;
     text-align: center;
     clear: both;
+    font-family: Autography;
 }
 
 .titre {
@@ -36,4 +37,8 @@
 
 .selectionne {
     color: red;
+}
+a.{
+    text-decoration: none;
+    color: midnightblue;
 }

@@ -431,7 +431,6 @@ namespace TripMeOn.Controllers
                 return RedirectToAction("ListeRestaurant");
             }
         }
-
         public IActionResult DeleteAccomodation(int id)
         {
             using (IPropositionService propositionService = new PropositionService())
@@ -441,7 +440,6 @@ namespace TripMeOn.Controllers
                 return RedirectToAction("ListeAccomodation");
             }
         }
-
         public IActionResult DeleteTransportation(int id)
         {
             using (IPropositionService propositionService = new PropositionService())
@@ -451,16 +449,6 @@ namespace TripMeOn.Controllers
                 return RedirectToAction("ListeTransportation");
             }
         }
-
-        //public IActionResult SearchPackage(string serviceType, int destination, int month)
-        //{
-        //    var searchResults = _propositionService.SearchByServiceTypeDestinationMonth(
-        //        serviceType,
-        //        destination == 0 ? (int?)null : destination,
-        //        month == 0 ? (int?)null : month);
-
-        //    return View("SearchServicePackages", searchResults);
-        //}
 
         public IActionResult SearchPackage(string serviceType, int destination, int month)
         {

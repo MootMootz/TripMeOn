@@ -15,19 +15,8 @@
     @RenderSection("ExtraCss",required:false)
 </head>
 <body>
-    <header>
-
-        <h1>#TRIP ME ON</h1> @*delete title, put the logo top left instead*@
-    </header>
-
-    <div>
-        <!-- put LOGO here ? -->
-    </div>
-
-
-
-    <h1>#TRIP ME ON</h1>
-    @*</header>*@
+    <div id="logo"></div>
+    <div id="logo-shadow"></div>
 
     <!-- Bootstrap Navigation Bar code goes here -->
     <div class="navbar">
@@ -160,41 +149,7 @@
         </ul>
     </div>
     <!--   -------------------------------------------------------------------------   -->
-    <!-- Transparent Search Box -->
-    <div class="search-container">
-        <div class="search-box">
-            <form action="/Product/SearchPackage" method="get">
-
-                <label for="destinations">Destinations</label>
-                @{
-                    List<Destination> destinations = new TripMeOn.BL.ProductService().GetDestinations();
-                    destinations.Insert(0, new Destination { Id = 0, Country = "All Destinations" });
-                    SelectList selectList = new SelectList(destinations, "Id", "Country");
-                }
-                @Html.DropDownList("destination", selectList)
-
-                <label for="themes">Themes</label>
-                @{
-                    List<Theme> themes = new TripMeOn.BL.ProductService().GetThemes();
-                    themes.Insert(0, new Theme { Id = 0, Name = "All Themes" });
-                    SelectList themeList = new SelectList(themes, "Id", "Name");
-                }
-                @Html.DropDownList("theme", themeList)
-
-                <label for="months">Months</label>
-                @{
-                    List<SelectListItem> monthList = DateTimeHelper.GetMonths();
-                    monthList.Insert(0, new SelectListItem { Value = "0", Text = "All Months" });
-                }
-                @Html.DropDownList("month", monthList)
-                <button type="submit" class="btn btn-primary">Search</button>
-
-
-            </form>
-        </div>
-
-
-    </div>
+    
 
     @RenderBody()
 

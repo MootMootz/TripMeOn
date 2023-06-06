@@ -53,6 +53,11 @@
                     <td>@Html.TextBoxFor(m => Model.EndDate, "{0:dd/MM/yyyy}", new { type = "date", @class = "date" })</td>
                     <td>@Html.ValidationMessageFor(m => Model.EndDate)</td>
                 </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => Model.Description)</td>
+                    <td>@Html.TextBoxFor(m => Model.Description)</td>
+                    <td>@Html.ValidationMessageFor(m => Model.Description)</td>
+                </tr>
             </table>
             <input type="submit" value="Edit" />
         </fieldset>

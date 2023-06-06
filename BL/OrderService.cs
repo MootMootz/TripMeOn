@@ -25,15 +25,45 @@ namespace TripMeOn.BL
         }
         public Cart GetCart(int cartId, int? clientId = null)
         {
-            var query = _bddContext.Carts.Include(c=>c.Client).Include(c => c.Items).ThenInclude(it => it.TourPackage).Where(c => c.Id == cartId);
-
+            var query = _bddContext.Carts.Include(c => c.Client).Include(c => c.Items).ThenInclude(it => it.TourPackage).Where(c => c.Id == cartId);
             if (clientId.HasValue)
             {
                 query = query.Where(cl => cl.ClientId == clientId.Value);
             }
-
             return query.FirstOrDefault();
         }
+
+        //public Cart GetCart(int cartId, int? clientId = null)
+        //{
+        //    var query = _bddContext.Carts
+        //        .Include(c => c.Client)
+        //        .Include(c => c.Items)
+        //            .ThenInclude(it => it.TourPackage)
+        //                .ThenInclude(tp => tp.Destination)
+        //                    .ThenInclude(d => d.Country)
+        //        .Include(c => c.Items)
+        //            .ThenInclude(it => it.TourPackage)
+        //                .ThenInclude(tp => tp.Destination)
+        //                    .ThenInclude(d => d.Region)
+        //        .Include(c => c.Items)
+        //            .ThenInclude(it => it.TourPackage)
+        //                .ThenInclude(tp => tp.Destination)
+        //                    .ThenInclude(d => d.City)
+        //        .Include(c => c.Items)
+        //            .ThenInclude(it => it.TourPackage)
+        //                .ThenInclude(tp => tp.Image)
+        //        .Where(c => c.Id == cartId);
+        //    if (clientId.HasValue)
+        //    {
+        //        query = query.Where(cl => cl.ClientId == clientId.Value);
+        //    }
+        //    return query.FirstOrDefault();
+        //}
+
+
+
+
+
 
         public Cart GetCartWithClient(int cartId, int clientId)
         {
@@ -121,7 +151,17 @@ namespace TripMeOn.BL
                 _bddContext.SaveChanges();
             }
         }
-
+        public int ProductExistInCart(Cart cart, int tourPackageId)
+        {
+            foreach (var item in cart.Items)
+            {
+                if (item.TourPackageId == tourPackageId)
+                {
+                    return item.Id;
+                }
+            }
+            return -1;
+        }
         public List<Cart> GetOrdersByUserId(int clientId)
         {
             return _bddContext.Carts

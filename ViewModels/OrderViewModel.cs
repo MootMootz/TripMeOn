@@ -14,6 +14,7 @@ namespace TripMeOn.ViewModels
         public int Quantity { get; set; }
         public double TotalPrice { get; set; }
         public List<Cart> Carts { get; set; }
-        //if admin has dashbord, he will receive
+    
+
     }
 }

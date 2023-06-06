@@ -121,10 +121,10 @@ namespace TripMeOn.Controllers
             return View(viewName, tourPackage);
         }
 
-        public IActionResult Catalog()
-        {
-            return View();
-        }
+        //public IActionResult Catalog()
+        //{
+        //    return View();
+        //}
     }
 
 }

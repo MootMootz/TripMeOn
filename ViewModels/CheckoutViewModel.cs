@@ -11,6 +11,7 @@ namespace TripMeOn.ViewModels
         public int Id { get; set; }
         public virtual List<Item> Items { get; set; }
         public int? ClientId { get; set; }
+        public string ClientName { get; set; }
         public virtual Client Client { get; set; }
         public bool IsRefunded { get; set; } // Add this property to represent refund status
         public int TourPackageId { get; set; }

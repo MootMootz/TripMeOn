@@ -102,7 +102,7 @@
         <div class="col-25">
             <div class="container">
                 <h4>Cart <span class="price" style="color:black"><i class="fa fa-shopping-cart"></i> <b>@Model.Items.Count</b></span></h4>
-                <p>Client's Name: @User.Identity.Name</p> <!--only retrns Id-->
+                <p>Client's Name: @Model.ClientName</p> <!--only retrns Id-->
              
                 @foreach (var item in Model.Items)
                 {

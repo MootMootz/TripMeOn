@@ -66,11 +66,17 @@ namespace TripMeOn.BL
             using var dbContext = new Models.BddContext();
             return dbContext.TourPackages
                 .Include(tp => tp.Destination)
+                    .ThenInclude(d => d.City)
+                .Include(tp => tp.Destination)
+                    .ThenInclude(d => d.Region)
+                .Include(tp => tp.Destination)
+                    .ThenInclude(d => d.Country)
                 .Include(tp => tp.Theme)
                 .Include(tp => tp.TimePeriod)
                 .Include(tp => tp.Image)
                 .FirstOrDefault(tp => tp.Id == id);
         }
+
         public List<TourPackage> GetTourPackagesByMonth(int month)
         {
             using var dbContext = new Models.BddContext();

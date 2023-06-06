@@ -28,7 +28,7 @@ namespace TripMeOn.Models
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
 
-            optionsBuilder.UseMySql("server=localhost;user id=root;password=kukuskar;database=TripMeOn");
+            optionsBuilder.UseMySql("server=localhost;user id=root;password=twitwiboo;database=TripMeOn");
 
         }
 
@@ -115,7 +115,7 @@ namespace TripMeOn.Models
                 new Image { Id = 8,Url="/images/cover/pk8.jpg"},
                 new Image { Id = 9,Url="/images/cover/pk9.jpg"},
                 new Image { Id = 10,Url="/images/cover/pk10.jpg"},
-                new Image { Id = 11, Url="/images/cover/p11.jpg"},
+                new Image { Id = 11, Url="/images/cover/pk11.jpg"},
                 new Image { Id = 12, Url="/images/cover/pk12.jpg"}
             };
 
@@ -131,7 +131,7 @@ namespace TripMeOn.Models
                 new TourPackage { Id = 8, Name = "Floating village in tulip season", DestinationId = 5, ThemeId = 2,Description="4 days tour",TimePeriodId=4,Price= 776,ImageId = 8 },
                 new TourPackage { Id = 9, Name = "Springtime Serenade in Colmer", DestinationId = 1, ThemeId = 10,Description="4 days tour",TimePeriodId=4,Price= 776,ImageId = 9 },
                 new TourPackage { Id = 10, Name = "Sweet December Colmer", DestinationId = 1, ThemeId = 4,Description="4 days tour",TimePeriodId=11,Price= 776,ImageId = 10 },
-                new TourPackage { Id = 11, Name = "Colored mountains in Argentina", DestinationId = 9, ThemeId = 10, Description="5 days tour", TimePeriodId=5, Price= 650, ImageId= 11 },
+                new TourPackage { Id = 11, Name = "Colored mountains in Argentina", DestinationId = 8, ThemeId = 10, Description="5 days tour", TimePeriodId=5, Price= 650, ImageId= 11 },
                 new TourPackage { Id = 12, Name = "Go wild at the End of the World", DestinationId = 8, ThemeId = 7, Description= "5 days tour", TimePeriodId=2, Price=880, ImageId= 12}
             };           
 

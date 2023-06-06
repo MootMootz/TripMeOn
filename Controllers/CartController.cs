@@ -34,61 +34,25 @@ namespace TripMeOn.Controllers
             if (cartId != 0)
             {
                 cart = _orderService.GetCart(cartId);
+
             }
             else
             {
                 cart = new Cart() { Items = new List<Item>() };
             }
+
+
             return View(cart);
         }
+
         public IActionResult AddToCart(int tourPackageId, int quantity)
         {
 
             return BuyProduct(tourPackageId, quantity);
         }
 
-        //public IActionResult AddToCart(int tourPackageId, int quantity)
-        //{
-
-        //    var cartId = SessionHelper.GetObjectFromJson<int>(HttpContext.Session, "cartId");
-          
-
-        //    if (cartId == 0)
-        //    {
-        //        cartId = _orderService.CreateCart();
-        //        _orderService.AddItem(cartId, new Item { TourPackageId = tourPackageId, Quantity = quantity });              
-        //        SessionHelper.SetObjectAsJson(HttpContext.Session, "cartId", cartId);
-        //    }
-        //    else
-        //    {
-        //        _orderService.AddItem(cartId, new Item { TourPackageId = tourPackageId, Quantity = quantity });
-        //    }
-
-        //    HttpContext.Response.Cookies.Append("CartId", cartId.ToString());
-
-        //    return RedirectToAction("ViewCart", new { tourPackageId, quantity });
-
-        //}
-
-
-        //public IActionResult BuyProduct(int tourPackageId, int quantity)
-        //{
-        //    var cartId = SessionHelper.GetObjectFromJson<int>(HttpContext.Session, "cartId");
-
-        //    if (cartId == 0)
-        //    {
-        //        cartId = _orderService.CreateCart();
-        //        _orderService.AddItem(cartId, new Item { TourPackageId = tourPackageId, Quantity = quantity });
-        //        SessionHelper.SetObjectAsJson(HttpContext.Session, "cartId", cartId);
-        //    }
-        //    else
-        //    {
-        //        _orderService.AddItem(cartId, new Item { TourPackageId = tourPackageId, Quantity = quantity });
-        //    }
-
-        //    return RedirectToAction("ViewCart", "Cart"); // Redirect to the cart page after adding the item
-        //}
-        [Authorize]
+        
+     
         [HttpPost]
         public IActionResult BuyProduct(int tourPackageId, int quantity)
         {
@@ -128,17 +92,7 @@ namespace TripMeOn.Controllers
         }
         // return item.id if product is already in item 
         // return -1 otherwise
-        private int ProductExistInCart(Cart cart, int tourPackageId)
-        {
-            foreach (var item in cart.Items)
-            {
-                if (item.TourPackageId == tourPackageId)
-                {
-                    return item.Id;
-                }
-            }
-            return -1;
-        }
+       
 
         [HttpPost]
         public IActionResult UpdateQuantity(int itemId, int quantity)
@@ -147,22 +101,7 @@ namespace TripMeOn.Controllers
 
             return RedirectToAction("ViewCart");
         }
-
-        //[Authorize]
-        //[HttpGet]
-        //public IActionResult CheckoutForm()
-        //{
-        //    var cartId = SessionHelper.GetObjectFromJson<int>(HttpContext.Session, "cartId");
-        //    var cart = _orderService.GetCart(cartId);
-        //    var clientId = Convert.ToInt32(User.Identity.Name);
-
-        //    if (cart == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    return View("CheckoutForm", cart);
-        //}
+            
 
         [Authorize]
         [HttpGet]
@@ -203,7 +142,7 @@ namespace TripMeOn.Controllers
             int clientId = Convert.ToInt32(User.Identity.Name);
             List<Cart> carts = _orderService.GetOrdersByUserId(clientId);
 
-            var test = carts[0].Items.Sum(item => item.Quantity * (item.TourPackage != null && item.TourPackage.Price > 0.0 ? item.TourPackage.Price : 1.0));
+            //var test = carts[0].Items.Sum(item => item.Quantity * (item.TourPackage != null && item.TourPackage.Price > 0.0 ? item.TourPackage.Price : 1.0));
 
             List<OrderViewModel> orders = carts.Select(cart => new OrderViewModel
             {
@@ -240,9 +179,7 @@ namespace TripMeOn.Controllers
 
         [Authorize]
         [HttpPost]
-
-        // need to be refunded
-        //refund 
+       
         public IActionResult Refund(int cartId)
         {
             // Retrieve the cart with the specified ID
@@ -260,31 +197,85 @@ namespace TripMeOn.Controllers
     }
 }
 
-    //[Authorize]
-    //[HttpPost]
-    //public IActionResult Refund(int cartId)
-    //{
-    //    int clientId = Convert.ToInt32(User.Identity.Name);
+//[Authorize]
+//[HttpPost]
+//public IActionResult Refund(int cartId)
+//{
+//    int clientId = Convert.ToInt32(User.Identity.Name);
 
-    //    // Get the cart for the specified cartId and clientId
-    //    Cart cart = _orderService.GetCart(cartId, clientId);
+//    // Get the cart for the specified cartId and clientId
+//    Cart cart = _orderService.GetCart(cartId, clientId);
 
-    //    if (cart != null)
-    //    {
-    //        // Perform the refund logic here
-    //        // ...
+//    if (cart != null)
+//    {
+//        // Perform the refund logic here
+//        // ...
 
-    //        // Update the cart or mark it as refunded in the database
-    //        // ...
+//        // Update the cart or mark it as refunded in the database
+//        // ...
 
-    //        return RedirectToAction("Refund");
-    //    }
+//        return RedirectToAction("Refund");
+//    }
 
-    //    // If the cart is not found, handle the error accordingly
-    //    return NotFound();
-    //}
+//    // If the cart is not found, handle the error accordingly
+//    return NotFound();
+//}
 
 
+//public IActionResult AddToCart(int tourPackageId, int quantity)
+//{
 
-    
+//    var cartId = SessionHelper.GetObjectFromJson<int>(HttpContext.Session, "cartId");
 
+
+//    if (cartId == 0)
+//    {
+//        cartId = _orderService.CreateCart();
+//        _orderService.AddItem(cartId, new Item { TourPackageId = tourPackageId, Quantity = quantity });              
+//        SessionHelper.SetObjectAsJson(HttpContext.Session, "cartId", cartId);
+//    }
+//    else
+//    {
+//        _orderService.AddItem(cartId, new Item { TourPackageId = tourPackageId, Quantity = quantity });
+//    }
+
+//    HttpContext.Response.Cookies.Append("CartId", cartId.ToString());
+
+//    return RedirectToAction("ViewCart", new { tourPackageId, quantity });
+
+//}
+
+
+//public IActionResult BuyProduct(int tourPackageId, int quantity)
+//{
+//    var cartId = SessionHelper.GetObjectFromJson<int>(HttpContext.Session, "cartId");
+
+//    if (cartId == 0)
+//    {
+//        cartId = _orderService.CreateCart();
+//        _orderService.AddItem(cartId, new Item { TourPackageId = tourPackageId, Quantity = quantity });
+//        SessionHelper.SetObjectAsJson(HttpContext.Session, "cartId", cartId);
+//    }
+//    else
+//    {
+//        _orderService.AddItem(cartId, new Item { TourPackageId = tourPackageId, Quantity = quantity });
+//    }
+
+//    return RedirectToAction("ViewCart", "Cart"); // Redirect to the cart page after adding the item
+//}
+
+//[Authorize]
+//[HttpGet]
+//public IActionResult CheckoutForm()
+//{
+//    var cartId = SessionHelper.GetObjectFromJson<int>(HttpContext.Session, "cartId");
+//    var cart = _orderService.GetCart(cartId);
+//    var clientId = Convert.ToInt32(User.Identity.Name);
+
+//    if (cart == null)
+//    {
+//        return NotFound();
+//    }
+
+//    return View("CheckoutForm", cart);
+//}

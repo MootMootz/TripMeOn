@@ -93,7 +93,7 @@ namespace TripMeOn.Controllers
                     if (!string.IsNullOrWhiteSpace(returnUrl) && Url.IsLocalUrl(returnUrl))
                         return Redirect(returnUrl);
 
-                    return RedirectToAction("HomePage", "Home"); // add conditional
+                    return RedirectToAction("ViewCart", "Cart"); // add conditional
                 }
                 ModelState.AddModelError("Client.Nickname", "le nom ou le mot de passe sont incorrects");
             }

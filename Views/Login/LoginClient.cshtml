@@ -17,7 +17,7 @@
             You are already log in :
             @Model.Client.Nickname
         </h3>
-        @Html.ActionLink("Voulez-vous vous déconnecter ?", "Deconnexion")
+        @Html.ActionLink("Would you like to logout?", "Deconnection", "Login")
 
         <p>
             @Html.ActionLink("Check Order Status", "OrderStatus", "Cart")
@@ -29,7 +29,7 @@
             Veuillez vous authentifier :
         </p>
 
-        using (Html.BeginForm())
+        using (Html.BeginForm("IndexClient", "Login", FormMethod.Post))
         {
 
             <div>

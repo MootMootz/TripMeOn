@@ -6,9 +6,21 @@
 
   <ItemGroup>
     <Compile Remove="ViewModels\Package\**" />
+    <Compile Remove="wwwroot\css\NewFolder\**" />
+    <Compile Remove="wwwroot\images\NewFolder1\**" />
+    <Compile Remove="wwwroot\images\NewFolder\**" />
     <Content Remove="ViewModels\Package\**" />
+    <Content Remove="wwwroot\css\NewFolder\**" />
+    <Content Remove="wwwroot\images\NewFolder1\**" />
+    <Content Remove="wwwroot\images\NewFolder\**" />
     <EmbeddedResource Remove="ViewModels\Package\**" />
+    <EmbeddedResource Remove="wwwroot\css\NewFolder\**" />
+    <EmbeddedResource Remove="wwwroot\images\NewFolder1\**" />
+    <EmbeddedResource Remove="wwwroot\images\NewFolder\**" />
     <None Remove="ViewModels\Package\**" />
+    <None Remove="wwwroot\css\NewFolder\**" />
+    <None Remove="wwwroot\images\NewFolder1\**" />
+    <None Remove="wwwroot\images\NewFolder\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -29,15 +41,9 @@
 
     <Folder Include="Views\Admin\" />
 
-    <Folder Include="wwwroot\css\NewFolder\" />
-
     <Folder Include="wwwroot\images\logos-rs\" />
 
     <Folder Include="wwwroot\images\accomodation\" />
-
-    <Folder Include="wwwroot\images\NewFolder1\" />
-
-    <Folder Include="wwwroot\images\NewFolder\" />
     <Folder Include="wwwroot\images\p11\" />
 
   </ItemGroup>

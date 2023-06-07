@@ -118,11 +118,13 @@ body {
 }
 
 .footer {
-    background-color: #f0f0f0;
-    padding: 20px;
-    text-align: center;
-    position: sticky;
+    background-color: orange;
+    position: absolute;
+    left: 0;
     bottom: 0;
+    height: 100px;
+    width: 100%;
+    overflow: hidden;
 }
 
 .footer-buttons {
@@ -156,8 +158,3 @@ body {
         color: #000000;
         margin-right: 10px;
     }
-#right {
-    margin-left: 100px;
-    padding: 50px;
-}
-

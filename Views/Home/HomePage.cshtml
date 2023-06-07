@@ -2,12 +2,10 @@
 @using TripMeOn.Models.Products;
 @using TripMeOn.Helper;
 @model NavigationViewModel
-@using TripMeOn.Models.Products;
-@using TripMeOn.Helper;
 
 @{
     ViewBag.Title = "Home_Page";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_LayoutHomepage.cshtml";
 }
 @section ExtraCss{
     <link rel="stylesheet" href="/css/HomePage.css">
@@ -27,37 +25,36 @@
         <div class="search-box">
             <form action="/Product/SearchPackage" method="get">
 
-                <label for="destinations">Destinations</label>
+                <label for="destinations"></label>
                 @{
                     List<Destination> destinations = new TripMeOn.BL.ProductService().GetDestinations();
-                    destinations.Insert(0, new Destination { Id = 0, Country = "All Destinations" });
+                    destinations.Insert(0, new Destination { Id = 0, Country = "destination" });
                     SelectList selectList = new SelectList(destinations, "Id", "Country");
                 }
                 @Html.DropDownList("destination", selectList)
 
-                <label for="themes">Themes</label>
+                <label for="themes"></label>
                 @{
                     List<Theme> themes = new TripMeOn.BL.ProductService().GetThemes();
-                    themes.Insert(0, new Theme { Id = 0, Name = "All Themes" });
+                    themes.Insert(0, new Theme { Id = 0, Name = "theme" });
                     SelectList themeList = new SelectList(themes, "Id", "Name");
                 }
                 @Html.DropDownList("theme", themeList)
 
-                <label for="months">Months</label>
+                <label for="months"></label>
                 @{
                     List<SelectListItem> monthList = DateTimeHelper.GetMonths();
-                    monthList.Insert(0, new SelectListItem { Value = "0", Text = "All Months" });
+                    monthList.Insert(0, new SelectListItem { Value = "0", Text = "period" });
                 }
                 @Html.DropDownList("month", monthList)
-                <button type="submit" class="btn btn-primary">Search</button>
-
+                <button type="submit" class="btn btn-primary">search</button>
 
             </form>
         </div>
+        <div id="search-container-shadow"></div>
 
 
     </div>
-
 
     <div class="diapo">
         <div id="picLeft">
@@ -77,53 +74,110 @@
     </div>
 
 
-    <div class="search">
-        <div id="search-block">
-            <div id="search-destination">
-                Destination
-            </div>
-            <div id="search-duration">
-                Duration
-            </div>
-            <div id="search-date">
-                Date
-            </div>
-            <div id="search-searchbox">
-                SearchBox
-            </div>
-        </div>
+    <!-- Search box test, but it was decided we implement inside the diapo -->
+
+    @*<div class="search">
+    <div id="search-block">
+    <div id="search-destination">
+    Destination
     </div>
-    <div class="testimony">
-        <h1>Ils parlent de nous</h1>
-        <div id="testimony-block">
-            <div class="testimony-block-arrows" id="testimony-block-left-arrow"></div>
-            <div>
-                J'ai essayé TripMeOn suite au témoignage d'un influenceur que je follow.
-                Je dois dire que je ne suis pas décu !<br />
-                Les réservations étaient parfaitement comme décrites sur le site.
-                Et les panoramas... suberbes.<br />
-                Merci TripMeOn, je garde de beaux souvenirs.. et de belles photos !
-            </div>
-            <div id="testimony-block-customer-pic"></div>
-            <div id="testimony-block-right-arrow">right arrows</div>
-            <div class="testimony-block-arrows" id="testimony-block-right-arrow"></div>
-        </div>
+    <div id="search-duration">
+    Duration
+    </div>
+    <div id="search-date">
+    Date
+    </div>
+    <div id="search-searchbox">
+    SearchBox
+    </div>
+    </div>
+    </div>*@
+
+    <!--   ---------------------------- TESTIMONY DIAPO----------------------------------   -->
+    @*<div class="testimony">
+    <h1>Ils parlent de nous</h1>
+    <div id="testimony-block">
+    <div class="testimony-block-arrows" id="testimony-block-left-arrow"></div>
+    <div>
+    J'ai essayé TripMeOn suite au témoignage d'un influenceur que je follow.
+    Je dois dire que je ne suis pas décu !<br />
+    Les réservations étaient parfaitement comme décrites sur le site.
+    Et les panoramas... suberbes.<br />
+    Merci TripMeOn, je garde de beaux souvenirs.. et de belles photos !
+    </div>
+    <div id="testimony-block-customer-pic"></div>
+    <div id="testimony-block-right-arrow">right arrows</div>
+    <div class="testimony-block-arrows" id="testimony-block-right-arrow"></div>
+    </div>
     </div>
     </div>
 
-    <h1>Partners</h1>
-    Ils nous font confiance :
+    <div class="trait">/div>
+    *@
+
+    <!--   ----------------------------INSTA FEED----------------------------------   -->
+
+
+    <div class="insta-feed">
+        <h1 style="text-align:center;">#TRIPMEON</h1>
+
+        <div id="insta-feed-container">
+            <div class="insta-feed-post" id="insta-feed-post-pic1">
+                <span>Description post insta 1</span>
+                <div class="likes-icon"></div>
+                <div class="likes">500</div>
+                <div class="comments-icon"></div>
+                <div class="comments">100</div>
+            </div>
+
+            <div class="insta-feed-post" id="insta-feed-post-pic2">
+                <span>Description post insta 2</span>
+                <div class="likes-icon"></div>
+                <div class="likes">500</div>
+                <div class="comments-icon"></div>
+                <div class="comments">100</div>
+            </div>
+
+            <div class="insta-feed-post" id="insta-feed-post-pic3">
+                <span>Description post insta 3</span>
+                <div class="likes-icon"></div>
+                <div class="likes">500</div>
+                <div class="comments-icon"></div>
+                <div class="comments">100</div>
+            </div>
+
+            <div class="insta-feed-post" id="insta-feed-post-pic4">
+                <span>Description post insta 4</span>
+                <div class="likes-icon"></div>
+                <div class="likes">500</div>
+                <div class="comments-icon"></div>
+                <div class="comments">100</div>
+            </div>
+
+            <div class="insta-feed-post" id="insta-feed-post-pic5">
+                <span>Description post insta 5</span>
+                <div class="likes-icon"></div>
+                <div class="likes">500</div>
+                <div class="comments-icon"></div>
+                <div class="comments">100</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="trait"></div>
+
+    <!--   ----------------------------PARTNERS----------------------------------   -->
+
+    <h1 style="text-align:center">Partners</h1>
+    <span style="text-align:center">Ils nous font confiance :</span>
     <div class="partnerships">
+        <div id="partnerships-pic1"></div>
+        <div id="partnerships-pic2"></div>
+        <div id="partnerships-pic3"></div>
+        <div id="partnerships-pic4"></div>
+        <div id="partnerships-pic5"></div>
+        <div id="partnerships-pic6"></div>
+        <div id="partnerships-pic7"></div>
     </div>
-
-    <div id="partnerships-pic1"></div>
-    <div id="partnerships-pic2"></div>
-    <div id="partnerships-pic3"></div>
-    <div id="partnerships-pic4"></div>
-    <div id="partnerships-pic5"></div>
-    <div id="partnerships-pic6"></div>
-    <div id="partnerships-pic7"></div>
-    </div>
-
 </body>
 </html>

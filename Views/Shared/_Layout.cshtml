@@ -78,15 +78,14 @@
             </li>
 
             <!--   --------------------------PERIOD-------------------------------------   -->
-
             @*<li class="parent">
-                <a href="#">Tour Packages</a>
-                <ul class="child">
-                    <li><a href="#">Day Tours</a></li>
-                    <li><a href="#">4 days Tours</a></li>
-                    <li><a href="#">5 days Tours</a></li>
-                    <li><a href="#">7 days Tours</a></li>
-                </ul>
+            <a href="#">Tour Packages</a>
+            <ul class="child">
+            <li><a href="#">Day Tours</a></li>
+            <li><a href="#">4 days Tours</a></li>
+            <li><a href="#">5 days Tours</a></li>
+            <li><a href="#">7 days Tours</a></li>
+            </ul>
             </li>*@
 
             <!--   -------------------------------------------------------------------------   -->
@@ -140,7 +139,6 @@
             </li>
 
             <!--   ----------------------------LOG OUT----------------------------------   -->
-
             @*<li class="parent">
             @Html.ActionLink("Catalog", "Catalog", "Product")*@
 
@@ -154,14 +152,14 @@
     </div>
 
     <!--   -------------------------------------------------------------------------   -->
-    
+
 
     <div class="search-container">
         <div class="search-box">
             <form action="/Partner/SearchPackage" method="get">
                 <label for="services">Services</label>
                 @{
-                    List<string> services = new List<string> { "All Services", "Accomodation", "Restaurant", "Transport" };
+                    List<string> services = new List<string> { "Choose a service", "Accomodation", "Restaurant", "Transport" };
                     SelectList serviceList = new SelectList(services);
                 }
                 @Html.DropDownList("serviceType", serviceList)

@@ -77,19 +77,19 @@
                 </ul>
             </li>
 
-            <!--   --------------------------PERIOD-------------------------------------   -->
-            @*<li class="parent">
-            <a href="#">Tour Packages</a>
-            <ul class="child">
-            <li><a href="#">Day Tours</a></li>
-            <li><a href="#">4 days Tours</a></li>
-            <li><a href="#">5 days Tours</a></li>
-            <li><a href="#">7 days Tours</a></li>
-            </ul>
-            </li>*@
 
+            <li class="parent">
+                <a href="#">Tour Packages</a>
+                <ul class="child">
+                    <li><a href="#">Day Tours</a></li>
+                    <li><a href="#">4 days Tours</a></li>
+                    <li><a href="#">5 days Tours</a></li>
+                    <li><a href="#">7 days Tours</a></li>
+                </ul>
+            </li>         
             <!--   -------------------------------------------------------------------------   -->
-            @*
+
+          
             <li class="parent">
             <a href="/Content/InstaTips">Insta-tips</a>
             </li>*@
@@ -106,7 +106,6 @@
 
 
             <!--   ---------------------------LOG IN----------------------------------   -->
-
             <li class="parent">
                 <a href="#">Log in<span class="expand"></span></a>
                 <ul class="child">
@@ -119,11 +118,11 @@
                     <li>@Html.ActionLink("I am a Partner", "LoginPartner", "Login")</li>
                     <li>@Html.ActionLink("I am a Traveller", "LoginClient", "Login")</li>
                 </ul>
-            </li>
+            </li>     
 
             <!--   ---------------------------ADMIN------------------------------------   -->
 
-            <li class="parent">
+           <li class="parent">
                 <a href="#">Admin<span class="expand"></span></a>
                 <ul class="child">
                     <li>@Html.ActionLink("Log in Admin", "LoginAdmin", "Login")</li>
@@ -193,14 +192,20 @@
     <!--   ----------------------------FOOTER----------------------------------   -->
 
     <footer>
-        <div>
-            <div class="social-icons">
-                <a href="https://twitter.com"><i class="fab fa-twitter"></i></a>
-                <a href="https://facebook.com"><i class="fab fa-facebook"></i></a>
-                <a href="https://instagram.com"><i class="fab fa-instagram"></i></a>
-                <a href="https://www.tiktok.com"><i class="fab fa-tiktok"></i></a>
-                <a href="https://youtube.com"><i class="fab fa-youtube"></i></a>
-            </div>
+        <!-- Other content in the footer -->
+
+        <div class="footer-buttons">
+            <a href="/Content/InstaTips" class="footer-button">Insta-tips</a>
+            <a href="/Content/AboutUs" class="footer-button">About Us</a>
+            <a href="#" class="footer-button">Become a Partner</a>
+        </div>
+        <!-- Social icons -->
+        <div class="social-icons">
+            <a href="https://twitter.com"><i class="fab fa-twitter"></i></a>
+            <a href="https://facebook.com"><i class="fab fa-facebook"></i></a>
+            <a href="https://instagram.com"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.tiktok.com"><i class="fab fa-tiktok"></i></a>
+            <a href="https://youtube.com"><i class="fab fa-youtube"></i></a>
         </div>
     </footer>
 

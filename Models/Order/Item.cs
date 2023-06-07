@@ -1,5 +1,8 @@
-﻿using System.ComponentModel.DataAnnotations;
+
 using TripMeOn.Models.PartnerProducts;
+using System;
+using System.ComponentModel.DataAnnotations;
+
 using TripMeOn.Models.Products;
 
 namespace TripMeOn.Models.Order
@@ -19,5 +22,7 @@ namespace TripMeOn.Models.Order
         public Restaurant Restaurant { get; set; }
         public int? CartId { get; set; }
         public Cart Cart { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
     }
 }

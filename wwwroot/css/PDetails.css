@@ -58,3 +58,7 @@
 .rotate {
     transform: rotate(180deg);
 }
+.content-item {
+    margin-bottom: 5px;
+}
+

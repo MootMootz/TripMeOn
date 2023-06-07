@@ -30,9 +30,48 @@ namespace TripMeOn.BL
             // the query will be performed on the client side instead of being translated to SQL:InvalidOperationException
             destinations = destinations.GroupBy(d => d.Country) // groups the destinations by country
                               .Select(group => group.First())  //selects the first destination from each group
+                              .Distinct()
                               .ToList();
             return destinations;
         }
+
+        //public List<Destination> GetDestinations()
+        //{
+        //    List<Destination> destinations = new List<Destination>();
+
+        //    using (var _bddContext = new Models.BddContext())
+        //    {
+        //        destinations = _bddContext.Destinations
+        //            .GroupBy(d => new { d.Country, d.City, d.Region })
+        //            .Select(group => new Destination
+        //            {
+        //                Country = group.Key.Country,
+        //                City = group.Key.City,
+        //                Region = group.Key.Region
+        //            })
+        //            .Distinct()
+        //            .ToList();
+        //    }
+
+        //    return destinations;
+        //}
+
+        public List<string> GetDistinctCountries()
+        {
+            List<string> countries = new List<string>();
+
+            using (var _bddContext = new Models.BddContext())
+            {
+                countries = _bddContext.Destinations
+                    .Select(d => d.Country)
+                    .Distinct()
+                    .ToList();
+            }
+
+            return countries;
+        }
+
+
         public List<Theme> GetThemes()
         {
             List<Theme> themes = new List<Theme>();
@@ -86,7 +125,7 @@ namespace TripMeOn.BL
         }
 
 		//Include = retrieve related entities along with the main entity in a single query to optimize performance.
-		public List<TourPackage> SearchByDestinationThemeMonth(int? destinationId, int? themeId, int? month)
+		public List<TourPackage> SearchByDestinationThemeMonth(string country, int? themeId, int? month)
 		{
 			using var dbContext = new Models.BddContext();
 
@@ -96,9 +135,9 @@ namespace TripMeOn.BL
 											  .Include(tp => tp.Image)
 											  .AsQueryable();
 
-			if (destinationId.HasValue)
+			if ( country != "All Destinations")
 			{
-				query = query.Where(tp => tp.DestinationId == destinationId.Value);
+				query = query.Where(tp => tp.Destination.Country == country);
 			}
 
 			if (themeId.HasValue)

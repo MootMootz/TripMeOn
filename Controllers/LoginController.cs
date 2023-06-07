@@ -95,7 +95,7 @@ namespace TripMeOn.Controllers
 
                     return RedirectToAction("ViewCart", "Cart"); // add conditional
                 }
-                ModelState.AddModelError("Client.Nickname", "le nom ou le mot de passe sont incorrects");
+                ModelState.AddModelError("Client.Nickname", "Incorrect Nickname or Password");
             }
             ViewBag.ShowLoginClientBox = true;
             return View(viewModel);

@@ -2,6 +2,8 @@
 using TripMeOn.BL.interfaces;
 using TripMeOn.Models.Products;
 using System.Linq;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Collections.Generic;
 
 namespace TripMeOn.Controllers
 {
@@ -20,16 +22,28 @@ namespace TripMeOn.Controllers
         //    var searchResults = _productService.SearchByDestinationThemeMonth(destination, theme, month);
         //    return View("SearchBoxPackage", searchResults);
         //}
-        public IActionResult SearchPackage(int destination, int theme, int month)
+        public IActionResult SearchPackage(string country, int theme, int month)
         {
+
+
             var searchResults = _productService.SearchByDestinationThemeMonth(
-                destination == 0 ? (int?)null : destination,
+                country,
                 theme == 0 ? (int?)null : theme,
                 month == 0 ? (int?)null : month);
 
             return View("SearchBoxPackage", searchResults);
         }
+        public ActionResult PackageListUniqueCountry()
+        {
+            var productService = new TripMeOn.BL.ProductService();
+            var distinctCountries = productService.GetDistinctCountries();
+            var countryList = new SelectList(distinctCountries);
+            ViewBag.CountryList = countryList;
 
+            // Other code logic for your index action
+
+            return View();
+        }
         public IActionResult PackageList()
         {
             var packages = _productService.GetTourPackages();

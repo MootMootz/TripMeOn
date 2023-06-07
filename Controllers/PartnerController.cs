@@ -486,8 +486,8 @@ namespace TripMeOn.Controllers
                 return NotFound();
             }
 
-            string viewName = $"/Views/ServicesAccomodations/Details_{id}.cshtml";
-            return View(viewName, accomodation);
+            //string viewName = $"/Views/ServicesAccomodations/Details_{id}.cshtml";
+            return View( accomodation);
         }
 
         public IActionResult DetailsRestaurants(int id)

@@ -18,7 +18,7 @@
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Name of the tour package</th>               
+                <th>Name of the item</th>               
                 <th>Date of Purchase</th>
                @* <th>From:</th>
                 <th>To:</th>*@
@@ -65,12 +65,56 @@
                     </td>
                 </tr>
             }
+       
             <tr>
                 <td align="right" colspan="7">Sum</td>
                 <td colspan="2">
                     @(Model.Items.Sum(item => item.TourPackage.Price * item.Quantity))
                 </td>               
             </tr>
+            @foreach (var item in Model.Items)
+            {
+                <tr>
+                    <td>@item.Accomodation.Id</td>
+                    <td>
+                        <div class="d-flex">
+                            @*  <img src="@item.TourPackage.Image?.Url" style="width: 20%;">*@
+                            <div class="details">
+                                <p>@item.Accomodation.Name</p>
+                            </div>
+                        </div>
+                    </td>
+                    <td>@DateTime.Now</td>
+                    @* <td>@DateTime.DaysInMonth</td>
+                <td>@DateTime.DaysInMonth</td>*@
+                    <td>@item.Accomodation.Price</td>
+                    <td>
+                        <form method="post" action="/Cart/UpdateQuantity">
+                            <input type="hidden" name="itemId" value="@item.Id" />
+                            <select name="quantity" class="adjust-dropdown">
+                                @for (int i = 1; i <= 20; i++)
+                                {
+                                    <option value="@i" @(i == item.Quantity ? "selected" : "")>@i</option>
+                                }
+                            </select>
+                            <button type="submit">Adjust</button>
+                        </form>
+                    </td>
+                    <td>@(item.Accomodation.Price * item.Quantity)</td>
+                    <td>
+                        <div class="remove-button">
+                            @Html.ActionLink("Empty Shopping Cart", "RemoveProduct", "Cart", new { id = @item.Id }, new { @class = "btn btn-danger" })
+                        </div>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td align="right" colspan="7">Sum</td>
+                    <td colspan="2">
+                        @(Model.Items.Sum(item => item.Accomodation.Price * item.Quantity))
+                    </td>
+                </tr>
+            }
         </tbody>
     </table>
     <div class="text-center">

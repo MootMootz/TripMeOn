@@ -160,11 +160,7 @@
             <form action="/Partner/SearchPackage" method="get">
                 <label for="services">Services</label>
                 @{
-<<<<<<< HEAD
                     List<string> services = new List<string> { "Select a service", "Accomodation", "Restaurant", "Transport" };
-=======
-                    List<string> services = new List<string> { "Choose a service", "Accomodation", "Restaurant", "Transport" };
->>>>>>> d243fd60b0ea8753d9693990ea483522cd1a355f
                     SelectList serviceList = new SelectList(services);
                 }
                 @Html.DropDownList("serviceType", serviceList)

@@ -6,6 +6,128 @@
     padding: 0;
 }
 
+#logo {
+    background-image: url(/images/logo.png);
+    height: 100px;
+    width: 100px;
+    position: absolute;
+    top: 20px;
+    left: 60px;
+    background-size: cover;
+    background-position: center;
+    /*  border : solid 1px white;*/
+    border-radius: 25px;
+    z-index: 102;
+}
+
+#logo-shadow {
+    display: flex;
+    height: 100px;
+    width: 100px;
+    position: absolute;
+    top: 23px;
+    left: 63px;
+    background-color: hotpink;
+    border-radius: 25px;
+    z-index: 101;
+}
+
+#navbar {
+    display: flex;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    justify-content: center;
+    z-index: 100;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    font-size: 2em;
+}
+
+#menu {
+    background: rgb(0, 0, 0, 0.15);
+}
+
+.parent {
+    display: inline-block;
+    vertical-align: middle;
+    /*float: left;*/
+    line-height: 60px;
+    text-align: center;
+    /*border: #CCC 1px solid;*/
+    /*border-radius: 5px 5px 0px 0px;*/
+}
+
+    .parent a {
+        margin: 35px;
+        color: white;
+        font-weight: bold;
+        /*text-shadow: 0.5px 0.5px black;*/
+        font-size: large;
+        background-color: transparent;
+        text-decoration: wavy;
+    }
+
+    .parent:hover > ul {
+        display: block;
+        position: absolute;
+    }
+
+.child {
+    display: none;
+    background: rgba(255, 255, 255, 0.5);
+}
+
+    .child li {
+        background-color: #E4EFF7;
+        line-height: 40px;
+        border-bottom: #CCC 1px solid;
+        border-right: #CCC 1px solid;
+        width: 100%;
+    }
+
+        .child li a {
+            color: #000000;
+        }
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0px;
+    min-width: 8.65em;
+}
+
+    ul ul ul {
+        left: 100%;
+        top: 0;
+        margin-left: 1px;
+    }
+
+li:hover {
+    background-color: #95B4CA;
+}
+
+.parent li:hover {
+    background-color: #F0F0F0;
+}
+
+.expand {
+    font-size: 12px;
+    float: right;
+}
+
+
+.social-icons {
+    font-size: 35px;
+}
+
+    .social-icons a {
+        color: #000000;
+        margin-right: 10px
+    }
+
+
 .trait {
     border-top: 1px solid black;
     width: 50%;

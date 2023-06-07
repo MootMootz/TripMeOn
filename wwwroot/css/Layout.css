@@ -26,7 +26,6 @@
 #navbar {
     display:flex;
     width: 100%;
-    position: block;
     justify-content: center;
     z-index: 100;
     padding-top : 40px;

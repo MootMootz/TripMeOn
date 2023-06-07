@@ -53,12 +53,12 @@
                             <form method="post" action="/Cart/UpdateQuantity">
                                 <input type="hidden" name="itemId" value="@item.Id" />
                                 <select name="quantity" class="adjust-dropdown">
-                                    @for (int i = 1; i <= 20; i++)
-                                    {
-                                        <option value="@i" @(
-                                 i == item.Quantity ? "selected" : ""
-                                 )>@i</option>
-                                    }
+                                    @*  @for (int i = 1; i <= 20; i++)
+                            {
+                            <option value="@i" @(
+                            i == item.Quantity ? "selected" : ""
+                            )>@i</option>
+                            }*@
                                 </select>
                                 <button type="submit">Adjust</button>
                             </form>
@@ -107,12 +107,12 @@
                             <form method="post" action="/Cart/UpdateQuantity">
                                 <input type="hidden" name="itemId" value="@item.Id" />
                                 <select name="quantity" class="adjust-dropdown">
-                                    @for (int i = 1; i <= 20; i++)
-                                    {
-                                        <option value="@i" @(
-                                 i == item.Quantity ? "selected" : ""
-                                 )>@i</option>
-                                    }
+                                    @* @for (int i = 1; i <= 20; i++)
+                            {
+                            <option value="@i" @(
+                            i == item.Quantity ? "selected" : ""
+                            )>@i</option>
+                            }*@
                                 </select>
                                 <button type="submit">Adjust</button>
                             </form>
@@ -158,12 +158,12 @@
                             <form method="post" action="/Cart/UpdateQuantity">
                                 <input type="hidden" name="itemId" value="@item.Id" />
                                 <select name="quantity" class="adjust-dropdown">
-                                    @for (int i = 1; i <= 20; i++)
-                                    {
-                                        <option value="@i" @(
-                                 i == item.Quantity ? "selected" : ""
-                                 )>@i</option>
-                                    }
+                                    @*  @for (int i = 1; i <= 20; i++)
+                            {
+                            <option value="@i" @(
+                            i == item.Quantity ? "selected" : ""
+                            )>@i</option>
+                            }*@
                                 </select>
                                 <button type="submit">Adjust</button>
                             </form>
@@ -209,12 +209,12 @@
                             <form method="post" action="/Cart/UpdateQuantity">
                                 <input type="hidden" name="itemId" value="@item.Id" />
                                 <select name="quantity" class="adjust-dropdown">
-                                    @for (int i = 1; i <= 20; i++)
-                                    {
-                                        <option value="@i" @(
-                                 i == item.Quantity ? "selected" : ""
-                                 )>@i</option>
-                                    }
+                                    @*  @for (int i = 1; i <= 20; i++)
+                            {
+                            <option value="@i" @(
+                            i == item.Quantity ? "selected" : ""
+                            )>@i</option>
+                            }*@
                                 </select>
                                 <button type="submit">Adjust</button>
                             </form>
@@ -238,9 +238,6 @@
                         </td>
                     </tr>
                 }
-            }
-            }
-            }
             }
 
         </tbody>

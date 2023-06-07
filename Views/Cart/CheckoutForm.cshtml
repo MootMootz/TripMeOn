@@ -98,19 +98,42 @@
                 </form>
             </div>
         </div>
-               
+
         <div class="col-25">
             <div class="container">
                 <h4>Cart <span class="price" style="color:black"><i class="fa fa-shopping-cart"></i> <b>@Model.Items.Count</b></span></h4>
                 <p>Client's Name: @Model.ClientName</p> <!--only retrns Id-->
-             
                 @foreach (var item in Model.Items)
                 {
-                    <p><a href="#">@item.TourPackage.Name</a> <span class="price">$@item.TourPackage.Price</span></p>
+                    if (item.TourPackage != null)
+                    {
+                        <p><a href="#">@item.TourPackage.Name</a> <span class="price">$@item.TourPackage.Price</span></p>
+                    }
+                    if (item.Accomodation != null)
+                    {
+                        <p><a href="#">@item.Accomodation.Name</a> <span class="price">$@item.Accomodation.Price</span></p>
+                    }
+                    if (item.Restaurant != null)
+                    {
+                        <p><a href="#">@item.Restaurant.Name</a> <span class="price">$@item.Restaurant.Price</span></p>
+                    }
+                    if (item.Transportation != null)
+                    {
+                        <p><a href="#">@item.Transportation.Type</a> <span class="price">$@item.Transportation.Price</span></p>
+                    }
                 }
 
                 <hr>
-                <p>Total <span class="price" style="color:black"><b>$@(Model.Items.Sum(item => item.TourPackage.Price * item.Quantity))</b></span></p>
+                <p>
+                    Total <span class="price" style="color:black">
+                        <b>
+                            $@(Model.Items.Where(item => item.TourPackage != null).Sum(item => item.TourPackage.Price * item.Quantity)
+                               + Model.Items.Where(item => item.Accomodation != null).Sum(item => item.Accomodation.Price * item.Quantity)
+                               + Model.Items.Where(item => item.Restaurant != null).Sum(item => item.Restaurant.Price * item.Quantity)
+                               + Model.Items.Where(item => item.Transportation != null).Sum(item => item.Transportation.Price * item.Quantity))
+                        </b>
+                    </span>
+                </p>
             </div>
         </div>
     </div>
@@ -118,11 +141,11 @@
 </body>
 </html>
 
-  @section ExtraScript{
-  
-        <script src="~/Scripts/jquery-3.3.1.js" ></script>
+@section ExtraScript{
+
+    <script src="~/Scripts/jquery-3.3.1.js"></script>
     <script>
-      
+
         function validateFormAndSubmit() {
             var firstName = document.getElementById("fname").value;
             var email = document.getElementById("email").value;
@@ -151,7 +174,7 @@
             ) {
                 alert("Please fill in all fields before proceeding to checkout.");
             } else {
-              
+
                 redirectToPurchaseSuccess();
             }
         }
@@ -165,11 +188,54 @@
                 type: 'POST',
                 data: { tourPackageId: tourPackageId, quantity: quantity },
                 success: function (result) {
-                  
+
                     window.location.href = '@Url.Action("PurchaseSuccess", "Cart")';
                 },
                 error: function () {
-                   //TODO: 
+                    //TODO:
+                }
+            });
+        }
+        function buyAccomodation(accomodationId, quantity) {
+            $.ajax({
+                url: '@Url.Action("BuyAccomodation", "Cart")',
+                type: 'POST',
+                data: { accomodationId: accomodationId, quantity: quantity },
+                success: function (result) {
+
+                    window.location.href = '@Url.Action("PurchaseSuccess", "Cart")';
+                },
+                error: function () {
+                    //TODO:
+                }
+            });
+        }
+        function buyRestaurant(restaurantId, quantity) {
+            $.ajax({
+                url: '@Url.Action("BuyRestaurant", "Cart")',
+                type: 'POST',
+                data: { restaurantId: restaurantId, quantity: quantity },
+                success: function (result) {
+
+                    window.location.href = '@Url.Action("PurchaseSuccess", "Cart")';
+                },
+                error: function () {
+                    //TODO:
+                }
+            });
+        }
+
+        function buyTransport(transportId, quantity) {
+            $.ajax({
+                url: '@Url.Action("BuyTransport", "Cart")',
+                type: 'POST',
+                data: { transportId: transportId, quantity: quantity },
+                success: function (result) {
+
+                    window.location.href = '@Url.Action("PurchaseSuccess", "Cart")';
+                },
+                error: function () {
+                    //TODO:
                 }
             });
         }

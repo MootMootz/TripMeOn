@@ -1,12 +1,10 @@
 ﻿@model TripMeOn.Models.Products.TourPackage
 @using TripMeOn.Models.Order
-@{
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
 
-@section ExtraCss{
+
+
     <link rel="stylesheet" href="/css/PDetails.css">
-}
+
 
 <div class="flex-container">
     <div class="floating-box">
@@ -41,7 +39,7 @@
                     <p>Paris in spring is like living in a dream! You can’t find such a harmony of majestic landmarks from old days with newly bloomed flowers elsewhere. It’s poetic, it’s magnificent and it’s so instagrammable.  So, if you are wondering where to find a guide about spring in Paris for the most instagrammable places, where to stay and what to eat, TripMeOn is here!</p>
                 </div>
             </div>
-            <!------------------------------------------------------------------------------------------------->
+            <!-------------------------------------- itinerary-container----------------------------------------------------------->
            
             <div class="col-md-6">
                 <div class="itinerary-container hidden">
@@ -117,7 +115,7 @@
     </div>
 
 
-@section ExtraScript {
+@*@section ExtraScript {
     <script>
         $(document).ready(function () {
             $('.toggle-day-icon').on('click', function () {
@@ -132,7 +130,7 @@
         });
     </script>
 }
-
+*@
 
 
 

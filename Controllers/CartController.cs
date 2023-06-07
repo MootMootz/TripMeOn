@@ -218,7 +218,10 @@ namespace TripMeOn.Controllers
                 //Client = cart.Client,
                 ClientName = cart.Client != null ? cart.Client.FirstName + " " + cart.Client.LastName : string.Empty,
                 IsRefunded = cart.IsRefunded,
-                TourPackageId = item.TourPackageId.Value,
+                TourPackageId = item.TourPackageId,
+                AccomodationId = item.AccomodationId,
+                RestaurantId = item.RestaurantId,
+                TransportId = item.TransportId,
                 Quantity = item.Quantity
             };
 

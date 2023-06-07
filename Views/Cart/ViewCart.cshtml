@@ -20,8 +20,8 @@
                 <th>Id</th>
                 <th>Name of the item</th>
                 <th>Date of Purchase</th>
-                @* <th>From:</th>
-                <th>To:</th>*@
+                <th>From:</th>
+                <th>To:</th>
                 <th>Price</th>
                 <th>Quantity</th>
                 <th>Sub Total</th>
@@ -46,19 +46,19 @@
                             </div>
                         </td>
                         <td>@DateTime.Now</td>
-                        @* <td>@DateTime.DaysInMonth</td>
-                <td>@DateTime.DaysInMonth</td>*@
+                          <td>@item.StartDate</td>
+                          <td>@item.EndDate</td>
                         <td>@item.TourPackage.Price</td>
                         <td>
                             <form method="post" action="/Cart/UpdateQuantity">
                                 <input type="hidden" name="itemId" value="@item.Id" />
                                 <select name="quantity" class="adjust-dropdown">
-                                    @*  @for (int i = 1; i <= 20; i++)
+                                     @for (int i = 1; i <= 20; i++)
                             {
                             <option value="@i" @(
                             i == item.Quantity ? "selected" : ""
                             )>@i</option>
-                            }*@
+                            }
                                 </select>
                                 <button type="submit">Adjust</button>
                             </form>
@@ -249,7 +249,7 @@
         <form action="/Cart/CheckoutForm?clientId=@Model.ClientId" method="get" class="d-inline-block">
             <button type="submit" class="btn btn-success">Check Out</button>
         </form>
-    </div>
+    </div>  
 
 </body>
 </html>

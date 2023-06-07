@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>#TripMeOn</title>
     <link rel="stylesheet" href="/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/css/Layout.css">
+    <link rel="stylesheet" href="/css/LayoutHomepage.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
     @RenderSection("ExtraCss",required:false)
@@ -47,14 +47,16 @@
                     <li><a href="#">Italy</a></li>*@
                 </ul>
             </li>
-            <div id="searchResultsContainer"></div>
+
             <!--   ----------------------------THEMES------------------------------------   -->
 
             <li class="parent">
                 <a href="#">Themes<span class="expand"></span></a>
                 <ul class="child">
-                    <li>@Html.ActionLink("Trekking", "SearchPackage", "Product", new { theme=1 })</li>
-                    <li>@Html.ActionLink("Floral", "SearchPackage", "Product", new { theme=2 })</li>
+                    <li>@Html.ActionLink("Trekking", "SearchPackage", "Product", new { theme = 1 }, null)</li>
+
+                    <li>@Html.ActionLink("Floral", "SearchPackage", "Product", new { theme = 2 }, null)</li>
+
                     <li>@Html.ActionLink("Cultural", "SearchPackage", "Product", new { theme=3 })</li>
                     <li>@Html.ActionLink("Heritage", "SearchPackage", "Product", new { theme=4 })</li>
                     <li>@Html.ActionLink("Snap and relax", "SearchPackage", "Product", new { theme=5 })</li>
@@ -74,18 +76,37 @@
                     <li>@Html.ActionLink("Land Services", "ShowTransportationList", "Home")</li>
                 </ul>
             </li>
-            <!------------------------------------------------------------------------------------------->
 
+            <!--   --------------------------PERIOD-------------------------------------   -->
+            @*<li class="parent">
+            <a href="#">Tour Packages</a>
+            <ul class="child">
+            <li><a href="#">Day Tours</a></li>
+            <li><a href="#">4 days Tours</a></li>
+            <li><a href="#">5 days Tours</a></li>
+            <li><a href="#">7 days Tours</a></li>
+            </ul>
+            </li>*@
+
+            <!--   -------------------------------------------------------------------------   -->
+            @*
             <li class="parent">
-                <a href="#">Tour Packages</a>
-                <ul class="child">
-                    <li><a href="#">Day Tours</a></li>
-                    <li><a href="#">4 days Tours</a></li>
-                    <li><a href="#">5 days Tours</a></li>
-                    <li><a href="#">7 days Tours</a></li>
-                </ul>
-            </li>         
-           <!-------------------------------------------------------------------------------------------->
+            <a href="/Content/InstaTips">Insta-tips</a>
+            </li>*@
+
+            <!--   -------------------------------------------------------------------------   -->
+            @*			<li class="parent">
+            <a href="/Content/AboutUs">About Us</a>
+            </li>*@
+
+            <!--   -------------------------------------------------------------------------   -->
+            @*			<li class="parent">
+            <a href="#">Become a Partner</a>
+            </li>*@
+
+
+            <!--   ---------------------------LOG IN----------------------------------   -->
+
             <li class="parent">
                 <a href="#">Log in<span class="expand"></span></a>
                 <ul class="child">
@@ -98,26 +119,23 @@
                     <li>@Html.ActionLink("I am a Partner", "LoginPartner", "Login")</li>
                     <li>@Html.ActionLink("I am a Traveller", "LoginClient", "Login")</li>
                 </ul>
-            </li>     
+            </li>
 
             <!--   ---------------------------ADMIN------------------------------------   -->
 
-           <li class="parent">
+            <li class="parent">
                 <a href="#">Admin<span class="expand"></span></a>
                 <ul class="child">
                     <li>@Html.ActionLink("Log in Admin", "LoginAdmin", "Login")</li>
                     @*<li><a href=" /Product/PackageList">Check Products</a></li>*@
                 </ul>
             </li>
-
+            
 
             <!--   ----------------------------LOG OUT----------------------------------   -->
-            @*<li class="parent">
-            @Html.ActionLink("Catalog", "Catalog", "Product")*@
 
             <li class="parent">
                 @Html.ActionLink("Logout", "Deconnection", "Login")
-
             </li>
             <li class="parent">
                 @if (!String.IsNullOrEmpty(Context.Request.Cookies["Nickname"])) // si la valeur du cookie Nickname n'est pas vide
@@ -132,37 +150,7 @@
     </div>
 
     <!--   -------------------------------------------------------------------------   -->
-        <div class="search-container">
-        <div class="search-box">
-            <form action="/Partner/SearchPackage" method="get">
-                <label for="services">Services</label>
-                @{
-                    List<string> services = new List<string> { "Select a service", "Accomodation", "Restaurant", "Transport" };
-                    SelectList serviceList = new SelectList(services);
-                }
-                @Html.DropDownList("serviceType", serviceList)
-
-                <label for="destinations">Destinations</label>
-                @{
-                    List<Destination> destination = new TripMeOn.BL.PropositionService().GetServicesDestinations();
-                    destination.Insert(0, new Destination { Id = 0, Country = "All Destinations" });
-                    SelectList selectListe = new SelectList(destination, "Id", "Country");
-                }
-                @Html.DropDownList("destination", selectListe)
-
-                <label for="months">Months</label>
-                @{
-                    List<SelectListItem> monthListe = DateTimeHelper.GetMonths();
-                    monthListe.Insert(0, new SelectListItem { Value = "0", Text = "All Months" });
-                }
-                @Html.DropDownList("month", monthListe)
-                <button type="submit" class="btn btn-primary">Search</button>
-            </form>
-        </div>
-    </div>
-
-
-
+    
 
     @RenderBody()
 
@@ -170,20 +158,14 @@
     <!--   ----------------------------FOOTER----------------------------------   -->
 
     <footer>
-        <!-- Other content in the footer -->
-
-        <div class="footer-buttons">
-            <a href="/Content/InstaTips" class="footer-button">Insta-tips</a>
-            <a href="/Content/AboutUs" class="footer-button">About Us</a>
-            <a href="#" class="footer-button">Become a Partner</a>
-        </div>
-        <!-- Social icons -->
-        <div class="social-icons">
-            <a href="https://twitter.com"><i class="fab fa-twitter"></i></a>
-            <a href="https://facebook.com"><i class="fab fa-facebook"></i></a>
-            <a href="https://instagram.com"><i class="fab fa-instagram"></i></a>
-            <a href="https://www.tiktok.com"><i class="fab fa-tiktok"></i></a>
-            <a href="https://youtube.com"><i class="fab fa-youtube"></i></a>
+        <div>
+            <div class="social-icons">
+                <a href="https://twitter.com"><i class="fab fa-twitter"></i></a>
+                <a href="https://facebook.com"><i class="fab fa-facebook"></i></a>
+                <a href="https://instagram.com"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.tiktok.com"><i class="fab fa-tiktok"></i></a>
+                <a href="https://youtube.com"><i class="fab fa-youtube"></i></a>
+            </div>
         </div>
     </footer>
 
@@ -191,7 +173,6 @@
     <script type="text/javascript" src="~/Scripts/jquery-3.3.1.js"></script>
     <script type="text/javascript" src="~/Scripts/jquery.validate-vsdoc.js"></script>
     <script type="text/javascript" src="~/Scripts/jquery.validate.unobtrusive.js"></script>
-
     @RenderSection("ExtraScript",required:false)
 </body>
 </html>

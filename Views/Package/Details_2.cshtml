@@ -13,26 +13,29 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="photo-container">
-                    <img src="~/images/p1/Paris1.jpg" alt="Photo 1" class="img-fluid rounded">
+                    <img src="~/images/p2/provence1.jpg" alt="Photo 1" class="img-fluid rounded">
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="photo-container">
-                    <img src="~/images/p1/Paris2.jpg" alt="Photo 2" class="img-fluid rounded">
+                    <img src="~/images/p2/doggy.jpg" alt="Photo 2" class="img-fluid rounded">
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="photo-container">
-                    <img src="~/images/p1/Paris3.jpg" alt="Photo 3" class="img-fluid rounded">
+                    <img src="~/images/p2/provence4.jpg" alt="Photo 3" class="img-fluid rounded">
                 </div>
             </div>
         </div>
-       <!------------------------------------------------------------------------------------------------------->
+        <!------------------------------------------------------------------------------------------------------->
         <div class="row">
             <div class="col-md-6">
                 <div class="overlay">
                     <h3>@Model.Name</h3>
                     <p>@Model.Description</p>
+                    <p><i class="fas fa-binoculars"></i> Sightseeing</p>
+                    <p><i class="fas fa-coffee"></i> Breakfast</p>
+                    <p><i class="fas fa-bed"></i> Stay Included</p>
                     <p>Country: @Model.Destination.Country</p>
                     <p>Theme: @Model.Theme.Name</p>
                     <p>Region: @Model.Destination.Region</p>
@@ -42,7 +45,7 @@
                 </div>
             </div>
             <!------------------------------------------------------------------------------------------------->
-           
+
             <div class="col-md-6">
                 <div class="itinerary-container hidden">
                     <h4>
@@ -102,19 +105,16 @@
                 <form action="/Cart/BuyProduct" method="post">
                     <input type="hidden" name="tourPackageId" value="@Model.Id" />
 
-                   <input type="date" name="startDate" />
-                    <input type="date" name="endDate" />
-
                     <label for="quantity">Quantity:</label>
-                    <input type="number" name="quantity" id="quantity" value="1" min="1" />                  
+                    <input type="number" name="quantity" id="quantity" value="1" min="1" />
 
                     <button type="submit">Add to Cart</button>
                 </form>
             </div>
-        </div>        
-            
         </div>
+
     </div>
+</div>
 
 
 @section ExtraScript {

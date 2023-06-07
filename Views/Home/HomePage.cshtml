@@ -30,12 +30,12 @@
                 <label for="destinations"></label>
                 @{
                     List<Destination> destinations = new TripMeOn.BL.ProductService().GetDestinations();
-                    destinations.Insert(0, new Destination { Id = 0, Country = "destination" });
-                    SelectList selectList = new SelectList(destinations, "Id", "Country");
+                    destinations.Insert(0, new Destination { Id = 0, Country = "All Destinations" });
+                    SelectList selectList = new SelectList(destinations, "Country", "Country");
                 }
-                @Html.DropDownList("destination", selectList)
-
-                <label for="themes"></label>
+                @Html.DropDownList("country", selectList)                
+              
+                <label for="themes">Themes</label>                 
                 @{
                     List<Theme> themes = new TripMeOn.BL.ProductService().GetThemes();
                     themes.Insert(0, new Theme { Id = 0, Name = "theme" });
@@ -49,14 +49,16 @@
                     monthList.Insert(0, new SelectListItem { Value = "0", Text = "period" });
                 }
                 @Html.DropDownList("month", monthList)
-                <button type="submit" class="btn btn-primary">search</button>
 
+                <button type="submit" class="btn btn-primary">Search</button>
             </form>
         </div>
-        <div id="search-container-shadow"></div>
-
-
     </div>
+    @* @{
+    SelectList countryList = ViewData["CountryList"] as SelectList;
+    }
+    <!-- Render the dropdown list -->
+    @Html.DropDownList("Country", countryList, "Select Country")*@
 
     <div class="diapo">
         <div id="picLeft">

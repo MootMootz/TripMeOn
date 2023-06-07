@@ -32,7 +32,6 @@
     padding-top : 40px;
     padding-bottom: 40px;
     font-size:2em;
-
 }
 
 #menu {
@@ -107,16 +106,59 @@ li:hover {
 }
 
 
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+.content {
+    flex: 1;
+}
+
+.footer {
+    background-color: #f0f0f0;
+    padding: 20px;
+    text-align: center;
+    position: sticky;
+    bottom: 0;
+}
+
+.footer-buttons {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.footer-button {
+    padding: 10px 20px;
+    margin: 0 10px;
+    text-decoration: none;
+    color: #000;
+    background-color: #f0f0f0;
+    border: none;
+    border-radius: 5px;
+}
+
+    .footer-button:hover {
+        background-color: #000;
+        color: #fff;
+    }
+
 .social-icons {
+    display: flex;
+    justify-content: center;
     font-size: 35px;
 }
 
     .social-icons a {
         color: #000000;
-        margin-right: 10px
+        margin-right: 10px;
     }
 #right {
     margin-left: 100px;
     padding: 50px;
-
 }
+

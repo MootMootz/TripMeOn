@@ -27,9 +27,15 @@
 
   <ItemGroup>
 
+    <Folder Include="wwwroot\css\NewFolder\" />
+
     <Folder Include="wwwroot\images\logos-rs\" />
 
     <Folder Include="wwwroot\images\accomodation\" />
+
+    <Folder Include="wwwroot\images\NewFolder1\" />
+
+    <Folder Include="wwwroot\images\NewFolder\" />
     <Folder Include="wwwroot\images\p11\" />
 
   </ItemGroup>

@@ -20,7 +20,7 @@
                 // on affiche le message Bonjour suivi de la valeur de Cookie nickname
             }
             <button type="button">@Html.ActionLink("Home", "IndexPartner", "Login")</button>
-           
+
             <button type="submit">@Html.ActionLink("Logout", "Deconnection", "Login")</button>
         </nav>
     </div>
@@ -28,7 +28,7 @@
     <div id="main">
         <div id="menu">
             <p><b>Add a service</b></p>
-        
+
             @Html.ActionLink("Create accomodation", "CreateAccomodation","Partner")
             <br />
             @Html.ActionLink("Create restaurant", "CreateRestaurant","Partner")
@@ -36,9 +36,9 @@
             @Html.ActionLink("Create transportation", "CreateTransportation","Partner")
             <br />
             <br />
-            
+
             <p><b>Manage my services</b></p>
-    
+
             @Html.ActionLink("List of accomodations", "ListeAccomodation", "Partner")
             <br />
             @Html.ActionLink("List of restaurants", "ListeRestaurant", "Partner")

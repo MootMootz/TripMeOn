@@ -53,7 +53,7 @@
             <li class="parent">
                 <a href="#">Themes<span class="expand"></span></a>
                 <ul class="child">
-                    @* <li><a href="#">Trekking</a></li>*@
+                    @*<li><a href="#">Trekking</a></li>*@
                     <li><a href="#">Floral</a></li>
                     <li><a href="#">Cultural</a></li>
                     <li><a href="#">Heritage</a></li>
@@ -69,7 +69,7 @@
             <!--   ----------------------ACCOMMODATIONS--------------------------------   -->
 
             <li class="parent">
-                <a href="#">Holiday Finder<span class="expand"></span></a>
+                <a href="#">Services<span class="expand"></span></a>
                 <ul class="child">
                     <li>@Html.ActionLink("Restaurants", "ShowRestaurantList", "Home")</li>
                     <li>@Html.ActionLink("Accomodations", "ShowAccomodationList", "Home")</li>
@@ -131,13 +131,7 @@
                     @*<li><a href=" /Product/PackageList">Check Products</a></li>*@
                 </ul>
             </li>
-            <li class="parent">
-                @if (!String.IsNullOrEmpty(Context.Request.Cookies["Nickname"])) // si la valeur du cookie Nickname n'est pas vide
-                {
-                    <span>Hello @Context.Request.Cookies["Nickname"]</span>
-                    // on affiche le message Bonjour suivi de la valeur de Cookie nickname
-                }
-            </li>
+
 
             <!--   ----------------------------LOG OUT----------------------------------   -->
 
@@ -147,6 +141,13 @@
             <li class="parent">
                 @Html.ActionLink("Logout", "Deconnection", "Login")
 
+            </li>
+            <li class="parent">
+                @if (!String.IsNullOrEmpty(Context.Request.Cookies["Nickname"])) // si la valeur du cookie Nickname n'est pas vide
+                {
+                    <span>Hello @Context.Request.Cookies["Nickname"]</span>
+                    // on affiche le message Bonjour suivi de la valeur de Cookie nickname
+                }
             </li>
 
         </ul>

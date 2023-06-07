@@ -1,9 +1,21 @@
-﻿body {
+﻿html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
     font-family: 'Open Sans', sans-serif;
-    background: #ecf0f1;
-    height: 100vh;
-    margin: 0;
-    padding: 0;
+    margin: 0 0 100px;
+}
+
+footer {
+    background-color: orange;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 100px;
+    width: 100%;
+    overflow: hidden;
 }
 
 #logo {
@@ -31,6 +43,8 @@
     border-radius: 25px;
     z-index: 101;
 }
+
+/* ----------------------------- NAVBAR -----------------------------*/
 
 #navbar {
     display: flex;
@@ -118,25 +132,8 @@ li:hover {
 }
 
 
-.social-icons {
-    font-size: 35px;
-}
+/* ----------------------------- CENTERED SEARCH BAR -----------------------------*/
 
-    .social-icons a {
-        color: #000000;
-        margin-right: 10px
-    }
-
-
-.trait {
-    border-top: 1px solid black;
-    width: 50%;
-    align-content: center;
-    padding-top: 25px;
-    padding-bottom: 25px;
-    margin-left: auto;
-    margin-right: auto;
-}
 
 .search-container {
     display: flex;
@@ -422,6 +419,16 @@ li:hover {
 
 /* ----------------------------- PARTNERSHIPS -----------------------------*/
 
+.trait {
+    border-top: 1px solid black;
+    width: 50%;
+    align-content: center;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .partnerships {
     display: grid;
     width: 100%;
@@ -473,3 +480,16 @@ li:hover {
 #partnerships-pic7 {
     background-image: url(/images/logos-rs/Logo_of_Twitter.svg.png);
 }
+
+
+.social-icons {
+    font-size: 35px;
+}
+
+    .social-icons a {
+        color: #000000;
+        margin-right: 10px
+    }
+
+
+

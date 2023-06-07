@@ -118,11 +118,13 @@ body {
 }
 
 .footer {
-    background-color: #f0f0f0;
-    padding: 20px;
-    text-align: center;
-    position: sticky;
+    background-color: orange;
+    position: absolute;
+    left: 0;
     bottom: 0;
+    height: 100px;
+    width: 100%;
+    overflow: hidden;
 }
 
 .footer-buttons {
@@ -156,26 +158,4 @@ body {
         color: #000000;
         margin-right: 10px;
     }
-#right {
-    margin-left: 100px;
-    padding: 50px;
-}
 
-
-.search-container {
-    display: flex;
-    height: 80px;
-    width: 40%;
-    position: absolute;
-    top: 600px;
-    margin-left: auto;
-    margin-right: auto;
-    left: 0;
-    right: 0;
-    border-radius: 50px;
-    background: rgba(255, 255, 255, 0.80);
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-    z-index: 100;
-}

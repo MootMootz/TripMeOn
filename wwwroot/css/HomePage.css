@@ -6,6 +6,16 @@
     padding: 0;
 }
 
+.trait {
+    border-top: 1px solid black;
+    width: 50%;
+    align-content: center;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .search-container {
     display: flex;
     height: 80px;
@@ -17,14 +27,14 @@
     left: 0;
     right: 0;
     border-radius: 50px;
-    background: rgba(255, 255, 255, 0.75);
+    background: rgba(255, 255, 255, 0.80);
     text-align: center;
     justify-content: center;
     align-items: center;
     z-index: 100;
 }
 
-.search-container-shadow {
+/*.search-container-shadow {
     display: flex;
     height: 80px;
     width: 40%;
@@ -35,11 +45,19 @@
     left: 0;
     right: 0;
     border-radius: 50px;
-    background: rgba(255, 255, 255, 0.75);
+    background: rgba(255, 255, 255, 0.85);
     text-align: center;
     justify-content: center;
     align-items: center;
     z-index: 100;
+}*/
+
+.search-box {
+    font-weight: bold;
+}
+
+.form {
+    width: 200px;
 }
 
 .search-box {
@@ -59,37 +77,37 @@
     }
 
 
+/* ----------------------------- DIAPO -----------------------------*/
 
 .diapo {
     display: flex;
     width: 100%;
     height: 1000px;
-    padding-top:-150px;
+    padding-top: -150px;
 }
 
     .diapo div {
         display: flex;
         background-size: cover;
         background-position: center;
-        justify-content: center;
     }
 
 #picLeft {
-    width: 49.5%;
+    width: 49.7%;
     height: 1000px;
     margin-left: 0;
     margin-right: auto;
     float: left;
-    background-image: url(/images/homepage/Inde_madhya_pradesh.jpg);
+    background-image: url(/images/homepage/AdobeStock_83902545.jpg);
 }
 
 #picRight {
-    width:49.5%;
+    width: 49.7%;
     height: 1000px;
     margin-left: auto;
     margin-right: 0;
     float: right;
-    background-image: url(/images/homepage/613109-landscape-nature-beautiful-forest-area-wild-sky-landscapes.jpg);
+    background-image: url(/images/homepage/se-rapprocher-de-la-nature-article-960x636.jpg);
 }
 
 .boxPic {
@@ -108,6 +126,8 @@
     align-items: center;
     color: white;
 }
+
+/* ----------------------------- SEARCHBOX -----------------------------*/
 
 .search {
     display: flex;
@@ -141,6 +161,99 @@
     color: white;
 }
 
+
+/* ----------------------------- INSTA FEED -----------------------------*/
+
+.insta-feed {
+    height: 500px;
+    width: auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+#insta-feed-container {
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(5, 1fr);
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.insta-feed-post {
+    height: 300px;
+    width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 5px;
+}
+
+.insta-feed span {
+    display: block;
+    color: white;
+    font-style: italic;
+    text-align: center;
+    width: 100px;
+    height: 100%;
+    margin: 0 auto;
+}
+
+.insta-feed-post div {
+    display: flex;
+    position: absolute;
+}
+
+.likes-icon {
+    padding-top: 300px;
+}
+
+.likes {
+    background: url(/images/icons/coeur.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.comments-icons {
+    background: url(/images/icons/discuter.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-left: 50px;
+}
+
+.comments {
+}
+
+#insta-feed-post-pic1 {
+    background: url(https://cdn.mos.cms.futurecdn.net/BX7vjSt8KMtcBHyisvcSPK.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#insta-feed-post-pic2 {
+    background: url(https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Male_and_female_chicken_sitting_together.jpg/640px-Male_and_female_chicken_sitting_together.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#insta-feed-post-pic3 {
+    background: url(https://upload.wikimedia.org/wikipedia/commons/d/d4/Chicken_portrait.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#insta-feed-post-pic4 {
+    background: url(https://cdn.shopify.com/s/files/1/0601/9550/4282/files/my_pet_chicken.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#insta-feed-post-pic5 {
+    background: url(https://ux2cms.imgix.net/images/roast-chicken.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+/* ----------------------------- TESTIMONY -----------------------------*/
 
 #testimony-block {
     display: grid;
@@ -184,6 +297,8 @@
     background-repeat: no-repeat;
     background-size: contain;
 }
+
+/* ----------------------------- PARTNERSHIPS -----------------------------*/
 
 .partnerships {
     display: grid;

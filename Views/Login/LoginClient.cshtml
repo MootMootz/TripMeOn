@@ -18,7 +18,9 @@
             @Model.Client.Nickname
         </h3>
 
-        @Html.ActionLink("Would you like to disconnect?", "Deconnection", "Login")
+        @Html.ActionLink("Would you like to logout?", "Deconnection", "Login")
+
+
 
         <p>
             @Html.ActionLink("Check Order Status", "OrderStatus", "Cart")
@@ -29,7 +31,9 @@
         <p>LOG IN CLIENT</p>
         <p>Please log in :</p>
 
+
         @using (Html.BeginForm("IndexClient", "Login", FormMethod.Post))
+
         {
 
             <div>

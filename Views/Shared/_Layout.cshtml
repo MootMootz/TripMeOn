@@ -15,18 +15,22 @@
     @RenderSection("ExtraCss",required:false)
 </head>
 <body>
-    <div id="logo"></div>
-    <div id="logo-shadow"></div>
+    <div id="logo">
+        <a href="/Home/HomePage"></a>
+    </div>
+    <div id="logo-shadow">
+        <a href="/Home/HomePage"></a>
+    </div>
 
     <!-- Bootstrap Navigation Bar code goes here -->
     <div id="navbar">
-@*        <div id=""></div>
-*@        <ul id="menu" style="text-align: center">
+        @*<div id=""></div>*@
+        <ul id="menu">
             <li class="parent">
                 <a href="/Home/HomePage">Home</a>
             </li>
 
-            <!--   -------------------------------------------------------------------------   -->
+            <!--   --------------------------DESTINATION--------------------------------------   -->
 
             <li class="parent">
                 <a href="#">Destinations<span class="expand"></span></a>
@@ -44,7 +48,7 @@
                 </ul>
             </li>
 
-            <!--   -------------------------------------------------------------------------   -->
+            <!--   ----------------------------THEMES------------------------------------   -->
 
             <li class="parent">
                 <a href="#">Themes<span class="expand"></span></a>
@@ -62,7 +66,7 @@
                 </ul>
             </li>
 
-            <!--   -------------------------------------------------------------------------   -->
+            <!--   ----------------------ACCOMMODATIONS--------------------------------   -->
 
             <li class="parent">
                 <a href="#">Holiday Finder<span class="expand"></span></a>
@@ -72,7 +76,8 @@
                     <li>@Html.ActionLink("Land Services", "ShowTransportationList", "Home")</li>
                 </ul>
             </li>
-            <!--   -------------------------------------------------------------------------   -->
+
+            <!--   --------------------------PERIOD-------------------------------------   -->
 
             <li class="parent">
                 <a href="#">Tour Packages</a>
@@ -101,7 +106,7 @@
             </li>*@
 
 
-            <!--   -------------------------------------------------------------------------   -->
+            <!--   ---------------------------LOG IN----------------------------------   -->
 
             <li class="parent">
                 <a href="#">Log in<span class="expand"></span></a>
@@ -120,7 +125,7 @@
                 </ul>
             </li>
 
-            <!--   -------------------------------------------------------------------------   -->
+            <!--   ---------------------------ADMIN------------------------------------   -->
 
             <li class="parent">
                 <a href="#">Admin<span class="expand"></span></a>
@@ -129,8 +134,6 @@
                     @*<li><a href=" /Product/PackageList">Check Products</a></li>*@
                 </ul>
             </li>
-
-
             <li class="parent">
                 @if (!String.IsNullOrEmpty(Context.Request.Cookies["Nickname"])) // si la valeur du cookie Nickname n'est pas vide
                 {
@@ -139,17 +142,23 @@
                 }
             </li>
 
+            <!--   ----------------------------LOG OUT----------------------------------   -->
+
             <li class="parent">
                 @Html.ActionLink("Logout", "Deconnection", "Login")
             </li>
 
         </ul>
+
     </div>
+
     <!--   -------------------------------------------------------------------------   -->
+    
+
     @RenderBody()
 
 
-
+    <!--   ----------------------------FOOTER----------------------------------   -->
 
     <footer>
         <div>

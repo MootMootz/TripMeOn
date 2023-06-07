@@ -8,3 +8,45 @@
     cursor: pointer;
     font-weight: bold;
 }
+.thumbnail {
+    width: 200px;
+    height: auto;
+}
+
+.details {
+    width: 70%;
+}
+
+.location-info {
+    display: flex;
+    align-items: center;
+}
+
+    .location-info p {
+        margin-right: 10px;
+    }
+
+.remove-button {
+    display: flex;
+    align-items: center;
+}
+
+.continue-shopping {
+    margin-right: 10px;
+}
+.adjust-dropdown {
+    width: 80px;
+}
+.d-flex {
+    display: flex;
+}
+.image img {
+    width: 50%;
+}
+.image,
+.quantity,
+.description {
+    width: 100%;
+    text-align: center;
+    margin: 6px 0;
+}

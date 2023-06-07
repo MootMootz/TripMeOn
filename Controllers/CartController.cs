@@ -19,12 +19,12 @@ namespace TripMeOn.Controllers
     public class CartController : Controller
     {
         private readonly IOrderService _orderService;
-        
+
 
         public CartController(IOrderService orderService)
         {
             _orderService = orderService;
-            
+
         }
 
         public IActionResult ViewCart()
@@ -49,19 +49,19 @@ namespace TripMeOn.Controllers
         //    return BuyProduct(tourPackageId, quantity);
         //}
 
-        
-     
+
+
         [HttpPost]
         public IActionResult BuyProduct(int tourPackageId, int quantity, DateTime startDate, DateTime endDate)
         {
             var cartId = SessionHelper.GetObjectFromJson<int>(HttpContext.Session, "cartId");
-           
+
 
             if (cartId == 0)
             {
                 cartId = _orderService.CreateCart();
 
-                _orderService.AddItem(cartId, new Item { TourPackageId = tourPackageId, Quantity = quantity, StartDate= startDate, EndDate=endDate});
+                _orderService.AddItem(cartId, new Item { TourPackageId = tourPackageId, Quantity = quantity, StartDate = startDate, EndDate = endDate });
 
 
                 if (User.Identity.IsAuthenticated)
@@ -69,7 +69,7 @@ namespace TripMeOn.Controllers
                     var clientId = int.Parse(User.Identity.Name);
                     _orderService.UpdateCartClient(cartId, clientId); // Associate the client ID with the cart
                 }
-               
+
                 SessionHelper.SetObjectAsJson(HttpContext.Session, "cartId", cartId);
             }
             else
@@ -85,7 +85,7 @@ namespace TripMeOn.Controllers
         public IActionResult BuyAccomodation(int accomodationId, int quantity)
         {
             var cartId = SessionHelper.GetObjectFromJson<int>(HttpContext.Session, "cartId");
-            
+
 
             if (cartId == 0)
             {
@@ -103,6 +103,34 @@ namespace TripMeOn.Controllers
             else
             {
                 _orderService.AddItem(cartId, new Item { AccomodationId = accomodationId, Quantity = quantity });
+            }
+
+            HttpContext.Response.Cookies.Append("CartId", cartId.ToString());
+
+            return RedirectToAction("ViewCart");
+        }
+        [HttpPost]
+        public IActionResult BuyRestaurant(int restaurantId, int quantity)
+        {
+            var cartId = SessionHelper.GetObjectFromJson<int>(HttpContext.Session, "cartId");
+
+
+            if (cartId == 0)
+            {
+                cartId = _orderService.CreateCart();
+                _orderService.AddItem(cartId, new Item { RestaurantId = restaurantId, Quantity = quantity });
+
+                if (User.Identity.IsAuthenticated)
+                {
+                    var clientId = int.Parse(User.Identity.Name);
+                    _orderService.UpdateCartClient(cartId, clientId); // Associate the client ID with the cart
+                }
+
+                SessionHelper.SetObjectAsJson(HttpContext.Session, "cartId", cartId);
+            }
+            else
+            {
+                _orderService.AddItem(cartId, new Item { RestaurantId = restaurantId, Quantity = quantity });
             }
 
             HttpContext.Response.Cookies.Append("CartId", cartId.ToString());
@@ -120,7 +148,7 @@ namespace TripMeOn.Controllers
         }
         // return item.id if product is already in item 
         // return -1 otherwise
-       
+
 
         [HttpPost]
         public IActionResult UpdateQuantity(int itemId, int quantity)
@@ -129,7 +157,7 @@ namespace TripMeOn.Controllers
 
             return RedirectToAction("ViewCart");
         }
-            
+
 
         [Authorize]
         [HttpGet]
@@ -145,12 +173,12 @@ namespace TripMeOn.Controllers
                 return NotFound();
             }
 
-            if(cart.ClientId == null)
+            if (cart.ClientId == null)
             {
                 _orderService.UpdateCartClient(cartId, clientId);
                 cart = _orderService.GetCart(cartId);
             }
-            
+
 
             var item = cart.Items.FirstOrDefault();
             var viewModel = new CheckoutViewModel

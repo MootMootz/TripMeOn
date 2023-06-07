@@ -487,7 +487,7 @@ namespace TripMeOn.Controllers
             }
 
             //string viewName = $"/Views/ServicesAccomodations/Details_{id}.cshtml";
-            return View( accomodation);
+            return View(accomodation);
         }
 
         public IActionResult DetailsRestaurants(int id)
@@ -499,8 +499,8 @@ namespace TripMeOn.Controllers
                 return NotFound();
             }
 
-            string viewName = $"/Views/ServicesRestaurants/Details_{id}.cshtml";
-            return View(viewName, restaurant);
+            //string viewName = $"/Views/ServicesRestaurants/Details_{id}.cshtml";
+            return View(restaurant);
         }
 
         public IActionResult DetailsTransportations(int id)
@@ -512,8 +512,8 @@ namespace TripMeOn.Controllers
                 return NotFound();
             }
 
-            string viewName = $"/Views/ServicesTransportations/Details_{id}.cshtml";
-            return View(viewName, transportation);
+            //string viewName = $"/Views/ServicesTransportations/Details_{id}.cshtml";
+            return View(transportation);
         }
 
 

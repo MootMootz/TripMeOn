@@ -24,28 +24,7 @@ namespace TripMeOn.Controllers
                 month == 0 ? (int?)null : month);
 
             return View("SearchBoxPackage", searchResults);
-        }
-
-        //public IActionResult SearchPackage(string country, string theme, string month)
-        //{
-        //    int themeId = 0;
-        //    int monthValue = 0;
-
-        //    // Convert theme and month parameters to integers if they are not null or empty
-        //    if (!string.IsNullOrEmpty(theme))
-        //    {
-        //        int.TryParse(theme, out themeId);
-        //    }
-
-        //    if (!string.IsNullOrEmpty(month))
-        //    {
-        //        int.TryParse(month, out monthValue);
-        //    }
-
-        //    var searchResults = _productService.SearchByDestinationThemeMonth(country, themeId, monthValue);
-
-        //    return View("SearchBoxPackage", searchResults);
-        //}
+        }     
 
 
         public ActionResult PackageListUniqueCountry()

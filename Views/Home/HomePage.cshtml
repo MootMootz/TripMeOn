@@ -7,54 +7,13 @@
 
 @{
     ViewBag.Title = "Home_Page";
-    Layout = null;
+    Layout = "~/Views/Shared/_LayoutNav.cshtml";
 }
 @section ExtraCss{
     <link rel="stylesheet" href="/css/HomePage.css">
 }
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/css/HomePage.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-</head>
-<body>
-    <div id="logo">
-        <a href="/Home/HomePage"></a>
-    </div>
-    <div id="logo-shadow">
-        <a href="/Home/HomePage"></a>
-    </div>
 
-    <!-- Bootstrap Navigation Bar code goes here -->
-    <div id="navbar">
-        @*<div id=""></div>*@
-        <ul id="menu">
-            <li class="parent">
-                <a href="/Home/HomePage">Home</a>
-            </li>
-
-            <!--   --------------------------DESTINATION--------------------------------------   -->
-
-            <li class="parent">
-                <a href="#">Destinations<span class="expand"></span></a>
-                <ul class="child">
-                    <li><a href="#">France</a></li>
-                    <li><a href="#">The UK</a></li>
-                    <li><a href="#">Netherlands</a></li>
-                    <li><a href="#">Turkey</a></li>
-                    <li><a href="#">Agentina</a></li>
-                    <li><a href="#">Blegium</a></li>
-                    <li><a href="#">Spain</a></li>
-                    @*<li><a href="#">Switzerland</a></li>
-                    <li><a href="#">Portugal</a></li>
-                    <li><a href="#">Italy</a></li>*@
-                </ul>
-            </li>
 
             <!--   ----------------------------THEMES------------------------------------   -->
 
@@ -92,11 +51,7 @@
             </form>
         </div>
     </div>
-    @* @{
-    SelectList countryList = ViewData["CountryList"] as SelectList;
-    }
-    <!-- Render the dropdown list -->
-    @Html.DropDownList("Country", countryList, "Select Country")*@
+   
 
     <div class="diapo">
         <div id="picLeft">
@@ -242,5 +197,3 @@
     <script type="text/javascript" src="~/Scripts/jquery.validate-vsdoc.js"></script>
     <script type="text/javascript" src="~/Scripts/jquery.validate.unobtrusive.js"></script>
 
-</body>
-</html>

@@ -8,8 +8,10 @@ namespace TripMeOn.BL.interfaces
     {
         List<Partner> GetAllPartners();
         List<Client> GetAllClients();
+        List<Employee> GetAllEmployees();
 
         void DeletePartner(Partner partner);
         void DeleteClient(Client client);
+        void DeleteEmployee(Employee employee);
     }
 }

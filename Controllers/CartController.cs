@@ -43,19 +43,16 @@ namespace TripMeOn.Controllers
         }
 
 
+        //public IActionResult AddToCart(int tourPackageId, int quantity)
+        //{
 
-
-
-        public IActionResult AddToCart(int tourPackageId, int quantity)
-        {
-
-            return BuyProduct(tourPackageId, quantity);
-        }
+        //    return BuyProduct(tourPackageId, quantity);
+        //}
 
         
      
         [HttpPost]
-        public IActionResult BuyProduct(int tourPackageId, int quantity)
+        public IActionResult BuyProduct(int tourPackageId, int quantity, DateTime startDate, DateTime endDate)
         {
             var cartId = SessionHelper.GetObjectFromJson<int>(HttpContext.Session, "cartId");
            
@@ -63,7 +60,7 @@ namespace TripMeOn.Controllers
             if (cartId == 0)
             {
                 cartId = _orderService.CreateCart();
-                _orderService.AddItem(cartId, new Item { TourPackageId = tourPackageId, Quantity = quantity });
+                _orderService.AddItem(cartId, new Item { TourPackageId = tourPackageId, Quantity = quantity, StartDate= startDate, EndDate=endDate});
 
                 if (User.Identity.IsAuthenticated)
                 {
@@ -75,7 +72,7 @@ namespace TripMeOn.Controllers
             }
             else
             {
-                _orderService.AddItem(cartId, new Item { TourPackageId = tourPackageId, Quantity = quantity });
+                _orderService.AddItem(cartId, new Item { TourPackageId = tourPackageId, Quantity = quantity, StartDate = startDate, EndDate = endDate });
             }
 
             HttpContext.Response.Cookies.Append("CartId", cartId.ToString());
@@ -117,6 +114,14 @@ namespace TripMeOn.Controllers
             {
                 return NotFound();
             }
+
+            if(cart.ClientId == null)
+            {
+                _orderService.UpdateCartClient(cartId, clientId);
+                cart = _orderService.GetCart(cartId);
+            }
+            
+
             var item = cart.Items.FirstOrDefault();
             var viewModel = new CheckoutViewModel
             {

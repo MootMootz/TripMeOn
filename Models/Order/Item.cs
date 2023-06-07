@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 using TripMeOn.Models.Products;
 
 namespace TripMeOn.Models.Order
@@ -12,5 +13,7 @@ namespace TripMeOn.Models.Order
         public TourPackage TourPackage { get; set; }
         public int CartId { get; set; }
         public Cart Cart { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
     }
 }

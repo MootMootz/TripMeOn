@@ -26,6 +26,7 @@
             <th>Name</th>
             <th>Type</th>
             <th>Price</th>
+            <th>Description</th>
             <th>Image</th>
         </tr>
         @foreach (var restaurant in Model.Restaurants)
@@ -34,6 +35,7 @@
                 <td>@restaurant.Name</td>
                 <td>@restaurant.Type</td>
                 <td>@restaurant.Price</td>
+                <td>@restaurant.Description</td>
                 <td><img src="@restaurant.Image?.Url" alt="@restaurant.Name" style="width:200px;height:200px;"></td>
             </tr>
         }

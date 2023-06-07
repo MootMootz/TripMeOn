@@ -18,7 +18,7 @@
                 <span> <strong>Bonjour @Context.Request.Cookies["Nickname"]</strong></span>
                 // on affiche le message Bonjour suivi de la valeur de Cookie nickname
             }
-    
+
 
             <button type="submit">@Html.ActionLink("Logout", "Deconnection", "Login")</button>
         </nav>
@@ -31,12 +31,12 @@
             <br />
             @Html.ActionLink("Refund requests", "RefundRequest", "Employee")
             <br />
-            @Html.ActionLink("Add new employee", "AddEmployeeForm")
+            @Html.ActionLink("Add new employee", "AddEmployeeForm", "Employee")
             <br />
             @Html.ActionLink("Manage TripMeOn products", "PackageList", "Product")
             <br />
             @Html.ActionLink("Notifications", "Notifications", "Employee")
-           
+
 
         </div>
 

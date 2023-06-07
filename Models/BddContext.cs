@@ -32,7 +32,7 @@ namespace TripMeOn.Models
 
 
 
-            optionsBuilder.UseMySql("server=localhost;user id=root;password=twitwiboo;database=TripMeOn");
+            optionsBuilder.UseMySql("server=localhost;user id=root;password=1530;database=TripMeOn");
 
 
 
@@ -167,7 +167,7 @@ namespace TripMeOn.Models
                 new TourPackage { Id = 8, Name = "Floating village in tulip season", DestinationId = 5, ThemeId = 2,Description="4 days tour",TimePeriodId=4,Price= 776,ImageId = 8 },
                 new TourPackage { Id = 9, Name = "Springtime Serenade in Colmer", DestinationId = 1, ThemeId = 10,Description="4 days tour",TimePeriodId=4,Price= 776,ImageId = 9 },
 
-      
+
 
                 new TourPackage { Id = 10, Name = "Sweet December Colmer", DestinationId = 1, ThemeId = 4,Description="4 days tour",TimePeriodId=12,Price= 776,ImageId = 10 },
                 new TourPackage { Id = 11, Name = "Colored mountains in Argentina", DestinationId = 8, ThemeId = 10, Description="5 days tour", TimePeriodId=5, Price= 650, ImageId= 11 },

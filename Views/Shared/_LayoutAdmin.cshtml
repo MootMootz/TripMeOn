@@ -1,53 +1,81 @@
-﻿<!DOCTYPE html>
+﻿@using TripMeOn.Models.Products;
+@using TripMeOn.Helper;
+
+<!DOCTYPE html>
 <html>
 
 <head>
     <meta name="TRIPMEONheader" content="width=device-width" />
     <title>@ViewBag.Title</title>
-    <link href="~/css/StyleP.css" rel="stylesheet" />
+    <link href="~/css/Admin.css" rel="stylesheet" />
 
     @RenderSection("ExtraCss", required: false)
 
 </head>
 <body>
-    <div id="fixNav">
-        <nav>
-            <img src="~/images/logo.png" alt="logo">
-            @if (!String.IsNullOrEmpty(Context.Request.Cookies["Nickname"])) // si la valeur du cookie Nickname n'est pas vide
-            {
-                <span> <strong>Bonjour @Context.Request.Cookies["Nickname"]</strong></span>
-                // on affiche le message Bonjour suivi de la valeur de Cookie nickname
-            }
 
-
-            <button type="submit">@Html.ActionLink("Logout", "Deconnection", "Login")</button>
-        </nav>
-    </div>
 
     <div id="main">
         <div id="menu">
+            ADMIN HOMEPAGE<br />
+            <hr size="1" width="50%" color="black">
+            <div class="tabs">
+                <span>Partners</span>
+                <span>Clients</span>>
+                <span>Packages</span>
 
-            @Html.ActionLink("Manage accounts","ManageAccounts","Employee")
-            <br />
-            @Html.ActionLink("Refund requests", "RefundRequest", "Employee")
-            <br />
-            @Html.ActionLink("Add new employee", "AddEmployeeForm", "Employee")
-            <br />
-            @Html.ActionLink("Manage TripMeOn products", "PackageList", "Product")
-            <br />
-            @Html.ActionLink("Notifications", "Notifications", "Employee")
+                @Html.ActionLink("Manage accounts","ManageAccounts","Employee")
+                <br />
+                @Html.ActionLink("Refund requests", "RefundRequest", "Employee")
+                <br />
+                @Html.ActionLink("Add new employee", "AddEmployeeForm")
+                <br />
+                @Html.ActionLink("Manage TripMeOn products", "PackageList", "Product")
+                <br />
+                @Html.ActionLink("Notifications", "Notifications", "Employee")
 
+
+                <div id="logout">
+                    <button type="submit">@Html.ActionLink("Logout", "Deconnection", "Login")</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="mainContent">
+
+            <div id="mainContentTop">
+
+                <div class=pageTitle>
+                    WELCOME
+                    @if (!String.IsNullOrEmpty(Context.Request.Cookies["Nickname"])) // si la valeur du cookie Nickname n'est pas vide
+                    {
+                        <span> <strong>Bonjour @Context.Request.Cookies["Nickname"]</strong></span>
+                        // on affiche le message Bonjour suivi de la valeur de Cookie nickname
+                    }
+                    <div id="barre">
+                    </div>
+                </div>
+
+                <div id="actionRequiredBlock">
+                    Action required<br />
+                    <div id="actionRequiredContainer">
+                        <div id="actionRequiredContent">
+                            Nothing to show here
+                        </div>
+                    </div>
+                </div>
+
+            </div>
 
         </div>
 
-        <div id="contenu">
-            @RenderBody()
+        @RenderBody()
+
+
+        <div id="footer">
+            &copy; @DateTime.Now.Year - The only travel agenCy dedicated to influencers
         </div>
-    </div>
 
-    <div id="footer">
-        &copy; @DateTime.Now.Year - The only travel agenCy dedicated to influencers
     </div>
-
 </body>
 </html>

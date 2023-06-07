@@ -27,6 +27,8 @@
 
   <ItemGroup>
 
+    <Folder Include="Views\Admin\" />
+
     <Folder Include="wwwroot\css\NewFolder\" />
 
     <Folder Include="wwwroot\images\logos-rs\" />

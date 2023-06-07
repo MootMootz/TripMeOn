@@ -67,10 +67,6 @@ namespace TripMeOn.BL
         //}
 
 
-
-
-
-
         public Cart GetCartWithClient(int cartId, int clientId)
         {
             var query = _bddContext.Carts

@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Razor.Language.Extensions;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 using TripMeOn.BL.interfaces;
@@ -98,14 +99,22 @@ namespace TripMeOn.BL
                 }
 
                 item.TourPackage = _bddContext.TourPackages.Find(item.TourPackageId);
+                item.Accomodation = _bddContext.Accomodations.Find(item.AccomodationId);
 
                 // Check if the item already exists in the cart
                 var existingItem = cart.Items.FirstOrDefault(i => i.TourPackageId == item.TourPackageId);
+                var existingItemAccomodation = cart.Items.FirstOrDefault(a => a.AccomodationId == item.AccomodationId);
 
                 if (existingItem != null)
                 {
                     // Item already exists, update the quantity
                     existingItem.Quantity += item.Quantity;
+                }
+
+                if (existingItemAccomodation != null)
+                {
+                    // Item already exists, update the quantity
+                    existingItemAccomodation.Quantity += item.Quantity;
                 }
                 else
                 {

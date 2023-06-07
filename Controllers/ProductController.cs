@@ -131,8 +131,8 @@ namespace TripMeOn.Controllers
                 return NotFound();
             }
 
-            string viewName = $"/Views/Package/Details_{id}.cshtml";
-            return View(viewName, tourPackage);
+            //string viewName = $"/Views/Package/Details_{id}.cshtml";
+            return View(tourPackage);
         }
 
         //public IActionResult Catalog()

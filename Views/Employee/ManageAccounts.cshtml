@@ -1,10 +1,11 @@
-﻿@{
+﻿
+    @{
     ViewBag.title = "IndexAdmin";
-    Layout = null;
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
+
 <nav>
-    <img src="~/images/logo.png" alt="logo">
-    <button type="button">@Html.ActionLink("Home", "IndexAdmin")</button>
+
     <br />
     @Html.ActionLink("Partner List", "ListePartner", "Employee")
     <br />
@@ -14,4 +15,4 @@
 </nav>
 
 
-<h3 class="titre">Coucou Flo ! voici la page à faire toute belle :)</h3>
+

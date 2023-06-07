@@ -1,10 +1,10 @@
 ﻿#logo {
     background-image: url(/images/logo.png);
-    height: 80px;
-    width: 80px;
+    height: 100px;
+    width: 100px;
     position: absolute;
-    top:10px;
-    left:50px;
+    top:20px;
+    left:60px;
     background-size: cover;
     background-position: center;
 /*  border : solid 1px white;*/    
@@ -13,38 +13,46 @@
 }
 #logo-shadow {
     display:flex;
-    height: 80px;
-    width: 80px;
+    height: 100px;
+    width: 100px;
     position: absolute;
-    top: 12px;
-    left: 52px;
+    top: 23px;
+    left: 63px;
     background-color: hotpink;
     border-radius: 25px;
     z-index: 101;
 }
 
-.navbar {
+#navbar {
+    display:flex;
     width: 100%;
-    height: 100px;
-    font: bold;
+    position: block;
     justify-content: center;
-    z-index: 10;
-    background-color: #3C6997 ;
+    z-index: 100;
+    padding-top : 40px;
+    padding-bottom: 40px;
+    font-size:2em;
 }
 
+#menu {
+    background: rgb(0, 0, 0, 0.15);
+}
 .parent {
     display: inline-block;
-    align-content:center;
+    vertical-align: middle;
     /*float: left;*/
     line-height: 60px;
-    /*background: rgba(255, 255, 255, 0.1);*/
-    /*border-right: #CCC 1px solid;*/
-    border-radius: 5px 5px 0px 0px;
+    text-align:center;
+    /*border: #CCC 1px solid;*/
+    /*border-radius: 5px 5px 0px 0px;*/
 }
 
     .parent a {
-        margin: 10px;
-        color: white;
+        margin: 35px;
+        color:white;
+        font-weight: bold;
+        /*text-shadow: 0.5px 0.5px black;*/
+        font-size: large;
         background-color: transparent;
         text-decoration: wavy;
     }
@@ -95,7 +103,6 @@ li:hover {
 .expand {
     font-size: 12px;
     float: right;
-    margin-right: 5px;
 }
 
 
@@ -150,4 +157,8 @@ body {
         color: #000000;
         margin-right: 10px;
     }
+#right {
+    margin-left: 100px;
+    padding: 50px;
+}
 

@@ -4,29 +4,50 @@
 <head>
     <meta name="TRIPMEONheader" content="width=device-width" />
     <title>@ViewBag.Title</title>
-    <link href="~/css/Admin.css" rel="stylesheet" />
+    <link href="~/css/StyleP.css" rel="stylesheet" />
+
     @RenderSection("ExtraCss", required: false)
+
 </head>
 <body>
-    <div id="header">
-        <h1>Header</h1>
+    <div id="fixNav">
+        <nav>
+            <img src="~/images/logo.png" alt="logo">
+            @if (!String.IsNullOrEmpty(Context.Request.Cookies["Nickname"])) // si la valeur du cookie Nickname n'est pas vide
+            {
+                <span> <strong>Bonjour @Context.Request.Cookies["Nickname"]</strong></span>
+                // on affiche le message Bonjour suivi de la valeur de Cookie nickname
+            }
+    
+
+            <button type="submit">@Html.ActionLink("Logout", "Deconnection", "Login")</button>
+        </nav>
     </div>
 
     <div id="main">
         <div id="menu">
-            @RenderSection("Menu", required: false)
+
+            @Html.ActionLink("Manage accounts","ManageAccounts","Employee")
+            <br />
+            @Html.ActionLink("Refund requests", "RefundRequest", "Employee")
+            <br />
+            @Html.ActionLink("Add new employee", "AddEmployeeForm")
+            <br />
+            @Html.ActionLink("Manage TripMeOn products", "PackageList", "Product")
+            <br />
+            @Html.ActionLink("Notifications", "Notifications", "Employee")
+           
+
         </div>
 
-        <div id="mainContent">
+        <div id="contenu">
             @RenderBody()
         </div>
     </div>
 
-@* on s'en balec du footer for now ------------------
-    
     <div id="footer">
-        &copy; @DateTime.Now.Year - Super site de tutoriels, contactez moi sur monmail@supersitetutoriels.com
+        &copy; @DateTime.Now.Year - The only travel agenCy dedicated to influencers
     </div>
-    @RenderSection("ExtraScripts", required: false)*@
+
 </body>
 </html>

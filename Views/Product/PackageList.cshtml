@@ -1,6 +1,6 @@
 ﻿@model List<TripMeOn.Models.Products.TourPackage>
 @using TripMeOn.Helper
-@{   
+@{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -42,16 +42,16 @@
                     <td>@package.Theme.Name</td>
                     <td>@package.Destination.Region</td>
                     <td>@package.Destination.City</td>
-                    <td>@package.Description</td>                  
+                    <td>@package.Description</td>
                     <td>
-                                @if (package.TimePeriod != null)
-                                {
-                                    @DateTimeHelper.GetMonthNameRange(package.TimePeriod.StartMonth, package.TimePeriod.EndMonth)
-                                }
-                    </td>              
+                        @if (package.TimePeriod != null)
+                        {
+                            @DateTimeHelper.GetMonthNameRange(package.TimePeriod.StartMonth, package.TimePeriod.EndMonth)
+                        }
+                    </td>
                     <td>@package.Price</td>
                     <td>
-                        <button type="button" onclick="location.href='/Product/ModifyPackage?packageId=@package.Id'">Modify</button>                      
+                        <button type="button" onclick="location.href='/Product/ModifyPackage?packageId=@package.Id'">Modify</button>
                     </td>
                     <td>
                         <button type="button" onclick="location.href='/Product/ShowRemovePackage?packageId=@package.Id'">Remove</button>
@@ -77,17 +77,17 @@
         <input type="number" name="price" placeholder="Price" />
         <button type="submit">Create</button>
     </form>
-    </body>
+</body>
 </html>
-    @section ExtraScript{
-        <script src="~/Scripts/jquery-3.3.1.js"></script>
-        <script>      
+@section ExtraScript{
+    <script src="~/Scripts/jquery-3.3.1.js"></script>
+    <script>
 
-            $(document).ready(function () {
-                $("#showCreateForm").click(function () {
-                    $("#createForm").toggle();
-                });
+        $(document).ready(function () {
+            $("#showCreateForm").click(function () {
+                $("#createForm").toggle();
             });
+        });
 
     </script>
     }

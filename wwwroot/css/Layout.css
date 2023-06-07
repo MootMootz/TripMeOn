@@ -115,3 +115,8 @@ li:hover {
         color: #000000;
         margin-right: 10px
     }
+#right {
+    margin-left: 100px;
+    padding: 50px;
+
+}

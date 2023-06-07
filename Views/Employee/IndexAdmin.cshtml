@@ -1,28 +1,7 @@
 ﻿@{
     ViewBag.title = "IndexAdmin";
-    Layout = null;
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
-<nav>
-    <img src="~/images/logo.png" alt="logo">
-    <button type="button">@Html.ActionLink("Home", "IndexAdmin")</button>
-
-    @if (!String.IsNullOrEmpty(Context.Request.Cookies["Nickname"])) // si la valeur du cookie Nickname n'est pas vide
-    {
-        <span>Hello @Context.Request.Cookies["Nickname"]</span>
-        // on affiche le message Bonjour suivi de la valeur de Cookie nickname
-    }
-    <button type="submit">@Html.ActionLink("Logout", "Deconnection", "Login")</button>
-    <br />
-    @Html.ActionLink("Manage accounts","ManageAccounts","Employee")
-    <br />
-    @Html.ActionLink("Refund requests", "RefundRequest", "Employee")
-    <br />
-    @Html.ActionLink("Add new employee", "AddEmployeeForm")
-    <br />
-    @Html.ActionLink("Manage TripMeOn products", "PackageList", "Product")
-    <br />
-    @Html.ActionLink("Notifications", "Notifications", "Employee")
-</nav>
 
 
-<h3 class="titre">Coucou Flo ! voici la page à faire toute belle :)</h3>
+

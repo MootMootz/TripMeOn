@@ -1,0 +1,64 @@
+﻿#entete, #menu, #contenu, #footer {
+    padding: 1px 0;
+    background-color: wheat;
+}
+
+#entete {
+    background-color: ghostwhite;
+}
+
+#main {
+    margin: auto;
+}
+
+#menu {
+    float: left;
+    width: 240px;
+    background-color: ghostwhite;
+}
+
+#contenu {
+    margin-left: 245px;
+    background-color: wheat;
+    padding: 30px;
+
+}
+
+#footer {
+    background-color: wheat;
+    text-align: center;
+    clear: both;
+    font-family: Autography;
+}
+
+.titre {
+    text-align: center;
+}
+
+.selectionne {
+    color: red;
+}
+a:link {
+    color: aliceblue;
+    text-emphasis-style: none;
+}
+
+/* visited link */
+a:visited {
+    color: darkslategrey;
+}
+
+/* mouse over link */
+a:hover {
+    color: rgb(88, 40, 107);
+}
+
+/* selected link */
+a:active {
+    color: blue;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}

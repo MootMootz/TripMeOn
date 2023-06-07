@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using TripMeOn.Models.PartnerProducts;
+using TripMeOn.Models.Products;
 
 namespace TripMeOn.BL.interfaces
 {
@@ -21,5 +22,12 @@ namespace TripMeOn.BL.interfaces
         List<Restaurant> GetRestaurantsByPartnerId(int partnerId);
         List<Transportation> GetTransportationsByPartnerId(int partnerId);
         List<Notification> GetAllNotifications();
+        List<Accomodation> SearchAccomodationByDestinationMonth(int? destinationId, int? month);
+        List<Restaurant> SearchRestaurantByDestinationMonth(int? destinationId, int? month);
+        List<Transportation> SearchTransportationByDestinationMonth(int? destinationId, int? month);
+
+        List<object> SearchByServiceTypeDestinationMonth(string serviceType, int? destinationId, int? month);
+
+
     }
 }

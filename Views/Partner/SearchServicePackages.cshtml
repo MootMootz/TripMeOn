@@ -1,0 +1,91 @@
+﻿@model TripMeOn.ViewModels.PropositionServiceModel
+@using TripMeOn.Helper
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section ExtraCss{
+    <link rel="stylesheet" href="/css/SearchBox.css">
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width" />
+</head>
+<body>
+    <h2 class="search-results-heading">Search Results</h2>
+
+    @if (Model.Accomodations != null && Model.Accomodations.Count > 0)
+    {
+        foreach (var accomodation in Model.Accomodations)
+        {
+            <div class="flex-box" style="background-image: url('@accomodation.Image?.Url')">
+                <div class="text-box">
+                    <h3>@accomodation.Name</h3>
+                    <div class="package-info">
+                        <p>Destination: @accomodation.Destination?.Country</p>
+                        <p>Type: @accomodation.Type</p>
+                    </div>
+                    <p>
+                        Available from: @accomodation.StartDate.ToString("MMMM")<br />
+                        to: @accomodation.EndDate.ToString("MMMM")
+                    </p>
+                    <p>Price: @accomodation.Price.ToString("0.##")&euro;</p>
+                    <form action="@Url.Action("DetailsAccomodations", "Partner", new { id = accomodation.Id })" method="get">
+                        <button type="submit" class="btn btn-primary">View Details</button>
+                    </form>
+                </div>
+            </div>
+
+        }
+    }
+    else if (Model.Restaurants != null && Model.Restaurants.Count > 0)
+    {
+        foreach (var restaurant in Model.Restaurants)
+        {
+            <div class="flex-box" style="background-image: url('@restaurant.Image?.Url')">
+                <div class="text-box">
+                    <h3>@restaurant.Name</h3>
+                    <div class="package-info">
+                        <p>Destination: @restaurant.Destination?.Country</p>
+                        <p>Type: @restaurant.Type</p>
+                    </div>
+                    <p>
+                        Available from: @restaurant.StartDate.ToString("MMMM")<br />
+                        to: @restaurant.EndDate.ToString("MMMM")
+                    </p>
+                    <p>Price: @restaurant.Price.ToString("0.##")&euro;</p>
+                    <form action="@Url.Action("DetailsRestaurants", "Partner", new { id = restaurant.Id })" method="get">
+                        <button type="submit" class="btn btn-primary">View Details</button>
+                    </form>
+                </div>
+            </div>
+        }
+    }
+    else if (Model.Transportations != null && Model.Transportations.Count > 0)
+    {
+        foreach (var transportation in Model.Transportations)
+        {
+            <div class="flex-box" style="background-image: url('@transportation.Image?.Url')">
+                <div class="text-box">
+                    <h3>@transportation.Type</h3>
+                    <div class="package-info">
+                        <p>Destination: @transportation.Destination?.Country</p>
+                        <p>Type: @transportation.Type</p>
+                    </div>
+                    <p>
+                        Available from: @transportation.StartDate.ToString("MMMM")<br />
+                        to: @transportation.EndDate.ToString("MMMM")
+                    </p>
+                    <p>Price: @transportation.Price.ToString("0.##")&euro;</p>
+                    <form action="@Url.Action("DetailsTransportations", "Partner", new { id = transportation.Id })" method="get">
+                        <button type="submit" class="btn btn-primary">View Details</button>
+                    </form>
+                </div>
+            </div>
+        }
+    }
+</body>
+</html>

@@ -35,7 +35,7 @@
             </tr>
 
             <tr>
-                <td>@Html.LabelFor(m => Model.Partner)</td>
+                <td class="grey">@Html.LabelFor(m => Model.Partner)</td>
                 <td class="essai">@Html.DropDownListFor(m => m.PartnerId, (List<SelectListItem>)ViewBag.PartnerList, "Select a partner")</td>
                 <td>@Html.ValidationMessageFor(m => Model.PartnerId)</td>
             </tr>
@@ -57,15 +57,13 @@
                 <td>@Html.TextBoxFor(m => Model.EndDate, "{0:dd/MM/yyyy}", new { type = "date", @class = "date" })</td>
                 <td>@Html.ValidationMessageFor(m => Model.EndDate)</td>
             </tr>
-
             <tr>
-                <td><label for="file1">Photo :</label></td>
+                <td><label for="file1">Image :</label></td>
                 <td>
-                    <input type="file" name="file[]" id="file1">
-                    <input type="file" name="file[]" id="file2">
-                    <input type="file" name="file[]" id="file3">
+                    <input type="file" name="file" id="file1">
                 </td>
             </tr>
+
 
             <tr>
                 <td><label for="description">Description :</label></td>
@@ -89,19 +87,14 @@
 <script type="text/javascript" src="~/Scripts/jquery.validate-vsdoc.js"></script>
 <script type="text/javascript" src="~/Scripts/jquery.validate.unobtrusive.js"></script>
 
-@section Menu{
 
-
-
-    <p>Add a service</p>
-    <button type="submit">@Html.ActionLink("Create accomodation", "CreateAccomodation","Partner")</button>
-    <button type="submit">@Html.ActionLink("Create restaurant", "CreateRestaurant","Partner")</button>
-    <button type="submit">@Html.ActionLink("Create transportation", "CreateTransportation","Partner")</button>
-}
 
 <style>
     .essai {
         pointer-events: none;
-        background-color: gray;
+
+    }
+    .grey {
+        color: grey;
     }
 </style>

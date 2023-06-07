@@ -30,7 +30,10 @@ namespace TripMeOn.Models
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
 
-            optionsBuilder.UseMySql("server=localhost;user id=root;password=rrrrr;database=TripMeOn");
+
+
+            optionsBuilder.UseMySql("server=localhost;user id=root;password=twitwiboo;database=TripMeOn");
+
 
         }
 
@@ -118,7 +121,6 @@ namespace TripMeOn.Models
                 new Image { Id = 8,Url="/images/cover/pk8.jpg"},
                 new Image { Id = 9,Url="/images/cover/pk9.jpg"},
                 new Image { Id = 10,Url="/images/cover/pk10.jpg"},
-
                 new Image { Id = 11, Url="/images/cover/p11.jpg"},
                 new Image { Id = 12, Url="/images/cover/pk12.jpg"},
                 new Image { Id = 13, Url="/images/accomodation/htlSalta.jpg"},
@@ -145,29 +147,21 @@ namespace TripMeOn.Models
                 new Image { Id = 34, Url= "/images/p13/turkey1.jpg"},
                 new Image { Id = 35, Url= "/images/p13/turkey2.jpg"},
                 new Image { Id = 36, Url= "/images/p13/turkey3.jpg"}
-
-
-
-
             };
 
             var tourPackages = new List<TourPackage>            {
 
                 new TourPackage { Id = 1, Name = "Magnolia and early Cherry in Paris", DestinationId = 1, ThemeId = 2,Description="4 days tour",TimePeriodId=3, Price = 986,ImageId=1 },
-                new TourPackage { Id = 2, Name = "Lavender Fields of Provence", DestinationId = 1, ThemeId = 2,Description="4 days tour",TimePeriodId=7, Price = 1180,ImageId=2 },
+                new TourPackage { Id = 2, Name = "Lavender Fields of Provence", DestinationId = 2, ThemeId = 2,Description="4 days tour",TimePeriodId=7, Price = 1180,ImageId=2 },
                 new TourPackage { Id = 3, Name = "Confetti Field of Pershore ", DestinationId = 3, ThemeId = 2,Description="4 days tour",TimePeriodId=6, Price = 1180,ImageId=3 },
                 new TourPackage { Id = 4, Name = "Colmer in Autumn", DestinationId = 1, ThemeId = 10,Description="4 days tour",TimePeriodId=11,Price= 776,ImageId = 4 },
                 new TourPackage { Id = 5, Name = "Wisteria and Sakura in Paris", DestinationId = 1, ThemeId = 2,Description="4 days tour",TimePeriodId=4,Price= 776,ImageId = 5},
                 new TourPackage { Id = 6, Name = "May Bloomings in Paris", DestinationId = 1, ThemeId = 2,Description="4 days tour",TimePeriodId=5,Price= 776,ImageId = 6 },
                 new TourPackage { Id = 7, Name = "Medieval Splendors in Belgium", DestinationId = 10, ThemeId = 3,Description="4 days tour",TimePeriodId=1,Price= 776,ImageId = 7 },
                 new TourPackage { Id = 8, Name = "Floating village in tulip season", DestinationId = 5, ThemeId = 2,Description="4 days tour",TimePeriodId=4,Price= 776,ImageId = 8 },
-                new TourPackage { Id = 9, Name = "Springtime Serenade in Colmer", DestinationId = 1, ThemeId = 10,Description="4 days tour",TimePeriodId=4,Price= 776,ImageId = 9 },
-
-      
-
                 new TourPackage { Id = 10, Name = "Sweet December Colmer", DestinationId = 1, ThemeId = 4,Description="4 days tour",TimePeriodId=12,Price= 776,ImageId = 10 },
                 new TourPackage { Id = 11, Name = "Colored mountains in Argentina", DestinationId = 8, ThemeId = 10, Description="5 days tour", TimePeriodId=5, Price= 650, ImageId= 11 },
-                new TourPackage { Id = 12, Name = "Wildlife at the End of the World", DestinationId = 8, ThemeId = 7, Description= "5 days tour", TimePeriodId=2, Price=880, ImageId= 12},
+                new TourPackage { Id = 12, Name = "Wildlife at the End of the World", DestinationId = 9, ThemeId = 7, Description= "5 days tour", TimePeriodId=2, Price=880, ImageId= 12},
                 new TourPackage { Id = 13, Name = "Flying away in Turkey", DestinationId = 7, ThemeId = 7, Description= "4 days tour", TimePeriodId=10, Price=760, ImageId= 33}
             };
 
@@ -198,8 +192,8 @@ namespace TripMeOn.Models
                 new Transportation {  Id = 1, Type = "car", Price = 40, StartDate = new DateTime(2023, 03, 01), EndDate = new DateTime(2023, 10, 31), PartnerId = 2, DestinationId = 8, ImageId= 28, Description = "Pick up and drop off at the airport of Salta, north of Argentina" },
                 new Transportation {  Id = 2, Type = "car", Price = 50, StartDate = new DateTime(2023, 09, 01), EndDate = new DateTime(2024, 05, 31), PartnerId = 2, DestinationId = 8, ImageId= 29, Description = "Pick up and drop off at the airport of Ushuaia, south of Argentina" },
                 new Transportation {  Id = 5, Type = "car", Price = 30, StartDate = new DateTime(2023, 09, 01), EndDate = new DateTime(2024, 05, 31), PartnerId = 2, DestinationId = 8, ImageId= 32, Description = "Pick up and drop off at the airport of Ushuaia, south of Argentina" },
-                new Transportation {  Id = 3, Type = "bike", Price = 20, StartDate = new DateTime(2023, 01, 01), EndDate = new DateTime(2023, 12, 31), PartnerId = 2, DestinationId = 1, ImageId= 31, Description = "Rent a bike for as many days as you need to in Paris" },
-                new Transportation {  Id = 4, Type = "bike", Price = 30, StartDate = new DateTime(2023, 01, 01), EndDate = new DateTime(2023, 12, 31), PartnerId = 2, DestinationId = 1, ImageId= 30, Description = "Rent an electric bike in Paris" }
+                new Transportation {  Id = 3, Type = "bike", Price = 20, StartDate = new DateTime(2023, 01, 01), EndDate = new DateTime(2023, 12, 31), PartnerId = 1, DestinationId = 1, ImageId= 31, Description = "Rent a bike for as many days as you need to in Paris" },
+                new Transportation {  Id = 4, Type = "bike", Price = 30, StartDate = new DateTime(2023, 01, 01), EndDate = new DateTime(2023, 12, 31), PartnerId = 1, DestinationId = 1, ImageId= 30, Description = "Rent an electric bike in Paris" }
 
             };
 

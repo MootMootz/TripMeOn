@@ -17,10 +17,12 @@ namespace TripMeOn.Controllers
     {
 
         private Models.BddContext _bddContext;
+        private IPropositionService _propositionService;
 
-        public PartnerController()
+        public PartnerController(IPropositionService propositionService)
         {
             _bddContext = new Models.BddContext();
+            _propositionService = propositionService;
         }
 
         public IActionResult ServicesPartner()
@@ -429,7 +431,6 @@ namespace TripMeOn.Controllers
                 return RedirectToAction("ListeRestaurant");
             }
         }
-
         public IActionResult DeleteAccomodation(int id)
         {
             using (IPropositionService propositionService = new PropositionService())
@@ -439,7 +440,6 @@ namespace TripMeOn.Controllers
                 return RedirectToAction("ListeAccomodation");
             }
         }
-
         public IActionResult DeleteTransportation(int id)
         {
             using (IPropositionService propositionService = new PropositionService())
@@ -449,6 +449,74 @@ namespace TripMeOn.Controllers
                 return RedirectToAction("ListeTransportation");
             }
         }
+
+        public IActionResult SearchPackage(string serviceType, int destination, int month)
+        {
+            var searchResults = _propositionService.SearchByServiceTypeDestinationMonth(
+                serviceType,
+                destination == 0 ? (int?)null : destination,
+                month == 0 ? (int?)null : month);
+
+            var viewModel = new PropositionServiceModel();
+
+            switch (serviceType)
+            {
+                case "Accomodation":
+                    viewModel.Accomodations = searchResults.Cast<Accomodation>().ToList();
+                    break;
+                case "Restaurant":
+                    viewModel.Restaurants = searchResults.Cast<Restaurant>().ToList();
+                    break;
+                case "Transport":
+                    viewModel.Transportations = searchResults.Cast<Transportation>().ToList();
+                    break;
+                default:
+                    break;
+            }
+
+            return View("SearchServicePackages", viewModel);
+        }
+
+        public IActionResult DetailsAccomodations(int id)
+        {
+            var accomodation = _propositionService.GetAllAccomodations().FirstOrDefault(a => a.Id == id);
+
+            if (accomodation == null)
+            {
+                return NotFound();
+            }
+
+            string viewName = $"/Views/ServicesAccomodations/Details_{id}.cshtml";
+            return View(viewName, accomodation);
+        }
+
+        public IActionResult DetailsRestaurants(int id)
+        {
+            var restaurant = _propositionService.GetAllRestaurants().FirstOrDefault(a => a.Id == id);
+
+            if (restaurant == null)
+            {
+                return NotFound();
+            }
+
+            string viewName = $"/Views/ServicesRestaurants/Details_{id}.cshtml";
+            return View(viewName, restaurant);
+        }
+
+        public IActionResult DetailsTransportations(int id)
+        {
+            var transportation = _propositionService.GetAllTransportations().FirstOrDefault(a => a.Id == id);
+
+            if (transportation == null)
+            {
+                return NotFound();
+            }
+
+            string viewName = $"/Views/ServicesTransportations/Details_{id}.cshtml";
+            return View(viewName, transportation);
+        }
+
+
 
     }
 }

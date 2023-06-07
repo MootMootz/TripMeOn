@@ -1,4 +1,9 @@
 ﻿@model TripMeOn.ViewModels.ManageAccountModel
+
+@{
+    ViewBag.title = "listeClient";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
 <!DOCTYPE html>
 
 <html>
@@ -46,6 +51,6 @@
     </style>
     <br />
     <br />
-    @Html.ActionLink("Home", "IndexAdmin", "Employee")
+    @Html.ActionLink("Back", "ManageAccounts", "Employee")
 </body>
 </html>

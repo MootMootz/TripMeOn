@@ -1,0 +1,26 @@
+﻿@model TripMeOn.Models.PartnerProducts.Restaurant
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section ExtraCss{
+    <link rel="stylesheet" href="/css/PDetails.css">
+}
+
+<div class="flex-container">
+    <div class="floating-box">
+        <div class="background-photo" style="background-image: url('@Model.Image?.Url')"></div>
+        <div class="overlay">
+            <h2>@Model.Name</h2>
+            <p>@Model.Description</p>
+            <p>Destination: @Model.Destination?.Country</p>
+            <p>Type: @Model.Type</p>
+            <p>Price: @Model.Price.ToString("0.##")&euro;</p>
+            <form action="/Cart/AddToCart" method="post">
+                <input type="hidden" name="restaurantId" value="@Model.Id" />
+                <button type="submit">Add to Cart</button>
+            </form>
+        </div>
+    </div>
+</div>

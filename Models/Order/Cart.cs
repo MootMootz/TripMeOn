@@ -13,8 +13,7 @@ namespace TripMeOn.Models.Order
         public int? ClientId { get; set; }
         public virtual Client Client { get; set; }
         public bool IsRefunded { get; set; } // Add this property to represent refund status
-        public DateTime StartDate { get; set; }
-        public DateTime EndDate { get; set; }
+        
 
     }
 }

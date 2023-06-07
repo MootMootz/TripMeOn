@@ -6,6 +6,7 @@ using System.Linq;
 using TripMeOn.BL.interfaces;
 using TripMeOn.Models;
 using TripMeOn.Models.PartnerProducts;
+using TripMeOn.Models.Products;
 
 namespace TripMeOn.BL
 {
@@ -116,5 +117,102 @@ namespace TripMeOn.BL
             _bddContext.Transportations.Remove(transportation);
             _bddContext.SaveChanges();
         }
+
+        public List<Accomodation> SearchAccomodationByDestinationMonth(int? destinationId, int? month)
+        {
+            using var dbContext = new BddContext();
+
+            var query = dbContext.Accomodations.Include(a => a.Image)
+                                               .Include(a => a.Destination)
+                                               .AsQueryable();
+
+            if (destinationId.HasValue)
+            {
+                query = query.Where(a => a.DestinationId == destinationId.Value);
+            }
+
+            if (month.HasValue)
+            {
+                query = query.Where(a => a.StartDate.Month <= month.Value && a.EndDate.Month >= month.Value);
+            }
+
+            return query.ToList();
+        }
+
+        public List<Restaurant> SearchRestaurantByDestinationMonth(int? destinationId, int? month)
+        {
+            using var dbContext = new BddContext();
+
+            var query = dbContext.Restaurants.Include(r => r.Image)
+                                             .Include(r => r.Destination)
+                                             .AsQueryable();
+
+            if (destinationId.HasValue)
+            {
+                query = query.Where(r => r.DestinationId == destinationId.Value);
+            }
+
+            if (month.HasValue)
+            {
+                query = query.Where(r => r.StartDate.Month <= month.Value && r.EndDate.Month >= month.Value);
+            }
+
+            return query.ToList();
+        }
+
+        public List<Transportation> SearchTransportationByDestinationMonth(int? destinationId, int? month)
+        {
+            using var dbContext = new BddContext();
+
+            var query = dbContext.Transportations.Include(t => t.Image)
+                                                 .Include(t => t.Destination)
+                                                 .AsQueryable();
+
+            if (destinationId.HasValue)
+            {
+                query = query.Where(t => t.DestinationId == destinationId.Value);
+            }
+
+            if (month.HasValue)
+            {
+                query = query.Where(t => t.StartDate.Month <= month.Value && t.EndDate.Month >= month.Value);
+            }
+
+            return query.ToList();
+        }
+
+        public List<Destination> GetServicesDestinations()
+        {
+            List<Destination> destinations = new List<Destination>();
+            //Debugged : Group the destinations from the same country and display the first one only to aviod duplicate entries
+            using (var _bddContext = new Models.BddContext())
+            {
+                destinations = _bddContext.Destinations.ToList();// original code to retrieve all destinations in-memory LINQ-to-Objects       
+
+            }
+            // the query will be performed on the client side instead of being translated to SQL:InvalidOperationException
+            destinations = destinations.GroupBy(d => d.Country) // groups the destinations by country
+                              .Select(group => group.First())  //selects the first destination from each group
+                              .ToList();
+            return destinations;
+        }
+
+
+
+        public List<object> SearchByServiceTypeDestinationMonth(string serviceType, int? destinationId, int? month)
+        {
+            switch (serviceType)
+            {
+                case "Accomodation":
+                    return SearchAccomodationByDestinationMonth(destinationId, month).Cast<object>().ToList();
+                case "Restaurant":
+                    return SearchRestaurantByDestinationMonth(destinationId, month).Cast<object>().ToList();
+                case "Transport":
+                    return SearchTransportationByDestinationMonth(destinationId, month).Cast<object>().ToList();
+                default:
+                    return new List<object>();
+            }
+        }
+
     }
 }

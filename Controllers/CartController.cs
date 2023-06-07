@@ -138,6 +138,35 @@ namespace TripMeOn.Controllers
             return RedirectToAction("ViewCart");
         }
 
+        [HttpPost]
+        public IActionResult BuyTransport(int transportId, int quantity)
+        {
+            var cartId = SessionHelper.GetObjectFromJson<int>(HttpContext.Session, "cartId");
+
+
+            if (cartId == 0)
+            {
+                cartId = _orderService.CreateCart();
+                _orderService.AddItem(cartId, new Item { TransportId = transportId, Quantity = quantity });
+
+                if (User.Identity.IsAuthenticated)
+                {
+                    var clientId = int.Parse(User.Identity.Name);
+                    _orderService.UpdateCartClient(cartId, clientId); // Associate the client ID with the cart
+                }
+
+                SessionHelper.SetObjectAsJson(HttpContext.Session, "cartId", cartId);
+            }
+            else
+            {
+                _orderService.AddItem(cartId, new Item { TransportId = transportId, Quantity = quantity });
+            }
+
+            HttpContext.Response.Cookies.Append("CartId", cartId.ToString());
+
+            return RedirectToAction("ViewCart");
+        }
+
 
         public IActionResult RemoveProduct(int id)
         {

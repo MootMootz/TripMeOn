@@ -1,0 +1,56 @@
+﻿@model TripMeOn.ViewModels.ManageAccountModel
+
+@{
+    ViewBag.title = "ListeEmployee";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Liste Employee</title>
+</head>
+<body>
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div>@TempData["SuccessMessage"].ToString()</div>
+    }
+    <table border="1">
+        <tr>
+            <th>FirstName</th>
+            <th>LastName</th>
+            <th>Nickname</th>
+            <th>Email</th>
+            <th>Password</th>
+            <th>Adress</th>
+            <th>PhoneNumber</th>
+            <th>Role</th>
+        </tr>
+        @foreach (var employee in Model.Employees)
+        {
+            <tr>
+                <td>@employee.FirstName</td>
+                <td>@employee.LastName</td>
+                <td>@employee.Nickname</td>
+                <td>@employee.Email</td>
+                <td>@employee.Password</td>
+                <td>@employee.Address</td>
+                <td>@employee.PhoneNumber</td>
+                <td>@employee.Role</td>
+                <td>@Html.ActionLink("Edit","ModifyEmployee", "Employee", new { id = employee.Id })</td>
+                <td>@Html.ActionLink("Delete", "DeleteEmployee", "Employee", new { id = employee.Id })</td>
+            </tr>
+        }
+    </table>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+    </style>
+    <br />
+    <br />
+    @Html.ActionLink("Back", "ManageAccounts", "Employee")
+</body>
+</html>

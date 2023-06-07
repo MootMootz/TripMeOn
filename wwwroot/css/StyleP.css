@@ -38,7 +38,27 @@
 .selectionne {
     color: red;
 }
-a.{
+a:link {
+    color: aliceblue;
+    text-emphasis-style: none;
+}
+
+/* visited link */
+a:visited {
+    color: darkslategrey;
+}
+
+/* mouse over link */
+a:hover {
+    color: rgb(88, 40, 107);
+}
+
+/* selected link */
+a:active {
+    color: blue;
+}
+
+a {
     text-decoration: none;
-    color: midnightblue;
+    color: black;
 }

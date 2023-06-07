@@ -35,26 +35,6 @@ namespace TripMeOn.BL
             return destinations;
         }
 
-        //public List<Destination> GetDestinations()
-        //{
-        //    List<Destination> destinations = new List<Destination>();
-
-        //    using (var _bddContext = new Models.BddContext())
-        //    {
-        //        destinations = _bddContext.Destinations
-        //            .GroupBy(d => new { d.Country, d.City, d.Region })
-        //            .Select(group => new Destination
-        //            {
-        //                Country = group.Key.Country,
-        //                City = group.Key.City,
-        //                Region = group.Key.Region
-        //            })
-        //            .Distinct()
-        //            .ToList();
-        //    }
-
-        //    return destinations;
-        //}
 
         public List<string> GetDistinctCountries()
         {
@@ -135,7 +115,7 @@ namespace TripMeOn.BL
 											  .Include(tp => tp.Image)
 											  .AsQueryable();
 
-			if ( country != "All Destinations")
+			if ( country != "All Destinations" && country!=null)
 			{
 				query = query.Where(tp => tp.Destination.Country == country);
 			}

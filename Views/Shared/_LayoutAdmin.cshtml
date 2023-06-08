@@ -7,12 +7,37 @@
 <head>
     <meta name="TRIPMEONheader" content="width=device-width" />
     <title>@ViewBag.Title</title>
-    <link href="~/css/Admin.css" rel="stylesheet" />
-
-    @RenderSection("ExtraCss", required: false)
+    <link href="~/css/StyleP.css" rel="stylesheet" />
 
 </head>
 <body>
+    <div id="fixNav">
+        <nav>
+            <div class=pageTitle>
+                v>
+                <img src="~/images/logo.png" alt="logo">
+                WELCOME
+                @if (!String.IsNullOrEmpty(Context.Request.Cookies["Nickname"])) // si la valeur du cookie Nickname n'est pas vide
+                {
+                    <span> <strong>Bonjour @Context.Request.Cookies["Nickname"]</strong></span>
+                    // on affiche le message Bonjour suivi de la valeur de Cookie nickname
+                }
+                <button type="button">@Html.ActionLink("Manage accounts","ManageAccounts","Employee")</button>
+
+                <button type="submit">@Html.ActionLink("Logout", "Deconnection", "Login")</button>
+                
+            </div>
+            
+            @*<div id="actionRequiredBlock">
+                Action required<br />
+                <div id="actionRequiredContainer">
+                    <div id="actionRequiredContent">
+                        Nothing to show here
+                    </div>
+            </div>*@
+            
+        </nav>
+    </div>
     <div id="main">
         <div id="menu">
             ADMIN HOMEPAGE<br />
@@ -35,30 +60,9 @@
                 </div>
             </div>
         </div>
-        <div id="mainContent">
-            <div id="mainContentTop">
-                <div class=pageTitle>
-                    WELCOME
-                    @if (!String.IsNullOrEmpty(Context.Request.Cookies["Nickname"])) // si la valeur du cookie Nickname n'est pas vide
-                    {
-                        <span> <strong>Bonjour @Context.Request.Cookies["Nickname"]</strong></span>
-                        // on affiche le message Bonjour suivi de la valeur de Cookie nickname
-                    }
-                    <div id="barre">
-                    </div>
-                </div>
-                <div id="actionRequiredBlock">
-                    Action required<br />
-                    <div id="actionRequiredContainer">
-                        <div id="actionRequiredContent">
-                            Nothing to show here
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-      
-        @RenderBody()
+        
+        <div id="contenu">
+            @RenderBody()
 
       <footer>
 
@@ -84,5 +88,6 @@
         @RenderSection("ExtraScript",required:false)
 
     </div>
+        @RenderSection("ExtraScripts", required: false)
 </body>
 </html>

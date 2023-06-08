@@ -19,6 +19,13 @@ namespace TripMeOn.BL
         }
 
         // CLIENT _ AUTHENTIFICATION
+
+        /// <summary>
+        /// Méthodes d'authentification des utilisateurs, pour qu'ils puissent accéder chacun à leur plateforme
+        /// </summary>
+        /// <param name="nickname">utilisation d'un pseudo pour faire le login</param>
+        /// <param name="password">mot de passe caché dans le front, et encripté dans la bdd</param>
+        /// <returns>l'utilisateur est rédigé à sa plateforme</returns>
         public Client AuthentifyC(string nickname, string password)
         {
             string motDePasse = EncodeMD5(password);
@@ -39,12 +46,6 @@ namespace TripMeOn.BL
                 return this.GetClient(id);
             }
             return null;
-        }
-        private Client GetClientByName(string firstName, string lastName)
-        {
-            // Logic to retrieve a client by first name and last name
-            // Replace the following line with your actual logic
-            return _bddContext.Clients.FirstOrDefault(c => c.FirstName == firstName && c.LastName == lastName);
         }
 
 

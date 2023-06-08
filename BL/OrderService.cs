@@ -8,6 +8,9 @@ using TripMeOn.Models.Order;
 
 namespace TripMeOn.BL
 {
+    /// <summary>
+    /// La BL OrderService permet de créér un pannier pour chaque utilisateur
+    /// </summary>
     public class OrderService : IOrderService
     {
         private readonly Models.BddContext _bddContext;
@@ -15,7 +18,15 @@ namespace TripMeOn.BL
         public OrderService()
         {
             _bddContext = new Models.BddContext();
-        }
+
+		    }
+        /// <summary>
+        /// Méthode de création d'un pannier
+        /// </summary>
+        /// <returns></returns>
+
+        
+
 
         public int CreateCart()
         {
@@ -24,6 +35,12 @@ namespace TripMeOn.BL
             _bddContext.SaveChanges();
             return cart.Id;
         }
+        /// <summary>
+        /// Méthode pour récuperer le pannier déjà créé avec les artlicles à l'intérieur
+        /// </summary>
+        /// <param name="cartId"></param>
+        /// <param name="clientId"></param>
+        /// <returns></returns>
         public Cart GetCart(int cartId, int? clientId = null)
         {
             var query = _bddContext.Carts.Include(c => c.Client)
@@ -39,39 +56,7 @@ namespace TripMeOn.BL
             return query.FirstOrDefault();
         }
 
-        //public Cart GetCart(int cartId, int? clientId = null)
-        //{
-        //    var query = _bddContext.Carts
-        //        .Include(c => c.Client)
-        //        .Include(c => c.Items)
-        //            .ThenInclude(it => it.TourPackage)
-        //                .ThenInclude(tp => tp.Destination)
-        //                    .ThenInclude(d => d.Country)
-        //        .Include(c => c.Items)
-        //            .ThenInclude(it => it.TourPackage)
-        //                .ThenInclude(tp => tp.Destination)
-        //                    .ThenInclude(d => d.Region)
-        //        .Include(c => c.Items)
-        //            .ThenInclude(it => it.TourPackage)
-        //                .ThenInclude(tp => tp.Destination)
-        //                    .ThenInclude(d => d.City)
-        //        .Include(c => c.Items)
-        //            .ThenInclude(it => it.TourPackage)
-        //                .ThenInclude(tp => tp.Image)
-        //        .Where(c => c.Id == cartId);
-        //    if (clientId.HasValue)
-        //    {
-        //        query = query.Where(cl => cl.ClientId == clientId.Value);
-        //    }
-        //    return query.FirstOrDefault();
-        //}
-
-
-
-
-
-
-        public Cart GetCartWithClient(int cartId, int clientId)
+         public Cart GetCartWithClient(int cartId, int clientId)
         {
             var query = _bddContext.Carts
                 .Include(c => c.Items)
@@ -80,7 +65,11 @@ namespace TripMeOn.BL
 
             return query.FirstOrDefault();
         }
-
+        /// <summary>
+        /// Méthode pour modifier le pannier, ou mettre à jour
+        /// </summary>
+        /// <param name="cartId"></param>
+        /// <param name="clientId"></param>
         public void UpdateCartClient(int cartId, int clientId)
         {
             var cart = _bddContext.Carts.FirstOrDefault(c => c.Id == cartId);
@@ -91,7 +80,11 @@ namespace TripMeOn.BL
             }
         }
 
-
+        /// <summary>
+        /// Méthode pour rajouter un article
+        /// </summary>
+        /// <param name="cartId"></param>
+        /// <param name="item"></param>
         public void AddItem(int cartId, Item item)
         {
             Cart cart = _bddContext.Carts.Include(c => c.Items).FirstOrDefault(c => c.Id == cartId);
@@ -105,28 +98,43 @@ namespace TripMeOn.BL
 
                 item.TourPackage = _bddContext.TourPackages.Find(item.TourPackageId);
                 item.Accomodation = _bddContext.Accomodations.Find(item.AccomodationId);
+                item.Restaurant = _bddContext.Restaurants.Find(item.RestaurantId);
+                item.Transportation = _bddContext.Transportations.Find(item.TransportId);
 
-                // Check if the item already exists in the cart
+                // Regarde si l'article existe déjà
                 var existingItem = cart.Items.FirstOrDefault(i => i.TourPackageId == item.TourPackageId);
                 var existingItemAccomodation = cart.Items.FirstOrDefault(a => a.AccomodationId == item.AccomodationId);
+                var existingItemRestaurant = cart.Items.FirstOrDefault(r => r.RestaurantId == item.RestaurantId);
+                var existingItemTransport = cart.Items.FirstOrDefault(t => t.TransportId == item.TransportId);
 
                 if (existingItem != null)
                 {
-                    // Item already exists, update the quantity
+                    // l'article existe, donc on met à jour la quantité
                     existingItem.Quantity += item.Quantity;
                 }
 
                 if (existingItemAccomodation != null)
                 {
-                    // Item already exists, update the quantity
+                    
                     existingItemAccomodation.Quantity += item.Quantity;
+                }
+
+                if (existingItemRestaurant != null)
+                {
+
+                    existingItemRestaurant.Quantity += item.Quantity;
+                }
+                if (existingItemTransport != null)
+                {
+
+                    existingItemTransport.Quantity += item.Quantity;
                 }
                 else
                 {
-                    // Item does not exist, add it to the cart
+                    // s'il n'existe pas, on le rajoute au pannier
                     cart.Items.Add(item);
                 }
-
+                //on sauvegarde dans notre base de données
                 _bddContext.SaveChanges();
             }
         }
@@ -140,7 +148,7 @@ namespace TripMeOn.BL
                 _bddContext.SaveChanges();
             }
         }
-
+        //méthode pour enlever un article du pannier
         public void RemoveItem(int cartId, int itemId)
         {
             Cart cart = GetCart(cartId);

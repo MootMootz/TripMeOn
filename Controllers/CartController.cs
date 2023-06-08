@@ -26,7 +26,10 @@ namespace TripMeOn.Controllers
             _orderService = orderService;
 
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public IActionResult ViewCart()
         {
             var cartId = SessionHelper.GetObjectFromJson<int>(HttpContext.Session, "cartId");
@@ -49,7 +52,14 @@ namespace TripMeOn.Controllers
         //    return BuyProduct(tourPackageId, quantity);
         //}
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="tourPackageId"></param>
+        /// <param name="quantity"></param>
+        /// <param name="startDate"></param>
+        /// <param name="endDate"></param>
+        /// <returns></returns>
 
         [HttpPost]
         public IActionResult BuyProduct(int tourPackageId, int quantity, DateTime startDate, DateTime endDate)

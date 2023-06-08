@@ -56,7 +56,37 @@ namespace TripMeOn.BL
             return query.FirstOrDefault();
         }
 
+
+        //public Cart GetCart(int cartId, int? clientId = null)
+        //{
+        //    var query = _bddContext.Carts
+        //        .Include(c => c.Client)
+        //        .Include(c => c.Items)
+        //            .ThenInclude(it => it.TourPackage)
+        //                .ThenInclude(tp => tp.Destination)
+        //                    .ThenInclude(d => d.Country)
+        //        .Include(c => c.Items)
+        //            .ThenInclude(it => it.TourPackage)
+        //                .ThenInclude(tp => tp.Destination)
+        //                    .ThenInclude(d => d.Region)
+        //        .Include(c => c.Items)
+        //            .ThenInclude(it => it.TourPackage)
+        //                .ThenInclude(tp => tp.Destination)
+        //                    .ThenInclude(d => d.City)
+        //        .Include(c => c.Items)
+        //            .ThenInclude(it => it.TourPackage)
+        //                .ThenInclude(tp => tp.Image)
+        //        .Where(c => c.Id == cartId);
+        //    if (clientId.HasValue)
+        //    {
+        //        query = query.Where(cl => cl.ClientId == clientId.Value);
+        //    }
+        //    return query.FirstOrDefault();
+        //}
+
+
          public Cart GetCartWithClient(int cartId, int clientId)
+
         {
             var query = _bddContext.Carts
                 .Include(c => c.Items)

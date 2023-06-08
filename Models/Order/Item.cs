@@ -7,6 +7,9 @@ using TripMeOn.Models.Products;
 
 namespace TripMeOn.Models.Order
 {
+    /// <summary>
+    /// Class qui sert à instancier des articles dans le pannier de clients
+    /// </summary>
     public class Item
     {
         [Key] 

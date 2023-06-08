@@ -39,7 +39,7 @@
                         <td>@item.TourPackage.Id</td>
                         <td>
                             <div class="d-flex">
-                                @*  <img src="@item.TourPackage.Image?.Url" style="width: 20%;">*@
+                                <img src="@item.TourPackage.Image?.Url" style="width: 20%;">
                                 <div class="details">
                                     <p>@item.TourPackage.Name</p>
                                 </div>
@@ -53,12 +53,14 @@
                             <form method="post" action="/Cart/UpdateQuantity">
                                 <input type="hidden" name="itemId" value="@item.Id" />
                                 <select name="quantity" class="adjust-dropdown">
-                                     @for (int i = 1; i <= 20; i++)
-                            {
-                            <option value="@i" @(
-                            i == item.Quantity ? "selected" : ""
-                            )>@i</option>
-                            }
+
+                                    @for (int i = 1; i <= 20; i++)
+                                    {
+                                        <option value="@i" @(
+                                 i == item.Quantity ? "selected" : ""
+                                 )>@i</option>
+                                    }
+
                                 </select>
                                 <button type="submit">Adjust</button>
                             </form>
@@ -76,14 +78,14 @@
                     </tr>
 
 
-                    <tr>
-                        <td align="right" colspan="7">Sum</td>
-                        <td colspan="2">
-                            @(
-                                Model.Items.Sum(item => item.TourPackage.Price * item.Quantity)
-                                )
-                        </td>
-                    </tr>
+                    @*                    <tr>
+            <td align="right" colspan="7">Sum</td>
+            <td colspan="2">
+            @(
+            Model.Items.Sum(item => item.TourPackage.Price * item.Quantity)
+            )
+            </td>
+            </tr>*@
                 }
                 else if (item.Accomodation != null)
                 {
@@ -107,12 +109,12 @@
                             <form method="post" action="/Cart/UpdateQuantity">
                                 <input type="hidden" name="itemId" value="@item.Id" />
                                 <select name="quantity" class="adjust-dropdown">
-                                    @* @for (int i = 1; i <= 20; i++)
-                            {
-                            <option value="@i" @(
-                            i == item.Quantity ? "selected" : ""
-                            )>@i</option>
-                            }*@
+                                    @for (int i = 1; i <= 20; i++)
+                                    {
+                                        <option value="@i" @(
+                                 i == item.Quantity ? "selected" : ""
+                                 )>@i</option>
+                                    }
                                 </select>
                                 <button type="submit">Adjust</button>
                             </form>
@@ -129,12 +131,12 @@
                         </td>
 
                     </tr>
-                    <tr>
-                        <td align="right" colspan="7">Sum</td>
-                        <td colspan="2">
-                            @(Model.Items.Sum(item => item.Accomodation.Price * item.Quantity))
-                        </td>
-                    </tr>
+                    @*                    <tr>
+            <td align="right" colspan="7">Sum</td>
+            <td colspan="2">
+            @(Model.Items.Sum(item => item.Accomodation.Price * item.Quantity))
+            </td>
+            </tr>*@
                 }
                 else if (item.Restaurant != null)
                 {
@@ -158,12 +160,12 @@
                             <form method="post" action="/Cart/UpdateQuantity">
                                 <input type="hidden" name="itemId" value="@item.Id" />
                                 <select name="quantity" class="adjust-dropdown">
-                                    @*  @for (int i = 1; i <= 20; i++)
-                            {
-                            <option value="@i" @(
-                            i == item.Quantity ? "selected" : ""
-                            )>@i</option>
-                            }*@
+                                    @for (int i = 1; i <= 20; i++)
+                                    {
+                                        <option value="@i" @(
+                                 i == item.Quantity ? "selected" : ""
+                                 )>@i</option>
+                                    }
                                 </select>
                                 <button type="submit">Adjust</button>
                             </form>
@@ -180,12 +182,12 @@
                         </td>
 
                     </tr>
-                    <tr>
-                        <td align="right" colspan="7">Sum</td>
-                        <td colspan="2">
-                            @(Model.Items.Sum(item => item.Restaurant.Price * item.Quantity))
-                        </td>
-                    </tr>
+                    @*                    <tr>
+            <td align="right" colspan="7">Sum</td>
+            <td colspan="2">
+            @(Model.Items.Sum(item => item.Restaurant.Price * item.Quantity))
+            </td>
+            </tr>*@
                 }
                 else if (item.Transportation != null)
                 {
@@ -209,12 +211,12 @@
                             <form method="post" action="/Cart/UpdateQuantity">
                                 <input type="hidden" name="itemId" value="@item.Id" />
                                 <select name="quantity" class="adjust-dropdown">
-                                    @*  @for (int i = 1; i <= 20; i++)
-                            {
-                            <option value="@i" @(
-                            i == item.Quantity ? "selected" : ""
-                            )>@i</option>
-                            }*@
+                                    @for (int i = 1; i <= 20; i++)
+                                    {
+                                        <option value="@i" @(
+                                 i == item.Quantity ? "selected" : ""
+                                 )>@i</option>
+                                    }
                                 </select>
                                 <button type="submit">Adjust</button>
                             </form>
@@ -231,14 +233,25 @@
                         </td>
 
                     </tr>
-                    <tr>
-                        <td align="right" colspan="7">Sum</td>
-                        <td colspan="2">
-                            @(Model.Items.Sum(item => item.Transportation.Price * item.Quantity))
-                        </td>
-                    </tr>
+                    @*                    <tr>
+            <td align="right" colspan="7">Sum</td>
+            <td colspan="2">
+            @(Model.Items.Sum(item => item.Transportation.Price * item.Quantity))
+            </td>
+            </tr>*@
                 }
+
+                <tr>
+                    <td align="right" colspan="7">Sum</td>
+                    <td colspan="2">
+                        @(Model.Items.Where(item => item.TourPackage != null).Sum(item => item.TourPackage.Price * item.Quantity)
+                            + Model.Items.Where(item => item.Accomodation != null).Sum(item => item.Accomodation.Price * item.Quantity)
+                            + Model.Items.Where(item => item.Restaurant != null).Sum(item => item.Restaurant.Price * item.Quantity)
+                            + Model.Items.Where(item => item.Transportation != null).Sum(item => item.Transportation.Price * item.Quantity))
+                    </td>
+                </tr>
             }
+
 
         </tbody>
     </table>

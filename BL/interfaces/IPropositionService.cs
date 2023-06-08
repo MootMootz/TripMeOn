@@ -5,6 +5,9 @@ using TripMeOn.Models.Products;
 
 namespace TripMeOn.BL.interfaces
 {
+    /// <summary>
+    /// Comme l'interface ProductService gère les paquets, cette interface récupère les services individuels et ses fonctions pour pouvoir les utiliser dans l'IHM
+    /// </summary>
     public interface IPropositionService : IDisposable
     {
 

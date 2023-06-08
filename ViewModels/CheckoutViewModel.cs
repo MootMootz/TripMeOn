@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using TripMeOn.Models.Order;
+using TripMeOn.Models.PartnerProducts;
 using TripMeOn.Models.Users;
 
 namespace TripMeOn.ViewModels
@@ -14,7 +15,10 @@ namespace TripMeOn.ViewModels
         public string ClientName { get; set; }
         public virtual Client Client { get; set; }
         public bool IsRefunded { get; set; } // Add this property to represent refund status
-        public int TourPackageId { get; set; }
+        public int? TourPackageId { get; set; }
+        public int? AccomodationId { get; set; }
+        public int? TransportId { get; set; }
+        public int? RestaurantId { get; set; }
         public int Quantity { get; set; }
     }
 }

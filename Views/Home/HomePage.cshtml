@@ -7,11 +7,12 @@
 
 @{
     ViewBag.Title = "Home_Page";
-    Layout = null;
+    Layout = "~/Views/Shared/_LayoutNav.cshtml";
 }
 @section ExtraCss{
     <link rel="stylesheet" href="/css/HomePage.css">
 }
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -32,7 +33,6 @@
 
     <!-- Bootstrap Navigation Bar code goes here -->
     <div id="navbar">
-        @*<div id=""></div>*@
         <ul id="menu">
             <li class="parent">
                 <a href="/Home/HomePage">Home</a>
@@ -92,11 +92,7 @@
             </form>
         </div>
     </div>
-    @* @{
-    SelectList countryList = ViewData["CountryList"] as SelectList;
-    }
-    <!-- Render the dropdown list -->
-    @Html.DropDownList("Country", countryList, "Select Country")*@
+   
 
     <div class="diapo">
         <div id="picLeft">
@@ -226,14 +222,18 @@
     <!--   ----------------------------FOOTER----------------------------------   -->
 
     <footer>
-        <div>
-            <div class="social-icons">
-                <a href="https://twitter.com"><i class="fab fa-twitter"></i></a>
-                <a href="https://facebook.com"><i class="fab fa-facebook"></i></a>
-                <a href="https://instagram.com"><i class="fab fa-instagram"></i></a>
-                <a href="https://www.tiktok.com"><i class="fab fa-tiktok"></i></a>
-                <a href="https://youtube.com"><i class="fab fa-youtube"></i></a>
-            </div>
+        <div class="footer-buttons">
+            <div><a href="/Content/InstaTips">Insta-tips</a></div>
+            <div><a href="/Content/AboutUs">About Us</a></div>
+            <div><a href="#">Become a Partner</a></div>
+        </div>
+
+        <div class="social-icons">
+            <div><a href="https://twitter.com"><i class="fab fa-twitter"></i></a></div>
+            <div><a href="https://facebook.com"><i class="fab fa-facebook"></i></a></div>
+            <div><a href="https://instagram.com"><i class="fab fa-instagram"></i></a></div>
+            <div><a href="https://www.tiktok.com"><i class="fab fa-tiktok"></i></a></div>
+            <div><a href="https://youtube.com"><i class="fab fa-youtube"></i></a></div>
         </div>
     </footer>
 
@@ -242,5 +242,3 @@
     <script type="text/javascript" src="~/Scripts/jquery.validate-vsdoc.js"></script>
     <script type="text/javascript" src="~/Scripts/jquery.validate.unobtrusive.js"></script>
 
-</body>
-</html>

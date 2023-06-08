@@ -3,25 +3,23 @@
     ViewBag.Title = "LoginClient";
     Layout = "~/Views/Shared/_LayoutContent.cshtml";
 }
-@section ExtraCss{
-    <link rel="stylesheet" href="/css/HomePage.css">
 
-}<div class="login">
+
+<div class="login">
 
 
     @if (Model.AuthentifyE)
     {
 
-
         <h3>
-            You are already log in :
+            You are already log in : commit -
             @Model.Employee.Nickname
         </h3>
         @Html.ActionLink("Would you like to disconnect?", "Deconnection", "Login")
     }
     else
     {
-        <p>LOG IN ADMIN</p>
+        <p class="Title">LOG IN ADMIN</p>
         <p>Please log in :</p>
         using (Html.BeginForm("IndexAdmin", "Login", FormMethod.Post))
         {
@@ -38,7 +36,8 @@
             </div>
             <input type="submit" value="Log in" />
             <br />
-
         }
+
+        <div id="forgot-pwd-container"><span id="forgot-pwd">Forgot password ?</span></div>
     }
 </div>

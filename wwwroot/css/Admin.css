@@ -3,16 +3,6 @@
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-#header {
-    background-color: lightcoral;
-    text-align: center;
-    background-size: 100px;
-}
-
-#main {
-    margin: auto;
-}
-
 #menu {
     float: left;
     width: 176px;
@@ -27,9 +17,6 @@
     font-weight: bold;
 }
 
-#mainContent {
-    background-color: white;
-}
 
 #mainContentTop {
     text-align: left;
@@ -40,7 +27,6 @@
 }
 
 #actionRequiredBlock {
-    position: absolute;
     display: flex;
     width: 70%;
 }
@@ -95,12 +81,6 @@
     padding: 30px;
 }
 
-#footer {
-    background-color: wheat;
-    text-align: center;
-    clear: both;
-    font-family: Autography;
-}
 
 .titre {
     text-align: center;
@@ -134,3 +114,4 @@ a {
     text-decoration: none;
     color: black;
 }
+

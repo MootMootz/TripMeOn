@@ -4,6 +4,9 @@ using TripMeOn.Models.Users;
 
 namespace TripMeOn.BL.interfaces
 {
+	/// <summary>
+	/// Interface utilisé principalement pour la méthode d'authentification des utilisateurs
+	/// </summary>
     public interface IUserService:IDisposable
     {
 	

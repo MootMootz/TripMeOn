@@ -1,4 +1,19 @@
-﻿#logo {
+﻿html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    display: flex;
+    margin: 0 0 100px;
+    padding: 50px;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+}
+
+
+#logo {
     background-image: url(/images/logo.png);
     height: 100px;
     width: 100px;
@@ -11,6 +26,7 @@
     border-radius:25px;
     z-index:102;
 }
+
 #logo-shadow {
     display:flex;
     height: 100px;
@@ -23,8 +39,10 @@
     z-index: 101;
 }
 
+/* ----------------------------- NAVBAR -----------------------------*/
+
 #navbar {
-    display:flex;
+    display:block;
     width: 100%;
     justify-content: center;
     z-index: 100;
@@ -105,57 +123,59 @@ li:hover {
 }
 
 
-body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    margin: 0;
-    padding: 0;
-}
-
 .content {
     flex: 1;
 }
 
-.footer {
+footer {
     background-color: orange;
     position: absolute;
     left: 0;
     bottom: 0;
-    height: 100px;
+    height: 80px;
     width: 100%;
-    overflow: hidden;
+    overflow: hidden
 }
+
+    footer a {
+        text-decoration: none;
+        color: black;
+        text-align: center;
+        width: 100%;
+    }
 
 .footer-buttons {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
+    display: inline-flex;
+    width: 70%;
+    height: 100%;
+    align-items: center;
 }
 
-.footer-button {
-    padding: 10px 20px;
-    margin: 0 10px;
-    text-decoration: none;
-    color: #000;
-    background-color: #f0f0f0;
-    border: none;
-    border-radius: 5px;
-}
-
-    .footer-button:hover {
-        background-color: #000;
-        color: #fff;
+    .footer-buttons div {
+        display: flex;
+        width: 100%;
+        height: 50px;
+        /*background-color: black;*/
+        margin-left: 10%;
+        margin-right: 10%;
+        align-items: center;
     }
 
 .social-icons {
-    display: flex;
-    justify-content: center;
-    font-size: 35px;
+    display: inline-flex;
+    width: 25%;
+    height: 80px;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
 }
+
+    .social-icons div {
+        display: flex;
+        width: 100%;
+    }
 
     .social-icons a {
         color: #000000;
-        margin-right: 10px;
+        font-size: 25px;
     }
-

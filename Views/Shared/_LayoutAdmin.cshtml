@@ -21,7 +21,6 @@
             <div class="tabs">
                 <span>Partners</span>
                 <span>Clients</span>>
-                <span>Packages</span>
 
                 @Html.ActionLink("Manage accounts","ManageAccounts","Employee")
                 <br />
@@ -29,7 +28,7 @@
                 <br />
                 @Html.ActionLink("Add new employee", "AddEmployeeForm")
                 <br />
-                @Html.ActionLink("Manage TripMeOn products", "PackageList", "Product")
+                @Html.ActionLink("Packages", "PackageList", "Product")
                 <br />
                 @Html.ActionLink("Notifications", "Notifications", "Employee")
 
@@ -70,9 +69,28 @@
         @RenderBody()
 
 
-        <div id="footer">
-            &copy; @DateTime.Now.Year - The only travel agenCy dedicated to influencers
-        </div>
+        <footer>
+
+            <div class="footer-buttons">
+                <a href="/Content/InstaTips" class="footer-button">#Insta-tips</a>
+                <a href="/Content/AboutUs" class="footer-button">About Us</a>
+                <a href="#" class="footer-button">Become a Partner</a>
+            </div>
+            <!-- Social icons -->
+            <div class="social-icons">
+                <a href="https://twitter.com"><i class="fab fa-twitter"></i></a>
+                <a href="https://facebook.com"><i class="fab fa-facebook"></i></a>
+                <a href="https://instagram.com"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.tiktok.com"><i class="fab fa-tiktok"></i></a>
+                <a href="https://youtube.com"><i class="fab fa-youtube"></i></a>
+            </div>
+        </footer>
+
+        <script src="bootstrap.js"></script>
+        <script type="text/javascript" src="~/Scripts/jquery-3.3.1.js"></script>
+        <script type="text/javascript" src="~/Scripts/jquery.validate-vsdoc.js"></script>
+        <script type="text/javascript" src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+        @RenderSection("ExtraScript",required:false)
 
     </div>
 </body>

@@ -146,39 +146,6 @@
 
         </div>
 
-        <!--   -------------------------------------------------------------------------   -->
-
-
-        <div class="search-container">
-            <div class="search-box">
-                <form action="/Partner/SearchPackage" method="get">
-                    <label for="services">Services</label>
-                    @{
-                        List<string> services = new List<string> { "Choose a service", "Accomodation", "Restaurant", "Transport" };
-                        SelectList serviceList = new SelectList(services);
-                    }
-                    @Html.DropDownList("serviceType", serviceList)
-
-                    <label for="destinations">Destinations</label>
-                    @{
-                        List<Destination> destination = new TripMeOn.BL.PropositionService().GetServicesDestinations();
-                        destination.Insert(0, new Destination { Id = 0, Country = "All Destinations" });
-                        SelectList selectListe = new SelectList(destination, "Id", "Country");
-                    }
-                    @Html.DropDownList("destination", selectListe)
-
-                    <label for="months">Months</label>
-                    @{
-                        List<SelectListItem> monthListe = DateTimeHelper.GetMonths();
-                        monthListe.Insert(0, new SelectListItem { Value = "0", Text = "All Months" });
-                    }
-                    @Html.DropDownList("month", monthListe)
-                    <button type="submit" class="btn btn-primary">Search</button>
-                </form>
-            </div>
-        </div>
-
-
         @RenderBody()
 
 

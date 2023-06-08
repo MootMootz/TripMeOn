@@ -17,7 +17,7 @@ namespace TripMeOn.ViewModels
         public bool IsRefunded { get; set; } // Add this property to represent refund status
         public int? TourPackageId { get; set; }
         public int? AccomodationId { get; set; }
-        public int? TransportId { get; set; }
+        public int? TransportationId { get; set; }
         public int? RestaurantId { get; set; }
         public int Quantity { get; set; }
     }

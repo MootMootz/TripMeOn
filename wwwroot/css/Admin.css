@@ -17,7 +17,6 @@
     font-weight: bold;
 }
 
-
 #mainContentTop {
     text-align: left;
     margin-left: auto;
@@ -65,7 +64,6 @@
     color: red;
 }
 
-
 #entete, #menu, #contenu, #footer {
     padding: 1px 0;
     background-color: wheat;
@@ -94,17 +92,14 @@ a:link {
     color: aliceblue;
     text-emphasis-style: none;
 }
-
 /* visited link */
 a:visited {
     color: darkslategrey;
 }
-
 /* mouse over link */
 a:hover {
     color: rgb(88, 40, 107);
 }
-
 /* selected link */
 a:active {
     color: blue;

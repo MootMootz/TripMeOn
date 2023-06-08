@@ -17,17 +17,17 @@ body {
     height: 100px;
     width: 100px;
     position: absolute;
-    top:20px;
-    left:60px;
+    top: 20px;
+    left: 60px;
     background-size: cover;
     background-position: center;
-/*  border : solid 1px white;*/    
-    border-radius:25px;
-    z-index:102;
+    /*  border : solid 1px white;*/
+    border-radius: 25px;
+    z-index: 102;
 }
 
 #logo-shadow {
-    display:flex;
+    display: flex;
     height: 100px;
     width: 100px;
     position: absolute;
@@ -37,8 +37,9 @@ body {
     border-radius: 25px;
     z-index: 101;
 }
-
 /* ----------------------------- NAVBAR -----------------------------*/
+
+
 
 #navbar {
     display: flex;
@@ -48,26 +49,28 @@ body {
     padding-top: 40px;
     padding-bottom: 40px;
     font-size: 2em;
-    margin-left: auto; 
-    margin-right:auto;
+    margin-left: auto;
+    margin-right: auto;
+
 }
 
 #menu {
     background: rgb(0, 0, 0, 0.15);
 }
+
 .parent {
     display: inline-block;
     vertical-align: middle;
     /*float: left;*/
     line-height: 60px;
-    text-align:center;
+    text-align: center;
     /*border: #CCC 1px solid;*/
     /*border-radius: 5px 5px 0px 0px;*/
 }
 
     .parent a {
         margin: 35px;
-        color:white;
+        color: white;
         font-weight: bold;
         /*text-shadow: 0.5px 0.5px black;*/
         font-size: large;
@@ -123,12 +126,12 @@ li:hover {
     float: right;
 }
 
-
 .content {
     flex: 1;
 }
 
 /* ----------------------------- SEARCH BAR -----------------------------*/
+
 
 .search-container {
     width: auto;
@@ -137,7 +140,6 @@ li:hover {
     padding-top: 40px;
     padding-bottom: 40px;
 }
-
 
 /* ----------------------------- FOOTER -----------------------------*/
 

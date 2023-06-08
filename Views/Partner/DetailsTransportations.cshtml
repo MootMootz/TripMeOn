@@ -1,7 +1,7 @@
-﻿@model TripMeOn.Models.PartnerProducts.Accomodation
+﻿@model TripMeOn.Models.PartnerProducts.Transportation
 
 @{
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_LayoutContent.cshtml";
 }
 
 @section ExtraCss{
@@ -18,7 +18,7 @@
             <p>Price: @Model.Price.ToString("0.##")&euro;</p>
             <form action="/Cart/BuyTransport" method="post">
                 <label for="quantity">Quantity:</label>
-                <input type="hidden" name="transporationId" value="@Model.Id" />
+                <input type="hidden" name="transportationId" value="@Model.Id" />
                 <input type="number" name="quantity" id="quantity" value="1" min="1" />
                 <button type="submit">Add to Cart</button>
             </form>
@@ -28,8 +28,8 @@
 
 @section ExtraScript{
     <script>
-        function addToCart(accomodationId) {
-            alert('Accomodation added to cart: ' + accomodationId);
+        function addToCart(transportationId) {
+            alert('Accomodation added to cart: ' + transportationId);
         }
     </script>
 }

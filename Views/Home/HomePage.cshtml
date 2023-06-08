@@ -38,16 +38,13 @@
             <li class="parent">
                 <a href="#">Destinations<span class="expand"></span></a>
                 <ul class="child">
-                    <li><a href="#">France</a></li>
-                    <li><a href="#">The UK</a></li>
-                    <li><a href="#">Netherlands</a></li>
-                    <li><a href="#">Turkey</a></li>
-                    <li><a href="#">Agentina</a></li>
-                    <li><a href="#">Blegium</a></li>
-                    <li><a href="#">Spain</a></li>
-                    @*<li><a href="#">Switzerland</a></li>
-                    <li><a href="#">Portugal</a></li>
-                    <li><a href="#">Italy</a></li>*@
+                    <li>@Html.ActionLink("France", "SearchPackage", "Product", new { country = "France" })</li>
+                    <li>@Html.ActionLink("The UK", "SearchPackage", "Product", new { country = "The UK" })</li>
+                    <li>@Html.ActionLink("Netherlands", "SearchPackage", "Product", new { country = "Netherlands" })</li>
+                    <li>@Html.ActionLink("Turkey", "SearchPackage", "Product", new { country = "Turkey" })</li>
+                    <li>@Html.ActionLink("Argentina", "SearchPackage", "Product", new { country = "Argentina" })</li>
+                    <li>@Html.ActionLink("Belgium", "SearchPackage", "Product", new { country = "Belgium" })</li>
+                    <li>@Html.ActionLink("Spain", "SearchPackage", "Product", new { country = "Spain" })</li>
                 </ul>
             </li>
 
@@ -56,16 +53,14 @@
             <li class="parent">
                 <a href="#">Themes<span class="expand"></span></a>
                 <ul class="child">
-                    @*<li><a href="#">Trekking</a></li>*@
-                    <li><a href="#">Floral</a></li>
-                    <li><a href="#">Cultural</a></li>
-                    <li><a href="#">Heritage</a></li>
-                    <li><a href="#">Snap and relax</a></li>
-                    <li><a href="#">InstaSpots</a></li>
-                    <li><a href="#">Xtreme Adventure</a></li>
-                    @*<li><a href="#">Beach</a></li>
-                    <li><a href="#">Culinary</a></li>*@
-                    <li><a href="#">Colors</a></li>
+                    <li>@Html.ActionLink("Trekking", "SearchPackage", "Product", new { theme = 1 }, null)</li>
+                    <li>@Html.ActionLink("Floral", "SearchPackage", "Product", new { theme = 2 }, null)</li>
+                    <li>@Html.ActionLink("Cultural", "SearchPackage", "Product", new { theme=3 })</li>
+                    <li>@Html.ActionLink("Heritage", "SearchPackage", "Product", new { theme=4 })</li>
+                    <li>@Html.ActionLink("Snap and relax", "SearchPackage", "Product", new { theme=5 })</li>
+                    <li>@Html.ActionLink("InstaSpots", "SearchPackage", "Product", new {theme=6 })</li>
+                    <li>@Html.ActionLink("Xtreme Adventure", "SearchPackage", "Product", new { theme=7 })</li>
+                    <li>@Html.ActionLink("Colors", "SearchPackage", "Product", new { theme=10 })</li>
                 </ul>
             </li>
 

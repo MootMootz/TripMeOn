@@ -3,7 +3,9 @@
     ViewBag.Title = "LoginClient";
     Layout = "~/Views/Shared/_LayoutContent.cshtml";
 }
-
+@section ExtraCss{
+    <link rel="stylesheet" href="/css/login.css">
+}
 
 <div class="login">
 
@@ -19,7 +21,7 @@
     }
     else
     {
-        <p class="Title">LOG IN ADMIN</p>
+        <p class="Title">LOG IN FOR ADMIN</p>
         <p>Please log in :</p>
         using (Html.BeginForm("IndexAdmin", "Login", FormMethod.Post))
         {

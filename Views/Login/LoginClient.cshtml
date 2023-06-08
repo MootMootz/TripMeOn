@@ -3,7 +3,9 @@
     ViewBag.Title = "LoginClient";
     Layout = "~/Views/Shared/_LayoutContent.cshtml";
 }
-
+@section ExtraCss{
+    <link rel="stylesheet" href="/css/login.css">
+}
 <div class="login">
 
 
@@ -25,7 +27,7 @@
     }
     else
     {
-        <p class="Title">LOG IN CLIENT</p>
+        <p class="Title">LOG IN FOR CLIENT</p>
         <p>Please log in :</p>
 
 

@@ -304,6 +304,7 @@
 
 
                                         @section ExtraScript {
+                                            <script src="/Scripts/JavaScript.js"></script>
                                             <script>
                                                 $(document).ready(function () {
                                                     $('.toggle-day-icon').on('click', function () {
@@ -316,7 +317,10 @@
                                                         });
                                                     });
                                                 });
+                                          
+                                     
                                             </script>
+   
                                         }
 
 
@@ -324,68 +328,6 @@
 
 
 
-                                        <label for="quantity">Quantity:</label>
-                                        <input type="number" name="quantity" id="quantity" value="1" min="1" />
-
-                                        <button type="submit">Add to Cart</button>
-                                    </form>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-
-
-                    @section ExtraScript {
-                        <script>
-                            $(document).ready(function () {
-                                $('.toggle-day-icon').on('click', function () {
-                                    var day = $(this).closest('.day');
-                                    day.find('.itinerary-details-text').slideToggle();
-                                    $(this).toggleClass('rotate');
-                                    var toggleDayText = day.find('.toggle-day-text');
-                                    toggleDayText.text(function (i, text) {
-                                        return text === 'Show Itinerary Details' ? 'Hide Itinerary Details' : 'Show Itinerary Details';
-                                    });
-                                });
-                            });
-                        </script>
-                    }
-
-
-
-
-
-
-                    <label for="quantity">Quantity:</label>
-                    <input type="number" name="quantity" id="quantity" value="1" min="1" />                  
-
-                    <button type="submit">Add to Cart</button>
-                </form>
-            </div>
-        </div>        
-            
-        </div>
-    </div>
-
-
-@*@section ExtraScript {
-    <script>
-        $(document).ready(function () {
-            $('.toggle-day-icon').on('click', function () {
-                var day = $(this).closest('.day');
-                day.find('.itinerary-details-text').slideToggle();
-                $(this).toggleClass('rotate');
-                var toggleDayText = day.find('.toggle-day-text');
-                toggleDayText.text(function (i, text) {
-                    return text === 'Show Itinerary Details' ? 'Hide Itinerary Details' : 'Show Itinerary Details';
-                });
-            });
-        });
-    </script>
-
-}*@
-
-
+                                   
 
 

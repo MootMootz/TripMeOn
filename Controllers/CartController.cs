@@ -9,6 +9,7 @@ using TripMeOn.BL.interfaces;
 using TripMeOn.Helper;
 using TripMeOn.Models;
 using TripMeOn.Models.Order;
+using TripMeOn.Models.PartnerProducts;
 using TripMeOn.Models.Products;
 using TripMeOn.ViewModels;
 
@@ -19,17 +20,15 @@ namespace TripMeOn.Controllers
     public class CartController : Controller
     {
         private readonly IOrderService _orderService;
+        //private Models.BddContext _bddContext;
 
 
         public CartController(IOrderService orderService)
         {
             _orderService = orderService;
-
+            //_bddContext = bddContext;
         }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
+
         public IActionResult ViewCart()
         {
             var cartId = SessionHelper.GetObjectFromJson<int>(HttpContext.Session, "cartId");
@@ -44,7 +43,6 @@ namespace TripMeOn.Controllers
             }
             return View(cart);
         }
-
 
         //public IActionResult AddToCart(int tourPackageId, int quantity)
         //{
@@ -259,17 +257,30 @@ namespace TripMeOn.Controllers
 
                 Items = cart.Items != null ? cart.Items.Select(item => new ItemViewModel
                 {
-                    TourPackageId = item.TourPackageId.Value,
+                    TourPackageId = item.TourPackage != null ? item.TourPackageId : null,
                     TourPackageName = item.TourPackage != null ? item.TourPackage.Name : string.Empty,
                     TourPackagePrice = item.TourPackage != null ? item.TourPackage.Price : 0.0,
-                    ImageUrl = item.TourPackage != null && item.TourPackage.Image != null ? item.TourPackage.Image.Url : string.Empty
+                    ImageUrl = item.TourPackage != null && item.TourPackage.Image != null ? item.TourPackage.Image.Url : string.Empty,
+                    AccomodationId = item.Accomodation != null ? item.AccomodationId : null,
+                    AccomodationName = item.Accomodation != null ? item.Accomodation.Name : string.Empty,
+                    AccomodationPrice = item.Accomodation != null ? item.Accomodation.Price : 0.0,
+                    RestaurantId = item.Restaurant != null ? item.RestaurantId : null,
+                    RestaurantName = item.Restaurant != null ? item.Restaurant.Name : string.Empty,
+                    RestaurantPrice = item.Restaurant != null ? item.Restaurant.Price : 0.0,
+                    TransportId = item.Transportation != null ? item.TransportId : null,
+                    TransportationType = item.Transportation != null ? item.Transportation.Type : string.Empty,
+                    TransportationPrice = item.Transportation != null ? item.Transportation.Price : 0.0,
                 }).ToList() : new List<ItemViewModel>(),
 
 
                 IsRefunded = cart.IsRefunded,
                 Quantity = cart.Items != null ? cart.Items.Sum(item => item.Quantity) : 0,
-                TotalPrice = cart.Items != null ? cart.Items.Sum(item => item.Quantity * (item.TourPackage != null && item.TourPackage.Price > 0.0 ? item.TourPackage.Price : 1.0)) : 0.0
-
+                TotalPrice = cart.Items != null ? cart.Items.Sum(item => item.Quantity * (
+                (item.TourPackage != null ? item.TourPackage.Price : 0.0) +
+                (item.Accomodation != null ? item.Accomodation.Price : 0.0) +
+                (item.Restaurant != null ? item.Restaurant.Price : 0.0) +
+                (item.Transportation != null ? item.Transportation.Price : 0.0)
+                )) : 0.0
             }).ToList();
 
             // Store orders in session
@@ -287,6 +298,7 @@ namespace TripMeOn.Controllers
         }
 
 
+
         [Authorize]
         [HttpGet]
         public IActionResult Refund(int cartId)
@@ -296,6 +308,13 @@ namespace TripMeOn.Controllers
 
             if (cart != null)
             {
+                //Notification notification = new Notification()
+                //{
+                //    Message = $"A refund request has been initiated for cart {cartId} by client {User.Identity.Name}.",
+                //    CreatedAt = DateTime.Now
+                //};
+                //_bddContext.Notifications.Add(notification);
+                //_bddContext.SaveChanges();
                 ViewData["RefundMessage"] = "Refund initiated successfully, it will be processed in 5 business days";
             }
             else

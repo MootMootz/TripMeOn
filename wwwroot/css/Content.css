@@ -1,0 +1,30 @@
+﻿body {
+}
+
+.login {
+    width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom:50px;
+}
+
+.title{
+    font-size:large;
+    font-weight:bold;
+}
+
+.create-account-container{
+    width:280px;
+    height:40px;
+    border:2px solid #ff00dc;
+    border-radius: 5px;
+    margin-top:50px;
+}
+
+.create-account {
+    /*text-decoration: none;
+    color:white;*/
+    text-align:center;
+    align-items:center;
+    align-content:center;
+}

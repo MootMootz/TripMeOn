@@ -3,9 +3,6 @@
     ViewBag.Title = "LoginClient";
     Layout = "~/Views/Shared/_LayoutContent.cshtml";
 }
-@section ExtraCss{
-    <link rel="stylesheet" href="/css/HomePage.css">
-}
 
 <div class="login">
     @if (Model.AuthentifyP)
@@ -23,7 +20,7 @@
     else
     {
         <div>
-            <p>LOG IN PARTNER</p>
+            <p class="Title">LOG IN PARTNER</p>
             <p>Please log in :</p>
 
             @if (!ViewData.ModelState.IsValid)
@@ -49,6 +46,11 @@
                     <input type="submit" value="Log in" />
                 </div>
             }
+
+            <div id="create-account-container">
+                <span id="create-account">@Html.ActionLink("create account", "PartnerForm", "Partner")</span>
+            </div>
+
         </div>
     }
 </div>

@@ -25,7 +25,10 @@ namespace TripMeOn.Controllers
 
             return View("HomePage", navigationViewModel);
         }
-
+        /// <summary>
+        /// méthode utilisé dans la barre de navigation pour afficher les offres de restaurants
+        /// </summary>
+        /// <returns>liste de restaurants</returns>
         public IActionResult ShowRestaurantList()
         {
             using (IPropositionService propositionService = new PropositionService())
@@ -36,7 +39,10 @@ namespace TripMeOn.Controllers
                 return View(viewModel);
             }
         }
-
+        /// <summary>
+        /// méthode utilisé dans la barre de navigation pour afficher les offres des hébergements
+        /// </summary>
+        /// <returns>liste d'hébergements</returns>
         public IActionResult ShowAccomodationList()
         {
             using (IPropositionService propositionService = new PropositionService())
@@ -47,7 +53,10 @@ namespace TripMeOn.Controllers
                 return View(viewModel);
             }
         }
-
+        /// <summary>
+        /// méthode utilisé dans la barre de navigation pour afficher les offres de transports
+        /// </summary>
+        /// <returns>liste de transports</returns>
         public IActionResult ShowTransportationList()
         {
             using (IPropositionService propositionService = new PropositionService())

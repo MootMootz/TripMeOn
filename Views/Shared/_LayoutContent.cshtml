@@ -19,24 +19,24 @@
 </head>
 <body>
 
-  <li class="right">
-    @if (!String.IsNullOrEmpty(Context.Request.Cookies["Nickname"])) // si la valeur du cookie Nickname n'est pas vide
-    {
+    <li class="right">
+        @if (!String.IsNullOrEmpty(Context.Request.Cookies["Nickname"])) // si la valeur du cookie Nickname n'est pas vide
+        {
             <span>Hello @Context.Request.Cookies["Nickname"]</span>
-        // on affiche le message Bonjour suivi de la valeur de Cookie nickname
-    }
+            // on affiche le message Bonjour suivi de la valeur de Cookie nickname
+        }
     </li>
-  
-  
+
+
     @RenderBody()
-  
-  
+
+
     <footer>
 
         <div class="footer-buttons">
             <a href="/Content/InstaTips" class="footer-button">#Insta-tips</a>
             <a href="/Content/AboutUs" class="footer-button">About Us</a>
-            <a href="#" class="footer-button">Become a Partner</a>
+            <a href="/Partner/PartnerForm" class="footer-button">Become a Partner</a>
         </div>
         <!-- Social icons -->
         <div class="social-icons">
@@ -51,6 +51,6 @@
     <script type="text/javascript" src="~/Scripts/jquery-3.3.1.js"></script>
     <script type="text/javascript" src="~/Scripts/jquery.validate-vsdoc.js"></script>
     <script type="text/javascript" src="~/Scripts/jquery.validate.unobtrusive.js"></script>
-        @RenderSection("ExtraScript",required:false)
+    @RenderSection("ExtraScript",required:false)
 </body>
 </html>

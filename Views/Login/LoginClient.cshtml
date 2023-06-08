@@ -4,54 +4,71 @@
     Layout = "~/Views/Shared/_LayoutContent.cshtml";
 }
 
-<div class="login">
-
-
+<table class="login">
     @if (Model.AuthentifyC)
     {
-
-        <h3>
-            You are already log in :
-            @Model.Client.Nickname
-        </h3>
-
-        @Html.ActionLink("Would you like to logout?", "Deconnection", "Login")
-
-
-
-        <p>
-            @Html.ActionLink("Check Order Status", "OrderStatus", "Cart")
-        </p>
+        <tr>
+            <td colspan="2">
+                <h3>
+                    You are already log in :
+                    @Model.Client.Nickname
+                </h3>
+                @Html.ActionLink("Would you like to logout?", "Deconnection", "Login")
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <p>
+                    @Html.ActionLink("Check Order Status", "OrderStatus", "Cart")
+                </p>
+            </td>
+        </tr>
     }
     else
     {
-        <p class="Title">LOG IN CLIENT</p>
-        <p>Please log in :</p>
-
-
-        @using (Html.BeginForm("IndexClient", "Login", FormMethod.Post))
-
-        {
-
-            <div>
-                @Html.LabelFor(m => m.Client.Nickname)
-                @Html.TextBoxFor(m => m.Client.Nickname)
-                @Html.ValidationMessageFor(m => m.Client.Nickname)
-            </div>
-            <div>
-                @Html.LabelFor(m => m.Client.Password)
-                @Html.PasswordFor(m => m.Client.Password)
-                @Html.ValidationMessageFor(m => m.Client.Password)
-            </div>
-            <input type="submit" value="Log in" />
-            <br />
-        }
-
-        <div class="create-account-container">
-            <span class="create-account">@Html.ActionLink("create account", "ClientForm", "Client")</span>
-        </div>
-
+        <tr>
+            <td colspan="2">
+                <p class="Title">LOG IN CLIENT</p>
+                <p>Please log in :</p>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                @using (Html.BeginForm("IndexClient", "Login", FormMethod.Post))
+                {
+                    <table>
+                        <tr>
+                            <td>
+                                @Html.LabelFor(m => m.Client.Nickname)
+                            </td>
+                            <td>
+                                @Html.TextBoxFor(m => m.Client.Nickname)
+                                @Html.ValidationMessageFor(m => m.Client.Nickname)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                @Html.LabelFor(m => m.Client.Password)
+                            </td>
+                            <td>
+                                @Html.PasswordFor(m => m.Client.Password)
+                                @Html.ValidationMessageFor(m => m.Client.Password)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <input type="submit" value="Log in" />
+                                <br />
+                            </td>
+                        </tr>
+                    </table>
+                }
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" class="create-account-container">
+                <span class="create-account">@Html.ActionLink("create account", "ClientForm", "Client")</span>
+            </td>
+        </tr>
     }
-
-</div>
-
+</table>

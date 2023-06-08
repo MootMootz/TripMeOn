@@ -41,7 +41,7 @@
                     <li><a href="#">Italy</a></li>*@
                 </ul>
 
-            </li>           
+            </li>
 
             <!--   ----------------------------THEMES------------------------------------   -->
 
@@ -124,74 +124,74 @@
 
         </ul>
 
-    <!--   ----------------------------------SEARCH BOX---------------------------------------   -->
-          
-          
+        <!--   ----------------------------------SEARCH BOX---------------------------------------   -->
+
+
         <div class="search-container">
 
-        <div class="search-box">
-            <form action="/Partner/SearchPackage" method="get">
-                <label for="services">Services</label>
-                @{
-                    List<string> services = new List<string> { "Select a service", "Accomodation", "Restaurant", "Transport" };
-                    SelectList serviceList = new SelectList(services);
-                }
-                @Html.DropDownList("serviceType", serviceList)
+            <div class="search-box">
+                <form action="/Partner/SearchPackage" method="get">
+                    <label for="services">Services</label>
+                    @{
+                        List<string> services = new List<string> { "Select a service", "Accomodation", "Restaurant", "Transport" };
+                        SelectList serviceList = new SelectList(services);
+                    }
+                    @Html.DropDownList("serviceType", serviceList)
 
-                <label for="destinations">Destinations</label>
-                @{
-                    List<Destination> destination = new TripMeOn.BL.PropositionService().GetServicesDestinations();
-                    destination.Insert(0, new Destination { Id = 0, Country = "All Destinations" });
-                    SelectList selectListe = new SelectList(destination, "Id", "Country");
-                }
-                @Html.DropDownList("destination", selectListe)
+                    <label for="destinations">Destinations</label>
+                    @{
+                        List<Destination> destination = new TripMeOn.BL.PropositionService().GetServicesDestinations();
+                        destination.Insert(0, new Destination { Id = 0, Country = "All Destinations" });
+                        SelectList selectListe = new SelectList(destination, "Id", "Country");
+                    }
+                    @Html.DropDownList("destination", selectListe)
 
-                <label for="months">Months</label>
-                @{
-                    List<SelectListItem> monthListe = DateTimeHelper.GetMonths();
-                    monthListe.Insert(0, new SelectListItem { Value = "0", Text = "All Months" });
-                }
-                @Html.DropDownList("month", monthListe)
-                <button type="submit" class="btn btn-primary">Search</button>
-            </form>
+                    <label for="months">Months</label>
+                    @{
+                        List<SelectListItem> monthListe = DateTimeHelper.GetMonths();
+                        monthListe.Insert(0, new SelectListItem { Value = "0", Text = "All Months" });
+                    }
+                    @Html.DropDownList("month", monthListe)
+                    <button type="submit" class="btn btn-primary">Search</button>
+                </form>
+            </div>
+
+
+
+            @RenderBody()
+
+
+            @RenderBody()
+
+
+
+
         </div>
-
-              
-              
-    @RenderBody()
-
-
-        @RenderBody()
-
-
-              
-              
-    </div>
 
 
         <!--   ----------------------------FOOTER----------------------------------   -->
 
-    <footer>
-        <div class="footer-buttons">
-            <a href="/Content/InstaTips" class="footer-button">#Insta-tips</a>
-            <a href="/Content/AboutUs" class="footer-button">About Us</a>
-            <a href="#" class="footer-button">Become a Partner</a>
+        <footer>
+            <div class="footer-buttons">
+                <a href="/Content/InstaTips" class="footer-button">#Insta-tips</a>
+                <a href="/Content/AboutUs" class="footer-button">About Us</a>
+                <a href="/Partner/PartnerForm" class="footer-button">Become a Partner</a>
 
-        </div>
+            </div>
 
-        <div class="social-icons">
-            <div><a href="https://twitter.com"><i class="fab fa-twitter"></i></a></div>
-            <div><a href="https://facebook.com"><i class="fab fa-facebook"></i></a></div>
-            <div><a href="https://instagram.com"><i class="fab fa-instagram"></i></a></div>
-            <div><a href="https://www.tiktok.com"><i class="fab fa-tiktok"></i></a></div>
-            <div><a href="https://youtube.com"><i class="fab fa-youtube"></i></a></div>
-        </div>
-    </footer>
-    <script src="bootstrap.js"></script>
-    <script type="text/javascript" src="~/Scripts/jquery-3.3.1.js"></script>
-    <script type="text/javascript" src="~/Scripts/jquery.validate-vsdoc.js"></script>
-    <script type="text/javascript" src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+            <div class="social-icons">
+                <div><a href="https://twitter.com"><i class="fab fa-twitter"></i></a></div>
+                <div><a href="https://facebook.com"><i class="fab fa-facebook"></i></a></div>
+                <div><a href="https://instagram.com"><i class="fab fa-instagram"></i></a></div>
+                <div><a href="https://www.tiktok.com"><i class="fab fa-tiktok"></i></a></div>
+                <div><a href="https://youtube.com"><i class="fab fa-youtube"></i></a></div>
+            </div>
+        </footer>
+        <script src="bootstrap.js"></script>
+        <script type="text/javascript" src="~/Scripts/jquery-3.3.1.js"></script>
+        <script type="text/javascript" src="~/Scripts/jquery.validate-vsdoc.js"></script>
+        <script type="text/javascript" src="~/Scripts/jquery.validate.unobtrusive.js"></script>
 
-    @RenderSection("ExtraScript",required:false)
+        @RenderSection("ExtraScript",required:false)
 </body>
 </html>

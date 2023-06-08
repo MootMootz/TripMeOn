@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title</title>
-    <link href="~/css/Site.css" rel="stylesheet" /> <!-- Add your custom CSS file if needed -->
-    <!-- Render additional styles if defined in the SignUpConfirmation page -->
+   
 </head>
 <body>
     <h1>Sign Up Confirmation</h1>
@@ -13,14 +12,12 @@
     <p>Thank you for signing up! Your registration has been successful.</p>
     <p> An email will be sent to you with the confirmation link. </p>
 
-    @section Scripts {
-        <script src="bootstrap.js"></script> <!-- Include Bootstrap JavaScript file -->
-        <!-- Include any other JavaScript files here -->
-    }
+  
+   
+   
     @Html.ActionLink("Home", "HomePage", "Home")
     <br />
-    @*@Html.ActionLink("Home admin", "IndexAdmin", "Employee")*@
-    <!-- Render additional scripts if defined in the SignUpConfirmation page -->
+
 </body>
 </html>
 

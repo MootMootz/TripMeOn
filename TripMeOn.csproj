@@ -24,10 +24,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Remove="wwwroot\css\Class.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.15" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.15">
       <PrivateAssets>all</PrivateAssets>

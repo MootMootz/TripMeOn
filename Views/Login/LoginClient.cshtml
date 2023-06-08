@@ -4,6 +4,10 @@
     Layout = "~/Views/Shared/_LayoutContent.cshtml";
 }
 
+@section ExtraCss{
+    <link rel="stylesheet" href="/css/login.css">
+}
+
 <table class="login">
     @if (Model.AuthentifyC)
     {
@@ -26,6 +30,7 @@
     }
     else
     {
+
         <tr>
             <td colspan="2">
                 <p class="Title">LOG IN CLIENT</p>
@@ -70,5 +75,6 @@
                 <span class="create-account">@Html.ActionLink("create account", "ClientForm", "Client")</span>
             </td>
         </tr>
+
     }
 </table>

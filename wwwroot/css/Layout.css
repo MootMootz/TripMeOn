@@ -6,7 +6,6 @@
 body {
     display: flex;
     margin: 0 0 100px;
-    padding: 50px;
     flex-direction: column;
     min-height: 100vh;
     margin: 0;
@@ -42,13 +41,15 @@ body {
 /* ----------------------------- NAVBAR -----------------------------*/
 
 #navbar {
-    display:block;
+    display: flex;
     width: 100%;
     justify-content: center;
     z-index: 100;
-    padding-top : 40px;
+    padding-top: 40px;
     padding-bottom: 40px;
-    font-size:2em;
+    font-size: 2em;
+    margin-left: auto; 
+    margin-right:auto;
 }
 
 #menu {
@@ -126,6 +127,19 @@ li:hover {
 .content {
     flex: 1;
 }
+
+/* ----------------------------- SEARCH BAR -----------------------------*/
+
+.search-container {
+    width: auto;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+
+/* ----------------------------- FOOTER -----------------------------*/
 
 footer {
     background-color: orange;

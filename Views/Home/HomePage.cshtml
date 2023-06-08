@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="/css/HomePage.css">
 }
 
+l
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,12 +24,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 <body>
-    <div id="logo">
-        <a href="/Home/HomePage"></a>
-    </div>
-    <div id="logo-shadow">
-        <a href="/Home/HomePage"></a>
-    </div>
+    <a href="/Home/HomePage"><div id="logo"></div></a>
+    <a href="/Home/HomePage"><div id="logo-shadow"></div></a>
 
     <!-- Bootstrap Navigation Bar code goes here -->
     <div id="navbar">
@@ -58,13 +55,113 @@
 
             <!--   ----------------------------THEMES------------------------------------   -->
 
-    <!-- Transparent Search Box -->
+            <li class="parent">
+                <a href="#">Themes<span class="expand"></span></a>
+                <ul class="child">
+                    @*<li><a href="#">Trekking</a></li>*@
+                    <li><a href="#">Floral</a></li>
+                    <li><a href="#">Cultural</a></li>
+                    <li><a href="#">Heritage</a></li>
+                    <li><a href="#">Snap and relax</a></li>
+                    <li><a href="#">InstaSpots</a></li>
+                    <li><a href="#">Xtreme Adventure</a></li>
+                    @*<li><a href="#">Beach</a></li>
+                    <li><a href="#">Culinary</a></li>*@
+                    <li><a href="#">Colors</a></li>
+                </ul>
+            </li>
+
+            <!--   ----------------------ACCOMMODATIONS--------------------------------   -->
+
+            <li class="parent">
+                <a href="#">Services<span class="expand"></span></a>
+                <ul class="child">
+                    <li>@Html.ActionLink("Restaurants", "ShowRestaurantList", "Home")</li>
+                    <li>@Html.ActionLink("Accomodations", "ShowAccomodationList", "Home")</li>
+                    <li>@Html.ActionLink("Land Services", "ShowTransportationList", "Home")</li>
+                </ul>
+            </li>
+
+            <!--   --------------------------PERIOD-------------------------------------   -->
+            @*<li class="parent">
+            <a href="#">Tour Packages</a>
+            <ul class="child">
+            <li><a href="#">Day Tours</a></li>
+            <li><a href="#">4 days Tours</a></li>
+            <li><a href="#">5 days Tours</a></li>
+            <li><a href="#">7 days Tours</a></li>
+            </ul>
+            </li>*@
+
+            <!--   -------------------------------------------------------------------------   -->
+            @*
+            <li class="parent">
+            <a href="/Content/InstaTips">Insta-tips</a>
+            </li>*@
+
+            <!--   -------------------------------------------------------------------------   -->
+            @*			<li class="parent">
+            <a href="/Content/AboutUs">About Us</a>
+            </li>*@
+
+            <!--   -------------------------------------------------------------------------   -->
+            @*			<li class="parent">
+            <a href="#">Become a Partner</a>
+            </li>*@
+
+
+            <!--   ---------------------------LOG IN----------------------------------   -->
+
+            <li class="parent">
+                <a href="#">Log in<span class="expand"></span></a>
+                <ul class="child">
+                    <li class="parent">
+                        <a href="#">Create account?</a>
+                        <ul class="child">
+                            <li><a href="/Client/ClientForm">Add Client</a></li>
+                            <li><a href="/Partner/PartnerForm">Partner</a></li>
+                        </ul>
+                    <li>@Html.ActionLink("I am a Partner", "LoginPartner", "Login")</li>
+                    <li>@Html.ActionLink("I am a Traveller", "LoginClient", "Login")</li>
+                </ul>
+            </li>
+
+            <!--   ---------------------------ADMIN------------------------------------   -->
+
+            <li class="parent">
+                <a href="#">Admin<span class="expand"></span></a>
+                <ul class="child">
+                    <li>@Html.ActionLink("Log in Admin", "LoginAdmin", "Login")</li>
+                    @*<li><a href=" /Product/PackageList">Check Products</a></li>*@
+                </ul>
+            </li>
+
+
+            <!--   ----------------------------LOG OUT----------------------------------   -->
+
+            <li class="parent">
+                @Html.ActionLink("Logout", "Deconnection", "Login")
+            </li>
+            <li class="parent">
+                @if (!String.IsNullOrEmpty(Context.Request.Cookies["Nickname"])) // si la valeur du cookie Nickname n'est pas vide
+                {
+                    <span>Hello @Context.Request.Cookies["Nickname"]</span>
+                    // on affiche le message Bonjour suivi de la valeur de Cookie nickname
+                }
+            </li>
+
+        </ul>
+
+    </div>
+
+    <!--   -------------------------------------------------------------------------   -->
+    <!-- Transparent centered Search Box -->
 
     <div class="search-container">
         <div class="search-box">
             <form action="/Product/SearchPackage" method="get">
                 <p>Our All-in Trips</p>
-                
+
 
                 <label for="destinations">Destinations</label>
                 @{
@@ -72,8 +169,8 @@
                     destinations.Insert(0, new Destination { Id = 0, Country = "All Destinations" });
                     SelectList selectList = new SelectList(destinations, "Country", "Country");
                 }
-                @Html.DropDownList("country", selectList)                
-              
+                @Html.DropDownList("country", selectList)
+
                 <label for="themes">Themes</label>
                 @{
                     List<Theme> themes = new TripMeOn.BL.ProductService().GetThemes();
@@ -116,24 +213,7 @@
     </div>
 
 
-    <!-- Search box test, but it was decided we implement inside the diapo -->
 
-    @*<div class="search">
-    <div id="search-block">
-    <div id="search-destination">
-    Destination
-    </div>
-    <div id="search-duration">
-    Duration
-    </div>
-    <div id="search-date">
-    Date
-    </div>
-    <div id="search-searchbox">
-    SearchBox
-    </div>
-    </div>
-    </div>*@
 
     <!--   ---------------------------- TESTIMONY DIAPO----------------------------------   -->
     @*<div class="testimony">
@@ -226,14 +306,18 @@
     <!--   ----------------------------FOOTER----------------------------------   -->
 
     <footer>
-        <div>
-            <div class="social-icons">
-                <a href="https://twitter.com"><i class="fab fa-twitter"></i></a>
-                <a href="https://facebook.com"><i class="fab fa-facebook"></i></a>
-                <a href="https://instagram.com"><i class="fab fa-instagram"></i></a>
-                <a href="https://www.tiktok.com"><i class="fab fa-tiktok"></i></a>
-                <a href="https://youtube.com"><i class="fab fa-youtube"></i></a>
-            </div>
+        <div class="footer-buttons">
+            <div><a href="/Content/InstaTips">Insta-tips</a></div>
+            <div><a href="/Content/AboutUs">About Us</a></div>
+            <div><a href="#">Become a Partner</a></div>
+        </div>
+
+        <div class="social-icons">
+            <div><a href="https://twitter.com"><i class="fab fa-twitter"></i></a></div>
+            <div><a href="https://facebook.com"><i class="fab fa-facebook"></i></a></div>
+            <div><a href="https://instagram.com"><i class="fab fa-instagram"></i></a></div>
+            <div><a href="https://www.tiktok.com"><i class="fab fa-tiktok"></i></a></div>
+            <div><a href="https://youtube.com"><i class="fab fa-youtube"></i></a></div>
         </div>
     </footer>
 
@@ -241,6 +325,5 @@
     <script type="text/javascript" src="~/Scripts/jquery-3.3.1.js"></script>
     <script type="text/javascript" src="~/Scripts/jquery.validate-vsdoc.js"></script>
     <script type="text/javascript" src="~/Scripts/jquery.validate.unobtrusive.js"></script>
-
 </body>
 </html>

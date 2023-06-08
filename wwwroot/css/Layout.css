@@ -1,18 +1,32 @@
-﻿#logo {
+﻿html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    display: flex;
+    margin: 0 0 100px;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+}
+
+#logo {
     background-image: url(/images/logo.png);
     height: 100px;
     width: 100px;
     position: absolute;
-    top:20px;
-    left:60px;
+    top: 20px;
+    left: 60px;
     background-size: cover;
     background-position: center;
-/*  border : solid 1px white;*/    
-    border-radius:25px;
-    z-index:102;
+    /*  border : solid 1px white;*/
+    border-radius: 25px;
+    z-index: 102;
 }
+
 #logo-shadow {
-    display:flex;
+    display: flex;
     height: 100px;
     width: 100px;
     position: absolute;
@@ -22,33 +36,36 @@
     border-radius: 25px;
     z-index: 101;
 }
-
+/* ----------------------------- NAVBAR -----------------------------*/
 #navbar {
-    display:flex;
+    display: flex;
     width: 100%;
     justify-content: center;
     z-index: 100;
-    padding-top : 40px;
+    padding-top: 40px;
     padding-bottom: 40px;
-    font-size:2em;
+    font-size: 2em;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #menu {
     background: rgb(0, 0, 0, 0.15);
 }
+
 .parent {
     display: inline-block;
     vertical-align: middle;
     /*float: left;*/
     line-height: 60px;
-    text-align:center;
+    text-align: center;
     /*border: #CCC 1px solid;*/
     /*border-radius: 5px 5px 0px 0px;*/
 }
 
     .parent a {
         margin: 35px;
-        color:white;
+        color: white;
         font-weight: bold;
         /*text-shadow: 0.5px 0.5px black;*/
         font-size: large;
@@ -104,58 +121,67 @@ li:hover {
     float: right;
 }
 
-
-body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    margin: 0;
-    padding: 0;
-}
-
 .content {
     flex: 1;
 }
-
-.footer {
+/* ----------------------------- SEARCH BAR -----------------------------*/
+.search-container {
+    width: auto;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+/* ----------------------------- FOOTER -----------------------------*/
+footer {
     background-color: orange;
     position: absolute;
     left: 0;
     bottom: 0;
-    height: 100px;
+    height: 80px;
     width: 100%;
-    overflow: hidden;
+    overflow: hidden
 }
+
+    footer a {
+        text-decoration: none;
+        color: black;
+        text-align: center;
+        width: 100%;
+    }
 
 .footer-buttons {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
+    display: inline-flex;
+    width: 70%;
+    height: 100%;
+    align-items: center;
 }
 
-.footer-button {
-    padding: 10px 20px;
-    margin: 0 10px;
-    text-decoration: none;
-    color: #000;
-    background-color: #f0f0f0;
-    border: none;
-    border-radius: 5px;
-}
-
-    .footer-button:hover {
-        background-color: #000;
-        color: #fff;
+    .footer-buttons div {
+        display: flex;
+        width: 100%;
+        height: 50px;
+        /*background-color: black;*/
+        margin-left: 10%;
+        margin-right: 10%;
+        align-items: center;
     }
 
 .social-icons {
-    display: flex;
-    justify-content: center;
-    font-size: 35px;
+    display: inline-flex;
+    width: 25%;
+    height: 80px;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
 }
+
+    .social-icons div {
+        display: flex;
+        width: 100%;
+    }
 
     .social-icons a {
         color: #000000;
-        margin-right: 10px;
+        font-size: 25px;
     }
-

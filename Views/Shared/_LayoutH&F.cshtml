@@ -1,67 +1,57 @@
 ﻿@using TripMeOn.Models.Products;
 @using TripMeOn.Helper;
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>#TripMeOn</title>
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/Layout.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-
     @RenderSection("ExtraCss",required:false)
 </head>
 <body>
     <a href="/Home/HomePage"><div id="logo"></div></a>
     <a href="/Home/HomePage"><div id="logo-shadow"></div></a>
-
     <!-- Bootstrap Navigation Bar code goes here -->
     <div id="navbar">
-        @*<div id=""></div>*@
         <ul id="menu">
             <li class="parent">
                 <a href="/Home/HomePage">Home</a>
             </li>
-
             <!--   --------------------------DESTINATION--------------------------------------   -->
-
             <li class="parent">
                 <a href="#">Destinations<span class="expand"></span></a>
                 <ul class="child">
-                    <li>@Html.ActionLink("France", "SearchPackage", "Product", new { country = "France" })</li>
-                    <li>@Html.ActionLink("The UK", "SearchPackage", "Product", new { country = "The UK" })</li>
-                    <li>@Html.ActionLink("Netherlands", "SearchPackage", "Product", new { country = "Netherlands" })</li>
-                    <li>@Html.ActionLink("Turkey", "SearchPackage", "Product", new { country = "Turkey" })</li>
-                    <li>@Html.ActionLink("Argentina", "SearchPackage", "Product", new { country = "Argentina" })</li>
-                    <li>@Html.ActionLink("Belgium", "SearchPackage", "Product", new { country = "Belgium" })</li>
-                    <li>@Html.ActionLink("Spain", "SearchPackage", "Product", new { country = "Spain" })</li>
+                    <li><a href="#">France</a></li>
+                    <li><a href="#">The UK</a></li>
+                    <li><a href="#">Netherlands</a></li>
+                    <li><a href="#">Turkey</a></li>
+                    <li><a href="#">Agentina</a></li>
+                    <li><a href="#">Blegium</a></li>
+                    <li><a href="#">Spain</a></li>
                     @*<li><a href="#">Switzerland</a></li>
                     <li><a href="#">Portugal</a></li>
                     <li><a href="#">Italy</a></li>*@
                 </ul>
             </li>
-            @*<div id="searchResultsContainer"></div>*@
             <!--   ----------------------------THEMES------------------------------------   -->
-
             <li class="parent">
                 <a href="#">Themes<span class="expand"></span></a>
                 <ul class="child">
-                    <li>@Html.ActionLink("Trekking", "SearchPackage", "Product", new { theme=1 })</li>
-                    <li>@Html.ActionLink("Floral", "SearchPackage", "Product", new { theme=2 })</li>
-                    <li>@Html.ActionLink("Cultural", "SearchPackage", "Product", new { theme=3 })</li>
-                    <li>@Html.ActionLink("Heritage", "SearchPackage", "Product", new { theme=4 })</li>
-                    <li>@Html.ActionLink("Snap and relax", "SearchPackage", "Product", new { theme=5 })</li>
-                    <li>@Html.ActionLink("InstaSpots", "SearchPackage", "Product", new {theme=6 })</li>
-                    <li>@Html.ActionLink("Xtreme Adventure", "SearchPackage", "Product", new { theme=7 })</li>
-                    <li>@Html.ActionLink("Colors", "SearchPackage", "Product", new { theme=10 })</li>
+                    @*<li><a href="#">Trekking</a></li>*@
+                    <li><a href="#">Floral</a></li>
+                    <li><a href="#">Cultural</a></li>
+                    <li><a href="#">Heritage</a></li>
+                    <li><a href="#">Snap and relax</a></li>
+                    <li><a href="#">InstaSpots</a></li>
+                    <li><a href="#">Xtreme Adventure</a></li>
+                    @*<li><a href="#">Beach</a></li>
+                    <li><a href="#">Culinary</a></li>*@
+                    <li><a href="#">Colors</a></li>
                 </ul>
             </li>
-
             <!--   ----------------------ACCOMMODATIONS--------------------------------   -->
-
             <li class="parent">
                 <a href="#">Services<span class="expand"></span></a>
                 <ul class="child">
@@ -70,8 +60,6 @@
                     <li>@Html.ActionLink("Land Services", "ShowTransportationList", "Home")</li>
                 </ul>
             </li>
-            <!------------------------------------------------------------------------------------------->
-
             <li class="parent">
                 <a href="#">Tour Packages</a>
                 <ul class="child">
@@ -81,7 +69,19 @@
                     <li><a href="#">7 days Tours</a></li>
                 </ul>
             </li>
-            <!-------------------------------------------------------------------------------------------->
+            <!--   -------------------------------------------------------------------------   -->
+            @*<li class="parent">
+            <a href="/Content/InstaTips">Insta-tips</a>
+            </li>*@
+            <!--   -------------------------------------------------------------------------   -->
+            @*			<li class="parent">
+            <a href="/Content/AboutUs">About Us</a>
+            </li>*@
+            <!--   -------------------------------------------------------------------------   -->
+            @*			<li class="parent">
+            <a href="#">Become a Partner</a>
+            </li>*@
+            <!--   ---------------------------LOG IN----------------------------------   -->
             <li class="parent">
                 <a href="#">Log in<span class="expand"></span></a>
                 <ul class="child">
@@ -95,9 +95,7 @@
                     <li>@Html.ActionLink("I am a Traveller", "LoginClient", "Login")</li>
                 </ul>
             </li>
-
             <!--   ---------------------------ADMIN------------------------------------   -->
-
             <li class="parent">
                 <a href="#">Admin<span class="expand"></span></a>
                 <ul class="child">
@@ -105,15 +103,11 @@
                     @*<li><a href=" /Product/PackageList">Check Products</a></li>*@
                 </ul>
             </li>
-
-
             <!--   ----------------------------LOG OUT----------------------------------   -->
             @*<li class="parent">
             @Html.ActionLink("Catalog", "Catalog", "Product")*@
-
             <li class="parent">
                 @Html.ActionLink("Logout", "Deconnection", "Login")
-
             </li>
             <li class="parent">
                 @if (!String.IsNullOrEmpty(Context.Request.Cookies["Nickname"])) // si la valeur du cookie Nickname n'est pas vide
@@ -122,49 +116,10 @@
                     // on affiche le message Bonjour suivi de la valeur de Cookie nickname
                 }
             </li>
-
         </ul>
-
     </div>
-
-    <!--   -------------------------------------------------------------------------   -->
-    <div class="search-container">
-        <div class="search-box">
-            <form action="/Partner/SearchPackage" method="get">
-                <label for="services">Services</label>
-                @{
-                    List<string> services = new List<string> { "Select a service", "Accomodation", "Restaurant", "Transport" };
-                    SelectList serviceList = new SelectList(services);
-                }
-                @Html.DropDownList("serviceType", serviceList)
-
-                <label for="destinations">Destinations</label>
-                @{
-                    List<Destination> destination = new TripMeOn.BL.PropositionService().GetServicesDestinations();
-                    destination.Insert(0, new Destination { Id = 0, Country = "All Destinations" });
-                    SelectList selectListe = new SelectList(destination, "Id", "Country");
-                }
-                @Html.DropDownList("destination", selectListe)
-
-                <label for="months">Months</label>
-                @{
-                    List<SelectListItem> monthListe = DateTimeHelper.GetMonths();
-                    monthListe.Insert(0, new SelectListItem { Value = "0", Text = "All Months" });
-                }
-                @Html.DropDownList("month", monthListe)
-                <button type="submit" class="btn btn-primary">Search</button>
-            </form>
-        </div>
-    </div>
-
-
-
-
     @RenderBody()
-
-
     <!--   ----------------------------FOOTER----------------------------------   -->
-
     <footer>
         <div class="footer-buttons">
             <a href="/Content/InstaTips" class="footer-button">#Insta-tips</a>
@@ -184,7 +139,6 @@
     <script type="text/javascript" src="~/Scripts/jquery-3.3.1.js"></script>
     <script type="text/javascript" src="~/Scripts/jquery.validate-vsdoc.js"></script>
     <script type="text/javascript" src="~/Scripts/jquery.validate.unobtrusive.js"></script>
-
     @RenderSection("ExtraScript",required:false)
 </body>
 </html>

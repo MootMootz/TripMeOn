@@ -40,7 +40,7 @@ namespace TripMeOn.BL
             return destinations;
         }
 
-        
+
         public List<string> GetDistinctCountries()
         {
             List<string> countries = new List<string>();
@@ -142,7 +142,7 @@ namespace TripMeOn.BL
 											  .Include(tp => tp.Image)
 											  .AsQueryable();
 
-			if ( country != "All Destinations")
+			if ( country != "All Destinations" && country!=null)
 			{
 				query = query.Where(tp => tp.Destination.Country == country);
 			}

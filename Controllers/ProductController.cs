@@ -22,15 +22,15 @@ namespace TripMeOn.Controllers
 
         public IActionResult SearchPackage(string country, int theme, int month)
         {
-
-
             var searchResults = _productService.SearchByDestinationThemeMonth(
                 country,
                 theme == 0 ? (int?)null : theme,
                 month == 0 ? (int?)null : month);
 
             return View("SearchBoxPackage", searchResults);
-        }
+        }     
+
+
         public ActionResult PackageListUniqueCountry()
         {
             var productService = new TripMeOn.BL.ProductService();

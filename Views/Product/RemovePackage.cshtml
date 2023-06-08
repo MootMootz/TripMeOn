@@ -1,7 +1,7 @@
 ﻿@model TripMeOn.Models.Products.TourPackage
 @using TripMeOn.Helper
 @{
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_LayoutContent.cshtml";
 }
 
 @section ExtraCss{
@@ -10,7 +10,7 @@
 }
 <h2 class="center-heading">Remove Package</h2>
 <form id="removeForm@Model.Id" class="removeForm hidden" method="POST" action="/Product/RemovePackage">
- 
+
 
     <div class="form-container">
         <fieldset>

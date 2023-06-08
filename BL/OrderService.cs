@@ -1,10 +1,12 @@
 ﻿using Microsoft.AspNetCore.Razor.Language.Extensions;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using TripMeOn.BL.interfaces;
 using TripMeOn.Models;
 using TripMeOn.Models.Order;
+using TripMeOn.Models.PartnerProducts;
 
 namespace TripMeOn.BL
 {
@@ -19,13 +21,13 @@ namespace TripMeOn.BL
         {
             _bddContext = new Models.BddContext();
 
-		    }
+        }
         /// <summary>
         /// Méthode de création d'un pannier
         /// </summary>
         /// <returns></returns>
 
-        
+
 
 
         public int CreateCart()
@@ -106,7 +108,7 @@ namespace TripMeOn.BL
                                                                         && i.AccomodationId == item.AccomodationId
                                                                         && i.TransportationId == item.TransportationId
                                                                         && i.RestaurantId == item.RestaurantId);
-                
+
 
                 if (existingItem != null)
                 {
@@ -181,5 +183,17 @@ namespace TripMeOn.BL
         {
             _bddContext.Dispose();
         }
+
+        public void CreateRefundNotification(int cartId)
+        {
+            Notification notification = new Notification()
+            {
+                Message = $"A refund request has been made by customer for cart {cartId}.",
+                CreatedAt = DateTime.Now
+            };
+            _bddContext.Notifications.Add(notification);
+            _bddContext.SaveChanges();
+        }
+
     }
 }

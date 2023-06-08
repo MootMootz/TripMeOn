@@ -35,6 +35,8 @@ namespace TripMeOn.BL
         {
             return _bddContext.Transportations.Include(t => t.Image).ToList();
         }
+
+
         /// <summary>
         /// Les méthodes suivants sont utilisés dans l'interface du partenaire, pour afficher suelement ses services
         /// </summary>
@@ -55,6 +57,10 @@ namespace TripMeOn.BL
             return _bddContext.Transportations.Where(t => t.PartnerId == partnerId).ToList();
         }
         public List<Notification> GetAllNotifications()
+        {
+            return _bddContext.Notifications.OrderByDescending(n => n.CreatedAt).ToList();
+        }
+        public List<Notification> GetRefundNotifications()
         {
             return _bddContext.Notifications.OrderByDescending(n => n.CreatedAt).ToList();
         }
@@ -130,9 +136,9 @@ namespace TripMeOn.BL
         /// <summary>
         /// Les méthodes suivantes servent à la recherche multicritère de services de partenaires pour les utilisateurs, 
         /// </summary>
- 
+
         /// <returns>La liste de services et ses détails</returns>
-        public List<Accomodation> SearchAccomodationByDestinationMonth(int? destinationId, int? month)
+        public List<Accomodation> SearchAccomodationByDestination(int? destinationId)
         {
             using var dbContext = new BddContext();
 
@@ -144,16 +150,10 @@ namespace TripMeOn.BL
             {
                 query = query.Where(a => a.DestinationId == destinationId.Value);
             }
-
-            if (month.HasValue)
-            {
-                query = query.Where(a => a.StartDate.Month <= month.Value && a.EndDate.Month >= month.Value);
-            }
-
             return query.ToList();
         }
 
-        public List<Restaurant> SearchRestaurantByDestinationMonth(int? destinationId, int? month)
+        public List<Restaurant> SearchRestaurantByDestination(int? destinationId)
         {
             using var dbContext = new BddContext();
 
@@ -166,15 +166,10 @@ namespace TripMeOn.BL
                 query = query.Where(r => r.DestinationId == destinationId.Value);
             }
 
-            if (month.HasValue)
-            {
-                query = query.Where(r => r.StartDate.Month <= month.Value && r.EndDate.Month >= month.Value);
-            }
-
             return query.ToList();
         }
 
-        public List<Transportation> SearchTransportationByDestinationMonth(int? destinationId, int? month)
+        public List<Transportation> SearchTransportationByDestination(int? destinationId)
         {
             using var dbContext = new BddContext();
 
@@ -186,12 +181,6 @@ namespace TripMeOn.BL
             {
                 query = query.Where(t => t.DestinationId == destinationId.Value);
             }
-
-            if (month.HasValue)
-            {
-                query = query.Where(t => t.StartDate.Month <= month.Value && t.EndDate.Month >= month.Value);
-            }
-
             return query.ToList();
         }
 
@@ -213,20 +202,23 @@ namespace TripMeOn.BL
 
 
 
-        public List<object> SearchByServiceTypeDestinationMonth(string serviceType, int? destinationId, int? month)
+        public List<object> SearchByServiceTypeDestination(string serviceType, int? destinationId)
         {
             switch (serviceType)
             {
                 case "Accomodation":
-                    return SearchAccomodationByDestinationMonth(destinationId, month).Cast<object>().ToList();
+                    return SearchAccomodationByDestination(destinationId).Cast<object>().ToList();
                 case "Restaurant":
-                    return SearchRestaurantByDestinationMonth(destinationId, month).Cast<object>().ToList();
+                    return SearchRestaurantByDestination(destinationId).Cast<object>().ToList();
                 case "Transport":
-                    return SearchTransportationByDestinationMonth(destinationId, month).Cast<object>().ToList();
+                    return SearchTransportationByDestination(destinationId).Cast<object>().ToList();
                 default:
                     return new List<object>();
             }
         }
+
+
+
 
     }
 }

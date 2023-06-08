@@ -25,11 +25,13 @@ namespace TripMeOn.BL.interfaces
         List<Restaurant> GetRestaurantsByPartnerId(int partnerId);
         List<Transportation> GetTransportationsByPartnerId(int partnerId);
         List<Notification> GetAllNotifications();
-        List<Accomodation> SearchAccomodationByDestinationMonth(int? destinationId, int? month);
-        List<Restaurant> SearchRestaurantByDestinationMonth(int? destinationId, int? month);
-        List<Transportation> SearchTransportationByDestinationMonth(int? destinationId, int? month);
+        List<Accomodation> SearchAccomodationByDestination(int? destinationId);
+        List<Restaurant> SearchRestaurantByDestination(int? destinationId);
+        List<Transportation> SearchTransportationByDestination(int? destinationId);
 
-        List<object> SearchByServiceTypeDestinationMonth(string serviceType, int? destinationId, int? month);
+        List<object> SearchByServiceTypeDestination(string serviceType, int? destinationId);
+        List<Notification> GetRefundNotifications();
+
 
 
     }

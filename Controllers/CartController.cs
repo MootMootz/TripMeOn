@@ -20,13 +20,9 @@ namespace TripMeOn.Controllers
     public class CartController : Controller
     {
         private readonly IOrderService _orderService;
-        //private Models.BddContext _bddContext;
-
-
         public CartController(IOrderService orderService)
         {
             _orderService = orderService;
-            //_bddContext = new BddContext();
         }
 
         public IActionResult ViewCart()
@@ -308,13 +304,7 @@ namespace TripMeOn.Controllers
 
             if (cart != null)
             {
-                //Notification notification = new Notification()
-                //{
-                //    Message = $"A refund request has been initiated for cart {cartId} by client {User.Identity.Name}.",
-                //    CreatedAt = DateTime.Now
-                //};
-                //_bddContext.Notifications.Add(notification);
-                //_bddContext.SaveChanges();
+                _orderService.CreateRefundNotification(cartId);
                 ViewData["RefundMessage"] = "Refund initiated successfully, it will be processed in 5 business days";
             }
             else
@@ -322,7 +312,7 @@ namespace TripMeOn.Controllers
                 ViewData["RefundMessage"] = "Error: Cart not found.";
             }
 
-            // Return the "Refund" view
+
             return View("Refund");
         }
     }

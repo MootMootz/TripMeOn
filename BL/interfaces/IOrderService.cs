@@ -21,5 +21,7 @@ namespace TripMeOn.BL.interfaces
         Cart GetCartWithClient(int cartId, int clientId);
         void UpdateCartClient(int cartId, int clientId);
         int ProductExistInCart(Cart cart, int tourPackageId);
+
+        void CreateRefundNotification(int cartId);
     }
 }

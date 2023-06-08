@@ -46,8 +46,8 @@
                             </div>
                         </td>
                         <td>@DateTime.Now</td>
-                          <td>@item.StartDate</td>
-                          <td>@item.EndDate</td>
+                        <td>@item.StartDate</td>
+                        <td>@item.EndDate</td>
                         <td>@item.TourPackage.Price</td>
                         <td>
                             <form method="post" action="/Cart/UpdateQuantity">
@@ -76,16 +76,6 @@
                             </div>
                         </td>
                     </tr>
-
-
-                    @*                    <tr>
-            <td align="right" colspan="7">Sum</td>
-            <td colspan="2">
-            @(
-            Model.Items.Sum(item => item.TourPackage.Price * item.Quantity)
-            )
-            </td>
-            </tr>*@
                 }
                 else if (item.Accomodation != null)
                 {
@@ -131,12 +121,6 @@
                         </td>
 
                     </tr>
-                    @*                    <tr>
-            <td align="right" colspan="7">Sum</td>
-            <td colspan="2">
-            @(Model.Items.Sum(item => item.Accomodation.Price * item.Quantity))
-            </td>
-            </tr>*@
                 }
                 else if (item.Restaurant != null)
                 {
@@ -182,12 +166,7 @@
                         </td>
 
                     </tr>
-                    @*                    <tr>
-            <td align="right" colspan="7">Sum</td>
-            <td colspan="2">
-            @(Model.Items.Sum(item => item.Restaurant.Price * item.Quantity))
-            </td>
-            </tr>*@
+
                 }
                 else if (item.Transportation != null)
                 {
@@ -233,12 +212,6 @@
                         </td>
 
                     </tr>
-                    @*                    <tr>
-            <td align="right" colspan="7">Sum</td>
-            <td colspan="2">
-            @(Model.Items.Sum(item => item.Transportation.Price * item.Quantity))
-            </td>
-            </tr>*@
                 }
 
                 <tr>
@@ -261,7 +234,7 @@
         <form action="/Cart/CheckoutForm?clientId=@Model.ClientId" method="get" class="d-inline-block">
             <button type="submit" class="btn btn-success">Check Out</button>
         </form>
-    </div>  
+    </div>
 
 </body>
 </html>

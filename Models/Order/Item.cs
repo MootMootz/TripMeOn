@@ -9,14 +9,14 @@ namespace TripMeOn.Models.Order
 {
     public class Item
     {
-        [Key] 
+        [Key]
         public int Id { get; set; }
         public int Quantity { get; set; }
         public int? TourPackageId { get; set; }
         public TourPackage TourPackage { get; set; }
         public int? AccomodationId { get; set; }
         public Accomodation Accomodation { get; set; }
-        public int? TransportId { get; set; }
+        public int? TransportationId { get; set; }
         public Transportation Transportation { get; set; }
         public int? RestaurantId { get; set; }
         public Restaurant Restaurant { get; set; }

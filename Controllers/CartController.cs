@@ -141,7 +141,7 @@ namespace TripMeOn.Controllers
         }
 
         [HttpPost]
-        public IActionResult BuyTransport(int transportId, int quantity)
+        public IActionResult BuyTransport(int transportationId, int quantity)
         {
             var cartId = SessionHelper.GetObjectFromJson<int>(HttpContext.Session, "cartId");
 
@@ -149,7 +149,7 @@ namespace TripMeOn.Controllers
             if (cartId == 0)
             {
                 cartId = _orderService.CreateCart();
-                _orderService.AddItem(cartId, new Item { TransportId = transportId, Quantity = quantity });
+                _orderService.AddItem(cartId, new Item { TransportationId = transportationId, Quantity = quantity });
 
                 if (User.Identity.IsAuthenticated)
                 {
@@ -161,7 +161,7 @@ namespace TripMeOn.Controllers
             }
             else
             {
-                _orderService.AddItem(cartId, new Item { TransportId = transportId, Quantity = quantity });
+                _orderService.AddItem(cartId, new Item { TransportationId = transportationId, Quantity = quantity });
             }
 
             HttpContext.Response.Cookies.Append("CartId", cartId.ToString());
@@ -223,7 +223,7 @@ namespace TripMeOn.Controllers
                 TourPackageId = item.TourPackageId,
                 AccomodationId = item.AccomodationId,
                 RestaurantId = item.RestaurantId,
-                TransportId = item.TransportId,
+                TransportationId = item.TransportationId,
                 Quantity = item.Quantity
             };
 
@@ -261,7 +261,7 @@ namespace TripMeOn.Controllers
                     RestaurantId = item.Restaurant != null ? item.RestaurantId : null,
                     RestaurantName = item.Restaurant != null ? item.Restaurant.Name : string.Empty,
                     RestaurantPrice = item.Restaurant != null ? item.Restaurant.Price : 0.0,
-                    TransportId = item.Transportation != null ? item.TransportId : null,
+                    TransportationId = item.Transportation != null ? item.TransportationId : null,
                     TransportationType = item.Transportation != null ? item.Transportation.Type : string.Empty,
                     TransportationPrice = item.Transportation != null ? item.Transportation.Price : 0.0,
                 }).ToList() : new List<ItemViewModel>(),

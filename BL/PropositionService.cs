@@ -10,6 +10,9 @@ using TripMeOn.Models.Products;
 
 namespace TripMeOn.BL
 {
+    /// <summary>
+    /// Cette class est utilisé pour afficher les hotels, restaurants, et transports instanciés sur la base de donnés.
+    /// </summary>
     public class PropositionService : IPropositionService
     {
         private readonly BddContext _bddContext;
@@ -32,7 +35,11 @@ namespace TripMeOn.BL
         {
             return _bddContext.Transportations.Include(t => t.Image).ToList();
         }
-
+        /// <summary>
+        /// Les méthodes suivants sont utilisés dans l'interface du partenaire, pour afficher suelement ses services
+        /// </summary>
+        /// <param name="partnerId"></param>
+        /// <returns></returns>
         public List<Accomodation> GetAccomodationsByPartnerId(int partnerId)
         {
             return _bddContext.Accomodations.Where(a => a.PartnerId == partnerId).ToList();
@@ -51,6 +58,9 @@ namespace TripMeOn.BL
         {
             return _bddContext.Notifications.OrderByDescending(n => n.CreatedAt).ToList();
         }
+        /// <summary>
+        /// Les méthodes suivantes donnent la possibilité au partenaire de créer de services à partir de sa plateforme. Ils seront sauvegardés dans la bdd
+        /// </summary>
 
         public int CreateAccomodation(string name, string type, int capacity, double price, int partnerId, int destinationId, DateTime startDate, DateTime endDate)
         {
@@ -117,7 +127,11 @@ namespace TripMeOn.BL
             _bddContext.Transportations.Remove(transportation);
             _bddContext.SaveChanges();
         }
-
+        /// <summary>
+        /// Les méthodes suivantes servent à la recherche multicritère de services de partenaires pour les utilisateurs, 
+        /// </summary>
+ 
+        /// <returns>La liste de services et ses détails</returns>
         public List<Accomodation> SearchAccomodationByDestinationMonth(int? destinationId, int? month)
         {
             using var dbContext = new BddContext();

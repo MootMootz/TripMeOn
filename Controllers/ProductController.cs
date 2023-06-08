@@ -7,6 +7,9 @@ using System.Collections.Generic;
 
 namespace TripMeOn.Controllers
 {
+    /// <summary>
+    /// Class controller pour faire la gestion de paquets touristiques
+    /// </summary>
     public class ProductController : Controller
     {
         private readonly IProductService _productService;
@@ -17,11 +20,6 @@ namespace TripMeOn.Controllers
         }
 
 
-        //public IActionResult SearchPackage(int destination, int theme, int month)
-        //{
-        //    var searchResults = _productService.SearchByDestinationThemeMonth(destination, theme, month);
-        //    return View("SearchBoxPackage", searchResults);
-        //}
         public IActionResult SearchPackage(string country, int theme, int month)
         {
 

@@ -4,6 +4,9 @@ using TripMeOn.Models.Order;
 
 namespace TripMeOn.BL.interfaces
 {
+    /// <summary>
+    /// L'interface OrderService sert à pouvoir remplir les articles choisis pour pouvoir les acheter
+    /// </summary>
     public interface IOrderService : IDisposable
     {
         int CreateCart();

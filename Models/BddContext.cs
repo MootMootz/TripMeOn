@@ -10,6 +10,9 @@ using TripMeOn.Models.Users;
 
 namespace TripMeOn.Models
 {
+    /// <summary>
+    /// CLass pour instancier les services, utilisateurs, et tous les atributs des objets créés, dans la bdd
+    /// </summary>
     public class BddContext : DbContext
     {
         public DbSet<TourPackage> TourPackages { get; set; }
@@ -29,11 +32,7 @@ namespace TripMeOn.Models
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-
-
-            optionsBuilder.UseMySql("server=localhost;user id=root;password=1530;database=TripMeOn");
-
-
+            optionsBuilder.UseMySql("server=localhost;user id=root;password=kukuskar;database=TripMeOn");
         }
 
         public void InitializeDb()

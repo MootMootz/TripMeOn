@@ -1,4 +1,4 @@
-﻿@model TripMeOn.Models.PartnerProducts.Transportation
+﻿@model TripMeOn.Models.PartnerProducts.Accomodation
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -16,8 +16,9 @@
             <p>Type: @Model.Type</p>
             <p>Available from: @Model.StartDate.ToString("MMMM") to @Model.EndDate.ToString("MMMM")</p>
             <p>Price: @Model.Price.ToString("0.##")&euro;</p>
-            <form action="@Url.Action("AddToCart", "Cart", new { id = Model.Id })" method="get">
+            <form action="/Cart/BuyAccomodation" method="post">
                 <label for="quantity">Quantity:</label>
+                <input type="hidden" name="accomodationId" value="@Model.Id"/>
                 <input type="number" name="quantity" id="quantity" value="1" min="1" />
                 <button type="submit">Add to Cart</button>
             </form>

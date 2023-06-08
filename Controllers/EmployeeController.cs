@@ -10,6 +10,9 @@ using TripMeOn.Models.PartnerProducts;
 
 namespace TripMeOn.Controllers
 {
+    /// <summary>
+    /// Cette classe est utilisé pour les fonctions de l'interface de l'administrateur du site. On regarde les services, les partenaires, les clients, et on peut les modifier.
+    /// </summary>
     public class EmployeeController : Controller
     {
         private Models.BddContext _bddContext;
@@ -55,6 +58,16 @@ namespace TripMeOn.Controllers
             {
                 ManageAccountModel viewModel = new ManageAccountModel();
                 viewModel.Clients = manageAccount.GetAllClients();
+                return View(viewModel);
+            }
+        }
+
+        public IActionResult ListeEmployee()
+        {
+            using (IManageAccount manageAccount = new ManageAccount())
+            {
+                ManageAccountModel viewModel = new ManageAccountModel();
+                viewModel.Employees = manageAccount.GetAllEmployees();
                 return View(viewModel);
             }
         }
@@ -133,6 +146,43 @@ namespace TripMeOn.Controllers
             }
         }
 
+        public IActionResult ModifyEmployee(int id) // afficher la vue de modification de l'accomodation
+        {
+            if (id != 0)
+            {
+                using (IManageAccount manageAccount = new ManageAccount())
+                {
+                    Employee employee = manageAccount.GetAllEmployees().Where(r => r.Id == id).FirstOrDefault();
+                    if (employee == null)
+                    {
+                        return View("Error");
+                    }
+                    return View(employee);
+                }
+            }
+            return View("Error");
+        }
+
+        [HttpPost]
+        public IActionResult ModifyEmployee(Employee employee) // traiter la requête de modification
+        {
+            if (!ModelState.IsValid)
+                return View(employee);
+            if (employee.Id != 0)
+            {
+                using (ManageAccount manageAccount = new ManageAccount())
+                {
+                    manageAccount.ModifyEmployee(employee);
+                    TempData["SuccessMessage"] = "The employee has been modified";
+                    return RedirectToAction("ListeEmployee");
+                }
+            }
+            else
+            {
+                return View("Error");
+            }
+        }
+
         public IActionResult DeletePartner(int id)
         {
             using (IManageAccount manageAccount = new ManageAccount())
@@ -153,9 +203,15 @@ namespace TripMeOn.Controllers
             }
         }
 
-             
-               
-            
+        public IActionResult DeleteEmployee(int id)
+        {
+            using (IManageAccount manageAccount = new ManageAccount())
+            {
+                Employee employee = manageAccount.GetAllEmployees().Where(r => r.Id == id).FirstOrDefault();
+                manageAccount.DeleteEmployee(employee);
+                return RedirectToAction("ListeEmployee");
+            }
+        }
 
         [HttpGet]
         public IActionResult AddEmployeeForm()
@@ -187,7 +243,7 @@ namespace TripMeOn.Controllers
                 dbContext.Employees.Add(employee);
                 dbContext.SaveChanges();
 
-                return View("../Employee/IndexAdmin");
+                return RedirectToAction("ListeEmployee");
 
             }
         }

@@ -34,7 +34,10 @@ namespace TripMeOn.Controllers
             return View();
         }
 
-
+        /// <summary>
+        /// Les deux méthodes suivantes servent à la création d'un nouveau partenaire.
+        /// </summary>
+        /// <returns>L'information est envoyé sur la bdd</returns>
         [HttpGet]
         public IActionResult PartnerForm()
         {
@@ -82,7 +85,10 @@ namespace TripMeOn.Controllers
         {
             return View();
         }
-
+        /// <summary>
+        /// Les méthoddes suivantes servent à créer des services partenaires à partir de la plateforme partenaire en remplissant un formulaire
+        /// </summary>
+        /// <returns>les donnés iront sur la bdd et une notification sera reçu à l'admin pour traiter l'information</returns>
         public IActionResult CreateRestaurant()
         {
             string partnerId = User.FindFirstValue(ClaimTypes.Name);
@@ -175,6 +181,11 @@ namespace TripMeOn.Controllers
                 return RedirectToAction("ListeTransportation");
             }
         }
+        /// <summary>
+        /// Méthodes pour modifier les services existantes
+        /// </summary>
+        /// <param name="id">le service est choisi et géré par son id</param>
+        /// <returns>le service avec les modifications</returns>
         public IActionResult ModifyAccomodation(int id) // afficher la vue de modification de l'accomodation
         {
             if (id != 0)
@@ -333,7 +344,11 @@ namespace TripMeOn.Controllers
                 return View("Error");
             }
         }
-
+        /// <summary>
+        /// Méthodes pour mettre en ligne les services des partenaires
+        /// </summary>
+        /// <param name="id">le service est cheché dans la bdd par son id</param>
+        /// <returns>le service sera en ligne, ou pas, selon l'option choisit</returns>
         public IActionResult ToggleOnlineStatusAccomodation(int id)
         {
             using (PropositionService propositionService = new PropositionService())
@@ -376,6 +391,10 @@ namespace TripMeOn.Controllers
             }
             return RedirectToAction("ListeTransportation"); // redirige vers la liste des transportations
         }
+        /// <summary>
+        /// Méthode pour afficher la vue de tous les services, selon le choix fait ( hébergement, restaurants, ou transports)
+        /// </summary>
+        /// <returns></returns>
         public IActionResult ListeAccomodation()
         {
             using (IPropositionService propositionService = new PropositionService())
@@ -450,6 +469,13 @@ namespace TripMeOn.Controllers
             }
         }
 
+        /// <summary>
+        /// Méthode de recerche multicritère d'un service
+        /// </summary>
+        /// <param name="serviceType">recherche par type de service</param>
+        /// <param name="destination">recherche par destination</param>
+        /// <param name="month">recherche par mois</param>
+        /// <returns>les paquets qui correspondent aux critères choisis</returns>
         public IActionResult SearchPackage(string serviceType, int destination, int month)
         {
             var searchResults = _propositionService.SearchByServiceTypeDestinationMonth(
@@ -476,7 +502,11 @@ namespace TripMeOn.Controllers
 
             return View("SearchServicePackages", viewModel);
         }
-
+        /// <summary>
+        /// méthodes d'affichage de service choisi et ses détails
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public IActionResult DetailsAccomodations(int id)
         {
             var accomodation = _propositionService.GetAllAccomodations().FirstOrDefault(a => a.Id == id);
@@ -486,8 +516,8 @@ namespace TripMeOn.Controllers
                 return NotFound();
             }
 
-            string viewName = $"/Views/ServicesAccomodations/Details_{id}.cshtml";
-            return View(viewName, accomodation);
+
+            return View(accomodation);
         }
 
         public IActionResult DetailsRestaurants(int id)
@@ -499,8 +529,8 @@ namespace TripMeOn.Controllers
                 return NotFound();
             }
 
-            string viewName = $"/Views/ServicesRestaurants/Details_{id}.cshtml";
-            return View(viewName, restaurant);
+ 
+            return View(restaurant);
         }
 
         public IActionResult DetailsTransportations(int id)
@@ -512,8 +542,8 @@ namespace TripMeOn.Controllers
                 return NotFound();
             }
 
-            string viewName = $"/Views/ServicesTransportations/Details_{id}.cshtml";
-            return View(viewName, transportation);
+   
+            return View(transportation);
         }
 
 

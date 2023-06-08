@@ -26,6 +26,11 @@ namespace TripMeOn.Controllers
             var viewModel = new ClientViewModel();
             return View(viewModel);
         }
+
+        /// <summary>
+        /// Méthode que récupère le client qui vient de s'authentifier 
+        /// </summary>
+        /// <returns></returns>
         private NavigationViewModel SetupNavigationViewModel()
         {
             var viewModel = new NavigationViewModel
@@ -46,15 +51,22 @@ namespace TripMeOn.Controllers
             return View();
         }
         //LOG IN CLIENT
+        /// <summary>
+        /// Méthode pour aller sur le login client
+        /// </summary>
+        /// <returns>page pour faire le login</returns>
         public IActionResult LoginClient()
         {
             ViewBag.ShowLoginClientBox = true;
             return View(SetupNavigationViewModel());
         }
+        /// <summary>
+        /// Méthode get d'authentification. On crée une instance de NavigationViewModel
+        /// </summary>
 
         public IActionResult IndexClient(string returnUrl)
         {
-            var viewModel = new NavigationViewModel(); // Create an instance of the NavigationViewModel
+            var viewModel = new NavigationViewModel(); // Create an instance of the 
             if (!viewModel.AuthentifyC)
             {
                 ViewBag.ShowLoginClientBox = true;
@@ -62,7 +74,12 @@ namespace TripMeOn.Controllers
 
             return View("LoginClient", viewModel); // Pass the NavigationViewModel to the LoginClient view
         }
-
+        /// <summary>
+        /// Méthode post de l'information pour l'authentification du client
+        /// </summary>
+        /// <param name="viewModel">si l'authentification ne se réalise pas, on revient sur la page principal</param>
+        /// <param name="returnUrl">si l'authentification marche, on va sur la page où on se dirigé avant que l'application demande l'authentification</param>
+        /// <returns></returns>
 
         [HttpPost]
         public IActionResult IndexClient(NavigationViewModel viewModel, string returnUrl)
@@ -93,7 +110,7 @@ namespace TripMeOn.Controllers
                     if (!string.IsNullOrWhiteSpace(returnUrl) && Url.IsLocalUrl(returnUrl))
                         return Redirect(returnUrl);
 
-                    return RedirectToAction("ViewCart", "Cart"); // add conditional
+                    return RedirectToAction("ViewCart", "Cart"); 
                 }
                 ModelState.AddModelError("Client.Nickname", "Incorrect Nickname or Password");
             }
@@ -153,7 +170,10 @@ namespace TripMeOn.Controllers
             }
             return View("../Home/HomePage", viewModel);
         }
-
+        /// <summary>
+        /// Méthodde de déconnection. Les cookies sont effacés du système
+        /// </summary>
+        /// <returns>on revient sur la page principal</returns>
         public ActionResult Deconnection()
         {
             HttpContext.SignOutAsync();
@@ -207,47 +227,14 @@ namespace TripMeOn.Controllers
                     if (!string.IsNullOrWhiteSpace(returnUrl) && Url.IsLocalUrl(returnUrl))
                         return Redirect(returnUrl);
 
-                    return Redirect("../Employee/IndexAdmin");
+                    return Redirect("../Employee/Notifications");
                 }
                 ModelState.AddModelError("Employee.Nickname", "le nom ou le mot de passe sont incorrects");
             }
             return View("../Home/HomePage", viewModel);
         }
 
-        //A FAIRE JUSTE APRES
-
-        //public IActionResult CreerCompte()
-        //{
-        //    return View();
-        //}
-
-        //[HttpPost]
-        //public IActionResult CreerCompte(Utilisateur utilisateur)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        int id = dal.AjouterUtilisateur(utilisateur.Prenom, utilisateur.Password);
-
-        //        var userClaims = new List<Claim>()
-        //        {
-        //            new Claim(ClaimTypes.Name, id.ToString()),
-        //        };
-
-        //        var ClaimIdentity = new ClaimsIdentity(userClaims, "User Identity");
-
-        //        var userPrincipal = new ClaimsPrincipal(new[] { ClaimIdentity });
-        //        HttpContext.SignInAsync(userPrincipal);
-
-        //        return Redirect("/");
-        //    }
-        //    return View(utilisateur);
-        //}
-
-        //        public ActionResult Deconnexion()
-        //        {
-        //            HttpContext.SignOutAsync();
-        //            return Redirect("/");
-        //        }
+       
     }
 }
 

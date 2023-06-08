@@ -18,10 +18,15 @@ namespace TripMeOn.BL
         {
             _bddContext = new Models.BddContext();
         }
+
+        /// <summary>
+        /// méthode utilisé pour chercher les destinations, et les trier par pays, en regroupant les destinations du même pays pour éviter la répetition
+        /// </summary>
+        /// <returns>les pays triés</returns>
         public List<Destination> GetDestinations()
         {
             List<Destination> destinations = new List<Destination>();
-            //Debugged : Group the destinations from the same country and display the first one only to aviod duplicate entries
+           
             using (var _bddContext = new Models.BddContext())
             {
                 destinations = _bddContext.Destinations.ToList();// original code to retrieve all destinations in-memory LINQ-to-Objects       
@@ -35,26 +40,6 @@ namespace TripMeOn.BL
             return destinations;
         }
 
-        //public List<Destination> GetDestinations()
-        //{
-        //    List<Destination> destinations = new List<Destination>();
-
-        //    using (var _bddContext = new Models.BddContext())
-        //    {
-        //        destinations = _bddContext.Destinations
-        //            .GroupBy(d => new { d.Country, d.City, d.Region })
-        //            .Select(group => new Destination
-        //            {
-        //                Country = group.Key.Country,
-        //                City = group.Key.City,
-        //                Region = group.Key.Region
-        //            })
-        //            .Distinct()
-        //            .ToList();
-        //    }
-
-        //    return destinations;
-        //}
 
         public List<string> GetDistinctCountries()
         {
@@ -83,6 +68,11 @@ namespace TripMeOn.BL
 
             return themes;
         }
+
+        /// <summary>
+        /// méthode pour récuperer les paquets touristiques et les afficher avec ses atributs
+        /// </summary>
+        /// <returns></returns>
         public List<TourPackage> GetTourPackages()
         {
             List<TourPackage> tourPackages = new List<TourPackage>();
@@ -100,6 +90,11 @@ namespace TripMeOn.BL
             return tourPackages;
         }
 
+        /// <summary>
+        /// méthode re recherche de paquets par iD
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public TourPackage GetTourPackageById(int id)
         {
             using var dbContext = new Models.BddContext();
@@ -116,6 +111,11 @@ namespace TripMeOn.BL
                 .FirstOrDefault(tp => tp.Id == id);
         }
 
+        /// <summary>
+        /// méthode de recherche de paquets par mois
+        /// </summary>
+        /// <param name="month"></param>
+        /// <returns></returns>
         public List<TourPackage> GetTourPackagesByMonth(int month)
         {
             using var dbContext = new Models.BddContext();
@@ -125,6 +125,13 @@ namespace TripMeOn.BL
         }
 
 		//Include = retrieve related entities along with the main entity in a single query to optimize performance.
+        /// <summary>
+        /// Recherche multicritère des paquets touristiques
+        /// </summary>
+        /// <param name="country">recherche par pays</param>
+        /// <param name="themeId">recherche par thème</param>
+        /// <param name="month">recherche par mois</param>
+        /// <returns>les paquets qui répondent à tous les critères selectionnés</returns>
 		public List<TourPackage> SearchByDestinationThemeMonth(string country, int? themeId, int? month)
 		{
 			using var dbContext = new Models.BddContext();
@@ -135,7 +142,7 @@ namespace TripMeOn.BL
 											  .Include(tp => tp.Image)
 											  .AsQueryable();
 
-			if ( country != "All Destinations")
+			if ( country != "All Destinations" && country!=null)
 			{
 				query = query.Where(tp => tp.Destination.Country == country);
 			}
@@ -153,16 +160,28 @@ namespace TripMeOn.BL
 			return query.ToList(); ;
 		}
 
-
+        /// <summary>
+        /// Méthode de création d'un paquet turistique
+        /// </summary>
+        /// <param name="name">Nom du paquet à afficher comme titre</param>
+        /// <param name="country">pays de destination</param>
+        /// <param name="themeName">thématique du voyage</param>
+        /// <param name="region">region du pays de destination</param>
+        /// <param name="city">ville principale</param>
+        /// <param name="description">description courte du voyage</param>
+        /// <param name="startMonth">à partir de quel mois il est récommandé</param>
+        /// <param name="endMonth">jusqu'à quel mois on doit le prendre</param>
+        /// <param name="price">prix du paquet complet</param>
+        /// <returns></returns>
 		public TourPackage CreatePackage(string name, string country, string themeName, string region, string city, string description, int startMonth, int endMonth, double price)
         {
             using var _bddContext = new Models.BddContext();
             {
-                // Check if a destination with the same country, region, and city exists in the database to avoid duplicate
+                // Vérifie qu'il n'y a pas de destination avec le même pays, dans la même region et dans la même ville pour éviter de dupliquer les informations sur la base de donnés
                 Destination destination = _bddContext.Destinations.FirstOrDefault(d =>
                     d.Country == country && d.Region == region && d.City == city);
 
-                // If the destination doesn't exist, create a new one
+                // si la destination n'existe pas, on va la créer
                 if (destination == null)
                 {
                     destination = new Destination
@@ -174,10 +193,10 @@ namespace TripMeOn.BL
                     _bddContext.Destinations.Add(destination);
                 }
 
-                // Find and Check if a theme with the same name exists in the database
+                // Cherche si le thème existe dans la base de donnés
                 Theme theme = _bddContext.Themes.FirstOrDefault(t => t.Name == themeName);
 
-                // If the theme doesn't exist, create a new one
+                // si le thème n'existe pas, on le crée
                 if (theme == null)
                 {
                     theme = new Theme
@@ -187,10 +206,10 @@ namespace TripMeOn.BL
                     _bddContext.Themes.Add(theme);
                 }
 
-                // Retrieve the TimePeriod entity with the specified start month and end month, including eager loading
+                // On cherche si la même période du début et fin de disponibilité dans un paquet existe déjà
                 TimePeriod timePeriod = _bddContext.TimePeriods.Include(tp => tp.TourPackages).SingleOrDefault(tp => tp.StartMonth == startMonth && tp.EndMonth == endMonth);
 
-                // If the time period doesn't exist, create a new one
+                // si la période n'existe pas, on va la créér
                 if (timePeriod == null)
                 {
                     timePeriod = new TimePeriod
@@ -200,7 +219,7 @@ namespace TripMeOn.BL
                     };
                     _bddContext.TimePeriods.Add(timePeriod);
                 }
-                // Create a new TourPackage object
+                //on instancie un nouveau TourPackage
                 TourPackage package = new TourPackage
                 {
                     Name = name,
@@ -217,12 +236,15 @@ namespace TripMeOn.BL
                 return package;
             }
         }
+        /// <summary>
+        /// méthode pour modifier un paquet
+        /// </summary>
 
         public TourPackage ModifyPackage(int packageId, string name, string country, string themeName, string region, string city, string description, int startMonth, int endMonth, double price)
         {
             using var _bddContext = new Models.BddContext();
             {
-                // Retrieve the existing TourPackage from the database
+                // Récuperer le paquet de la base de donnés
                 TourPackage package = _bddContext.TourPackages
                     .Include(tp => tp.Destination)
                     .Include(tp => tp.Theme)
@@ -231,12 +253,12 @@ namespace TripMeOn.BL
 
                 if (package != null)
                 {
-                    // Update the properties of the TourPackage
+                    // si le paquet existe, on modifie ses attributs
                     package.Name = name;
                     package.Description = description;
                     package.Price = price;
 
-                    // Update or create the Destination based on the provided values
+                    // on choisit ou on crée une autre destination si on veut
                     Destination destination = _bddContext.Destinations
                         .FirstOrDefault(d => d.Country == country && d.Region == region && d.City == city);
 
@@ -250,7 +272,7 @@ namespace TripMeOn.BL
                         };
                         _bddContext.Destinations.Add(destination);
                     }
-                    // Update or create the Theme based on the provided themeName
+                    // on choisit ou on crée un thème pour le paquet
                     Theme theme = _bddContext.Themes.FirstOrDefault(t => t.Name == themeName);
 
                     if (theme == null)
@@ -261,7 +283,7 @@ namespace TripMeOn.BL
                         };
                         _bddContext.Themes.Add(theme);
                     }
-                    // Check if a TimePeriod with the same startMonth and endMonth exists
+                    // on regarde si la même période existe, sinon on choisit une autre
                     TimePeriod timePeriod = _bddContext.TimePeriods
                         .FirstOrDefault(tp => tp.StartMonth == startMonth && tp.EndMonth == endMonth);
 
@@ -283,6 +305,10 @@ namespace TripMeOn.BL
                 return package;
             }
         }
+        /// <summary>
+        /// Méthode pour effacer un paquet
+        /// </summary>
+        /// <param name="packageId">on cherche le paquet par son id</param>
         public void RemovePackage(int packageId)
         {
             using (var _bddContext = new Models.BddContext())
@@ -299,24 +325,6 @@ namespace TripMeOn.BL
         {
             _bddContext.Dispose();
         }
-
-        //public  List<TourPackage> SearchByPackageId(int id)
-        //{
-        //	List<TourPackage> searchResults = tourPackages.Where(tp => tp.Id == id).ToList();
-        //	return searchResults;
-        //}
-
-        //public  List<TourPackage> SearchByDestination(string keyword)
-        //{
-        //	List<TourPackage> searchResults = TourPackageList.Where(tp => tp.Destination.Country.Contains(keyword, StringComparison.OrdinalIgnoreCase)).ToList();
-        //	return searchResults;
-        //}
-
-        //public  List<TourPackage> SearchByTheme(string keyword)
-        //{
-        //	List<TourPackage> searchResults = TourPackageList.Where(tp => tp.Theme.Name.Contains(keyword, StringComparison.OrdinalIgnoreCase)).ToList();
-        //	return searchResults;
-        //}      
 
     }
 }

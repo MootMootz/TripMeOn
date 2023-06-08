@@ -18,7 +18,7 @@
             <p>Price: @Model.Price.ToString("0.##")&euro;</p>
             <form action="/Cart/BuyAccomodation" method="post">
                 <label for="quantity">Quantity:</label>
-                <input type="hidden" name="accomodationId" value="@Model.Id"/>
+                <input type="hidden" name="accomodationId" value="@Model.Id" />
                 <input type="number" name="quantity" id="quantity" value="1" min="1" />
                 <button type="submit">Add to Cart</button>
             </form>
@@ -28,11 +28,11 @@
 
 @section ExtraScript{
     <script>
-        function addToCart(transportationId) {
+        function addToCart(accomodationId) {
             // Logic to add the accomodation to the cart
             // You can use JavaScript or make an AJAX request to your backend
             // to handle the add to cart functionality
-            alert('Transportation added to cart: ' + transportationId);
+            alert('Transportation added to cart: ' + accomodationId);
         }
     </script>
 }

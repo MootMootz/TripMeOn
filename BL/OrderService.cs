@@ -56,37 +56,7 @@ namespace TripMeOn.BL
             return query.FirstOrDefault();
         }
 
-
-        //public Cart GetCart(int cartId, int? clientId = null)
-        //{
-        //    var query = _bddContext.Carts
-        //        .Include(c => c.Client)
-        //        .Include(c => c.Items)
-        //            .ThenInclude(it => it.TourPackage)
-        //                .ThenInclude(tp => tp.Destination)
-        //                    .ThenInclude(d => d.Country)
-        //        .Include(c => c.Items)
-        //            .ThenInclude(it => it.TourPackage)
-        //                .ThenInclude(tp => tp.Destination)
-        //                    .ThenInclude(d => d.Region)
-        //        .Include(c => c.Items)
-        //            .ThenInclude(it => it.TourPackage)
-        //                .ThenInclude(tp => tp.Destination)
-        //                    .ThenInclude(d => d.City)
-        //        .Include(c => c.Items)
-        //            .ThenInclude(it => it.TourPackage)
-        //                .ThenInclude(tp => tp.Image)
-        //        .Where(c => c.Id == cartId);
-        //    if (clientId.HasValue)
-        //    {
-        //        query = query.Where(cl => cl.ClientId == clientId.Value);
-        //    }
-        //    return query.FirstOrDefault();
-        //}
-
-
-         public Cart GetCartWithClient(int cartId, int clientId)
-
+        public Cart GetCartWithClient(int cartId, int clientId)
         {
             var query = _bddContext.Carts
                 .Include(c => c.Items)
@@ -128,36 +98,20 @@ namespace TripMeOn.BL
 
                 item.TourPackage = _bddContext.TourPackages.Find(item.TourPackageId);
                 item.Accomodation = _bddContext.Accomodations.Find(item.AccomodationId);
+                item.Transportation = _bddContext.Transportations.Find(item.TransportationId);
                 item.Restaurant = _bddContext.Restaurants.Find(item.RestaurantId);
-                item.Transportation = _bddContext.Transportations.Find(item.TransportId);
 
-                // Regarde si l'article existe déjà
-                var existingItem = cart.Items.FirstOrDefault(i => i.TourPackageId == item.TourPackageId);
-                var existingItemAccomodation = cart.Items.FirstOrDefault(a => a.AccomodationId == item.AccomodationId);
-                var existingItemRestaurant = cart.Items.FirstOrDefault(r => r.RestaurantId == item.RestaurantId);
-                var existingItemTransport = cart.Items.FirstOrDefault(t => t.TransportId == item.TransportId);
+                // Check if the item already exists in the cart
+                var existingItem = cart.Items.FirstOrDefault(i => i.TourPackageId == item.TourPackageId
+                                                                        && i.AccomodationId == item.AccomodationId
+                                                                        && i.TransportationId == item.TransportationId
+                                                                        && i.RestaurantId == item.RestaurantId);
+                
 
                 if (existingItem != null)
                 {
                     // l'article existe, donc on met à jour la quantité
                     existingItem.Quantity += item.Quantity;
-                }
-
-                if (existingItemAccomodation != null)
-                {
-                    
-                    existingItemAccomodation.Quantity += item.Quantity;
-                }
-
-                if (existingItemRestaurant != null)
-                {
-
-                    existingItemRestaurant.Quantity += item.Quantity;
-                }
-                if (existingItemTransport != null)
-                {
-
-                    existingItemTransport.Quantity += item.Quantity;
                 }
                 else
                 {
@@ -229,33 +183,3 @@ namespace TripMeOn.BL
         }
     }
 }
-
-
-
-
-
-//public void AddItem(int cartId, Item item)
-//{
-//    Cart cart = _bddContext.Carts.Find(cartId);
-//    item.TourPackage = _bddContext.TourPackages.Find(item.TourPackageId);
-//    cart.Items.Add(item);
-
-//    _bddContext.SaveChanges();
-//}
-//public void AddItem(int cartId, Item item)
-//{
-//    Cart cart = _bddContext.Carts.Include(c => c.Items).FirstOrDefault(c => c.Id == cartId);
-
-//    if (cart != null)
-//    {
-//        if (cart.Items == null)
-//        {
-//            cart.Items = new List<Item>();
-//        }
-
-//        item.TourPackage = _bddContext.TourPackages.Find(item.TourPackageId);
-//        cart.Items.Add(item);
-
-//        _bddContext.SaveChanges();
-//    }
-//}

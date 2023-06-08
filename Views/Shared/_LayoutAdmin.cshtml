@@ -13,8 +13,6 @@
 
 </head>
 <body>
-
-
     <div id="main">
         <div id="menu">
             ADMIN HOMEPAGE<br />
@@ -32,18 +30,13 @@
                 @Html.ActionLink("Packages", "PackageList", "Product")
                 <br />
                 @Html.ActionLink("Notifications", "Notifications", "Employee")
-
-
                 <div id="logout">
                     <button type="submit">@Html.ActionLink("Logout", "Deconnection", "Login")</button>
                 </div>
             </div>
         </div>
-
         <div id="mainContent">
-
             <div id="mainContentTop">
-
                 <div class=pageTitle>
                     WELCOME
                     @if (!String.IsNullOrEmpty(Context.Request.Cookies["Nickname"])) // si la valeur du cookie Nickname n'est pas vide
@@ -54,7 +47,6 @@
                     <div id="barre">
                     </div>
                 </div>
-
                 <div id="actionRequiredBlock">
                     Action required<br />
                     <div id="actionRequiredContainer">
@@ -63,15 +55,12 @@
                         </div>
                     </div>
                 </div>
-
             </div>
-
         </div>
-
+      
         @RenderBody()
 
-
-        <footer>
+      <footer>
 
             <div class="footer-buttons">
                 <a href="/Content/InstaTips" class="footer-button">#Insta-tips</a>

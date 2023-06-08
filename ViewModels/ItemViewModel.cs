@@ -11,7 +11,7 @@
         public int? RestaurantId { get; set; }
         public string RestaurantName { get; set; }
         public double RestaurantPrice { get; set; }
-        public int? TransportId { get; set; }
+        public int? TransportationId { get; set; }
         public string TransportationType { get; set; }
         public double TransportationPrice { get; set; }
         public int Quantity { get; set; }

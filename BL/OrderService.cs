@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Razor.Language.Extensions;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 using TripMeOn.BL.interfaces;
@@ -8,13 +9,13 @@ using TripMeOn.Models.Order;
 namespace TripMeOn.BL
 {
     public class OrderService : IOrderService
-	{
+    {
         private readonly Models.BddContext _bddContext;
 
         public OrderService()
         {
             _bddContext = new Models.BddContext();
-		}
+        }
 
         public int CreateCart()
         {
@@ -25,7 +26,12 @@ namespace TripMeOn.BL
         }
         public Cart GetCart(int cartId, int? clientId = null)
         {
-            var query = _bddContext.Carts.Include(c => c.Client).Include(c => c.Items).ThenInclude(it => it.TourPackage).Where(c => c.Id == cartId);
+            var query = _bddContext.Carts.Include(c => c.Client)
+                .Include(c => c.Items).ThenInclude(it => it.TourPackage)
+                 .Include(c => c.Items).ThenInclude(it => it.Accomodation)
+                  .Include(c => c.Items).ThenInclude(it => it.Restaurant)
+                   .Include(c => c.Items).ThenInclude(it => it.Transportation)
+                .Where(c => c.Id == cartId);
             if (clientId.HasValue)
             {
                 query = query.Where(cl => cl.ClientId == clientId.Value);
@@ -98,14 +104,22 @@ namespace TripMeOn.BL
                 }
 
                 item.TourPackage = _bddContext.TourPackages.Find(item.TourPackageId);
+                item.Accomodation = _bddContext.Accomodations.Find(item.AccomodationId);
 
                 // Check if the item already exists in the cart
                 var existingItem = cart.Items.FirstOrDefault(i => i.TourPackageId == item.TourPackageId);
+                var existingItemAccomodation = cart.Items.FirstOrDefault(a => a.AccomodationId == item.AccomodationId);
 
                 if (existingItem != null)
                 {
                     // Item already exists, update the quantity
                     existingItem.Quantity += item.Quantity;
+                }
+
+                if (existingItemAccomodation != null)
+                {
+                    // Item already exists, update the quantity
+                    existingItemAccomodation.Quantity += item.Quantity;
                 }
                 else
                 {
@@ -128,14 +142,14 @@ namespace TripMeOn.BL
         }
 
         public void RemoveItem(int cartId, int itemId)
-		{
-			Cart cart = GetCart(cartId);
-			Item item = cart.Items.Where(it => it.Id == itemId).FirstOrDefault();
+        {
+            Cart cart = GetCart(cartId);
+            Item item = cart.Items.Where(it => it.Id == itemId).FirstOrDefault();
 
-			cart.Items.Remove(item);
+            cart.Items.Remove(item);
 
-			_bddContext.SaveChanges();
-		}
+            _bddContext.SaveChanges();
+        }
 
         public void ClearCart(int cartId)
         {
@@ -165,17 +179,17 @@ namespace TripMeOn.BL
         public List<Cart> GetOrdersByUserId(int clientId)
         {
             return _bddContext.Carts
-                .Include(c => c.Items).ThenInclude(it=>it.TourPackage)
-                .Include(c=>c.Client)
+                .Include(c => c.Items).ThenInclude(it => it.TourPackage)
+                .Include(c => c.Client)
                 .Where(c => c.ClientId == clientId)
                 .ToList();
         }
 
         public void Dispose()
-		{
-			_bddContext.Dispose();
-		}
-	}
+        {
+            _bddContext.Dispose();
+        }
+    }
 }
 
 

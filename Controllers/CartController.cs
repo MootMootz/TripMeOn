@@ -1,14 +1,13 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using TripMeOn.BL;
 using TripMeOn.BL.interfaces;
 using TripMeOn.Helper;
+using TripMeOn.Models;
 using TripMeOn.Models.Order;
 using TripMeOn.Models.Products;
 using TripMeOn.ViewModels;
@@ -21,11 +20,12 @@ namespace TripMeOn.Controllers
     {
         private readonly IOrderService _orderService;
 
+
         public CartController(IOrderService orderService)
         {
             _orderService = orderService;
-        }
 
+        }
 
         public IActionResult ViewCart()
         {
@@ -49,30 +49,117 @@ namespace TripMeOn.Controllers
         //    return BuyProduct(tourPackageId, quantity);
         //}
 
-        
-     
+
+
         [HttpPost]
         public IActionResult BuyProduct(int tourPackageId, int quantity, DateTime startDate, DateTime endDate)
         {
             var cartId = SessionHelper.GetObjectFromJson<int>(HttpContext.Session, "cartId");
-           
+
 
             if (cartId == 0)
             {
                 cartId = _orderService.CreateCart();
-                _orderService.AddItem(cartId, new Item { TourPackageId = tourPackageId, Quantity = quantity, StartDate= startDate, EndDate=endDate});
+
+                _orderService.AddItem(cartId, new Item { TourPackageId = tourPackageId, Quantity = quantity, StartDate = startDate, EndDate = endDate });
+
 
                 if (User.Identity.IsAuthenticated)
                 {
                     var clientId = int.Parse(User.Identity.Name);
                     _orderService.UpdateCartClient(cartId, clientId); // Associate the client ID with the cart
                 }
-               
+
                 SessionHelper.SetObjectAsJson(HttpContext.Session, "cartId", cartId);
             }
             else
             {
                 _orderService.AddItem(cartId, new Item { TourPackageId = tourPackageId, Quantity = quantity, StartDate = startDate, EndDate = endDate });
+            }
+
+            HttpContext.Response.Cookies.Append("CartId", cartId.ToString());
+
+            return RedirectToAction("ViewCart");
+        }
+        [HttpPost]
+        public IActionResult BuyAccomodation(int accomodationId, int quantity)
+        {
+            var cartId = SessionHelper.GetObjectFromJson<int>(HttpContext.Session, "cartId");
+
+
+            if (cartId == 0)
+            {
+                cartId = _orderService.CreateCart();
+                _orderService.AddItem(cartId, new Item { AccomodationId = accomodationId, Quantity = quantity });
+
+                if (User.Identity.IsAuthenticated)
+                {
+                    var clientId = int.Parse(User.Identity.Name);
+                    _orderService.UpdateCartClient(cartId, clientId); // Associate the client ID with the cart
+                }
+
+                SessionHelper.SetObjectAsJson(HttpContext.Session, "cartId", cartId);
+            }
+            else
+            {
+                _orderService.AddItem(cartId, new Item { AccomodationId = accomodationId, Quantity = quantity });
+            }
+
+            HttpContext.Response.Cookies.Append("CartId", cartId.ToString());
+
+            return RedirectToAction("ViewCart");
+        }
+        [HttpPost]
+        public IActionResult BuyRestaurant(int restaurantId, int quantity)
+        {
+            var cartId = SessionHelper.GetObjectFromJson<int>(HttpContext.Session, "cartId");
+
+
+            if (cartId == 0)
+            {
+                cartId = _orderService.CreateCart();
+                _orderService.AddItem(cartId, new Item { RestaurantId = restaurantId, Quantity = quantity });
+
+                if (User.Identity.IsAuthenticated)
+                {
+                    var clientId = int.Parse(User.Identity.Name);
+                    _orderService.UpdateCartClient(cartId, clientId); // Associate the client ID with the cart
+                }
+
+                SessionHelper.SetObjectAsJson(HttpContext.Session, "cartId", cartId);
+            }
+            else
+            {
+                _orderService.AddItem(cartId, new Item { RestaurantId = restaurantId, Quantity = quantity });
+            }
+
+            HttpContext.Response.Cookies.Append("CartId", cartId.ToString());
+
+            return RedirectToAction("ViewCart");
+        }
+
+        [HttpPost]
+        public IActionResult BuyTransport(int transportId, int quantity)
+        {
+            var cartId = SessionHelper.GetObjectFromJson<int>(HttpContext.Session, "cartId");
+
+
+            if (cartId == 0)
+            {
+                cartId = _orderService.CreateCart();
+                _orderService.AddItem(cartId, new Item { TransportId = transportId, Quantity = quantity });
+
+                if (User.Identity.IsAuthenticated)
+                {
+                    var clientId = int.Parse(User.Identity.Name);
+                    _orderService.UpdateCartClient(cartId, clientId); // Associate the client ID with the cart
+                }
+
+                SessionHelper.SetObjectAsJson(HttpContext.Session, "cartId", cartId);
+            }
+            else
+            {
+                _orderService.AddItem(cartId, new Item { TransportId = transportId, Quantity = quantity });
             }
 
             HttpContext.Response.Cookies.Append("CartId", cartId.ToString());
@@ -90,7 +177,7 @@ namespace TripMeOn.Controllers
         }
         // return item.id if product is already in item 
         // return -1 otherwise
-       
+
 
         [HttpPost]
         public IActionResult UpdateQuantity(int itemId, int quantity)
@@ -99,7 +186,7 @@ namespace TripMeOn.Controllers
 
             return RedirectToAction("ViewCart");
         }
-            
+
 
         [Authorize]
         [HttpGet]
@@ -115,12 +202,12 @@ namespace TripMeOn.Controllers
                 return NotFound();
             }
 
-            if(cart.ClientId == null)
+            if (cart.ClientId == null)
             {
                 _orderService.UpdateCartClient(cartId, clientId);
                 cart = _orderService.GetCart(cartId);
             }
-            
+
 
             var item = cart.Items.FirstOrDefault();
             var viewModel = new CheckoutViewModel
@@ -132,6 +219,9 @@ namespace TripMeOn.Controllers
                 ClientName = cart.Client != null ? cart.Client.FirstName + " " + cart.Client.LastName : string.Empty,
                 IsRefunded = cart.IsRefunded,
                 TourPackageId = item.TourPackageId,
+                AccomodationId = item.AccomodationId,
+                RestaurantId = item.RestaurantId,
+                TransportId = item.TransportId,
                 Quantity = item.Quantity
             };
 
@@ -159,7 +249,7 @@ namespace TripMeOn.Controllers
 
                 Items = cart.Items != null ? cart.Items.Select(item => new ItemViewModel
                 {
-                    TourPackageId = item.TourPackageId,
+                    TourPackageId = item.TourPackageId.Value,
                     TourPackageName = item.TourPackage != null ? item.TourPackage.Name : string.Empty,
                     TourPackagePrice = item.TourPackage != null ? item.TourPackage.Price : 0.0,
                     ImageUrl = item.TourPackage != null && item.TourPackage.Image != null ? item.TourPackage.Image.Url : string.Empty

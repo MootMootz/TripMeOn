@@ -25,6 +25,10 @@ namespace TripMeOn.BL
         {
             return _bddContext.Clients.ToList();
         }
+        public List<Employee> GetAllEmployees()
+        {
+            return _bddContext.Employees.ToList();
+        }
 
         public void Dispose()
         {
@@ -41,6 +45,11 @@ namespace TripMeOn.BL
             _bddContext.Clients.Update(client);
             _bddContext.SaveChanges();
         }
+        public void ModifyEmployee(Employee employee) // applique les modifications sur accomodation et enregistre ces modifications dans la base de données
+        {
+            _bddContext.Employees.Update(employee);
+            _bddContext.SaveChanges();
+        }
 
         public void DeletePartner(Partner partner) // applique les modifications sur restaurant et enregistre ces modifications dans la base de données
         {
@@ -52,5 +61,13 @@ namespace TripMeOn.BL
             _bddContext.Clients.Remove(client);
             _bddContext.SaveChanges();
         }
+
+        public void DeleteEmployee(Employee employee) // applique les modifications sur restaurant et enregistre ces modifications dans la base de données
+        {
+            _bddContext.Employees.Remove(employee);
+            _bddContext.SaveChanges();
+        }
+
+
     }
 }

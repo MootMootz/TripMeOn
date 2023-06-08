@@ -16,23 +16,17 @@ namespace TripMeOn.Controllers
             _productService = productService;
         }
 
-
-        //public IActionResult SearchPackage(int destination, int theme, int month)
-        //{
-        //    var searchResults = _productService.SearchByDestinationThemeMonth(destination, theme, month);
-        //    return View("SearchBoxPackage", searchResults);
-        //}
         public IActionResult SearchPackage(string country, int theme, int month)
         {
-
-
             var searchResults = _productService.SearchByDestinationThemeMonth(
                 country,
                 theme == 0 ? (int?)null : theme,
                 month == 0 ? (int?)null : month);
 
             return View("SearchBoxPackage", searchResults);
-        }
+        }     
+
+
         public ActionResult PackageListUniqueCountry()
         {
             var productService = new TripMeOn.BL.ProductService();
@@ -131,8 +125,8 @@ namespace TripMeOn.Controllers
                 return NotFound();
             }
 
-            string viewName = $"/Views/Package/Details_{id}.cshtml";
-            return View(viewName, tourPackage);
+            //string viewName = $"/Views/Package/Details_{id}.cshtml";
+            return View(tourPackage);
         }
 
         //public IActionResult Catalog()

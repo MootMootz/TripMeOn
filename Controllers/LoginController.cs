@@ -207,7 +207,7 @@ namespace TripMeOn.Controllers
                     if (!string.IsNullOrWhiteSpace(returnUrl) && Url.IsLocalUrl(returnUrl))
                         return Redirect(returnUrl);
 
-                    return Redirect("../Employee/IndexAdmin");
+                    return Redirect("../Employee/Notifications");
                 }
                 ModelState.AddModelError("Employee.Nickname", "le nom ou le mot de passe sont incorrects");
             }

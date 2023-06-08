@@ -1,5 +1,7 @@
 ﻿@using TripMeOn.Models.Products;
 @using TripMeOn.Helper;
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,11 +11,13 @@
     <link rel="stylesheet" href="/css/Layout.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     @RenderSection("ExtraCss",required:false)
+
 </head>
 <body>
     <a href="/Home/HomePage"><div id="logo"></div></a>
     <a href="/Home/HomePage"><div id="logo-shadow"></div></a>
-    <!-- Bootstrap Navigation Bar code goes here -->
+
+  <!-- Bootstrap Navigation Bar code goes here -->
     <div id="navbar">
         <ul id="menu">
             <li class="parent">
@@ -121,6 +125,8 @@
     @RenderBody()
     <!--   ----------------------------FOOTER----------------------------------   -->
     <footer>
+
+      
         <div class="footer-buttons">
             <a href="/Content/InstaTips" class="footer-button">#Insta-tips</a>
             <a href="/Content/AboutUs" class="footer-button">About Us</a>
@@ -135,6 +141,7 @@
             <a href="https://youtube.com"><i class="fab fa-youtube"></i></a>
         </div>
     </footer>
+
     <script src="bootstrap.js"></script>
     <script type="text/javascript" src="~/Scripts/jquery-3.3.1.js"></script>
     <script type="text/javascript" src="~/Scripts/jquery.validate-vsdoc.js"></script>
@@ -142,3 +149,4 @@
     @RenderSection("ExtraScript",required:false)
 </body>
 </html>
+

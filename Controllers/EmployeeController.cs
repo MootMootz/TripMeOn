@@ -10,6 +10,9 @@ using TripMeOn.Models.PartnerProducts;
 
 namespace TripMeOn.Controllers
 {
+    /// <summary>
+    /// Cette classe est utilisé pour les fonctions de l'interface de l'administrateur du site. On regarde les services, les partenaires, les clients, et on peut les modifier.
+    /// </summary>
     public class EmployeeController : Controller
     {
         private Models.BddContext _bddContext;

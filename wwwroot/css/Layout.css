@@ -11,6 +11,7 @@ body {
     margin: 0;
 }
 
+
 #logo {
     background-image: url(/images/logo.png);
     height: 100px;
@@ -37,6 +38,9 @@ body {
     z-index: 101;
 }
 /* ----------------------------- NAVBAR -----------------------------*/
+
+
+
 #navbar {
     display: flex;
     width: 100%;
@@ -47,6 +51,7 @@ body {
     font-size: 2em;
     margin-left: auto;
     margin-right: auto;
+
 }
 
 #menu {
@@ -124,7 +129,10 @@ li:hover {
 .content {
     flex: 1;
 }
+
 /* ----------------------------- SEARCH BAR -----------------------------*/
+
+
 .search-container {
     width: auto;
     margin-left: auto;
@@ -132,7 +140,9 @@ li:hover {
     padding-top: 40px;
     padding-bottom: 40px;
 }
+
 /* ----------------------------- FOOTER -----------------------------*/
+
 footer {
     background-color: orange;
     position: absolute;

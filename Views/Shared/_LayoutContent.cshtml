@@ -1,9 +1,11 @@
 ﻿@using TripMeOn.Models.Products;
 @using TripMeOn.Helper;
+
 @{
     ViewBag.Title = "LayoutContent";
     Layout = "~/Views/Shared/_LayoutH&F.cshtml";
 }
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,15 +18,21 @@
     @RenderSection("ExtraCss",required:false)
 </head>
 <body>
-    <li class="right" ">
+
+  <li class="right">
     @if (!String.IsNullOrEmpty(Context.Request.Cookies["Nickname"])) // si la valeur du cookie Nickname n'est pas vide
     {
             <span>Hello @Context.Request.Cookies["Nickname"]</span>
         // on affiche le message Bonjour suivi de la valeur de Cookie nickname
     }
     </li>
+  
+  
     @RenderBody()
+  
+  
     <footer>
+
         <div class="footer-buttons">
             <a href="/Content/InstaTips" class="footer-button">#Insta-tips</a>
             <a href="/Content/AboutUs" class="footer-button">About Us</a>

@@ -1,4 +1,4 @@
-﻿@using TripMeOn.Models.Products;
+@using TripMeOn.Models.Products;
 @using TripMeOn.Helper;
 
 
@@ -7,16 +7,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>#TripMeOn</title>
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/Layout.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
     @RenderSection("ExtraCss",required:false)
+
 </head>
 <body>
-    <a href="/Home/HomePage"><div id="logo"></div></a>
-    <a href="/Home/HomePage"><div id="logo-shadow"></div></a>
 
     <!-- Bootstrap Navigation Bar code goes here -->
     <div id="navbar">
@@ -42,8 +40,9 @@
                     <li><a href="#">Portugal</a></li>
                     <li><a href="#">Italy</a></li>*@
                 </ul>
-            </li>
-            @*<div id="searchResultsContainer"></div>*@
+
+            </li>           
+
             <!--   ----------------------------THEMES------------------------------------   -->
 
             <li class="parent">
@@ -70,7 +69,7 @@
                     <li>@Html.ActionLink("Land Services", "ShowTransportationList", "Home")</li>
                 </ul>
             </li>
-            <!------------------------------------------------------------------------------------------->
+            <!--   ---------------------- PERIOD SEARCH--------------------------------   -->
 
             <li class="parent">
                 <a href="#">Tour Packages</a>
@@ -125,10 +124,11 @@
 
         </ul>
 
-    </div>
+    <!--   ----------------------------------SEARCH BOX---------------------------------------   -->
+          
+          
+        <div class="search-container">
 
-    <!--   -------------------------------------------------------------------------   -->
-    <div class="search-container">
         <div class="search-box">
             <form action="/Partner/SearchPackage" method="get">
                 <label for="services">Services</label>
@@ -155,29 +155,36 @@
                 <button type="submit" class="btn btn-primary">Search</button>
             </form>
         </div>
-    </div>
 
-
-
-
+              
+              
     @RenderBody()
 
 
-    <!--   ----------------------------FOOTER----------------------------------   -->
+        @RenderBody()
+
+
+              
+              
+    </div>
+
+
+        <!--   ----------------------------FOOTER----------------------------------   -->
 
     <footer>
         <div class="footer-buttons">
             <a href="/Content/InstaTips" class="footer-button">#Insta-tips</a>
             <a href="/Content/AboutUs" class="footer-button">About Us</a>
             <a href="#" class="footer-button">Become a Partner</a>
+
         </div>
-        <!-- Social icons -->
+
         <div class="social-icons">
-            <a href="https://twitter.com"><i class="fab fa-twitter"></i></a>
-            <a href="https://facebook.com"><i class="fab fa-facebook"></i></a>
-            <a href="https://instagram.com"><i class="fab fa-instagram"></i></a>
-            <a href="https://www.tiktok.com"><i class="fab fa-tiktok"></i></a>
-            <a href="https://youtube.com"><i class="fab fa-youtube"></i></a>
+            <div><a href="https://twitter.com"><i class="fab fa-twitter"></i></a></div>
+            <div><a href="https://facebook.com"><i class="fab fa-facebook"></i></a></div>
+            <div><a href="https://instagram.com"><i class="fab fa-instagram"></i></a></div>
+            <div><a href="https://www.tiktok.com"><i class="fab fa-tiktok"></i></a></div>
+            <div><a href="https://youtube.com"><i class="fab fa-youtube"></i></a></div>
         </div>
     </footer>
     <script src="bootstrap.js"></script>

@@ -44,7 +44,7 @@ namespace TripMeOn
             {
                 options.Cookie.Name = "TripMeOn.AuthCookie"; // définit le nom du cookie d'authentification
                 options.Cookie.HttpOnly = true; // le cookie ne peut être accédé que par le serveur et pas coté client
-                options.ExpireTimeSpan = TimeSpan.FromMinutes(60); // la durée de validité du cookie est 30 minutes
+                options.ExpireTimeSpan = TimeSpan.FromMinutes(30); // la durée de validité du cookie est 30 minutes
                 options.LoginPath = "/Login/IndexClient";
                 options.AccessDeniedPath = "/Login/AccessDenied";
 

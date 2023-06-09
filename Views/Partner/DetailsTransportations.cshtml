@@ -17,7 +17,7 @@
             <p>Available from: @Model.StartDate.ToString("MMMM") to @Model.EndDate.ToString("MMMM")</p>
             <p>Price: @Model.Price.ToString("0.##")&euro;</p>
             <p>Details: @Model.Description</p>
-            <form action="/Cart/BuyTransportation" method="post">
+            <form action="/Cart/BuyTransport" method="post">
                 <input type="hidden" name="transportationId" value="@Model.Id" />
 
                 <input type="date" name="startDate" value="@Model.StartDate.ToString("yyyy-MM-dd")" />

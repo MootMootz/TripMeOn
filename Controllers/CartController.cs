@@ -86,7 +86,7 @@ namespace TripMeOn.Controllers
             return RedirectToAction("ViewCart");
         }
         [HttpPost]
-        public IActionResult BuyAccomodation(int accomodationId, int quantity)
+        public IActionResult BuyAccomodation(int accomodationId, int quantity, DateTime startDate, DateTime endDate)
         {
             var cartId = SessionHelper.GetObjectFromJson<int>(HttpContext.Session, "cartId");
 
@@ -94,7 +94,7 @@ namespace TripMeOn.Controllers
             if (cartId == 0)
             {
                 cartId = _orderService.CreateCart();
-                _orderService.AddItem(cartId, new Item { AccomodationId = accomodationId, Quantity = quantity });
+                _orderService.AddItem(cartId, new Item { AccomodationId = accomodationId, Quantity = quantity, StartDate = startDate, EndDate = endDate });
 
                 if (User.Identity.IsAuthenticated)
                 {
@@ -106,7 +106,7 @@ namespace TripMeOn.Controllers
             }
             else
             {
-                _orderService.AddItem(cartId, new Item { AccomodationId = accomodationId, Quantity = quantity });
+                _orderService.AddItem(cartId, new Item { AccomodationId = accomodationId, Quantity = quantity, StartDate = startDate, EndDate = endDate });
             }
 
             HttpContext.Response.Cookies.Append("CartId", cartId.ToString());
@@ -114,7 +114,7 @@ namespace TripMeOn.Controllers
             return RedirectToAction("ViewCart");
         }
         [HttpPost]
-        public IActionResult BuyRestaurant(int restaurantId, int quantity)
+        public IActionResult BuyRestaurant(int restaurantId, int quantity, DateTime startDate, DateTime endDate)
         {
             var cartId = SessionHelper.GetObjectFromJson<int>(HttpContext.Session, "cartId");
 
@@ -122,7 +122,7 @@ namespace TripMeOn.Controllers
             if (cartId == 0)
             {
                 cartId = _orderService.CreateCart();
-                _orderService.AddItem(cartId, new Item { RestaurantId = restaurantId, Quantity = quantity });
+                _orderService.AddItem(cartId, new Item { RestaurantId = restaurantId, Quantity = quantity, StartDate = startDate, EndDate = endDate });
 
                 if (User.Identity.IsAuthenticated)
                 {
@@ -134,7 +134,7 @@ namespace TripMeOn.Controllers
             }
             else
             {
-                _orderService.AddItem(cartId, new Item { RestaurantId = restaurantId, Quantity = quantity });
+                _orderService.AddItem(cartId, new Item { RestaurantId = restaurantId, Quantity = quantity, StartDate = startDate, EndDate = endDate });
             }
 
             HttpContext.Response.Cookies.Append("CartId", cartId.ToString());
@@ -143,7 +143,7 @@ namespace TripMeOn.Controllers
         }
 
         [HttpPost]
-        public IActionResult BuyTransport(int transportationId, int quantity)
+        public IActionResult BuyTransport(int transportationId, int quantity, DateTime startDate, DateTime endDate)
         {
             var cartId = SessionHelper.GetObjectFromJson<int>(HttpContext.Session, "cartId");
 
@@ -151,7 +151,7 @@ namespace TripMeOn.Controllers
             if (cartId == 0)
             {
                 cartId = _orderService.CreateCart();
-                _orderService.AddItem(cartId, new Item { TransportationId = transportationId, Quantity = quantity });
+                _orderService.AddItem(cartId, new Item { TransportationId = transportationId, Quantity = quantity, StartDate = startDate, EndDate = endDate });
 
                 if (User.Identity.IsAuthenticated)
                 {
@@ -163,7 +163,7 @@ namespace TripMeOn.Controllers
             }
             else
             {
-                _orderService.AddItem(cartId, new Item { TransportationId = transportationId, Quantity = quantity });
+                _orderService.AddItem(cartId, new Item { TransportationId = transportationId, Quantity = quantity, StartDate = startDate, EndDate = endDate });
             }
 
             HttpContext.Response.Cookies.Append("CartId", cartId.ToString());

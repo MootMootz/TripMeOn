@@ -33,6 +33,7 @@
                         to: @accomodation.EndDate.ToString("MMMM")
                     </p>
                     <p>Price: @accomodation.Price.ToString("0.##")&euro;</p>
+                    <p>Details: @accomodation.Description</p>
                     <form action="@Url.Action("DetailsAccomodations", "Partner", new { id = accomodation.Id })" method="get">
                         <button type="submit" class="btn btn-primary">View Details</button>
                     </form>
@@ -57,6 +58,7 @@
                         to: @restaurant.EndDate.ToString("MMMM")
                     </p>
                     <p>Price: @restaurant.Price.ToString("0.##")&euro;</p>
+                    <p>Details: @restaurant.Description</p>
                     <form action="@Url.Action("DetailsRestaurants", "Partner", new { id = restaurant.Id })" method="get">
                         <button type="submit" class="btn btn-primary">View Details</button>
                     </form>
@@ -80,6 +82,7 @@
                         to: @transportation.EndDate.ToString("MMMM")
                     </p>
                     <p>Price: @transportation.Price.ToString("0.##")&euro;</p>
+                    <p>Details: @transportation.Description</p>
                     <form action="@Url.Action("DetailsTransportations", "Partner", new { id = transportation.Id })" method="get">
                         <button type="submit" class="btn btn-primary">View Details</button>
                     </form>

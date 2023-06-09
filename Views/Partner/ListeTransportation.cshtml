@@ -20,9 +20,11 @@
         <tr>
             <th>Type</th>
             <th>Price</th>
-            <th>PartnerId</th>
-            <th>DestinationId</th>
+            <th>Partner</th>
+            <th>Destination</th>
             <th>Description</th>
+            <th>Start Date</th>
+            <th>End Date</th>
             <th>Action</th>
         </tr>
         @foreach (var transportation in Model.Transportations)
@@ -30,9 +32,11 @@
             <tr>
                 <td>@transportation.Type</td>
                 <td>@transportation.Price</td>
-                <td>@transportation.PartnerId</td>
-                <td>@transportation.DestinationId</td>
+                <td>@transportation.Partner.CompanyName</td>
+                <td>@transportation.Destination.City</td>
                 <td>@transportation.Description</td>
+                <td>@transportation.StartDate</td>
+                <td>@transportation.EndDate</td>
                 <td>@Html.ActionLink("Edit","ModifyTransportation", "Partner", new { id = transportation.Id })</td>
                 <td>@Html.ActionLink("Delete", "DeleteTransportation", "Partner", new { id = transportation.Id })</td>
                 <td>

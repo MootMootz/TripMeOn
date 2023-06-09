@@ -44,17 +44,26 @@ namespace TripMeOn.BL
         /// <returns></returns>
         public List<Accomodation> GetAccomodationsByPartnerId(int partnerId)
         {
-            return _bddContext.Accomodations.Where(a => a.PartnerId == partnerId).ToList();
+            return _bddContext.Accomodations
+                .Where(a => a.PartnerId == partnerId)
+                .Include(a => a.Partner)
+                .Include(a => a.Destination).ToList();
         }
 
         public List<Restaurant> GetRestaurantsByPartnerId(int partnerId)
         {
-            return _bddContext.Restaurants.Where(r => r.PartnerId == partnerId).ToList();
+            return _bddContext.Restaurants
+                .Where(r => r.PartnerId == partnerId)
+                .Include(a => a.Partner)
+                .Include(a => a.Destination).ToList();
         }
 
         public List<Transportation> GetTransportationsByPartnerId(int partnerId)
         {
-            return _bddContext.Transportations.Where(t => t.PartnerId == partnerId).ToList();
+            return _bddContext.Transportations
+                .Where(r => r.PartnerId == partnerId)
+                .Include(a => a.Partner)
+                .Include(a => a.Destination).ToList();
         }
         public List<Notification> GetAllNotifications()
         {
@@ -68,27 +77,27 @@ namespace TripMeOn.BL
         /// Les méthodes suivantes donnent la possibilité au partenaire de créer de services à partir de sa plateforme. Ils seront sauvegardés dans la bdd
         /// </summary>
 
-        public int CreateAccomodation(string name, string type, int capacity, double price, int partnerId, int destinationId, DateTime startDate, DateTime endDate)
+        public int CreateAccomodation(string name, string type, int capacity, double price, int partnerId, int destinationId, DateTime startDate, DateTime endDate, string description)
         {
-            Accomodation accomodation = new Accomodation() { Name = name, Type = type, Capacity = capacity, Price = price, PartnerId = partnerId, DestinationId = destinationId, StartDate = startDate, EndDate = endDate };
+            Accomodation accomodation = new Accomodation() { Name = name, Type = type, Capacity = capacity, Price = price, PartnerId = partnerId, DestinationId = destinationId, StartDate = startDate, EndDate = endDate, Description = description };
             _bddContext.Accomodations.Add(accomodation);
             Notification notification = new Notification() { Message = $"A new accomodation has been created by partner {partnerId}.", CreatedAt = DateTime.Now };
             _bddContext.Notifications.Add(notification);
             _bddContext.SaveChanges();
             return accomodation.Id;
         }
-        public int CreateRestaurant(string name, string type, double price, int partnerId, int destinationId, DateTime startDate, DateTime endDate)
+        public int CreateRestaurant(string name, string type, double price, int partnerId, int destinationId, DateTime startDate, DateTime endDate, string description)
         {
-            Restaurant restaurant = new Restaurant() { Name = name, Type = type, Price = price, PartnerId = partnerId, DestinationId = destinationId, StartDate = startDate, EndDate = endDate };
+            Restaurant restaurant = new Restaurant() { Name = name, Type = type, Price = price, PartnerId = partnerId, DestinationId = destinationId, StartDate = startDate, EndDate = endDate, Description = description };
             _bddContext.Restaurants.Add(restaurant);
             Notification notification = new Notification() { Message = $"A new restaurant has been created by partner {partnerId}.", CreatedAt = DateTime.Now };
             _bddContext.Notifications.Add(notification);
             _bddContext.SaveChanges();
             return restaurant.Id;
         }
-        public int CreateTransportation(string type, double price, int partnerId, int destinationId, DateTime startDate, DateTime endDate)
+        public int CreateTransportation(string type, double price, int partnerId, int destinationId, DateTime startDate, DateTime endDate, string description)
         {
-            Transportation transportation = new Transportation() { Type = type, Price = price, PartnerId = partnerId, DestinationId = destinationId, StartDate = startDate, EndDate = endDate };
+            Transportation transportation = new Transportation() { Type = type, Price = price, PartnerId = partnerId, DestinationId = destinationId, StartDate = startDate, EndDate = endDate, Description = description };
             _bddContext.Transportations.Add(transportation);
             Notification notification = new Notification() { Message = $"A new transportation has been created by partner {partnerId}.", CreatedAt = DateTime.Now };
             _bddContext.Notifications.Add(notification);

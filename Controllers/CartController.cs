@@ -40,20 +40,7 @@ namespace TripMeOn.Controllers
             return View(cart);
         }
 
-        //public IActionResult AddToCart(int tourPackageId, int quantity)
-        //{
 
-        //    return BuyProduct(tourPackageId, quantity);
-        //}
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="tourPackageId"></param>
-        /// <param name="quantity"></param>
-        /// <param name="startDate"></param>
-        /// <param name="endDate"></param>
-        /// <returns></returns>
 
         [HttpPost]
         public IActionResult BuyProduct(int tourPackageId, int quantity, DateTime startDate, DateTime endDate)

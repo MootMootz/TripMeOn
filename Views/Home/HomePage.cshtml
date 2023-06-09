@@ -153,9 +153,7 @@
     <div class="search-container">
         <div class="search-box">
             <form action="/Product/SearchPackage" method="get">
-                <p>Our All-in Trips</p>
-
-
+               
                 <label for="destinations">Destinations</label>
                 @{
                     List<Destination> destinations = new TripMeOn.BL.ProductService().GetDestinations();

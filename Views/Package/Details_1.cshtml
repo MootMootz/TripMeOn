@@ -1,11 +1,13 @@
-﻿@model TripMeOn.Models.Products.TourPackage
+@model TripMeOn.Models.Products.TourPackage
 @using TripMeOn.Models.Order
+
 @{
     Layout = "~/Views/Shared/_LayoutNav.cshtml";
 }
 @section ExtraCss{
     <link rel="stylesheet" href="/css/PDetails.css">
 }
+
 <div class="flex-container">
     <div class="floating-box">
         <div class="row">
@@ -96,31 +98,31 @@
                         </div>
                     </div>
                 </div>
-                <form action="/Cart/BuyProduct" method="post">
-                    <input type="hidden" name="tourPackageId" value="@Model.Id" />
-                    <input type="date" name="startDate" value="startDate" />
-                    <input type="date" name="endDate" value="endDate" />
-                    <label for="quantity">Quantity:</label>
-                    <input type="number" name="quantity" id="quantity" value="1" min="1" />
-                    <button type="submit">Add to Cart</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-@section ExtraScript {
-    <script src="/Scripts/JavaScript.js"></script>
-    <script>
-        $(document).ready(function () {
-            $('.toggle-day-icon').on('click', function () {
-                var day = $(this).closest('.day');
-                day.find('.itinerary-details-text').slideToggle();
-                $(this).toggleClass('rotate');
-                var toggleDayText = day.find('.toggle-day-text');
-                toggleDayText.text(function (i, text) {
-                    return text === 'Show Itinerary Details' ? 'Hide Itinerary Details' : 'Show Itinerary Details';
-                });
-            });
-        });
-    </script>
+                      <form action="/Cart/BuyProduct" method="post">
+                         <input type="hidden" name="tourPackageId" value="@Model.Id" />
+                            <input type="date" name="startDate" value="startDate" />
+                              <input type="date" name="endDate" value="endDate" />
+                              <label for="quantity">Quantity:</label>
+                               <input type="number" name="quantity" id="quantity" value="1" min="1" />
+                              <button type="submit">Add to Cart</button>
+                       </form>
+                                 </div>
+                                       </div>
+                                        </div>
+                                        </div>
+                                        @section ExtraScript {
+                                            <script src="/Scripts/JavaScript.js"></script>
+                                            <script>
+                                                $(document).ready(function () {
+                                                    $('.toggle-day-icon').on('click', function () {
+                                                        var day = $(this).closest('.day');
+                                                        day.find('.itinerary-details-text').slideToggle();
+                                                        $(this).toggleClass('rotate');
+                                                        var toggleDayText = day.find('.toggle-day-text');
+                                                        toggleDayText.text(function (i, text) {
+                                                            return text === 'Show Itinerary Details' ? 'Hide Itinerary Details' : 'Show Itinerary Details';
+                                                        });
+                                                    });
+                                                });
+                                            </script>
                                         }

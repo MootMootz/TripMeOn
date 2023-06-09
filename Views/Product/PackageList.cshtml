@@ -1,4 +1,4 @@
-﻿@model List<TripMeOn.Models.Products.TourPackage>
+﻿ @model List<TripMeOn.Models.Products.TourPackage>
 @using TripMeOn.Helper
 @{
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
@@ -61,7 +61,9 @@
             }
         </tbody>
     </table>
-    <button>@Html.ActionLink("Back to Admin Dashboard", "IndexAdmin", "Employee")</button>
+   <a href="@Url.Action("IndexAdmin", "Employee")" type="button">Back to Admin Dashboard</a>
+
+
     <!--Create Package-->
 
     <form id="createForm" method="POST" action="CreatePackage" style="display: none;">
@@ -78,6 +80,16 @@
         <input type="number" name="price" placeholder="Price" />
         <button type="submit">Create</button>
     </form>
+    @section ExtraScript{
+            <script src="~/Scripts/jquery-3.3.1.js"></script>
+            <script>
+                $(document).ready(function () {
+                    $("#showCreateForm").click(function () {
+                        $("#createForm").toggle();
+                    });
+                });
+            </script>
+    }
 </body>
 </html>
 

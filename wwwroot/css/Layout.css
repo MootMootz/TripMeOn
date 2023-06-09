@@ -1,7 +1,7 @@
 ﻿html {
-    position: relative;
-    min-height: 100%;
-}
+/*    position: relative;
+*//*    min-height: 100%;
+*/}
 
 body {
     display: flex;
@@ -145,12 +145,12 @@ li:hover {
 
 footer {
     background-color: orange;
-    position: absolute;
-    left: 0;
-    bottom: 0;
+   /* position: absolute;*/
+   /* left: 0;
+    bottom: 0;*/
     height: 80px;
     width: 100%;
-    overflow: hidden
+  /*  overflow: hidden*/
 }
 
     footer a {

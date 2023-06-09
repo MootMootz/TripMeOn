@@ -32,11 +32,7 @@ namespace TripMeOn.Models
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-
-
-            optionsBuilder.UseMySql("server=localhost;user id=root;password=1530;database=TripMeOn");
-
-
+            optionsBuilder.UseMySql("server=localhost;user id=root;password=twitwiboo;database=TripMeOn");
         }
 
         public void InitializeDb()
@@ -152,14 +148,15 @@ namespace TripMeOn.Models
                 new Image { Id = 34, Url= "/images/p13/turkey1.jpg"},
                 new Image { Id = 35, Url= "/images/p13/turkey2.jpg"},
                 new Image { Id = 36, Url= "/images/p13/turkey3.jpg"},
-                new Image { Id = 37, Url= "/images/cover/Bercelona.jpg"}
+                new Image { Id = 37, Url= "/images/cover/Bercelona.jpg"},
+                new Image { Id = 38, Url= "/images/cover/pk15a.jpg"}
             };
 
             var tourPackages = new List<TourPackage>            {
 
-                new TourPackage { Id = 1, Name = "Magnolia and early Cherry in Paris", DestinationId = 1, ThemeId = 2,Description="4 days tour",TimePeriodId=3, Price = 986,ImageId=1 },
-                new TourPackage { Id = 2, Name = "Lavender Fields of Provence", DestinationId = 2, ThemeId = 2,Description="4 days tour",TimePeriodId=7, Price = 1180,ImageId=2 },
-                new TourPackage { Id = 3, Name = "Confetti Field of Pershore ", DestinationId = 3, ThemeId = 2,Description="4 days tour",TimePeriodId=6, Price = 1180,ImageId=3 },
+                new TourPackage { Id = 1, Name = "Magnolia and early Cherry in Paris", DestinationId = 1, ThemeId = 2,Description="4 days tour",TimePeriodId=3, Price = 750,ImageId=1 },
+                new TourPackage { Id = 2, Name = "Lavender Fields of Provence", DestinationId = 2, ThemeId = 2,Description="4 days tour",TimePeriodId=7, Price = 925,ImageId=2 },
+                new TourPackage { Id = 3, Name = "Confetti Field of Pershore ", DestinationId = 3, ThemeId = 2,Description="4 days tour",TimePeriodId=6, Price = 850,ImageId=3 },
                 new TourPackage { Id = 4, Name = "Colmer in Autumn", DestinationId = 1, ThemeId = 10,Description="4 days tour",TimePeriodId=11,Price= 776,ImageId = 4 },
                 new TourPackage { Id = 5, Name = "Wisteria and Sakura in Paris", DestinationId = 1, ThemeId = 2,Description="4 days tour",TimePeriodId=4,Price= 776,ImageId = 5},
                 new TourPackage { Id = 6, Name = "May Bloomings in Paris", DestinationId = 1, ThemeId = 2,Description="4 days tour",TimePeriodId=5,Price= 776,ImageId = 6 },
@@ -169,7 +166,8 @@ namespace TripMeOn.Models
                 new TourPackage { Id = 11, Name = "Colored mountains in Argentina", DestinationId = 8, ThemeId = 10, Description="5 days tour", TimePeriodId=5, Price= 650, ImageId= 11 },
                 new TourPackage { Id = 12, Name = "Wildlife at the End of the World", DestinationId = 9, ThemeId = 7, Description= "5 days tour", TimePeriodId=2, Price=880, ImageId= 12},
                 new TourPackage { Id = 13, Name = "Flying away in Turkey", DestinationId = 7, ThemeId = 7, Description= "4 days tour", TimePeriodId=10, Price=760, ImageId= 33},
-                new TourPackage { Id = 14, Name = "Barcelona-Dali-", DestinationId = 11, ThemeId = 7, Description= "4 days tour", TimePeriodId=10, Price=760, ImageId= 37}
+                new TourPackage { Id = 14, Name = "Barcelona-Dali-and-Colors", DestinationId = 11, ThemeId = 5, Description= "4 days tour", TimePeriodId=11, Price=760, ImageId= 37},
+                new TourPackage { Id = 15, Name = "Hiking trails of Spain ", DestinationId = 12, ThemeId = 7, Description= "7 days tour", TimePeriodId=10, Price=980, ImageId= 38}
             };
 
 

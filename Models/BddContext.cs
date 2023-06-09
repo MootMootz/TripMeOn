@@ -151,7 +151,8 @@ namespace TripMeOn.Models
                 new Image { Id = 33, Url= "/images/cover/pk13.jpg"},
                 new Image { Id = 34, Url= "/images/p13/turkey1.jpg"},
                 new Image { Id = 35, Url= "/images/p13/turkey2.jpg"},
-                new Image { Id = 36, Url= "/images/p13/turkey3.jpg"}
+                new Image { Id = 36, Url= "/images/p13/turkey3.jpg"},
+                new Image { Id = 37, Url= "/images/cover/Bercelona.jpg"}
             };
 
             var tourPackages = new List<TourPackage>            {
@@ -167,7 +168,8 @@ namespace TripMeOn.Models
                 new TourPackage { Id = 10, Name = "Sweet December Colmer", DestinationId = 1, ThemeId = 4,Description="4 days tour",TimePeriodId=12,Price= 776,ImageId = 10 },
                 new TourPackage { Id = 11, Name = "Colored mountains in Argentina", DestinationId = 8, ThemeId = 10, Description="5 days tour", TimePeriodId=5, Price= 650, ImageId= 11 },
                 new TourPackage { Id = 12, Name = "Wildlife at the End of the World", DestinationId = 9, ThemeId = 7, Description= "5 days tour", TimePeriodId=2, Price=880, ImageId= 12},
-                new TourPackage { Id = 13, Name = "Flying away in Turkey", DestinationId = 7, ThemeId = 7, Description= "4 days tour", TimePeriodId=10, Price=760, ImageId= 33}
+                new TourPackage { Id = 13, Name = "Flying away in Turkey", DestinationId = 7, ThemeId = 7, Description= "4 days tour", TimePeriodId=10, Price=760, ImageId= 33},
+                new TourPackage { Id = 14, Name = "Barcelona-Dali-", DestinationId = 11, ThemeId = 7, Description= "4 days tour", TimePeriodId=10, Price=760, ImageId= 37}
             };
 
 

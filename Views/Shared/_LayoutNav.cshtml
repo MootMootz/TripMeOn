@@ -57,14 +57,14 @@
                 </ul>
             </li>
 
-            <!--   ----------------------ACCOMMODATION--------------------------------   -->
+            <!--   ----------------------ACCOMMODATIONS--------------------------------   -->
 
             <li class="parent">
                 <a href="#">Services<span class="expand"></span></a>
                 <ul class="child">
-                    <li>@Html.ActionLink("Restaurants", "ShowRestaurantList", "Home")</li>
-                    <li>@Html.ActionLink("Accomodations", "ShowAccomodationList", "Home")</li>
-                    <li>@Html.ActionLink("Land Services", "ShowTransportationList", "Home")</li>
+                    <li>@Html.ActionLink("Restaurants", "SearchPackage", "Partner", new{serviceType = "Restaurant"})</li>
+                    <li>@Html.ActionLink("Accomodation", "SearchPackage", "Partner", new{serviceType = "Accomodation"})</li>
+                    <li>@Html.ActionLink("Land Services", "SearchPackage", "Partner", new{serviceType = "Transport"})</li>
                 </ul>
             </li>
 

@@ -1,5 +1,6 @@
 ﻿@model TripMeOn.ViewModels.PropositionServiceModel
 @using TripMeOn.Helper
+@using TripMeOn.Models.Products;
 
 @{
     Layout = "~/Views/Shared/_LayoutContent.cshtml";
@@ -15,11 +16,33 @@
     <meta name="viewport" content="width=device-width" />
 </head>
 <body>
+
+    <div class="search-box">
+        <form action="/Partner/SearchPackage" method="get">
+            <label for="services">Services</label>
+            @{
+                List<string> services = new List<string> { "Select a service", "Accomodation", "Restaurant", "Transport" };
+                SelectList serviceList = new SelectList(services);
+            }
+            @Html.DropDownList("serviceType", serviceList)
+
+            <label for="destinations">Destinations</label>
+            @{
+                List<Destination> destination = new TripMeOn.BL.PropositionService().GetServicesDestinations();
+                destination.Insert(0, new Destination { Id = 0, Country = "All Destinations" });
+                SelectList selectListe = new SelectList(destination, "Id", "Country");
+            }
+            @Html.DropDownList("destination", selectListe)
+            <button type="submit" class="btn btn-primary">Search</button>
+        </form>
+    </div>
+
     <h2 class="search-results-heading">Search Results</h2>
 
     @if (Model.Accomodations != null && Model.Accomodations.Count > 0)
     {
-        foreach (var accomodation in Model.Accomodations)
+        <div class="flex-container" style="margin: 0 15px;">
+        @foreach (var accomodation in Model.Accomodations)
         {
             <div class="flex-box" style="background-image: url('@accomodation.Image?.Url')">
                 <div class="text-box">
@@ -40,10 +63,12 @@
             </div>
 
         }
+        </div>
     }
     else if (Model.Restaurants != null && Model.Restaurants.Count > 0)
     {
-        foreach (var restaurant in Model.Restaurants)
+        <div class="flex-container" style="margin: 0 15px;">
+        @foreach (var restaurant in Model.Restaurants)
         {
             <div class="flex-box" style="background-image: url('@restaurant.Image?.Url')">
                 <div class="text-box">
@@ -63,10 +88,12 @@
                 </div>
             </div>
         }
+        </div>
     }
     else if (Model.Transportations != null && Model.Transportations.Count > 0)
     {
-        foreach (var transportation in Model.Transportations)
+        <div class="flex-container" style="margin: 0 15px;">
+        @foreach (var transportation in Model.Transportations)
         {
             <div class="flex-box" style="background-image: url('@transportation.Image?.Url')">
                 <div class="text-box">
@@ -86,6 +113,7 @@
                 </div>
             </div>
         }
+        </div>
     }
 </body>
 </html>

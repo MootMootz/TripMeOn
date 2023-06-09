@@ -6,12 +6,15 @@
     <title>@ViewBag.Title</title>
     <link rel="stylesheet" href="/css/StyleP.css">
 
- 
+
 </head>
 <body>
+    <a href="/Home/HomePage"><div id="logo"></div></a>
+    <a href="/Home/HomePage"><div id="logo-shadow"></div></a>
+
     <div id="fixNav">
         <nav>
-            <img src="~/images/logo.png" alt="logo">
+            @*<img src="~/images/logo.png" alt="logo">*@
             @if (!String.IsNullOrEmpty(Context.Request.Cookies["Nickname"])) // si la valeur du cookie Nickname n'est pas vide
             {
                 <span> <strong>Bonjour @Context.Request.Cookies["Nickname"]</strong></span>

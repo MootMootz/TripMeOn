@@ -34,7 +34,9 @@ body {
     border-radius: 25px;
     z-index: 101;
 }
+
 /* ----------------------------- NAVBAR -----------------------------*/
+
 #navbar {
     display: flex;
     width: 100%;
@@ -50,6 +52,10 @@ body {
 
 #menu {
     background: rgb(0, 0, 0, 0.15);
+}
+
+.topcat {
+    text-shadow: 1px 1px 2px #000000;
 }
 
 .parent {
@@ -184,6 +190,18 @@ li:hover {
     height: 1000px;
     padding-top: -150px;
 }
+
+    .diapo span {
+        display: flex;
+        position: absolute;
+        top: 350px;
+        left: 450px;
+        color: white;
+        text-align: center;
+        font-size: 80px;
+        font-family:'Brush Script MT';
+        text-shadow: 2px 2px 4px #000000 ;
+    }
 
     .diapo div {
         display: flex;

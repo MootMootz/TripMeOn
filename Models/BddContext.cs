@@ -32,7 +32,7 @@ namespace TripMeOn.Models
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseMySql("server=localhost;user id=root;password=1530;database=TripMeOn");
+            optionsBuilder.UseMySql("server=localhost;user id=root;password=kukuskar;database=TripMeOn");
         }
 
         public void InitializeDb()
@@ -149,7 +149,13 @@ namespace TripMeOn.Models
                 new Image { Id = 35, Url= "/images/p13/turkey2.jpg"},
                 new Image { Id = 36, Url= "/images/p13/turkey3.jpg"},
                 new Image { Id = 37, Url= "/images/cover/Bercelona.jpg"},
-                new Image { Id = 38, Url= "/images/cover/pk15a.jpg"}
+                new Image { Id = 38, Url= "/images/cover/pk15a.jpg"},
+                new Image { Id = 39, Url= "/images/transports/2cv.jpg"},
+                new Image { Id = 40, Url= "/images/transports/horse.jpg"},
+                new Image { Id = 41, Url= "/images/transports/carrosse.jpg"},
+                new Image { Id = 42, Url= "/images/transports/scooter.jpg"},
+                new Image { Id = 43, Url= "/images/transports/van.jpg"},
+                new Image { Id = 44, Url= "/images/transports/bike3.jpg"},
             };
 
             var tourPackages = new List<TourPackage>            {
@@ -198,7 +204,13 @@ namespace TripMeOn.Models
                 new Transportation {  Id = 2, Type = "car", Price = 50, StartDate = new DateTime(2023, 09, 01), EndDate = new DateTime(2024, 05, 31), PartnerId = 2, DestinationId = 8, ImageId= 29, Description = "Pick up and drop off at the airport of Ushuaia, south of Argentina" },
                 new Transportation {  Id = 5, Type = "car", Price = 30, StartDate = new DateTime(2023, 09, 01), EndDate = new DateTime(2024, 05, 31), PartnerId = 2, DestinationId = 8, ImageId= 32, Description = "Pick up and drop off at the airport of Ushuaia, south of Argentina" },
                 new Transportation {  Id = 3, Type = "bike", Price = 20, StartDate = new DateTime(2023, 01, 01), EndDate = new DateTime(2023, 12, 31), PartnerId = 1, DestinationId = 1, ImageId= 31, Description = "Rent a bike for as many days as you need to in Paris" },
-                new Transportation {  Id = 4, Type = "bike", Price = 30, StartDate = new DateTime(2023, 01, 01), EndDate = new DateTime(2023, 12, 31), PartnerId = 1, DestinationId = 1, ImageId= 30, Description = "Rent an electric bike in Paris" }
+                new Transportation {  Id = 4, Type = "bike", Price = 30, StartDate = new DateTime(2023, 01, 01), EndDate = new DateTime(2023, 12, 31), PartnerId = 1, DestinationId = 1, ImageId= 30, Description = "Rent an electric bike in Paris" },
+                new Transportation {  Id = 11, Type = "car", Price = 35, StartDate = new DateTime(2023, 01, 01), EndDate = new DateTime(2023, 12, 31), PartnerId = 1, DestinationId = 2, ImageId= 39, Description = "Rent a 2 cv to make the best pictures ever" },
+                new Transportation {  Id = 6, Type = "horse", Price = 35, StartDate = new DateTime(2023, 01, 01), EndDate = new DateTime(2023, 12, 31), PartnerId = 1, DestinationId = 2, ImageId= 40, Description = "Have a horse taking you around the magnificent lavender fields " },
+                new Transportation {  Id = 7, Type = "carriage", Price = 40, StartDate = new DateTime(2023, 01, 01), EndDate = new DateTime(2023, 12, 31), PartnerId = 1, DestinationId = 10, ImageId= 41, Description = "Have your own carriage to discover the beautiful city of Ghent" },
+                new Transportation {  Id = 8, Type = "scooter", Price = 35, StartDate = new DateTime(2023, 01, 01), EndDate = new DateTime(2023, 12, 31), PartnerId = 1, DestinationId = 10, ImageId= 42, Description = "12 hours of a scooter can take you everywhere in the city. Don't miss the experience! " },
+                new Transportation {  Id = 9, Type = "car", Price = 45, StartDate = new DateTime(2023, 01, 01), EndDate = new DateTime(2023, 12, 31), PartnerId = 2, DestinationId = 5, ImageId= 43, Description = "There's nothing more instagrammable than a van ! come take a ride " },
+                new Transportation {  Id = 10, Type = "bike", Price = 15, StartDate = new DateTime(2023, 01, 01), EndDate = new DateTime(2023, 12, 31), PartnerId = 2, DestinationId = 5, ImageId= 44, Description = "You can't leave the Netherlands without having a tour bike. " }
 
             };
 

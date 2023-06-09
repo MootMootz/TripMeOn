@@ -36,33 +36,32 @@
                             <li>@Html.ActionLink("Spain", "SearchPackage", "Product", new { country = "Spain" })</li>
                         </ul>
                     </li>
-
-
                     <!--   ----------------------------THEMES------------------------------------   -->
-
-                    <li class="parent">
-                        <a href="#">Themes<span class="expand"></span></a>
-                        <ul class="child">
-                            <li>@Html.ActionLink("Trekking", "SearchPackage", "Product", new { theme = 1 }, null)</li>
-                            <li>@Html.ActionLink("Floral", "SearchPackage", "Product", new { theme = 2 }, null)</li>
-                            <li>@Html.ActionLink("Cultural", "SearchPackage", "Product", new { theme=3 })</li>
-                            <li>@Html.ActionLink("Heritage", "SearchPackage", "Product", new { theme=4 })</li>
-                            <li>@Html.ActionLink("Snap and relax", "SearchPackage", "Product", new { theme=5 })</li>
-                            <li>@Html.ActionLink("InstaSpots", "SearchPackage", "Product", new {theme=6 })</li>
-                            <li>@Html.ActionLink("Xtreme Adventure", "SearchPackage", "Product", new { theme=7 })</li>
-                            <li>@Html.ActionLink("Colors", "SearchPackage", "Product", new { theme=10 })</li>
-                        </ul>
-                    </li>
-                    <!--   ----------------------ACCOMMODATIONS--------------------------------   -->
-                    <li class="parent">
-                        <a href="#">Services<span class="expand"></span></a>
-                        <ul class="child">
-                            <li>@Html.ActionLink("Restaurants", "SearchPackage", "Partner", new{serviceType = "Restaurant"})</li>
-                            <li>@Html.ActionLink("Accomodation", "SearchPackage", "Partner", new{serviceType = "Accomodation"})</li>
-                            <li>@Html.ActionLink("Land Services", "SearchPackage", "Partner", new{serviceType = "Transport"})</li>
-                        </ul>
-                    </li>
-                    <li class="parent">
+            <li class="parent">
+                <a href="#">Themes<span class="expand"></span></a>
+                <ul class="child">
+                    <li>@Html.ActionLink("Trekking", "SearchPackage", "Product", new { theme = 1 }, null)</li>
+                    <li>@Html.ActionLink("Floral", "SearchPackage", "Product", new { theme = 2 }, null)</li>
+                    <li>@Html.ActionLink("Cultural", "SearchPackage", "Product", new { theme=3 })</li>
+                    <li>@Html.ActionLink("Heritage", "SearchPackage", "Product", new { theme=4 })</li>
+                    <li>@Html.ActionLink("Snap and relax", "SearchPackage", "Product", new { theme=5 })</li>
+                    <li>@Html.ActionLink("InstaSpots", "SearchPackage", "Product", new {theme=6 })</li>
+                    <li>@Html.ActionLink("Xtreme Adventure", "SearchPackage", "Product", new { theme=7 })</li>
+                    <li>@Html.ActionLink("Colors", "SearchPackage", "Product", new { theme=10 })</li>
+                </ul>
+            </li>
+            <!--   ----------------------ACCOMMODATIONS--------------------------------   -->
+            <li class="parent">
+                <a href="#">Services<span class="expand"></span></a>
+                <ul class="child">
+                    <li>@Html.ActionLink("Restaurants", "ShowRestaurantList", "Home")</li>
+                    <li>@Html.ActionLink("Accomodations", "ShowAccomodationList", "Home")</li>
+                    <li>@Html.ActionLink("Land Services", "ShowTransportationList", "Home")</li>
+                </ul>
+            </li>
+           <!--  ----------------------------------------LOGIN------------------------------------ --->
+                          
+                  <li class="parent">
                         <a href="#">Log in<span class="expand"></span></a>
                         <ul class="child">
                             <li class="parent">

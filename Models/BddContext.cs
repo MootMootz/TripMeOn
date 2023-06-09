@@ -32,11 +32,7 @@ namespace TripMeOn.Models
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-
-
             optionsBuilder.UseMySql("server=localhost;user id=root;password=twitwiboo;database=TripMeOn");
-
-
         }
 
         public void InitializeDb()
@@ -126,7 +122,7 @@ namespace TripMeOn.Models
                 new Image { Id = 8,Url="/images/cover/pk8.jpg"},
                 new Image { Id = 9,Url="/images/cover/pk9.jpg"},
                 new Image { Id = 10,Url="/images/cover/pk10.jpg"},
-                new Image { Id = 11, Url="/images/cover/p11.jpg"},
+                new Image { Id = 11, Url="/images/cover/pk11.jpg"},
                 new Image { Id = 12, Url="/images/cover/pk12.jpg"},
                 new Image { Id = 13, Url="/images/accomodation/htlSalta.jpg"},
                 new Image { Id = 14, Url="/images/accomodation/htlJujuy.jpg"},

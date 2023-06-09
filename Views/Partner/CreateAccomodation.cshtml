@@ -63,15 +63,13 @@
                     <input type="file" name="file" id="file1">
                 </td>
             </tr>
-
-
             <tr>
-                <td><label for="description">Description :</label></td>
-                <td>
-                    <textarea id="description" name="description" rows="8" cols="50"
-                              placeholder="Please give more details" maxlength="1000"></textarea>
-                </td>
+                <td>@Html.LabelFor(m => m.Description)</td>
+                <td>@Html.TextAreaFor(m => m.Description, new { rows = 8, cols = 50, maxlength = 1000 })</td>
+                <td>@Html.ValidationMessageFor(m => m.Description)</td>
             </tr>
+
+
 
 
 
@@ -92,8 +90,8 @@
 <style>
     .essai {
         pointer-events: none;
-
     }
+
     .grey {
         color: grey;
     }

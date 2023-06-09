@@ -109,8 +109,10 @@
                         </div>
                     </div>
                 </div>
-                <form action="/Cart/AddToCart" method="post">
+                <form action="/Cart/BuyProduct" method="post">
                     <input type="hidden" name="tourPackageId" value="@Model.Id" />
+                    <input type="date" name="startDate" value="startDate" />
+                    <input type="date" name="endDate" value="endDate" />
                     <label for="quantity">Quantity:</label>
                     <input type="number" name="quantity" id="quantity" value="1" min="1" />
                     <button type="submit">Add to Cart</button>

@@ -16,10 +16,15 @@
             <p>Type: @Model.Type</p>
             <p>Available from: @Model.StartDate.ToString("MMMM") to @Model.EndDate.ToString("MMMM")</p>
             <p>Price: @Model.Price.ToString("0.##")&euro;</p>
-            <form action="/Cart/BuyTransport" method="post">
-                <label for="quantity">Quantity:</label>
+            <form action="/Cart/BuyTransportation" method="post">
                 <input type="hidden" name="transportationId" value="@Model.Id" />
+
+                <input type="date" name="startDate" value="@Model.StartDate.ToString("yyyy-MM-dd")" />
+                <input type="date" name="endDate" value="@Model.EndDate.ToString("yyyy-MM-dd")" />
+
+                <label for="quantity">Quantity:</label>
                 <input type="number" name="quantity" id="quantity" value="1" min="1" />
+
                 <button type="submit">Add to Cart</button>
             </form>
         </div>
@@ -29,7 +34,7 @@
 @section ExtraScript{
     <script>
         function addToCart(transportationId) {
-            alert('Accomodation added to cart: ' + transportationId);
+            alert('Transportation added to cart: ' + transportationId);
         }
     </script>
 }

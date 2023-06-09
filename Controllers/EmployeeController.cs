@@ -29,6 +29,12 @@ namespace TripMeOn.Controllers
             return View(notifications);
         }
 
+        public IActionResult RefundRequest()
+        {
+            var refundNotifications = _propositionService.GetRefundNotifications();
+            return View(refundNotifications);
+        }
+
         public IActionResult IndexAdmin()
         {
             return View();
@@ -38,10 +44,8 @@ namespace TripMeOn.Controllers
         {
             return View();
         }
-        public IActionResult RefundRequest()
-        {
-            return View();
-        }
+
+
 
         public IActionResult ListePartner()
         {

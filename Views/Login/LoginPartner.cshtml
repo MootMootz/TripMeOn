@@ -3,56 +3,78 @@
     ViewBag.Title = "LoginClient";
     Layout = "~/Views/Shared/_LayoutContent.cshtml";
 }
+
 @section ExtraCss{
     <link rel="stylesheet" href="/css/login.css">
 }
-<div class="login">
+
+<table class="login">
     @if (Model.AuthentifyP)
     {
-        <div>
-            <h3>
-                You are already log in :
-                @Model.Partner.Nickname
-            </h3>
-            <p>
-                @Html.ActionLink("Would you like to disconnect?", "Deconnection", "Login")
-            </p>
-        </div>
+        <tr>
+            <td colspan="2">
+                <div>
+                    <h3>
+                        You are already log in :
+                        @Model.Partner.Nickname
+                    </h3>
+                    <p>
+                        @Html.ActionLink("Would you like to disconnect?", "Deconnection", "Login")
+                    </p>
+                </div>
+            </td>
+        </tr>
     }
     else
     {
-        <div>
-            <p class="Title">LOG IN FOR PARTNER</p>
-            <p>Please log in :</p>
-
-            @if (!ViewData.ModelState.IsValid)
-            {
-                <div class="alert alert-danger">
-                    @ViewData.ModelState[""].Errors.First().ErrorMessage
-                </div>
-            }
-
-            @using (Html.BeginForm("IndexPartner", "Login", FormMethod.Post))
-            {
+        <tr>
+            <td colspan="2">
                 <div>
-                    @Html.LabelFor(m => m.Partner.Nickname)
-                    @Html.TextBoxFor(m => m.Partner.Nickname)
-                    @Html.ValidationMessageFor(m => m.Partner.Nickname)
-                </div>
-                <div>
-                    @Html.LabelFor(m => m.Partner.Password)
-                    @Html.PasswordFor(m => m.Partner.Password)
-                    @Html.ValidationMessageFor(m => m.Partner.Password)
-                </div>
-                <div>
-                    <input type="submit" value="Log in" />
-                </div>
-            }
+                    <p class="Title">LOG IN PARTNER</p>
+                    <p>Please log in :</p>
 
-            <div id="create-account-container">
-                <span id="create-account">@Html.ActionLink("create account", "PartnerForm", "Partner")</span>
-            </div>
+                    @if (!ViewData.ModelState.IsValid)
+                    {
+                        <div class="alert alert-danger">
+                            @ViewData.ModelState[""].Errors.First().ErrorMessage
+                        </div>
+                    }
 
-        </div>
+                    @using (Html.BeginForm("IndexPartner", "Login", FormMethod.Post))
+                    {
+                        <table>
+                            <tr>
+                                <td>
+                                    @Html.LabelFor(m => m.Partner.Nickname)
+                                </td>
+                                <td>
+                                    @Html.TextBoxFor(m => m.Partner.Nickname)
+                                    @Html.ValidationMessageFor(m => m.Partner.Nickname)
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.LabelFor(m => m.Partner.Password)
+                                </td>
+                                <td>
+                                    @Html.PasswordFor(m => m.Partner.Password)
+                                    @Html.ValidationMessageFor(m => m.Partner.Password)
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <input type="submit" value="Log in" />
+                                </td>
+                            </tr>
+                        </table>
+                    }
+
+                    <div id="create-account-container">
+                        <span id="create-account">@Html.ActionLink("create account", "PartnerForm", "Partner")</span>
+                    </div>
+                </div>
+            </td>
+        </tr>
     }
-</div>
+</table>
+

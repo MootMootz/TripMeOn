@@ -1,10 +1,5 @@
-﻿@using TripMeOn.Models.Products;
+@using TripMeOn.Models.Products;
 @using TripMeOn.Helper;
-@*
-@{
-    ViewBag.Title = "LayoutContent";
-    Layout = "~/Views/Shared/_LayoutH&F.cshtml";
-}*@
 
 <!DOCTYPE html>
 <html lang="en">
@@ -15,7 +10,6 @@
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/Content.css">
         <link rel="stylesheet" href="/css/Layout.css">
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
     @RenderSection("ExtraCss",required:false)
@@ -23,7 +17,6 @@
 <body >
      <div style="display:flex; flex-direction:column; justify-content: space-between; min-height:100vh">
         <div>
-
    <div id="navbar">
         <ul id="menu">
             <li class="parent">
@@ -113,9 +106,9 @@
             </li>
         </ul>
     </div>
-
              @RenderBody()
-        </div>
+
+         </div>
         <div>
             <footer>
 
@@ -133,17 +126,11 @@
                     <a href="https://youtube.com"><i class="fab fa-youtube"></i></a>
                 </div>
             </footer>
-        </div>
-       
-    </div>
-    
-  
-  
-    
-  
+        </div>       
+    </div>   
     <script type="text/javascript" src="~/Scripts/jquery-3.3.1.js"></script>
     <script type="text/javascript" src="~/Scripts/jquery.validate-vsdoc.js"></script>
     <script type="text/javascript" src="~/Scripts/jquery.validate.unobtrusive.js"></script>
-        @RenderSection("ExtraScript",required:false)
+    @RenderSection("ExtraScript",required:false)
 </body>
 </html>

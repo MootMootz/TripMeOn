@@ -33,7 +33,9 @@ namespace TripMeOn.Models
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
 
-            optionsBuilder.UseMySql("server=localhost;user id=root;password=twitwiboo;database=TripMeOn");
+
+            optionsBuilder.UseMySql("server=localhost;user id=root;password=kukuskar;database=TripMeOn");
+
 
         }
 
@@ -44,20 +46,23 @@ namespace TripMeOn.Models
 
             var clients = new List<Client>
             {
-                new Client { Id = 1, LastName = "Phone Mo", FirstName = "Nway Nway", Nickname = "NN", Email = "nnpm.gmail.com", Password = UserService.EncodeMD5("1111"), Address= "21 bis Rue des Rossays,91600, France",PhoneNumber="0778146263",ClientType="Instagrammer"},
-                new Client { Id = 2, LastName = "Kanobi", FirstName = "Obiwan", Email = "oldman.gmail.com", Password = UserService.EncodeMD5("3333"), Address= "66 Clover Road, 43k67H,UK ",PhoneNumber="057789021",ClientType="TikToker"},
-
+                new Client { Id = 1, LastName = "Phone Mo", FirstName = "Nway Nway", Nickname = "NN", Email = "nnpm.gmail.com", Password = UserService.EncodeMD5("1111"), Address= "21 bis Rue des Rossays, 91600, France",PhoneNumber="0778146263",ClientType="Instagrammer"},
+                new Client { Id = 2, LastName = "Dupin", FirstName = "Frédéric", Nickname = "FD", Email = "frederic.dupin.pro@gmail.com", Password = UserService.EncodeMD5("3333"), Address= "8 Rue Saint-Michel 93170, France",PhoneNumber="0677887855",ClientType="Blogger"},
+                new Client { Id = 3, LastName = "Dumas", FirstName = "Anthony", Nickname = "AD", Email = "anthony.dumas30@gmail.com", Password = UserService.EncodeMD5("5555"), Address = "10 Rue de label kebab, 75002, France", PhoneNumber ="0611843877", ClientType = "Tiktoker" },
+                new Client { Id = 4, LastName = "Aitcheou", FirstName = "David", Nickname = "DA", Email = "gilchristaitcheou@gmail.com", Password = UserService.EncodeMD5("7777"), Address = "456 Elm Avenue, Anycity, USA", PhoneNumber = "0650556784", ClientType = "Influencer" },
             };
 
             var employees = new List<Employee>
             {
-                 new Employee { Id = 1, LastName = "Lieby", FirstName = "Karen", Nickname = "QQs", Email = "karen.lieby@outlook.com", Password = UserService.EncodeMD5("2222"), Address= "192 ancienne route de Quissac, 30250, France",PhoneNumber="0676455781",Role="Admin"},
+                new Employee { Id = 1, LastName = "Lieby", FirstName = "Karen", Nickname = "QQs", Email = "karen.lieby@outlook.com", Password = UserService.EncodeMD5("2222"), Address= "192 ancienne route de Quissac, 30250, France",PhoneNumber="0676455781",Role="Admin"},
+                new Employee { Id = 2, LastName = "Lestieux", FirstName = "Florian", Nickname = "FF", Email = "chickenmaster.gmail.com", Password = UserService.EncodeMD5("3333"), Address= "66 avenue des champs bleus, 44000, France ",PhoneNumber="0621685505", Role="Manager"},
+                new Employee { Id = 4, LastName = "Phone Mo", FirstName = "Nway Nway", Nickname = "PMN", Email = "nnpm.hotmail.com", Password = UserService.EncodeMD5("8888"), Address = "12 rue anthony dumas 91600, France", PhoneNumber = "0778146263", Role = "Staff" },
             };
 
             var partners = new List<Partner>
             {
-                 new Partner { Id = 1, LastName = "Usungtand", FirstName = "Sedar", Nickname = "BG", Email = "bogosse.gmail.com", Password = UserService.EncodeMD5("0000"), Address= "123 Avenue Fromenteau,45091, France",PhoneNumber="076543211",CompanyName="EasyGo"},
-                  new Partner { Id = 2, LastName = "Gauto", FirstName = "Nehemias", Nickname = "Nemo", Email = "nemo@gmail.com", Password = UserService.EncodeMD5("0000"), Address= "10 av Salta, Salta, Argentine",PhoneNumber="076543211",CompanyName="ApptSalta"},
+                 new Partner { Id = 1, LastName = "Korkmaz", FirstName = "Timur", Nickname = "TIM", Email = "easygo@gmail.com", Password = UserService.EncodeMD5("0000"), Address= "123 Avenue Fromenteau,45091, France",PhoneNumber="0765432110",CompanyName="EasyGo"},
+                 new Partner { Id = 2, LastName = "El Aissaoui", FirstName = "Raounak", Nickname = "REA", Email = "tazavoyage@gmail.com", Password = UserService.EncodeMD5("0000"), Address= "10 av Salta, Salta, Argentine",PhoneNumber="0665609582",CompanyName="TazaVoyage"},
             };
 
             var destinations = new List<Destination>

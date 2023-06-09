@@ -1,4 +1,4 @@
-﻿@model TripMeOn.Models.Products.TourPackage
+@model TripMeOn.Models.Products.TourPackage
 @using TripMeOn.Models.Order
 
 @{
@@ -8,6 +8,7 @@
 @section ExtraCss{
         <link rel="stylesheet" href="/css/PDetails.css">
 }
+
 
 <div class="flex-container">
     <div class="floating-box">
@@ -28,7 +29,7 @@
                 </div>
             </div>
         </div>
-       <!------------------------------------------------------------------------------------------------------->
+        <!------------------------------------------------------------------------------------------------------->
         <div class="row">
             <div class="col-md-6">
                 <div class="overlay">
@@ -43,7 +44,102 @@
                 </div>
             </div>
             <!-------------------------------------- itinerary-container----------------------------------------------------------->
-                 <div class="col-md-6">
+            <div class="col-md-6">
+                <div class="itinerary-container hidden">
+                    <h4>
+                        Fantastic Blossoms in Paris and Where/When to Find Them!
+                    </h4>
+                    <div class="itinerary-details">
+                        <!-- Day 1 -->
+                        <div class="day">
+                            <h5>
+                                <span class="toggle-day-icon">&#9660;</span>
+                                <span class="toggle-day-title">Day 1</span>
+                                <span class="toggle-day-text">Show Itinerary Details</span>
+                            </h5>
+                            <p class="itinerary-details-text">Day 1 details...</p>
+                            <p class="itinerary-details-text" style="display: none;">Airport/Train transfer to deluxe apartment in Paris</p>
+                            <p class="itinerary-details-text" style="display: none;">Explore the Latin quartier neighborhood and settle into the accommodation</p>
+                            <p class="itinerary-details-text" style="display: none;">
+                                Enjoy a traditional French full-course meal at a famous restauranteither for dinner or lunch of your choice
+                            </p>
+                        </div>
+                        <!-- Day 2 -->
+                        <div class="day">
+                            <h5>
+                                <span class="toggle-day-icon">&#9660;</span>
+                                <span class="toggle-day-title">Day 2</span>
+                                <span class="toggle-day-text">Show Itinerary Details</span>
+                            </h5>
+                            <p class="itinerary-details-text">Day 2 details...</p>
+                            <p class="itinerary-details-text" style="display: none;">Visit the Eiffel Tower with pre-booked ticket</p>
+                            <p class="itinerary-details-text" style="display: none;">Enjoy a River Cruise ride along the Seine Riverwith pre-booked ticket</p>
+                            <p class="itinerary-details-textstyle=" display: none;"">Visit Pecasso Museum with pre-booked ticket</p>
+                        </div>
+                        <!-- Day 3 -->
+                        <div class="day">
+                            <h5>
+                                <span class="toggle-day-icon">&#9660;</span>
+                                <span class="toggle-day-title">Day 3</span>
+                                <span class="toggle-day-text">Show Itinerary Details</span>
+                            </h5>
+                            <p class="itinerary-details-text">Day 3 details...</p>
+                            <p class="itinerary-details-text" style="display: none;">Explore the Louvre Museum</p>
+                            <p class="itinerary-details-text" style="display: none;">After the museum, meet with the guide who  will accompany you to the most beautiful hidden places and Instagrammable spots that is mentioned in this floral theme of Paris , and provide additional insight and history about the city, and don’t forget instagrammable photos.</p>
+                        </div>
+                        <!-- Day 4 -->
+                        <div class="day">
+                            <h5>
+                                <span class="toggle-day-icon">&#9660;</span>
+                                <span class="toggle-day-title">Day 4</span>
+                                <span class="toggle-day-text">Show Itinerary Details</span>
+                            </h5>
+                            <p class="itinerary-details-text">Day 4 details...</p>
+                            <p class="itinerary-details-text" style="display: none;">The guide will pick you up to visit Versaille Place and its famous garden</p>
+                            <p class="itinerary-details-text" style="display: none;">Drive you back on time for Airport/train transfer</p>
+                        </div>
+                    </div>
+                </div>
+                <form action="/Cart/BuyProduct" method="post">
+                    <input type="hidden" name="tourPackageId" value="@Model.Id" />
+
+                    <div class="flex-container">
+                        <div class="floating-box">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="photo-container">
+                                        <img src="~/images/p1/Paris1.jpg" alt="Photo 1" class="img-fluid rounded">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="photo-container">
+                                        <img src="~/images/p1/Paris2.jpg" alt="Photo 2" class="img-fluid rounded">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="photo-container">
+                                        <img src="~/images/p1/Paris3.jpg" alt="Photo 3" class="img-fluid rounded">
+                                    </div>
+                                </div>
+                            </div>
+                            <!------------------------------------------------------------------------------------------------------->
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="overlay">
+                                        <h3>@Model.Name</h3>
+                                        <p>@Model.Description</p>
+                                        <p>Country: @Model.Destination.Country</p>
+                                        <p>Theme: @Model.Theme.Name</p>
+                                        <p>Region: @Model.Destination.Region</p>
+                                        <p>City: @Model.Destination.City</p>
+                                        <p>Price: @Model.Price</p>
+                                        <p>Paris in spring is like living in a dream! You can’t find such a harmony of majestic landmarks from old days with newly bloomed flowers elsewhere. It’s poetic, it’s magnificent and it’s so instagrammable.  So, if you are wondering where to find a guide about spring in Paris for the most instagrammable places, where to stay and what to eat, TripMeOn is here!</p>
+                                    </div>
+                                </div>
+                                <!-------------------------------------- itinerary-container----------------------------------------------------------->
+                              
+                                <div class="col-md-6">
+
                                     <div class="itinerary-container hidden">
                                         <h4>
                                             Fantastic Blossoms in Paris and Where/When to Find Them!
@@ -102,33 +198,41 @@
                                     <form action="/Cart/BuyProduct" method="post">
                                         <input type="hidden" name="tourPackageId" value="@Model.Id" /> 
 
-                                        <input type="date" name="startDate" value="startDate" />
-                                         <input type="date" name="startDate" value="startDate" />
-
+                                        <input type="date" name="startDate" value="startDate" />                                    
                                         <input type="date" name="endDate" value="endDate" />
+                                      
                                         <label for="quantity">Quantity:</label>
+                                        <input type="number" name="quantity" id="quantity" value="1" min="1" />
 
-                                         <input type="number" name="quantity" id="quantity" value="1" min="1" />
-                                       <button type="submit">Add to Cart</button>
-                                      </form>
-                                      </div>
+                                         <button type="submit">Add to Cart</button>
+                                       </form>
+                                 </div>
                                        </div>
+                                        </div>
+                                        </div>
 
-                                    </div>
-                             </div>
 
-@section ExtraScript {
-    <script type="text/javascript" src="~/Scripts/JavaScript.js"></script>
- <script>
-   $(document).ready(function () {
-     $('.toggle-day-icon').on('click', function () {
-    var day = $(this).closest('.day');
-    day.find('.itinerary-details-text').slideToggle();
-   $(this).toggleClass('rotate');
-var toggleDayText = day.find('.toggle-day-text');
-toggleDayText.text(function (i, text) {return text === 'Show Itinerary Details' ? 'Hide Itinerary Details' : 'Show Itinerary Details';
-             });
-        });
-     });
-</script>
-}
+                                        @section ExtraScript {
+                                            <script src="/Scripts/JavaScript.js"></script>
+                                            <script>
+                                                $(document).ready(function () {
+                                                    $('.toggle-day-icon').on('click', function () {
+                                                        var day = $(this).closest('.day');
+                                                        day.find('.itinerary-details-text').slideToggle();
+                                                        $(this).toggleClass('rotate');
+                                                        var toggleDayText = day.find('.toggle-day-text');
+                                                        toggleDayText.text(function (i, text) {
+                                                            return text === 'Show Itinerary Details' ? 'Hide Itinerary Details' : 'Show Itinerary Details';
+                                                        });
+                                                    });
+                                                });
+                                          
+                                     
+                                            </script>
+   
+                                        }
+
+
+
+
+               

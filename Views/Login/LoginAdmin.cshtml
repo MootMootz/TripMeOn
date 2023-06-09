@@ -7,39 +7,65 @@
     <link rel="stylesheet" href="/css/login.css">
 }
 
-<div class="login">
-
-
+<table class="login">
     @if (Model.AuthentifyE)
     {
-
-        <h3>
-            You are already log in : commit -
-            @Model.Employee.Nickname
-        </h3>
-        @Html.ActionLink("Would you like to disconnect?", "Deconnection", "Login")
+        <tr>
+            <td colspan="2">
+                <h3>
+                    You are already log in : commit -
+                    @Model.Employee.Nickname
+                </h3>
+                @Html.ActionLink("Would you like to disconnect?", "Deconnection", "Login")
+            </td>
+        </tr>
     }
     else
     {
-        <p class="Title">LOG IN FOR ADMIN</p>
-        <p>Please log in :</p>
-        using (Html.BeginForm("IndexAdmin", "Login", FormMethod.Post))
-        {
 
-            <div>
-                @Html.LabelFor(m => m.Employee.Nickname)
-                @Html.TextBoxFor(m => m.Employee.Nickname)
-                @Html.ValidationMessageFor(m => m.Employee.Nickname)
-            </div>
-            <div>
-                @Html.LabelFor(m => m.Employee.Password)
-                @Html.PasswordFor(m => m.Employee.Password)
-                @Html.ValidationMessageFor(m => m.Employee.Password)
-            </div>
-            <input type="submit" value="Log in" />
-            <br />
-        }
-
-        <div id="forgot-pwd-container"><span id="forgot-pwd">Forgot password ?</span></div>
+        <tr>
+            <td colspan="2">
+                <p class="Title">LOG IN ADMIN</p>
+                <p>Please log in :</p>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                @using (Html.BeginForm("IndexAdmin", "Login", FormMethod.Post))
+                {
+                    <table>
+                        <tr>
+                            <td>
+                                @Html.LabelFor(m => m.Employee.Nickname)
+                            </td>
+                            <td>
+                                @Html.TextBoxFor(m => m.Employee.Nickname)
+                                @Html.ValidationMessageFor(m => m.Employee.Nickname)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                @Html.LabelFor(m => m.Employee.Password)
+                            </td>
+                            <td>
+                                @Html.PasswordFor(m => m.Employee.Password)
+                                @Html.ValidationMessageFor(m => m.Employee.Password)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <input type="submit" value="Log in" />
+                                <br />
+                            </td>
+                        </tr>
+                    </table>
+                }
+            </td>
+        </tr>
+        @*      <tr>
+    <td colspan="2" id="forgot-pwd-container">
+    @*<span id="forgot-pwd">Forgot password ?</span>
+    </td>
+    </tr>*@
     }
-</div>
+</table>

@@ -20,13 +20,9 @@ namespace TripMeOn.Controllers
     public class CartController : Controller
     {
         private readonly IOrderService _orderService;
-        //private Models.BddContext _bddContext;
-
-
         public CartController(IOrderService orderService)
         {
             _orderService = orderService;
-            //_bddContext = new BddContext();
         }
 
         public IActionResult ViewCart()
@@ -90,7 +86,7 @@ namespace TripMeOn.Controllers
             return RedirectToAction("ViewCart");
         }
         [HttpPost]
-        public IActionResult BuyAccomodation(int accomodationId, int quantity)
+        public IActionResult BuyAccomodation(int accomodationId, int quantity, DateTime startDate, DateTime endDate)
         {
             var cartId = SessionHelper.GetObjectFromJson<int>(HttpContext.Session, "cartId");
 
@@ -98,7 +94,7 @@ namespace TripMeOn.Controllers
             if (cartId == 0)
             {
                 cartId = _orderService.CreateCart();
-                _orderService.AddItem(cartId, new Item { AccomodationId = accomodationId, Quantity = quantity });
+                _orderService.AddItem(cartId, new Item { AccomodationId = accomodationId, Quantity = quantity, StartDate = startDate, EndDate = endDate });
 
                 if (User.Identity.IsAuthenticated)
                 {
@@ -110,7 +106,7 @@ namespace TripMeOn.Controllers
             }
             else
             {
-                _orderService.AddItem(cartId, new Item { AccomodationId = accomodationId, Quantity = quantity });
+                _orderService.AddItem(cartId, new Item { AccomodationId = accomodationId, Quantity = quantity, StartDate = startDate, EndDate = endDate });
             }
 
             HttpContext.Response.Cookies.Append("CartId", cartId.ToString());
@@ -118,7 +114,7 @@ namespace TripMeOn.Controllers
             return RedirectToAction("ViewCart");
         }
         [HttpPost]
-        public IActionResult BuyRestaurant(int restaurantId, int quantity)
+        public IActionResult BuyRestaurant(int restaurantId, int quantity, DateTime startDate, DateTime endDate)
         {
             var cartId = SessionHelper.GetObjectFromJson<int>(HttpContext.Session, "cartId");
 
@@ -126,7 +122,7 @@ namespace TripMeOn.Controllers
             if (cartId == 0)
             {
                 cartId = _orderService.CreateCart();
-                _orderService.AddItem(cartId, new Item { RestaurantId = restaurantId, Quantity = quantity });
+                _orderService.AddItem(cartId, new Item { RestaurantId = restaurantId, Quantity = quantity, StartDate = startDate, EndDate = endDate });
 
                 if (User.Identity.IsAuthenticated)
                 {
@@ -138,7 +134,7 @@ namespace TripMeOn.Controllers
             }
             else
             {
-                _orderService.AddItem(cartId, new Item { RestaurantId = restaurantId, Quantity = quantity });
+                _orderService.AddItem(cartId, new Item { RestaurantId = restaurantId, Quantity = quantity, StartDate = startDate, EndDate = endDate });
             }
 
             HttpContext.Response.Cookies.Append("CartId", cartId.ToString());
@@ -147,7 +143,7 @@ namespace TripMeOn.Controllers
         }
 
         [HttpPost]
-        public IActionResult BuyTransport(int transportationId, int quantity)
+        public IActionResult BuyTransport(int transportationId, int quantity, DateTime startDate, DateTime endDate)
         {
             var cartId = SessionHelper.GetObjectFromJson<int>(HttpContext.Session, "cartId");
 
@@ -155,7 +151,7 @@ namespace TripMeOn.Controllers
             if (cartId == 0)
             {
                 cartId = _orderService.CreateCart();
-                _orderService.AddItem(cartId, new Item { TransportationId = transportationId, Quantity = quantity });
+                _orderService.AddItem(cartId, new Item { TransportationId = transportationId, Quantity = quantity, StartDate = startDate, EndDate = endDate });
 
                 if (User.Identity.IsAuthenticated)
                 {
@@ -167,7 +163,7 @@ namespace TripMeOn.Controllers
             }
             else
             {
-                _orderService.AddItem(cartId, new Item { TransportationId = transportationId, Quantity = quantity });
+                _orderService.AddItem(cartId, new Item { TransportationId = transportationId, Quantity = quantity, StartDate = startDate, EndDate = endDate });
             }
 
             HttpContext.Response.Cookies.Append("CartId", cartId.ToString());
@@ -308,13 +304,7 @@ namespace TripMeOn.Controllers
 
             if (cart != null)
             {
-                //Notification notification = new Notification()
-                //{
-                //    Message = $"A refund request has been initiated for cart {cartId} by client {User.Identity.Name}.",
-                //    CreatedAt = DateTime.Now
-                //};
-                //_bddContext.Notifications.Add(notification);
-                //_bddContext.SaveChanges();
+                _orderService.CreateRefundNotification(cartId);
                 ViewData["RefundMessage"] = "Refund initiated successfully, it will be processed in 5 business days";
             }
             else
@@ -322,7 +312,7 @@ namespace TripMeOn.Controllers
                 ViewData["RefundMessage"] = "Error: Cart not found.";
             }
 
-            // Return the "Refund" view
+
             return View("Refund");
         }
     }

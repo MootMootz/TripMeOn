@@ -476,21 +476,19 @@ namespace TripMeOn.Controllers
         /// <param name="destination">recherche par destination</param>
         /// <param name="month">recherche par mois</param>
         /// <returns>les paquets qui correspondent aux critères choisis</returns>
-        public IActionResult SearchPackage(string serviceType, int destination, int month)
+    public IActionResult SearchPackage(string serviceType, int destination)
+    {
+        var searchResults = _propositionService.SearchByServiceTypeDestination(
+            serviceType,
+            destination == 0 ? (int?)null : destination);
+        var viewModel = new PropositionServiceModel();
+
+        switch (serviceType)
         {
-            var searchResults = _propositionService.SearchByServiceTypeDestinationMonth(
-                serviceType,
-                destination == 0 ? (int?)null : destination,
-                month == 0 ? (int?)null : month);
-
-            var viewModel = new PropositionServiceModel();
-
-            switch (serviceType)
-            {
-                case "Accomodation":
-                    viewModel.Accomodations = searchResults.Cast<Accomodation>().ToList();
-                    break;
-                case "Restaurant":
+            case "Accomodation":
+                viewModel.Accomodations = searchResults.Cast<Accomodation>().ToList();
+                break;
+            case "Restaurant":
                     viewModel.Restaurants = searchResults.Cast<Restaurant>().ToList();
                     break;
                 case "Transport":
@@ -529,7 +527,7 @@ namespace TripMeOn.Controllers
                 return NotFound();
             }
 
- 
+
             return View(restaurant);
         }
 
@@ -542,7 +540,7 @@ namespace TripMeOn.Controllers
                 return NotFound();
             }
 
-   
+
             return View(transportation);
         }
 

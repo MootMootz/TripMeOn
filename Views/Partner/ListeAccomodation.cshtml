@@ -22,8 +22,11 @@
             <th>Type</th>
             <th>Capacity</th>
             <th>Price</th>
-            <th>PartnerId</th>
-            <th>DestinationId</th>
+            <th>Partner</th>
+            <th>Destination</th>
+            <th>Description</th>
+            <th>Start Date</th>
+            <th>End Date</th>
             <th>Action</th>
         </tr>
         @foreach (var accomodation in Model.Accomodations)
@@ -33,8 +36,11 @@
                 <td>@accomodation.Type</td>
                 <td>@accomodation.Capacity</td>
                 <td>@accomodation.Price</td>
-                <td>@accomodation.PartnerId</td>
-                <td>@accomodation.DestinationId</td>
+                <td>@accomodation.Partner.CompanyName</td>
+                <td>@accomodation.Destination.City</td>
+                <td>@accomodation.Description</td>
+                <td>@accomodation.StartDate</td>
+                <td>@accomodation.EndDate</td>
                 <td>@Html.ActionLink("Edit","ModifyAccomodation", "Partner", new { id = accomodation.Id })</td>
                 <td>@Html.ActionLink("Delete", "DeleteAccomodation", "Partner", new { id = accomodation.Id })</td>
                 <td>

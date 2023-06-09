@@ -23,6 +23,13 @@
             </tr>
 
             <tr>
+
+                <td>@Html.LabelFor(m => Model.Description)</td>
+                <td>@Html.TextBoxFor(m => Model.Description)</td>
+                <td>@Html.ValidationMessageFor(m => Model.Description)</td>
+            </tr>
+
+            <tr>
                 <td class="grey">@Html.LabelFor(m => Model.Partner)</td>
                 <td class="essai">@Html.DropDownListFor(m => m.PartnerId, (List<SelectListItem>)ViewBag.PartnerList, "Select a partner")</td>
                 <td>@Html.ValidationMessageFor(m => Model.PartnerId)</td>
@@ -47,17 +54,12 @@
                 <td><label for="file1">Photo :</label></td>
                 <td>
                     <input type="file" name="file[]" id="file1">
-                    <input type="file" name="file[]" id="file2">
-                    <input type="file" name="file[]" id="file3">
                 </td>
             </tr>
-
             <tr>
-                <td><label for="description">Description :</label></td>
-                <td>
-                    <textarea id="description" name="description" rows="8" cols="50"
-                              placeholder="Please give more details" maxlength="1000"></textarea>
-                </td>
+                <td>@Html.LabelFor(m => m.Description)</td>
+                <td>@Html.TextAreaFor(m => m.Description, new { rows = 8, cols = 50, maxlength = 1000 })</td>
+                <td>@Html.ValidationMessageFor(m => m.Description)</td>
             </tr>
 
 

@@ -46,7 +46,7 @@
                 </tr>
 
                 <tr>
-                    <td>@Html.LabelFor(m => Model.Partner)</td>
+                    <td class="grey">@Html.LabelFor(m => Model.Partner)</td>
                     <td class="essai">@Html.DropDownListFor(m => m.PartnerId, (List<SelectListItem>)ViewBag.PartnerList, "Select a partner")</td>
                     <td>@Html.ValidationMessageFor(m => Model.PartnerId)</td>
                 </tr>
@@ -68,6 +68,12 @@
                     <td>@Html.TextBoxFor(m => Model.EndDate, "{0:dd/MM/yyyy}", new { type = "date", @class = "date" })</td>
                     <td>@Html.ValidationMessageFor(m => Model.EndDate)</td>
                 </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => m.Description)</td>
+                    <td>@Html.TextAreaFor(m => m.Description, new { rows = 8, cols = 50, maxlength = 1000 })</td>
+                    <td>@Html.ValidationMessageFor(m => m.Description)</td>
+                </tr>
+
             </table>
 
             <input type="submit" value="Edit" />
@@ -82,6 +88,9 @@
 <style>
     .essai {
         pointer-events: none;
-        background-color: gray;
+    }
+
+    .grey {
+        color: grey;
     }
 </style>

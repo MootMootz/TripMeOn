@@ -23,13 +23,7 @@
             </tr>
 
             <tr>
-                <td>@Html.LabelFor(m => Model.Description)</td>
-                <td>@Html.TextBoxFor(m => Model.Description)</td>
-                <td>@Html.ValidationMessageFor(m => Model.Description)</td>
-            </tr>
-
-            <tr>
-                <td>@Html.LabelFor(m => Model.Partner)</td>
+                <td class="grey">@Html.LabelFor(m => Model.Partner)</td>
                 <td class="essai">@Html.DropDownListFor(m => m.PartnerId, (List<SelectListItem>)ViewBag.PartnerList, "Select a partner")</td>
                 <td>@Html.ValidationMessageFor(m => Model.PartnerId)</td>
             </tr>
@@ -78,9 +72,13 @@
 <script type="text/javascript" src="~/Scripts/jquery.validate.unobtrusive.js"></script>
 
 
+
 <style>
     .essai {
         pointer-events: none;
-        background-color: gray;
+    }
+
+    .grey {
+        color: grey;
     }
 </style>

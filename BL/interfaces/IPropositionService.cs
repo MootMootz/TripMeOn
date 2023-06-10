@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using TripMeOn.Models.PartnerProducts;
 using TripMeOn.Models.Products;
+using TripMeOn.Models.Users;
 
 namespace TripMeOn.BL.interfaces
 {
@@ -30,7 +31,10 @@ namespace TripMeOn.BL.interfaces
         List<Transportation> SearchTransportationByDestination(int? destinationId);
 
         List<object> SearchByServiceTypeDestination(string serviceType, int? destinationId);
+
+        List<object> GetAllServicesByPartnerId(int partnerId);
         List<Notification> GetRefundNotifications();
+        List<Partner> GetAllPartnersWithServices();
 
 
 

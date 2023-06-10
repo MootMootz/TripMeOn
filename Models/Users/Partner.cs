@@ -1,4 +1,7 @@
-﻿namespace TripMeOn.Models.Users
+﻿using System.Collections.Generic;
+using TripMeOn.Models.PartnerProducts;
+
+namespace TripMeOn.Models.Users
 {
     public class Partner
     {
@@ -11,5 +14,8 @@
         public string Address { get; set; }
         public string PhoneNumber { get; set; }
         public string CompanyName { get; set; }
+        public virtual ICollection<Accomodation> Accomodations { get; set; }
+        public virtual ICollection<Restaurant> Restaurants { get; set; }
+        public virtual ICollection<Transportation> Transportations { get; set; }
     }
 }

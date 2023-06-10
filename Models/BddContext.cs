@@ -32,7 +32,7 @@ namespace TripMeOn.Models
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseMySql("server=localhost;user id=root;password=kukuskar;database=TripMeOn");
+            optionsBuilder.UseMySql("server=localhost;user id=root;password=1530;database=TripMeOn");
         }
 
         public void InitializeDb()

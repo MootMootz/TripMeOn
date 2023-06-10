@@ -7,6 +7,7 @@ using TripMeOn.BL.interfaces;
 using TripMeOn.Models;
 using TripMeOn.Models.Order;
 using TripMeOn.Models.PartnerProducts;
+using TripMeOn.Models.Users;
 
 namespace TripMeOn.BL
 {
@@ -184,16 +185,27 @@ namespace TripMeOn.BL
             _bddContext.Dispose();
         }
 
-        public void CreateRefundNotification(int cartId)
+        public void CreateRefundNotification(int cartId, Client client)
         {
             Notification notification = new Notification()
             {
-                Message = $"A refund request has been made by customer for cart {cartId}.",
+                Message = $"A refund request has been made by client ID {client.Id}, named '{client.FirstName + " " + client.LastName}', for cart {cartId}.",
                 CreatedAt = DateTime.Now
             };
             _bddContext.Notifications.Add(notification);
             _bddContext.SaveChanges();
         }
+
+        //public void AcceptRefundNotification(int cartId, Client client)
+        //{
+        //    Notification notification = new Notification()
+        //    {
+        //        Message = $"A refund request for client ID {client.Id}, named '{client.FirstName + " " + client.LastName}', for cart {cartId}, has been successfully processed.",
+        //        CreatedAt = DateTime.Now
+        //    };
+        //    _bddContext.Notifications.Add(notification);
+        //    _bddContext.SaveChanges();
+        //}
 
     }
 }

@@ -7,6 +7,7 @@ using TripMeOn.Models.Users;
 using TripMeOn.ViewModels;
 using System.Linq;
 using TripMeOn.Models.PartnerProducts;
+using System.Security.Claims;
 
 namespace TripMeOn.Controllers
 {
@@ -251,6 +252,32 @@ namespace TripMeOn.Controllers
 
             }
         }
+        //public IActionResult ListeAllServices()
+        //{
+        //    using (IPropositionService propositionService = new PropositionService())
+        //    {
+        //        PropositionServiceModel viewModel = new PropositionServiceModel();
+        //        int partnerId = int.Parse(User.FindFirstValue(ClaimTypes.Name));
+        //        viewModel.Restaurants = propositionService.GetRestaurantsByPartnerId(partnerId);
+        //        viewModel.Accomodations = propositionService.GetAccomodationsByPartnerId(partnerId);
+        //        viewModel.Transportations = propositionService.GetTransportationsByPartnerId(partnerId);
+        //        return View(viewModel);
+        //    }
+
+        //}
+
+        public IActionResult ListeAllServices()
+        {
+            using (IPropositionService propositionService = new PropositionService())
+            {
+                PropositionServiceModel viewModel = new PropositionServiceModel();
+                viewModel.Partners = propositionService.GetAllPartnersWithServices();
+                return View(viewModel);
+            }
+        }
+
+
+
     }
 }
 

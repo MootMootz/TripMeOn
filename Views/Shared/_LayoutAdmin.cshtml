@@ -23,13 +23,15 @@
             <div id="tabs">
                 @Html.ActionLink("Manage accounts","ManageAccounts","Employee")
                 <br />
-                @Html.ActionLink("Refund requests", "RefundRequest", "Employee")
-                <br />
                 @Html.ActionLink("Add new employee", "AddEmployeeForm", "Employee")
                 <br />
                 @Html.ActionLink("Packages", "PackageList", "Product")
                 <br />
                 @Html.ActionLink("Notifications", "Notifications", "Employee")
+                <br />
+                @Html.ActionLink("List of all services", "ListeAllServices", "Employee")
+                <br />
+                @Html.ActionLink("Refund requests", "RefundRequest", "Employee")
             </div>
 
             <div id="logout"><button type="submit">@Html.ActionLink("Logout", "Deconnection", "Login")</button></div>

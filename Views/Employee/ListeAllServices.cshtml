@@ -1,0 +1,90 @@
+﻿@model TripMeOn.ViewModels.PropositionServiceModel
+
+@{
+    ViewBag.title = "ListeEmployee";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+@foreach (var partner in Model.Partners)
+{
+    <h2>@partner.CompanyName Partner Services:</h2>
+
+    <h3>Accomodations</h3>
+
+    <table border="1">
+        <tr>
+            <th>PartnerId</th>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Capacity</th>
+            <th>Price</th>
+            <th>Partner</th>
+            <th>Destination</th>
+            <th>Description</th>
+        </tr>
+        @foreach (var accomodation in partner.Accomodations)
+        {
+            <tr>
+                <td>@accomodation.PartnerId</td>
+                <td>@accomodation.Name</td>
+                <td>@accomodation.Type</td>
+                <td>@accomodation.Capacity</td>
+                <td>@accomodation.Price</td>
+                <td>@accomodation.Partner</td>
+                <td>@accomodation.Description</td>
+            </tr>
+        }
+    </table>
+
+    <h3>Restaurants</h3>
+
+    <table border="1">
+        <tr>
+            <th>PartnerId</th>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Price</th>
+            <th>Partner</th>
+            <th>Description</th>
+        </tr>
+        @foreach (var restaurant in partner.Restaurants)
+        {
+            <tr>
+                <td>@restaurant.PartnerId</td>
+                <td>@restaurant.Name</td>
+                <td>@restaurant.Type</td>
+                <td>@restaurant.Price</td>
+                <td>@restaurant.Partner</td>
+                <td>@restaurant.Description</td>
+            </tr>
+        }
+    </table>
+
+    <h3>Transportations</h3>
+    <table border="1">
+        <tr>
+            <th>PartnerId</th>
+            <th>Type</th>
+            <th>Price</th>
+            <th>Partner</th>
+            <th>Description</th>
+        </tr>
+        @foreach (var transportation in partner.Transportations)
+        {
+            <tr>
+                <td>@transportation.PartnerId</td>
+                <td>@transportation.Type</td>
+                <td>@transportation.Price</td>
+                <td>@transportation.Partner</td>
+                <td>@transportation.Description</td>
+            </tr>
+        }
+    </table>
+}
+<style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+</style>

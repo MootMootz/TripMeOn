@@ -11,6 +11,7 @@ using TripMeOn.Models;
 using TripMeOn.Models.Order;
 using TripMeOn.Models.PartnerProducts;
 using TripMeOn.Models.Products;
+using TripMeOn.Models.Users;
 using TripMeOn.ViewModels;
 
 
@@ -291,7 +292,8 @@ namespace TripMeOn.Controllers
 
             if (cart != null)
             {
-                _orderService.CreateRefundNotification(cartId);
+
+                _orderService.CreateRefundNotification(cartId, cart.Client);
                 ViewData["RefundMessage"] = "Refund initiated successfully, it will be processed in 5 business days";
             }
             else
@@ -302,6 +304,13 @@ namespace TripMeOn.Controllers
 
             return View("Refund");
         }
+
+        //public IActionResult Accept(int cartId)
+        //{
+        //    Cart cart = _orderService.GetCart(cartId);
+        //    _orderService.AcceptRefundNotification(cartId, cart.Client);
+        //    return View();
+        //}
     }
 }
 

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using TripMeOn.Models.Order;
+using TripMeOn.Models.Users;
 
 namespace TripMeOn.BL.interfaces
 {
@@ -22,6 +23,7 @@ namespace TripMeOn.BL.interfaces
         void UpdateCartClient(int cartId, int clientId);
         int ProductExistInCart(Cart cart, int tourPackageId);
 
-        void CreateRefundNotification(int cartId);
+        void CreateRefundNotification(int cartId, Client client);
+        //void AcceptRefundNotification(int cartId, Client client);
     }
 }

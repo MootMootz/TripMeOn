@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -7,6 +8,7 @@ using TripMeOn.BL.interfaces;
 using TripMeOn.Models;
 using TripMeOn.Models.PartnerProducts;
 using TripMeOn.Models.Products;
+using TripMeOn.Models.Users;
 
 namespace TripMeOn.BL
 {
@@ -35,6 +37,8 @@ namespace TripMeOn.BL
         {
             return _bddContext.Transportations.Include(t => t.Image).ToList();
         }
+
+
 
 
         /// <summary>
@@ -73,6 +77,7 @@ namespace TripMeOn.BL
         {
             return _bddContext.Notifications.OrderByDescending(n => n.CreatedAt).ToList();
         }
+
         /// <summary>
         /// Les méthodes suivantes donnent la possibilité au partenaire de créer de services à partir de sa plateforme. Ils seront sauvegardés dans la bdd
         /// </summary>
@@ -81,7 +86,7 @@ namespace TripMeOn.BL
         {
             Accomodation accomodation = new Accomodation() { Name = name, Type = type, Capacity = capacity, Price = price, PartnerId = partnerId, DestinationId = destinationId, StartDate = startDate, EndDate = endDate, Description = description };
             _bddContext.Accomodations.Add(accomodation);
-            Notification notification = new Notification() { Message = $"A new accomodation has been created by partner {partnerId}.", CreatedAt = DateTime.Now };
+            Notification notification = new Notification() { Message = $"A new accomodation with ID {accomodation.Id}, named '{accomodation.Name}', has been created by partner {partnerId}.", CreatedAt = DateTime.Now };
             _bddContext.Notifications.Add(notification);
             _bddContext.SaveChanges();
             return accomodation.Id;
@@ -90,7 +95,7 @@ namespace TripMeOn.BL
         {
             Restaurant restaurant = new Restaurant() { Name = name, Type = type, Price = price, PartnerId = partnerId, DestinationId = destinationId, StartDate = startDate, EndDate = endDate, Description = description };
             _bddContext.Restaurants.Add(restaurant);
-            Notification notification = new Notification() { Message = $"A new restaurant has been created by partner {partnerId}.", CreatedAt = DateTime.Now };
+            Notification notification = new Notification() { Message = $"A new restaurant with ID {restaurant.Id}, named '{restaurant.Name}', has been created by partner {partnerId}.", CreatedAt = DateTime.Now };
             _bddContext.Notifications.Add(notification);
             _bddContext.SaveChanges();
             return restaurant.Id;
@@ -99,7 +104,7 @@ namespace TripMeOn.BL
         {
             Transportation transportation = new Transportation() { Type = type, Price = price, PartnerId = partnerId, DestinationId = destinationId, StartDate = startDate, EndDate = endDate, Description = description };
             _bddContext.Transportations.Add(transportation);
-            Notification notification = new Notification() { Message = $"A new transportation has been created by partner {partnerId}.", CreatedAt = DateTime.Now };
+            Notification notification = new Notification() { Message = $"A new transportation with ID {transportation.Id}, transportation type '{transportation.Type}', has been created by partner {partnerId}.", CreatedAt = DateTime.Now };
             _bddContext.Notifications.Add(notification);
             _bddContext.SaveChanges();
             return transportation.Id;
@@ -130,16 +135,22 @@ namespace TripMeOn.BL
         public void DeleteRestaurant(Restaurant restaurant) // applique les modifications sur restaurant et enregistre ces modifications dans la base de données
         {
             _bddContext.Restaurants.Remove(restaurant);
+            Notification notification = new Notification() { Message = $"An restaurant with ID {restaurant.Id}, named '{restaurant.Name}', has been deleted by a partner {restaurant.PartnerId}.", CreatedAt = DateTime.Now };
+            _bddContext.Notifications.Add(notification);
             _bddContext.SaveChanges();
         }
-        public void DeleteAccomodation(Accomodation accomodation) // applique les modifications sur restaurant et enregistre ces modifications dans la base de données
+        public void DeleteAccomodation(Accomodation accomodation) // applique les modifications sur accomodation et enregistre ces modifications dans la base de données
         {
             _bddContext.Accomodations.Remove(accomodation);
+            Notification notification = new Notification() { Message = $"An accommodation with ID {accomodation.Id}, named '{accomodation.Name}', has been deleted by a partner {accomodation.PartnerId}.", CreatedAt = DateTime.Now };
+            _bddContext.Notifications.Add(notification);
             _bddContext.SaveChanges();
         }
-        public void DeleteTransportation(Transportation transportation) // applique les modifications sur restaurant et enregistre ces modifications dans la base de données
+        public void DeleteTransportation(Transportation transportation) // applique les modifications sur transportation et enregistre ces modifications dans la base de données
         {
             _bddContext.Transportations.Remove(transportation);
+            Notification notification = new Notification() { Message = $"An transportation with ID {transportation.Id}, transportation type '{transportation.Type}', has been deleted by a partner {transportation.PartnerId}.", CreatedAt = DateTime.Now };
+            _bddContext.Notifications.Add(notification);
             _bddContext.SaveChanges();
         }
         /// <summary>
@@ -225,6 +236,30 @@ namespace TripMeOn.BL
                     return new List<object>();
             }
         }
+
+        public List<object> GetAllServicesByPartnerId(int partnerId)
+        {
+            var accomodations = GetAccomodationsByPartnerId(partnerId).Cast<object>().ToList();
+            var restaurants = GetRestaurantsByPartnerId(partnerId).Cast<object>().ToList();
+            var transportations = GetTransportationsByPartnerId(partnerId).Cast<object>().ToList();
+
+            var allServices = new List<object>();
+            allServices.AddRange(accomodations);
+            allServices.AddRange(restaurants);
+            allServices.AddRange(transportations);
+
+            return allServices;
+        }
+
+        public List<Partner> GetAllPartnersWithServices()
+        {
+            return _bddContext.Partners
+                .Include(p => p.Accomodations)
+                .Include(p => p.Restaurants)
+                .Include(p => p.Transportations)
+                .ToList();
+        }
+
 
 
 

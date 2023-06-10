@@ -102,24 +102,40 @@
         <div class="col-25">
             <div class="container">
                 <h4>Cart <span class="price" style="color:black"><i class="fa fa-shopping-cart"></i> <b>@Model.Items.Count</b></span></h4>
-                <p>Client's Name: @Model.ClientName</p> <!--only retrns Id-->
+                <p>Client's Name: @Model.ClientName</p> <!--only returns Id-->
                 @foreach (var item in Model.Items)
                 {
                     if (item.TourPackage != null)
                     {
-                        <p><a href="#">@item.TourPackage.Name</a> <span class="price">$@item.TourPackage.Price</span></p>
+                        <div>
+                            <a href="#">@item.TourPackage.Name</a>
+                            <span class="price">$@item.TourPackage.Price</span>
+                            <span>Quantity: @item.Quantity</span>
+                        </div>
                     }
                     if (item.Accomodation != null)
                     {
-                        <p><a href="#">@item.Accomodation.Name</a> <span class="price">$@item.Accomodation.Price</span></p>
+                        <div>
+                            <a href="#">@item.Accomodation.Name</a>
+                            <span class="price">$@item.Accomodation.Price</span>
+                            <span>Quantity: @item.Quantity</span>
+                        </div>
                     }
                     if (item.Restaurant != null)
                     {
-                        <p><a href="#">@item.Restaurant.Name</a> <span class="price">$@item.Restaurant.Price</span></p>
+                        <div>
+                            <a href="#">@item.Restaurant.Name</a>
+                            <span class="price">$@item.Restaurant.Price</span>
+                            <span>Quantity: @item.Quantity</span>
+                        </div>
                     }
                     if (item.Transportation != null)
                     {
-                        <p><a href="#">@item.Transportation.Type</a> <span class="price">$@item.Transportation.Price</span></p>
+                        <div>
+                            <a href="#">@item.Transportation.Type</a>
+                            <span class="price">$@item.Transportation.Price</span>
+                            <span>Quantity: @item.Quantity</span>
+                        </div>
                     }
                 }
 
@@ -127,16 +143,17 @@
                 <p>
                     Total <span class="price" style="color:black">
                         <b>
-                            $@(Model.Items.Where(item => item.TourPackage != null).Sum(item => item.TourPackage.Price * item.Quantity)
-                               + Model.Items.Where(item => item.Accomodation != null).Sum(item => item.Accomodation.Price * item.Quantity)
-                               + Model.Items.Where(item => item.Restaurant != null).Sum(item => item.Restaurant.Price * item.Quantity)
-                               + Model.Items.Where(item => item.Transportation != null).Sum(item => item.Transportation.Price * item.Quantity))
+                            $@(Model.Items.Sum(item => item.Quantity *
+                               (item.TourPackage != null ? item.TourPackage.Price :
+                               item.Accomodation != null ? item.Accomodation.Price :
+                               item.Restaurant != null ? item.Restaurant.Price :
+                               item.Transportation != null ? item.Transportation.Price : 0)))
                         </b>
                     </span>
                 </p>
             </div>
         </div>
-    </div>
+
 
 </body>
 </html>

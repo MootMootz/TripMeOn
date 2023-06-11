@@ -36,12 +36,18 @@ body {
     border-radius: 25px;
     z-index: 101;
 }
+.pageTitle {
+    text-align: center;
+    margin-top: 2   0px;
+   
+    background-color: #F2E9DC
+}
 
 #menu {
     width: 240px;
     height: 100%;
-    float : left;
-    background-color: gold;
+    float: left;
+    background-color: #F1D6B8;
 }
 
 #menu-container {
@@ -49,35 +55,34 @@ body {
     text-align:center;
 }
 
-#tabs {
-    t
-}
 
 #logout {
     display: flex;
     height: 40px;
     width: 100px;
-    margin-left:auto;
-    margin-right:auto;
-    margin-bottom:50px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 50px;
+    justify-content: center;
+    align-items: center;
 }
 #logout button{
     align-content:center;
     align-items:center;
     text-align:center;
 }
-
+.pageTitle button {
+    margin-right: 10px;
+}
 #content {
     margin-left: 245px;
-    background-color: wheat;
+    background-color: #F2E9DC;
     padding: 30px;
 }
 
 
-
-
 #footer {
-    background-color: wheat;
+    background-color: #F2E9DC;
     text-align: center;
     clear: both;
     font-family: Autography;

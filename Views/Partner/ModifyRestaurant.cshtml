@@ -3,6 +3,10 @@
     Layout = "_LayoutPartner";
     ViewBag.Title = "Restaurants";
 }
+@section ExtraCss{
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/PackageList.css" rel="stylesheet">
+}
 <!DOCTYPE html>
 <html>
 
@@ -73,7 +77,10 @@
                 </tr>
             </table>
 
-            <input type="submit" value="Edit" />
+            <div class="text-center">
+                <input type="submit" value="Edit" class="btn btn-primary" />
+            </div>
+
         </fieldset>
 
 

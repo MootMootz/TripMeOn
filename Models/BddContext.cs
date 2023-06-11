@@ -33,7 +33,7 @@ namespace TripMeOn.Models
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
 
-            optionsBuilder.UseMySql("server=localhost;user id=root;password=1530;database=TripMeOn");
+            optionsBuilder.UseMySql("server=localhost;user id=root;password=twitwiboo;database=TripMeOn");
 
         }
 
@@ -44,7 +44,7 @@ namespace TripMeOn.Models
 
             var clients = new List<Client>
             {
-                new Client { Id = 1, LastName = "Phone Mo", FirstName = "Nway Nway", Nickname = "NN", Email = "nnpm.gmail.com", Password = UserService.EncodeMD5("1111"), Address= "21 bis Rue des Rossays, 91600, France",PhoneNumber="0778146263",ClientType="Instagrammer"},
+                new Client { Id = 1, LastName = "Phone Mo", FirstName = "Nway Nway", Nickname = "NN", Email = "nnpm@gmail.com", Password = UserService.EncodeMD5("1111"), Address= "21 bis Rue des Rossays, 91600, France",PhoneNumber="0778146263",ClientType="Instagrammer"},
                 new Client { Id = 2, LastName = "Dupin", FirstName = "Frédéric", Nickname = "FD", Email = "frederic.dupin.pro@gmail.com", Password = UserService.EncodeMD5("3333"), Address= "8 Rue Saint-Michel 93170, France",PhoneNumber="0677887855",ClientType="Blogger"},
                 new Client { Id = 3, LastName = "Dumas", FirstName = "Anthony", Nickname = "AD", Email = "anthony.dumas30@gmail.com", Password = UserService.EncodeMD5("5555"), Address = "10 Rue de label kebab, 75002, France", PhoneNumber ="0611843877", ClientType = "Tiktoker" },
                 new Client { Id = 4, LastName = "Aitcheou", FirstName = "David", Nickname = "DA", Email = "gilchristaitcheou@gmail.com", Password = UserService.EncodeMD5("7777"), Address = "456 Elm Avenue, Anycity, USA", PhoneNumber = "0650556784", ClientType = "Influencer" },

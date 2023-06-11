@@ -63,17 +63,20 @@ body {
     vertical-align: middle;
     /*float: left;*/
     line-height: 60px;
-    text-align: center;   
+    text-align: center;
     /*border: #CCC 1px solid;*/
     /*border-radius: 5px 5px 0px 0px;*/
 }
+
     .parent:not(:last-child) {
         text-shadow: 1px 1px 2px red;
         color: lightgoldenrodyellow; /*chage as you wish*/
     }
+
         .parent:not(:last-child) > ul > li > a {
-            text-shadow: none; 
+            text-shadow: none;
         }
+
     .parent a {
         margin: 35px;
         color: white;
@@ -208,8 +211,8 @@ li:hover {
         color: white;
         text-align: center;
         font-size: 80px;
-        font-family:'Brush Script MT';
-        text-shadow: 2px 2px 4px #000000 ;
+        font-family: 'Brush Script MT';
+        text-shadow: 2px 2px 4px #000000;
     }
 
 /*color: white;
@@ -527,7 +530,9 @@ footer {
     align-items: center;
     margin-left: auto;
     margin-right: auto;
-footer {
+    footer
+
+{
     background-color: orange;
     position: absolute;
     left: 0;
@@ -537,12 +542,12 @@ footer {
     overflow: hidden
 }
 
-    footer a {
-        text-decoration: none;
-        color: black;
-        text-align: center;
-        width: 100%;
-    }
+footer a {
+    text-decoration: none;
+    color: black;
+    text-align: center;
+    width: 100%;
+}
 
 .footer-buttons {
     display: inline-flex;

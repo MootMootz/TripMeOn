@@ -3,6 +3,10 @@
     Layout = "_LayoutPartner";
     ViewBag.Title = "CreateAccomodation";
 }
+@section ExtraCss{
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/PackageList.css" rel="stylesheet">
+}
 
 @using (Html.BeginForm())
 {
@@ -62,6 +66,7 @@
                 <td>
                     <input type="file" name="file" id="file1">
                 </td>
+                <td> </td>
             </tr>
             <tr>
                 <td>@Html.LabelFor(m => m.Description)</td>
@@ -69,21 +74,19 @@
                 <td>@Html.ValidationMessageFor(m => m.Description)</td>
             </tr>
 
-
-
-
-
         </table>
-        <input type="submit" value="Create" />
+        <div class="btn-container">
+            <input type="submit" value="Create" class="btn btn-primary" />
+        </div>
+
+
     </fieldset>
 
 
 
 
 }
-<script type="text/javascript" src="~/Scripts/jquery-3.3.1.js"></script>
-<script type="text/javascript" src="~/Scripts/jquery.validate-vsdoc.js"></script>
-<script type="text/javascript" src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+
 
 
 

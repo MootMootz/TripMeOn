@@ -3,6 +3,10 @@
     Layout = "_LayoutPartner";
     ViewBag.Title = "Accomodation";
 }
+@section ExtraCss{
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/PackageList.css" rel="stylesheet">
+}
 <!DOCTYPE html>
 <html>
 
@@ -76,7 +80,10 @@
 
             </table>
 
-            <input type="submit" value="Edit" />
+            <div class="text-center">
+                <input type="submit" value="Edit" class="btn btn-primary" />
+            </div>
+
         </fieldset>
     }
     <script type="text/javascript" src="~/Scripts/jquery-3.3.1.js"></script>

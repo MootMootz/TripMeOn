@@ -69,11 +69,11 @@
                 <a href="#">Services<span class="expand"></span></a>
                 <ul class="child">
                     <li>@Html.ActionLink("Restaurants", "SearchPackage", "Partner", new{serviceType = "Restaurant"})</li>
-                     <li>@Html.ActionLink("Accomodation", "SearchPackage", "Partner", new{serviceType = "Accomodation"})</li>
+                    <li>@Html.ActionLink("Accomodation", "SearchPackage", "Partner", new{serviceType = "Accomodation"})</li>
                     <li>@Html.ActionLink("Transportation", "SearchPackage", "Partner", new{serviceType = "Transport"})</li>
                 </ul>
-            </li>     
-            
+            </li>
+
             <!--   ---------------------------LOG IN----------------------------------   -->
 
             <li class="parent">
@@ -122,7 +122,7 @@
     <div class="search-container">
         <div class="search-box">
             <form action="/Product/SearchPackage" method="get">
-               
+
                 <label for="destinations">Destinations</label>
                 @{
                     List<Destination> destinations = new TripMeOn.BL.ProductService().GetDestinations();
@@ -285,4 +285,3 @@
     <script type="text/javascript" src="~/Scripts/jquery.validate.unobtrusive.js"></script>
 </body>
 </html>
-

@@ -2,10 +2,10 @@
 @using TripMeOn.Helper
 @{
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
-
 }
 
 @section ExtraCss{
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/css/PackageList.css">
 }
 
@@ -17,7 +17,7 @@
 
 </head>
 <body>
-    <button id="showCreateForm">Create a new Tour Package</button> <!-- Move create button above the table -->
+    <button id="showCreateForm" class="btn btn-primary">Create a new Tour Package</button> <!-- Add Bootstrap class to the button -->
 
     <table>
         <thead>
@@ -51,11 +51,11 @@
                         }
                     </td>
                     <td>@package.Price</td>
-                    <td>
-                        <button type="button" onclick="location.href='/Product/ModifyPackage?packageId=@package.Id'">Modify</button>
+                    <td>                      
+                        <a href="/Product/ModifyPackage?packageId=@package.Id" class="btn btn-primary">Modify</a>
                     </td>
                     <td>
-                        <button type="button" onclick="location.href='/Product/ShowRemovePackage?packageId=@package.Id'">Remove</button>
+                        <a href="/Product/ShowRemovePackage?packageId=@package.Id" class="btn btn-danger">Remove</a>
                     </td>
                 </tr>
             }

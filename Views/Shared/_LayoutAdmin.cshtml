@@ -7,7 +7,9 @@
 <head>
     <meta name="TRIPMEONheader" content="width=device-width" />
     <title>@ViewBag.Title</title>
-    <link href="~/css/StyleP.css" rel="stylesheet" />
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/StyleP.css" rel="stylesheet" />
+    
     @RenderSection("ExtraCss", required: false)
 
 </head>
@@ -33,11 +35,11 @@
                 <br />
                 @Html.ActionLink("Refund requests", "RefundRequest", "Employee")
             </div>
-
-            <div id="logout"><button type="submit">@Html.ActionLink("Logout", "Deconnection", "Login")</button></div>
+            <div id="logout">
+            <button type="submit" class="btn btn-primary">@Html.ActionLink("Logout", "Deconnection", "Login")</button>
         </div>
     </div>
-
+    </div>
 
     <div id="fixNav">
         <nav>
@@ -49,10 +51,10 @@
                     <span> <strong>Bonjour @Context.Request.Cookies["Nickname"]</strong></span>
                     // on affiche le message Bonjour suivi de la valeur de Cookie nickname
                 }
-                <button type="button">@Html.ActionLink("Home","IndexAdmin","Employee")</button>
-
-                <button type="submit">@Html.ActionLink("Logout", "Deconnection", "Login")</button>
-
+                <div class="pageTitle">
+                    <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("IndexAdmin", "Employee")'">Home</button>
+                    <button type="submit" class="btn btn-primary">@Html.ActionLink("Logout", "Deconnection", "Login")</button>
+                </div>
             </div>
 
             @*<div id="actionRequiredBlock">
@@ -93,7 +95,7 @@
     </div>
     </footer>*@
 
-
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0/js/bootstrap.bundle.min.js"></script>
     <script type="text/javascript" src="~/Scripts/jquery-3.3.1.js"></script>
     <script type="text/javascript" src="~/Scripts/jquery.validate-vsdoc.js"></script>
     <script type="text/javascript" src="~/Scripts/jquery.validate.unobtrusive.js"></script>

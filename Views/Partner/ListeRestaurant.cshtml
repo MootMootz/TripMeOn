@@ -3,7 +3,10 @@
     Layout = "_LayoutPartner";
     ViewBag.Title = "ListeRestaurants";
 }
-
+@section ExtraCss{
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/PackageList.css" rel="stylesheet">
+}
 <!DOCTYPE html>
 
 <html>
@@ -27,6 +30,8 @@
             <th>Start Date</th>
             <th>End Date</th>
             <th>Actions</th>
+            <th>Delete</th>
+            <th>Put Online</th>
         </tr>
         @foreach (var restaurant in Model.Restaurants)
         {
@@ -39,12 +44,14 @@
                 <td>@restaurant.Description</td>
                 <td>@restaurant.StartDate</td>
                 <td>@restaurant.EndDate</td>
-                <td>@Html.ActionLink("Edit","ModifyRestaurant", "Partner", new { id = restaurant.Id })</td>
-                <td>@Html.ActionLink("Delete", "DeleteRestaurant", "Partner", new { id = restaurant.Id })</td>
+                <td><a href="@Url.Action("ModifyRestaurant", "Partner", new { id = restaurant.Id })" class="btn btn-primary">Edit</a></td>
+                <td><a href="@Url.Action("DeleteRestaurant", "Partner", new { id = restaurant.Id })" class="btn btn-danger">Delete</a></td>
+
                 <td>
                     <form action="@Url.Action("ToggleOnlineStatusRestaurant", "Partner")" method="post">
                         <input type="hidden" name="id" value="@restaurant.Id" />
-                        <input type="submit" value="@(restaurant.IsOnline ? "Put offline" : "Put online")" />
+                        <input type="submit" value="@(restaurant.IsOnline ? "Put offline" : "Put online")" class="btn @(restaurant.IsOnline ? "btn-danger" : "btn-success")" />
+
                     </form>
                 </td>
             </tr>

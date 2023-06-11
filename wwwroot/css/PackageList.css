@@ -37,4 +37,14 @@ th, td {
     padding: 12px;
 }
 
-
+#showCreateForm {
+    margin-bottom: 20px;
+}
+table button {
+    margin-right: 5px;
+}
+.btn-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px; 
+}

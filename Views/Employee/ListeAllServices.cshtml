@@ -20,7 +20,6 @@
             <th>Capacity</th>
             <th>Price</th>
             <th>Partner</th>
-            <th>Destination</th>
             <th>Description</th>
         </tr>
         @foreach (var accomodation in partner.Accomodations)
@@ -31,8 +30,7 @@
                 <td>@accomodation.Type</td>
                 <td>@accomodation.Capacity</td>
                 <td>@accomodation.Price</td>
-                <td>@accomodation.Partner</td>
-                <td>@accomodation.DestinationId</td>
+                <td>@accomodation.Partner.CompanyName</td>
                 <td>@accomodation.Description</td>
             </tr>
         }
@@ -47,7 +45,6 @@
             <th>Type</th>
             <th>Price</th>
             <th>Partner</th>
-            <th>Destination</th>
             <th>Description</th>
         </tr>
         @foreach (var restaurant in partner.Restaurants)
@@ -57,8 +54,7 @@
                 <td>@restaurant.Name</td>
                 <td>@restaurant.Type</td>
                 <td>@restaurant.Price</td>
-                <td>@restaurant.Partner</td>
-                <td>@restaurant.DestinationId</td>
+                <td>@restaurant.Partner.CompanyName</td>
                 <td>@restaurant.Description</td>
             </tr>
         }
@@ -71,7 +67,6 @@
             <th>Type</th>
             <th>Price</th>
             <th>Partner</th>
-            <th>Destination</th>
             <th>Description</th>
         </tr>
         @foreach (var transportation in partner.Transportations)
@@ -80,8 +75,7 @@
                 <td>@transportation.PartnerId</td>
                 <td>@transportation.Type</td>
                 <td>@transportation.Price</td>
-                <td>@transportation.Partner</td>
-                <td>@transportation.DestinationId</td>
+                <td>@transportation.Partner.CompanyName</td>
                 <td>@transportation.Description</td>
             </tr>
         }

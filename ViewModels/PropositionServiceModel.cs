@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using TripMeOn.Models.PartnerProducts;
+using TripMeOn.Models.Products;
 using TripMeOn.Models.Users;
 
 namespace TripMeOn.ViewModels
@@ -11,5 +12,6 @@ namespace TripMeOn.ViewModels
         public List<Transportation> Transportations { get; set; }
 
         public List<Partner> Partners { get; set; }
+        public List<Destination> Destinations { get; set; }
     }
 }

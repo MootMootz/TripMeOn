@@ -14,37 +14,37 @@
     <a href="/Home/HomePage"><div id="logo"></div></a>
     <a href="/Home/HomePage"><div id="logo-shadow"></div></a>
 
-    
-        <div id="menu">
+
+    <div id="menu">
         <div id="menu-container">
             <div id="tabs">
-            <p><b>Add a service</b></p>         
-            @Html.ActionLink("Create accomodation", "CreateAccomodation", "Partner")
-            <br />
-            @Html.ActionLink("Create restaurant", "CreateRestaurant", "Partner")
-            <br />
-            @Html.ActionLink("Create transportation", "CreateTransportation", "Partner")
-            <br />
-            <br />
+                <p><b>Add a service</b></p>
+                @Html.ActionLink("Create accomodation", "CreateAccomodation", "Partner")
+                <br />
+                @Html.ActionLink("Create restaurant", "CreateRestaurant", "Partner")
+                <br />
+                @Html.ActionLink("Create transportation", "CreateTransportation", "Partner")
+                <br />
+                <br />
 
-            <p><b>Manage my services</b></p>
+                <p><b>Manage my services</b></p>
 
-            @Html.ActionLink("List of accomodations", "ListeAccomodation", "Partner")
-            <br />
-            @Html.ActionLink("List of restaurants", "ListeRestaurant", "Partner")
-            <br />
-            @Html.ActionLink("List of transportation", "ListeTransportation", "Partner")
-        </div>
+                @Html.ActionLink("List of accomodations", "ListeAccomodation", "Partner")
+                <br />
+                @Html.ActionLink("List of restaurants", "ListeRestaurant", "Partner")
+                <br />
+                @Html.ActionLink("List of transportation", "ListeTransportation", "Partner")
+            </div>
         </div>
     </div>
     <div id="fixNav">
         <nav>
             <div class=pageTitle>
-                WELCOME
+
                 @*<img src="~/images/logo.png" alt="logo">*@
                 @if (!String.IsNullOrEmpty(Context.Request.Cookies["Nickname"])) // si la valeur du cookie Nickname n'est pas vide
                 {
-                    <span> <strong>Bonjour @Context.Request.Cookies["Nickname"]</strong></span>
+                    <span> <strong>WELCOME @Context.Request.Cookies["Nickname"]</strong></span>
                     // on affiche le message Bonjour suivi de la valeur de Cookie nickname
                 }
                 <div class="pageTitle">

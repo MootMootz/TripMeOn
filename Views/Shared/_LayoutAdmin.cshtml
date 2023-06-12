@@ -9,7 +9,7 @@
     <title>@ViewBag.Title</title>
     <link href="/css/bootstrap.min.css" rel="stylesheet">
     <link href="/css/StyleP.css" rel="stylesheet" />
-    
+
     @RenderSection("ExtraCss", required: false)
 
 </head>
@@ -33,22 +33,22 @@
                 <br />
                 @Html.ActionLink("List of all services", "ListeAllServices", "Employee")
                 <br />
-                @Html.ActionLink("Refund requests", "RefundRequest", "Employee")
+                @*@Html.ActionLink("Refund requests", "RefundRequest", "Employee")*@
             </div>
             <div id="logout">
-            <button type="submit" class="btn btn-primary">@Html.ActionLink("Logout", "Deconnection", "Login")</button>
+                <button type="submit" class="btn btn-primary">@Html.ActionLink("Logout", "Deconnection", "Login")</button>
+            </div>
         </div>
-    </div>
     </div>
 
     <div id="fixNav">
         <nav>
             <div class=pageTitle>
 
-                WELCOME
+
                 @if (!String.IsNullOrEmpty(Context.Request.Cookies["Nickname"])) // si la valeur du cookie Nickname n'est pas vide
                 {
-                    <span> <strong>Bonjour @Context.Request.Cookies["Nickname"]</strong></span>
+                    <span> <strong>WELCOME @Context.Request.Cookies["Nickname"]</strong></span>
                     // on affiche le message Bonjour suivi de la valeur de Cookie nickname
                 }
                 <div class="pageTitle">

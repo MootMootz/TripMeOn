@@ -86,7 +86,7 @@ namespace TripMeOn.BL
         {
             Accomodation accomodation = new Accomodation() { Name = name, Type = type, Capacity = capacity, Price = price, PartnerId = partnerId, DestinationId = destinationId, StartDate = startDate, EndDate = endDate, Description = description };
             _bddContext.Accomodations.Add(accomodation);
-            Notification notification = new Notification() { Message = $"A new accomodation with ID {accomodation.Id}, named '{accomodation.Name}', has been created by partner {partnerId}.", CreatedAt = DateTime.Now };
+            Notification notification = new Notification() { Message = $"A new accomodation named '{accomodation.Name}', has been created by partner {partnerId}.", CreatedAt = DateTime.Now };
             _bddContext.Notifications.Add(notification);
             _bddContext.SaveChanges();
             return accomodation.Id;
@@ -95,7 +95,7 @@ namespace TripMeOn.BL
         {
             Restaurant restaurant = new Restaurant() { Name = name, Type = type, Price = price, PartnerId = partnerId, DestinationId = destinationId, StartDate = startDate, EndDate = endDate, Description = description };
             _bddContext.Restaurants.Add(restaurant);
-            Notification notification = new Notification() { Message = $"A new restaurant with ID {restaurant.Id}, named '{restaurant.Name}', has been created by partner {partnerId}.", CreatedAt = DateTime.Now };
+            Notification notification = new Notification() { Message = $"A new restaurant named '{restaurant.Name}', has been created by partner {partnerId}.", CreatedAt = DateTime.Now };
             _bddContext.Notifications.Add(notification);
             _bddContext.SaveChanges();
             return restaurant.Id;
@@ -104,7 +104,7 @@ namespace TripMeOn.BL
         {
             Transportation transportation = new Transportation() { Type = type, Price = price, PartnerId = partnerId, DestinationId = destinationId, StartDate = startDate, EndDate = endDate, Description = description };
             _bddContext.Transportations.Add(transportation);
-            Notification notification = new Notification() { Message = $"A new transportation with ID {transportation.Id}, transportation type '{transportation.Type}', has been created by partner {partnerId}.", CreatedAt = DateTime.Now };
+            Notification notification = new Notification() { Message = $"A new transportation with transportation type '{transportation.Type}', has been created by partner {partnerId}.", CreatedAt = DateTime.Now };
             _bddContext.Notifications.Add(notification);
             _bddContext.SaveChanges();
             return transportation.Id;
@@ -135,21 +135,21 @@ namespace TripMeOn.BL
         public void DeleteRestaurant(Restaurant restaurant) // applique les modifications sur restaurant et enregistre ces modifications dans la base de données
         {
             _bddContext.Restaurants.Remove(restaurant);
-            Notification notification = new Notification() { Message = $"An restaurant with ID {restaurant.Id}, named '{restaurant.Name}', has been deleted by a partner {restaurant.PartnerId}.", CreatedAt = DateTime.Now };
+            Notification notification = new Notification() { Message = $"An restaurant named '{restaurant.Name}', has been deleted by a partner {restaurant.PartnerId}.", CreatedAt = DateTime.Now };
             _bddContext.Notifications.Add(notification);
             _bddContext.SaveChanges();
         }
         public void DeleteAccomodation(Accomodation accomodation) // applique les modifications sur accomodation et enregistre ces modifications dans la base de données
         {
             _bddContext.Accomodations.Remove(accomodation);
-            Notification notification = new Notification() { Message = $"An accommodation with ID {accomodation.Id}, named '{accomodation.Name}', has been deleted by a partner {accomodation.PartnerId}.", CreatedAt = DateTime.Now };
+            Notification notification = new Notification() { Message = $"An accommodation named '{accomodation.Name}', has been deleted by a partner {accomodation.PartnerId}.", CreatedAt = DateTime.Now };
             _bddContext.Notifications.Add(notification);
             _bddContext.SaveChanges();
         }
         public void DeleteTransportation(Transportation transportation) // applique les modifications sur transportation et enregistre ces modifications dans la base de données
         {
             _bddContext.Transportations.Remove(transportation);
-            Notification notification = new Notification() { Message = $"An transportation with ID {transportation.Id}, transportation type '{transportation.Type}', has been deleted by a partner {transportation.PartnerId}.", CreatedAt = DateTime.Now };
+            Notification notification = new Notification() { Message = $"An transportation with transportation type '{transportation.Type}', has been deleted by a partner {transportation.PartnerId}.", CreatedAt = DateTime.Now };
             _bddContext.Notifications.Add(notification);
             _bddContext.SaveChanges();
         }

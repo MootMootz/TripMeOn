@@ -33,7 +33,7 @@ namespace TripMeOn.Models
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
 
-            optionsBuilder.UseMySql("server=localhost;user id=root;password=rrrrr;database=TripMeOn");
+            optionsBuilder.UseMySql("server=localhost;user id=root;password=twitwiboo;database=TripMeOn");
 
         }
 
@@ -163,7 +163,7 @@ namespace TripMeOn.Models
             var tourPackages = new List<TourPackage>            {
 
                 new TourPackage { Id = 1, Name = "Magnolia and early Cherry in Paris", DestinationId = 1, ThemeId = 2,Description="4 days tour",TimePeriodId=3, Price = 750,ImageId=1 },
-                new TourPackage { Id = 2, Name = "Lavender Fields of Provence", DestinationId = 2, ThemeId = 2,Description="4 days tour",TimePeriodId=7, Price = 925,ImageId=2 },
+                new TourPackage { Id = 2, Name = "Lavender Fields of Provence", DestinationId = 2, ThemeId = 2,Description="4 days tour",TimePeriodId=6, Price = 925,ImageId=2 },
                 new TourPackage { Id = 3, Name = "Confetti-Big Ben-London ", DestinationId = 3, ThemeId = 6,Description="4 days tour",TimePeriodId=6, Price = 850,ImageId=3 },
                 new TourPackage { Id = 4, Name = "Colmer in Autumn", DestinationId = 1, ThemeId = 10,Description="4 days tour",TimePeriodId=10,Price= 776,ImageId = 4 },
                 new TourPackage { Id = 5, Name = "Wisteria and Sakura in Paris", DestinationId = 1, ThemeId = 2,Description="4 days tour",TimePeriodId=4,Price= 776,ImageId = 5},

@@ -1,4 +1,4 @@
-﻿ @model List<TripMeOn.Models.Products.TourPackage>
+﻿@model List<TripMeOn.Models.Products.TourPackage>
 @using TripMeOn.Helper
 @{
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
@@ -18,6 +18,22 @@
 </head>
 <body>
     <button id="showCreateForm" class="btn btn-primary">Create a new Tour Package</button> <!-- Add Bootstrap class to the button -->
+    <!--Create Package-->
+
+    <form id="createForm" method="POST" action="CreatePackage" style="display: none;">
+        <h2>Create Package</h2>
+        <!-- Input fields for creating a new package -->
+        <input type="text" name="name" placeholder="Package Name" />
+        <input type="text" name="country" placeholder="Country Name" />
+        <input type="text" name="themeName" placeholder="Theme Name" />
+        <input type="text" name="region" placeholder="Region Name" />
+        <input type="text" name="city" placeholder="City Name" />
+        <input type="text" name="description" placeholder="Package Description" />
+        <input type="number" name="startMonth" placeholder="Start Month" />
+        <input type="number" name="endMonth" placeholder="End Month" />
+        <input type="number" name="price" placeholder="Price" />
+        <button type="submit">Create</button>
+    </form>
 
     <table>
         <thead>
@@ -51,7 +67,7 @@
                         }
                     </td>
                     <td>@package.Price</td>
-                    <td>                      
+                    <td>
                         <a href="/Product/ModifyPackage?packageId=@package.Id" class="btn btn-primary">Modify</a>
                     </td>
                     <td>
@@ -61,34 +77,19 @@
             }
         </tbody>
     </table>
-   <a href="@Url.Action("IndexAdmin", "Employee")" type="button">Back to Admin Dashboard</a>
+    <a href="@Url.Action("IndexAdmin", "Employee")" type="button">Back to Admin Dashboard</a>
 
 
-    <!--Create Package-->
 
-    <form id="createForm" method="POST" action="CreatePackage" style="display: none;">
-        <h2>Create Package</h2>
-        <!-- Input fields for creating a new package -->
-        <input type="text" name="name" placeholder="Package Name" />
-        <input type="text" name="country" placeholder="Country Name" />
-        <input type="text" name="themeName" placeholder="Theme Name" />
-        <input type="text" name="region" placeholder="Region Name" />
-        <input type="text" name="city" placeholder="City Name" />
-        <input type="text" name="description" placeholder="Package Description" />
-        <input type="number" name="startMonth" placeholder="Start Month" />
-        <input type="number" name="endMonth" placeholder="End Month" />
-        <input type="number" name="price" placeholder="Price" />
-        <button type="submit">Create</button>
-    </form>
     @section ExtraScript{
-            <script src="~/Scripts/jquery-3.3.1.js"></script>
-            <script>
-                $(document).ready(function () {
-                    $("#showCreateForm").click(function () {
-                        $("#createForm").toggle();
-                    });
+        <script src="~/Scripts/jquery-3.3.1.js"></script>
+        <script>
+            $(document).ready(function () {
+                $("#showCreateForm").click(function () {
+                    $("#createForm").toggle();
                 });
-            </script>
+            });
+        </script>
     }
 </body>
 </html>

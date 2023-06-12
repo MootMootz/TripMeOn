@@ -47,11 +47,11 @@ body {
     z-index: 100;
     padding-top: 40px;
     padding-bottom: 40px;
-    font-size: 2em;
+    font-size: 1em;
 }
 
 #menu {
-    background: rgb(0, 0, 0, 0.15);
+    /*background: rgb(0, 0, 0, 0.15);*/
 }
 
 .topcat {
@@ -215,12 +215,7 @@ li:hover {
         text-shadow: 2px 2px 4px #000000;
     }
 
-/*color: white;
-font-style: italic;
-text-align: center;
-width: 100px;
-height: 100%;
-margin: 0 auto;*/
+
 
 .diapo div {
     display: flex;
@@ -229,7 +224,7 @@ margin: 0 auto;*/
 }
 
 #picLeft {
-    width: 49.7%;
+    width: 49.9%;
     height: 1000px;
     margin-left: 0;
     margin-right: auto;
@@ -238,7 +233,7 @@ margin: 0 auto;*/
 }
 
 #picRight {
-    width: 49.7%;
+    width: 49.9%;
     height: 1000px;
     margin-left: auto;
     margin-right: 0;
@@ -318,73 +313,92 @@ margin: 0 auto;*/
     border-radius: 5px;
 }
 
-.insta-feed span {
+.pic-comment {
+    height: 250px;
+    width: 250px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #00000020;
+    align-items: center;
+}
+
+.pic-comment-span {
     display: block;
     color: white;
     font-style: italic;
     text-align: center;
-    width: 100px;
+    width: 80%;
     height: 100%;
     margin: 0 auto;
+    text-shadow: 1px 1px black;
 }
 
-.insta-feed-post div {
-    display: flex;
-    position: absolute;
-}
 
 .likes-icon {
-    padding-top: 300px;
-}
-
-.likes {
+    position: absolute;
+    float:left;
     background: url(/images/icons/coeur.png);
     background-repeat: no-repeat;
     background-size: cover;
+    height: 1%;
+    width: 1%;
+    margin-top: 5px;
 }
 
-.comments-icons {
+.likes {
+    position: absolute;
+    margin-left:30px;
+    margin-top:5px;
+}
+
+/*.comments-icons {
+    position: absolute;
     background: url(/images/icons/discuter.png);
     background-repeat: no-repeat;
     background-size: cover;
-    margin-left: 50px;
-    padding-top: 300px;
+    height: 1%;
+    width: 1%;
+    padding-top: 5px;
 }
 
 .comments {
-}
+    position: absolute;
+    padding-top: 30px;
+    padding-left: 50px;
+}*/
 
 #insta-feed-post-pic1 {
-    background: url(https://cdn.mos.cms.futurecdn.net/BX7vjSt8KMtcBHyisvcSPK.jpg);
+    /*background: url(/images/insta-feed/103294906_3061616780552524_7966095978482815661_n.jpg);*/
+    background: url(/images/insta-feed/334221492_3611279682491616_1142976359912031681_n.jpg);
     background-repeat: no-repeat;
     background-size: cover;
 }
 
 #insta-feed-post-pic2 {
-    background: url(https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Male_and_female_chicken_sitting_together.jpg/640px-Male_and_female_chicken_sitting_together.jpg);
+    background: url(/images/insta-feed/117517545_329408671576149_7811219309428189482_n.jpg); 
     background-repeat: no-repeat;
     background-size: cover;
 }
 
 #insta-feed-post-pic3 {
-    background: url(https://upload.wikimedia.org/wikipedia/commons/d/d4/Chicken_portrait.jpg);
+    background: url(/images/insta-feed/241164400_237622598144361_1685703549824277328_n.jpg);
     background-repeat: no-repeat;
     background-size: cover;
 }
 
 #insta-feed-post-pic4 {
-    background: url(https://cdn.shopify.com/s/files/1/0601/9550/4282/files/my_pet_chicken.jpg);
+    background: url(/images/insta-feed/279503169_5699118800108483_8268378559148520274_n.jpg);
     background-repeat: no-repeat;
     background-size: cover;
 }
 
 #insta-feed-post-pic5 {
-    background: url(https://ux2cms.imgix.net/images/roast-chicken.jpg);
+    background: url(/images/insta-feed/320557459_715214163297082_7022942723922270132_n.jpg);
     background-repeat: no-repeat;
     background-size: cover;
 }
 /* ----------------------------- TESTIMONY -----------------------------*/
-#testimony-block {
+/*#testimony-block {
     display: grid;
     width: 100%;
     height: 500px;
@@ -424,7 +438,7 @@ margin: 0 auto;*/
     background-image: url(/images/avance-rapide.png);
     background-position: center;
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: contain;*/
 }
 /* ----------------------------- PARTNERSHIPS -----------------------------*/
 .trait {
@@ -531,45 +545,14 @@ footer {
     margin-left: auto;
     margin-right: auto;
     footer
-
-{
-    background-color: orange;
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    height: 80px;
-    width: 100%;
-    overflow: hidden
 }
 
-footer a {
-    text-decoration: none;
-    color: black;
-    text-align: center;
-    width: 100%;
-}
-
-.footer-buttons {
-    display: inline-flex;
-    width: 70%;
-    height: 100%;
-    align-items: center;
-}
-
-    .footer-buttons div {
+    .social-icons div {
         display: flex;
         width: 100%;
-        height: 50px;
-        /*background-color: black;*/
-        margin-left: 10%;
-        margin-right: 10%;
-        align-items: center;
     }
 
-.social-icons {
-    display: inline-flex;
-    width: 25%;
-    height: 80px;
-    align-items: center;
-    margin-left: auto;
-    margin-right: auto;
+    .social-icons a {
+        color: #000000;
+        font-size: 25px;
+    }

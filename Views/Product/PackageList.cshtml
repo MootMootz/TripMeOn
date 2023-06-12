@@ -1,4 +1,4 @@
-﻿ @model List<TripMeOn.Models.Products.TourPackage>
+﻿@model List<TripMeOn.Models.Products.TourPackage>
 @using TripMeOn.Helper
 @{
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
@@ -67,7 +67,7 @@
                         }
                     </td>
                     <td>@package.Price</td>
-                    <td>                      
+                    <td>
                         <a href="/Product/ModifyPackage?packageId=@package.Id" class="btn btn-primary">Modify</a>
                     </td>
                     <td>
@@ -77,19 +77,17 @@
             }
         </tbody>
     </table>
-   <a href="@Url.Action("IndexAdmin", "Employee")" type="button">Back to Admin Dashboard</a>
+    <a href="@Url.Action("IndexAdmin", "Employee")" type="button">Back to Admin Dashboard</a>
 
-
-   
     @section ExtraScript{
-            <script src="~/Scripts/jquery-3.3.1.js"></script>
-            <script>
-                $(document).ready(function () {
-                    $("#showCreateForm").click(function () {
-                        $("#createForm").toggle();
-                    });
+        <script src="~/Scripts/jquery-3.3.1.js"></script>
+        <script>
+            $(document).ready(function () {
+                $("#showCreateForm").click(function () {
+                    $("#createForm").toggle();
                 });
-            </script>
+            });
+        </script>
     }
 </body>
 </html>
